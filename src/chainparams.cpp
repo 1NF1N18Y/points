@@ -41,6 +41,19 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     return genesis;
 }
 
+
+//   Build the genesis block. Note that the output of its generation
+//   transaction cannot be spent since it did not originally exist in the
+//   database.
+ 
+//   CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1701427325, nBits=1d00ffff, nNonce=2083236893, vtx=1)
+//     CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+//      CTxIn(COutPoint(000000, -1), coinbase 0492fa0716eb6e529044d9bc1c8d6dc9649d7af52665dbe36ef8e7ff70a5bcff40541d56007f1c897815b457366bd43806258440fb103e90984a284c8d339ef9999)
+//       CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
+//     vMerkleTree: 4a5e1e
+ 
+// New Genesis Block Creation
+
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Points was made on 12/1/2023 for learning blockchain";
@@ -155,10 +168,10 @@ public:
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // Block 50000
+        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000000000000ff"); // block 1
 
         // By default assume that the signatures in ancestors of this block are valid
-        consensus.defaultAssumeValid = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // Block 50000
+        consensus.defaultAssumeValid = uint256S("0x00000000000000000000000000000000000000000000000000000000000000ff"); // Block 1
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -172,12 +185,12 @@ public:
         nDefaultPort = 3466;
         nPruneAfterHeight = 100000;
 		
-	    uint32_t nGenesisTime = 1701427325;	
+	    uint32_t nGenesisTime = 1701429301;	
 
-	    genesis = CreateGenesisBlock(nGenesisTime, 351574, 0x1e00ffff, 4, 5000 * COIN);
+	    genesis = CreateGenesisBlock(nGenesisTime, 966191, 0x1e00ffff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
-	    assert(consensus.hashGenesisBlock == uint256S("0x"));
-        assert(genesis.hashMerkleRoot == uint256S("0x"));
+	    // assert(consensus.hashGenesisBlock == uint256S("0x00000d7c675d0d8d55e8f555ad04bc98fc038b1c2d8ead21db10ef524f792677"));
+        // assert(genesis.hashMerkleRoot == uint256S("0x658ea6b3943ac763910a5a2e6b5c456089b0e7b6db030d239c921674828b2360"));
 
 
         vSeeds.emplace_back("seed-mainnet-pnt.points.cc", false);
@@ -228,8 +241,8 @@ public:
         nIssueRestrictedAssetBurnAmount = 1500 * COIN;
         nAddNullQualifierTagBurnAmount = .1 * COIN;
 		
-        // 40% of 5000 COIN to Donation
-	    nCommunityAutonomousAmount = 40;
+        // 2% of 5000 COIN to Donation
+	    nCommunityAutonomousAmount = 2;
 
         // Burn Addresses
 	    strIssueAssetBurnAddress = "MCissueAssetXXXXXXXXXXXXXXXXa1oUfD";
