@@ -44,8 +44,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Points was made on 12/1/2023 for learning blockchain";
-    const CScript genesisOutputScript = CScript() << ParseHex("0492fa0716eb6e529044d9bc1c8d6dc9649d7af52665dbe36ef8e7ff70a5bcff40541d56007f1c897815b457366bd43806258440fb103e90984a284c8d339ef9999
-") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("0492fa0716eb6e529044d9bc1c8d6dc9649d7af52665dbe36ef8e7ff70a5bcff40541d56007f1c897815b457366bd43806258440fb103e90984a284c8d339ef9999") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
