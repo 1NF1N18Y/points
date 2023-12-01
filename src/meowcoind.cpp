@@ -89,7 +89,7 @@ bool AppInit(int argc, char* argv[])
             strUsage += "\n" + _("Usage:") + "\n" +
                   "  pointsd [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_MEOWCOIND);
+            strUsage += "\n" + HelpMessage(HMM_POINTSD);
         }
 
         fprintf(stdout, "%s", strUsage.c_str());

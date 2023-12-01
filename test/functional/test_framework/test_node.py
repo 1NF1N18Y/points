@@ -20,7 +20,7 @@ import time
 from .util import assert_equal, get_rpc_proxy, rpc_url, wait_until
 from .authproxy import JSONRPCException, AuthServiceProxy
 
-MEOWCOIND_PROC_WAIT_TIMEOUT = 60
+POINTSD_PROC_WAIT_TIMEOUT = 60
 
 
 class TestNode:
@@ -45,7 +45,7 @@ class TestNode:
             # Wait for up to 60 seconds for the RPC server to respond
             self.rpc_timeout = 60
         if binary is None:
-            self.binary = os.getenv("MEOWCOIND", "pointsd")
+            self.binary = os.getenv("POINTSD", "pointsd")
         else:
             self.binary = binary
         self.stderr = stderr
@@ -155,7 +155,7 @@ class TestNode:
         self.log.debug("Node stopped")
         return True
 
-    def wait_until_stopped(self, timeout=MEOWCOIND_PROC_WAIT_TIMEOUT):
+    def wait_until_stopped(self, timeout=POINTSD_PROC_WAIT_TIMEOUT):
         wait_until(self.is_node_stopped, err_msg="Wait until Stopped", timeout=timeout)
 
     def assert_debug_log(self, expected_msgs, timeout=2):

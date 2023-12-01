@@ -15,5 +15,5 @@ EXEEXT=@EXEEXT@
 # Which components are enabled. These are commented out by `configure` if they were disabled when running config.
 @ENABLE_WALLET_TRUE@ENABLE_WALLET=true
 @BUILD_points_cli_TRUE@ENABLE_UTILS=true
-@BUILD_MEOWCOIND_TRUE@ENABLE_MEOWCOIND=true
+@BUILD_POINTSD_TRUE@ENABLE_POINTSD=true
 @ENABLE_ZMQ_TRUE@ENABLE_ZMQ=true

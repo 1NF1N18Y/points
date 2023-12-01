@@ -22,8 +22,8 @@ Test plan:
     - proxy on IPv6
 
 - Create various proxies (as threads)
-- Create MEOWCOINDs that connect to them
-- Manipulate the MEOWCOINDs using addnode (onetry) an observe effects
+- Create POINTSDs that connect to them
+- Manipulate the POINTSDs using addnode (onetry) an observe effects
 
 addnode connect to IPv4
 addnode connect to IPv6

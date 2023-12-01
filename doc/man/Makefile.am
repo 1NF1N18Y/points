@@ -1,6 +1,6 @@
 dist_man1_MANS=
 
-if BUILD_MEOWCOIND
+if BUILD_POINTSD
   dist_man1_MANS+=pointsd.1
 endif
 

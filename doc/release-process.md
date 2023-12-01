@@ -302,6 +302,6 @@ pointscoin.net (see below for pointscoin.net update instructions).
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/JustAResearcher/Points/releases/new) with a link to the arcMEOWCOIND release notes.
+  - Create a [new GitHub release](https://github.com/JustAResearcher/Points/releases/new) with a link to the arcPOINTSD release notes.
 
   - Celebrate

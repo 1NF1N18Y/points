@@ -19,7 +19,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libpointsconsensus.pc
 endif
 
-MEOWCOIND_BIN=$(top_builddir)/src/$(MEOWCOIN_DAEMON_NAME)$(EXEEXT)
+POINTSD_BIN=$(top_builddir)/src/$(MEOWCOIN_DAEMON_NAME)$(EXEEXT)
 MEOWCOIN_QT_BIN=$(top_builddir)/src/qt/$(MEOWCOIN_GUI_NAME)$(EXEEXT)
 points_cli_BIN=$(top_builddir)/src/$(points_cli_NAME)$(EXEEXT)
 MEOWCOIN_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
@@ -75,7 +75,7 @@ dist-hook:
 
 $(MEOWCOIN_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(MEOWCOIND_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(POINTSD_BIN) $(top_builddir)/release
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(MEOWCOIN_QT_BIN) $(top_builddir)/release
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(points_cli_BIN) $(top_builddir)/release
 	@test -f $(MAKENSIS) && $(MAKENSIS) -V2 $(top_builddir)/share/setup.nsi || \
@@ -106,7 +106,7 @@ $(OSX_APP)/Contents/MacOS/Points-Qt: $(MEOWCOIN_QT_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
-$(OSX_APP)/Contents/MacOS/pointsd: $(MEOWCOIND_BIN)
+$(OSX_APP)/Contents/MacOS/pointsd: $(POINTSD_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
@@ -178,7 +178,7 @@ endif
 $(MEOWCOIN_QT_BIN): FORCE
 	$(MAKE) -C src qt/$(@F)
 
-$(MEOWCOIND_BIN): FORCE
+$(POINTSD_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
 $(points_cli_BIN): FORCE

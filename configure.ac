@@ -1044,7 +1044,7 @@ AC_SUBST(UNIVALUE_LIBS)
 MEOWCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
 AC_MSG_CHECKING([whether to build pointsd])
-AM_CONDITIONAL([BUILD_MEOWCOIND], [test x$build_pointsd = xyes])
+AM_CONDITIONAL([BUILD_POINTSD], [test x$build_pointsd = xyes])
 AC_MSG_RESULT($build_pointsd)
 
 AC_MSG_CHECKING([whether to build points-cli])

@@ -3,40 +3,40 @@
 # backward compatibility for existing gentoo layout 
 #
 if [ -d "/var/lib/points/.points" ]; then
-	MEOWCOIND_DEFAULT_DATADIR="/var/lib/points/.points"
+	POINTSD_DEFAULT_DATADIR="/var/lib/points/.points"
 else
-	MEOWCOIND_DEFAULT_DATADIR="/var/lib/pointsd"
+	POINTSD_DEFAULT_DATADIR="/var/lib/pointsd"
 fi
 
-MEOWCOIND_CONFIGFILE=${MEOWCOIND_CONFIGFILE:-/etc/points/points.conf}
-MEOWCOIND_PIDDIR=${MEOWCOIND_PIDDIR:-/var/run/pointsd}
-MEOWCOIND_PIDFILE=${MEOWCOIND_PIDFILE:-${MEOWCOIND_PIDDIR}/pointsd.pid}
-MEOWCOIND_DATADIR=${MEOWCOIND_DATADIR:-${MEOWCOIND_DEFAULT_DATADIR}}
-MEOWCOIND_USER=${MEOWCOIND_USER:-${MEOWCOIN_USER:-points}}
-MEOWCOIND_GROUP=${MEOWCOIND_GROUP:-points}
-MEOWCOIND_BIN=${MEOWCOIND_BIN:-/usr/bin/pointsd}
-MEOWCOIND_NICE=${MEOWCOIND_NICE:-${NICELEVEL:-0}}
-MEOWCOIND_OPTS="${MEOWCOIND_OPTS:-${MEOWCOIN_OPTS}}"
+POINTSD_CONFIGFILE=${POINTSD_CONFIGFILE:-/etc/points/points.conf}
+POINTSD_PIDDIR=${POINTSD_PIDDIR:-/var/run/pointsd}
+POINTSD_PIDFILE=${POINTSD_PIDFILE:-${POINTSD_PIDDIR}/pointsd.pid}
+POINTSD_DATADIR=${POINTSD_DATADIR:-${POINTSD_DEFAULT_DATADIR}}
+POINTSD_USER=${POINTSD_USER:-${MEOWCOIN_USER:-points}}
+POINTSD_GROUP=${POINTSD_GROUP:-points}
+POINTSD_BIN=${POINTSD_BIN:-/usr/bin/pointsd}
+POINTSD_NICE=${POINTSD_NICE:-${NICELEVEL:-0}}
+POINTSD_OPTS="${POINTSD_OPTS:-${MEOWCOIN_OPTS}}"
 
 name="Points Core Daemon"
 description="Points cryptocurrency P2P network daemon"
 
 command="/usr/bin/pointsd"
-command_args="-pid=\"${MEOWCOIND_PIDFILE}\" \
-		-conf=\"${MEOWCOIND_CONFIGFILE}\" \
-		-datadir=\"${MEOWCOIND_DATADIR}\" \
+command_args="-pid=\"${POINTSD_PIDFILE}\" \
+		-conf=\"${POINTSD_CONFIGFILE}\" \
+		-datadir=\"${POINTSD_DATADIR}\" \
 		-daemon \
-		${MEOWCOIND_OPTS}"
+		${POINTSD_OPTS}"
 
-required_files="${MEOWCOIND_CONFIGFILE}"
-start_stop_daemon_args="-u ${MEOWCOIND_USER} \
-			-N ${MEOWCOIND_NICE} -w 2000"
-pidfile="${MEOWCOIND_PIDFILE}"
+required_files="${POINTSD_CONFIGFILE}"
+start_stop_daemon_args="-u ${POINTSD_USER} \
+			-N ${POINTSD_NICE} -w 2000"
+pidfile="${POINTSD_PIDFILE}"
 
 # The retry schedule to use when stopping the daemon. Could be either
 # a timeout in seconds or multiple signal/timeout pairs (like
 # "SIGKILL/180 SIGTERM/300")
-retry="${MEOWCOIND_SIGTERM_TIMEOUT}"
+retry="${POINTSD_SIGTERM_TIMEOUT}"
 
 depend() {
 	need localmount net
@@ -50,29 +50,29 @@ start_pre() {
 	checkpath \
 	-d \
 	--mode 0750 \
-	--owner "${MEOWCOIND_USER}:${MEOWCOIND_GROUP}" \
-	"${MEOWCOIND_DATADIR}"
+	--owner "${POINTSD_USER}:${POINTSD_GROUP}" \
+	"${POINTSD_DATADIR}"
 
 	checkpath \
 	-d \
 	--mode 0755 \
-	--owner "${MEOWCOIND_USER}:${MEOWCOIND_GROUP}" \
-	"${MEOWCOIND_PIDDIR}"
+	--owner "${POINTSD_USER}:${POINTSD_GROUP}" \
+	"${POINTSD_PIDDIR}"
 
 	checkpath -f \
-	-o ${MEOWCOIND_USER}:${MEOWCOIND_GROUP} \
+	-o ${POINTSD_USER}:${POINTSD_GROUP} \
 	-m 0660 \
-	${MEOWCOIND_CONFIGFILE}
+	${POINTSD_CONFIGFILE}
 
 	checkconfig || return 1
 }
 
 checkconfig()
 {
-	if ! grep -qs '^rpcpassword=' "${MEOWCOIND_CONFIGFILE}" ; then
+	if ! grep -qs '^rpcpassword=' "${POINTSD_CONFIGFILE}" ; then
 		eerror ""
 		eerror "ERROR: You must set a secure rpcpassword to run pointsd."
-		eerror "The setting must appear in ${MEOWCOIND_CONFIGFILE}"
+		eerror "The setting must appear in ${POINTSD_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
 		eerror "and must not be the same as the rpcuser setting."

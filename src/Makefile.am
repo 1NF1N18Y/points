@@ -65,7 +65,7 @@ noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_MEOWCOIND
+if BUILD_POINTSD
   bin_PROGRAMS += pointsd
 endif
 

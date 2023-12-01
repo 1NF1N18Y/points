@@ -19,14 +19,14 @@ fi
 RETVAL=0
 
 prog=pointsd
-# you can override the lockfile via MEOWCOIND_LOCKFILE in /etc/sysconfig/pointsd
-lockfile=${MEOWCOIND_LOCKFILE-/var/lock/subsys/pointsd}
+# you can override the lockfile via POINTSD_LOCKFILE in /etc/sysconfig/pointsd
+lockfile=${POINTSD_LOCKFILE-/var/lock/subsys/pointsd}
 
-# pointsd defaults to /usr/bin/pointsd, override with MEOWCOIND_BIN
-pointsd=${MEOWCOIND_BIN-/usr/bin/pointsd}
+# pointsd defaults to /usr/bin/pointsd, override with POINTSD_BIN
+pointsd=${POINTSD_BIN-/usr/bin/pointsd}
 
-# pointsd opts default to -disablewallet, override with MEOWCOIND_OPTS
-pointsd_opts=${MEOWCOIND_OPTS--disablewallet}
+# pointsd opts default to -disablewallet, override with POINTSD_OPTS
+pointsd_opts=${POINTSD_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "

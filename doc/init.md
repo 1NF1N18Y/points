@@ -104,7 +104,7 @@ use old versions of Upstart and do not supply the start-stop-daemon utility.
 Copy pointsd.init to /etc/init.d/pointsd. Test by running `service pointsd start`.
 
 Using this script, you can adjust the path and flags to the pointsd program by
-setting the MEOWCOIND and FLAGS environment variables in the file
+setting the POINTSD and FLAGS environment variables in the file
 /etc/sysconfig/pointsd. You can also use the DAEMONOPTS environment variable here.
 
 ### Mac OS X

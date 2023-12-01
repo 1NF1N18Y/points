@@ -1,33 +1,33 @@
 # /etc/conf.d/pointsd: config file for /etc/init.d/pointsd
 
 # Config file location
-#MEOWCOIND_CONFIGFILE="/etc/points/points.conf"
+#POINTSD_CONFIGFILE="/etc/points/points.conf"
 
-# What directory to write pidfile to?  (created and owned by $MEOWCOIND_USER)
-#MEOWCOIND_PIDDIR="/var/run/pointsd"
+# What directory to write pidfile to?  (created and owned by $POINTSD_USER)
+#POINTSD_PIDDIR="/var/run/pointsd"
 
 # What filename to give the pidfile
-#MEOWCOIND_PIDFILE="${MEOWCOIND_PIDDIR}/pointsd.pid"
+#POINTSD_PIDFILE="${POINTSD_PIDDIR}/pointsd.pid"
 
 # Where to write pointsd data (be mindful that the blockchain is large)
-#MEOWCOIND_DATADIR="/var/lib/pointsd"
+#POINTSD_DATADIR="/var/lib/pointsd"
 
 # User and group to own pointsd process
-#MEOWCOIND_USER="points"
-#MEOWCOIND_GROUP="points"
+#POINTSD_USER="points"
+#POINTSD_GROUP="points"
 
 # Path to pointsd executable
-#MEOWCOIND_BIN="/usr/bin/pointsd"
+#POINTSD_BIN="/usr/bin/pointsd"
 
 # Nice value to run pointsd under
-#MEOWCOIND_NICE=0
+#POINTSD_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
-#MEOWCOIND_OPTS=""
+#POINTSD_OPTS=""
 
 # The timeout in seconds OpenRC will wait for pointsd to terminate
 # after a SIGTERM has been raised.
 # Note that this will be mapped as argument to start-stop-daemon's
 # '--retry' option, which means you can specify a retry schedule
 # here. For more information see man 8 start-stop-daemon.
-MEOWCOIND_SIGTERM_TIMEOUT=60
+POINTSD_SIGTERM_TIMEOUT=60

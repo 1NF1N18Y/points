@@ -267,7 +267,7 @@ def main():
     # Check that the build was configured with wallet, utils, and pointsd
     enable_wallet = config["components"].getboolean("ENABLE_WALLET")
     enable_cli = config["components"].getboolean("ENABLE_UTILS")
-    enable_pointsd = config["components"].getboolean("ENABLE_MEOWCOIND")
+    enable_pointsd = config["components"].getboolean("ENABLE_POINTSD")
     if not (enable_wallet and enable_cli and enable_pointsd):
         print("No functional tests to run. Wallet, utils, and pointsd must all be enabled")
         print("Rerun `configure` with --enable-wallet, --with-cli and --with-daemon and rerun make")
@@ -376,8 +376,8 @@ def run_tests(test_list, src_dir, build_dir, exeext, tmpdir, use_term_control, j
         print("%sWARNING!%s There is a cache directory here: %s. If tests fail unexpectedly, try deleting the cache directory." % (BOLD[1], BOLD[0], cache_dir))
 
     #Set env vars
-    if "MEOWCOIND" not in os.environ:
-        os.environ["MEOWCOIND"] = build_dir + '/src/pointsd' + exeext
+    if "POINTSD" not in os.environ:
+        os.environ["POINTSD"] = build_dir + '/src/pointsd' + exeext
         os.environ["MEOWCOINCLI"] = build_dir + '/src/points-cli' + exeext
 
     tests_dir = src_dir + '/test/functional/'
