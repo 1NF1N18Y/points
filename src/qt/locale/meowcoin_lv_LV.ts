@@ -66,7 +66,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>MeowcoinGUI</name>
+    <name>PointsGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Parakstīt &amp;ziņojumu...</translation>
@@ -144,8 +144,8 @@
         <translation>Bloku reindeksēšana no diska...</translation>
     </message>
     <message>
-        <source>Send coins to a Meowcoin address</source>
-        <translation>Nosūtīt bitkoinus uz Meowcoin adresi</translation>
+        <source>Send coins to a Points address</source>
+        <translation>Nosūtīt bitkoinus uz Points adresi</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -168,8 +168,8 @@
         <translation>&amp;Pārbaudīt ziņojumu...</translation>
     </message>
     <message>
-        <source>Meowcoin</source>
-        <translation>Meowcoin</translation>
+        <source>Points</source>
+        <translation>Points</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -196,12 +196,12 @@
         <translation>Šifrēt privātās atslēgas kuras pieder tavam maciņam</translation>
     </message>
     <message>
-        <source>Sign messages with your Meowcoin addresses to prove you own them</source>
-        <translation>Parakstīt ziņojumus ar savām Meowcoin adresēm lai pierādītu ka tās pieder tev</translation>
+        <source>Sign messages with your Points addresses to prove you own them</source>
+        <translation>Parakstīt ziņojumus ar savām Points adresēm lai pierādītu ka tās pieder tev</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
-        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām Meowcoin adresēm</translation>
+        <source>Verify messages to ensure they were signed with specified Points addresses</source>
+        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām Points adresēm</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -220,12 +220,12 @@
         <translation>Ciļņu rīkjosla</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and meowcoin: URIs)</source>
-        <translation>Pieprasīt maksājumus (izveido QR kodu un meowcoin: URIs)</translation>
+        <source>Request payments (generates QR codes and points: URIs)</source>
+        <translation>Pieprasīt maksājumus (izveido QR kodu un points: URIs)</translation>
     </message>
     <message>
-        <source>Open a meowcoin: URI or payment request</source>
-        <translation>Atvērt meowcoin URI vai maksājuma pieprasījumu</translation>
+        <source>Open a points: URI or payment request</source>
+        <translation>Atvērt points URI vai maksājuma pieprasījumu</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -501,15 +501,15 @@
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
-        <translation>Ieslēgt meowcoin &amp;kontroles funkcijas</translation>
+        <translation>Ieslēgt points &amp;kontroles funkcijas</translation>
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
         <translation>&amp;Tērēt neapstiprinātu atlikumu</translation>
     </message>
     <message>
-        <source>Automatically open the Meowcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Uz rūtera automātiski atvērt Meowcoin klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
+        <source>Automatically open the Points client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Uz rūtera automātiski atvērt Points klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -561,7 +561,7 @@
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
-        <translation>Vai rādīt Meowcoin kontroles funkcijas vai nē.</translation>
+        <translation>Vai rādīt Points kontroles funkcijas vai nē.</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -595,8 +595,8 @@
         <translation>Forma</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Meowcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar Meowcoin tīklu, taču šis process vēl nav beidzies.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Points network after a connection is established, but this process has not completed yet.</source>
+        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar Points tīklu, taču šis process vēl nav beidzies.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -854,7 +854,7 @@
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Meowcoin Kontroles Funkcijas</translation>
+        <translation>Points Kontroles Funkcijas</translation>
     </message>
     <message>
         <source>Inputs...</source>
@@ -1029,8 +1029,8 @@
         <translation>Kopēt parakstu uz sistēmas starpliktuvi</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Meowcoin address</source>
-        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs Meowcoin adreses īpašnieks.</translation>
+        <source>Sign the message to prove you own this Points address</source>
+        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs Points adreses īpašnieks.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1100,7 +1100,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>meowcoin-core</name>
+    <name>points-core</name>
     <message>
         <source>Options:</source>
         <translation>Iespējas:</translation>
@@ -1126,8 +1126,8 @@
         <translation>Darbināt fonā kā servisu un pieņemt komandas</translation>
     </message>
     <message>
-        <source>Meowcoin Core</source>
-        <translation>Meowcoin Core</translation>
+        <source>Points Core</source>
+        <translation>Points Core</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

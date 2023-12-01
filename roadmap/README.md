@@ -1,3 +1,3 @@
-# Meowcoin Roadmap
+# Points Roadmap
 
 

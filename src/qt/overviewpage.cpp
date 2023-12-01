@@ -6,7 +6,7 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 
-#include "meowcoinunits.h"
+#include "pointsunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -45,7 +45,7 @@ class TxViewDelegate : public QAbstractItemDelegate
     Q_OBJECT
 public:
     explicit TxViewDelegate(const PlatformStyle *_platformStyle, QObject *parent=nullptr):
-        QAbstractItemDelegate(parent), unit(MeowcoinUnits::MEWC),
+        QAbstractItemDelegate(parent), unit(PointsUnits::PNT),
         platformStyle(_platformStyle)
     {
 
@@ -154,7 +154,7 @@ class AssetViewDelegate : public QAbstractItemDelegate
 Q_OBJECT
 public:
     explicit AssetViewDelegate(const PlatformStyle *_platformStyle, QObject *parent=nullptr):
-            QAbstractItemDelegate(parent), unit(MeowcoinUnits::MEWC),
+            QAbstractItemDelegate(parent), unit(PointsUnits::PNT),
             platformStyle(_platformStyle)
     {
 
@@ -298,7 +298,7 @@ public:
 
 };
 #include "overviewpage.moc"
-#include "meowcoingui.h"
+#include "pointsgui.h"
 #include <QFontDatabase>
 
 OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) :
@@ -367,7 +367,7 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
 
     /** Update the labels colors */
     ui->assetBalanceLabel->setStyleSheet(STRING_LABEL_COLOR);
-    ui->meowcoinBalancesLabel->setStyleSheet(STRING_LABEL_COLOR);
+    ui->pointsBalancesLabel->setStyleSheet(STRING_LABEL_COLOR);
     ui->labelBalanceText->setStyleSheet(STRING_LABEL_COLOR);
     ui->labelPendingText->setStyleSheet(STRING_LABEL_COLOR);
     ui->labelImmatureText->setStyleSheet(STRING_LABEL_COLOR);
@@ -377,7 +377,7 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     ui->recentTransactionsLabel->setStyleSheet(STRING_LABEL_COLOR);
 
     /** Update the labels font */
-    ui->meowcoinBalancesLabel->setFont(GUIUtil::getTopLabelFont());
+    ui->pointsBalancesLabel->setFont(GUIUtil::getTopLabelFont());
     ui->assetBalanceLabel->setFont(GUIUtil::getTopLabelFont());
     ui->recentTransactionsLabel->setFont(GUIUtil::getTopLabelFont());
 
@@ -547,14 +547,14 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
-    ui->labelBalance->setText(MeowcoinUnits::formatWithUnit(unit, balance, false, MeowcoinUnits::separatorAlways));
-    ui->labelUnconfirmed->setText(MeowcoinUnits::formatWithUnit(unit, unconfirmedBalance, false, MeowcoinUnits::separatorAlways));
-    ui->labelImmature->setText(MeowcoinUnits::formatWithUnit(unit, immatureBalance, false, MeowcoinUnits::separatorAlways));
-    ui->labelTotal->setText(MeowcoinUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance, false, MeowcoinUnits::separatorAlways));
-    ui->labelWatchAvailable->setText(MeowcoinUnits::formatWithUnit(unit, watchOnlyBalance, false, MeowcoinUnits::separatorAlways));
-    ui->labelWatchPending->setText(MeowcoinUnits::formatWithUnit(unit, watchUnconfBalance, false, MeowcoinUnits::separatorAlways));
-    ui->labelWatchImmature->setText(MeowcoinUnits::formatWithUnit(unit, watchImmatureBalance, false, MeowcoinUnits::separatorAlways));
-    ui->labelWatchTotal->setText(MeowcoinUnits::formatWithUnit(unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, MeowcoinUnits::separatorAlways));
+    ui->labelBalance->setText(PointsUnits::formatWithUnit(unit, balance, false, PointsUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(PointsUnits::formatWithUnit(unit, unconfirmedBalance, false, PointsUnits::separatorAlways));
+    ui->labelImmature->setText(PointsUnits::formatWithUnit(unit, immatureBalance, false, PointsUnits::separatorAlways));
+    ui->labelTotal->setText(PointsUnits::formatWithUnit(unit, balance + unconfirmedBalance + immatureBalance, false, PointsUnits::separatorAlways));
+    ui->labelWatchAvailable->setText(PointsUnits::formatWithUnit(unit, watchOnlyBalance, false, PointsUnits::separatorAlways));
+    ui->labelWatchPending->setText(PointsUnits::formatWithUnit(unit, watchUnconfBalance, false, PointsUnits::separatorAlways));
+    ui->labelWatchImmature->setText(PointsUnits::formatWithUnit(unit, watchImmatureBalance, false, PointsUnits::separatorAlways));
+    ui->labelWatchTotal->setText(PointsUnits::formatWithUnit(unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false, PointsUnits::separatorAlways));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -630,7 +630,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("MEWC")
+    // update the display unit, to not use the default ("PNT")
     updateDisplayUnit();
 }
 
@@ -679,7 +679,7 @@ void OverviewPage::showAssets()
         ui->assetBalanceLabel->hide();
         ui->labelAssetStatus->hide();
 
-        // This keeps the MEWC balance grid from expanding and looking terrible when asset balance is hidden
+        // This keeps the PNT balance grid from expanding and looking terrible when asset balance is hidden
         ui->assetVerticalSpaceWidget->show();
         ui->assetVerticalSpaceWidget2->show();
     }

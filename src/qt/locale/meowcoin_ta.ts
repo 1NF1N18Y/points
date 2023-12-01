@@ -54,7 +54,7 @@
     </message>
     </context>
 <context>
-    <name>MeowcoinGUI</name>
+    <name>PointsGUI</name>
     <message>
         <source>&amp;Overview</source>
         <translation>&amp;கண்ணோட்டம்</translation>
@@ -92,8 +92,8 @@
         <translation>&amp;செய்தியை சரிசெய்...</translation>
     </message>
     <message>
-        <source>Meowcoin</source>
-        <translation>Meowcoin</translation>
+        <source>Points</source>
+        <translation>Points</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -708,10 +708,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>meowcoin-core</name>
+    <name>points-core</name>
     <message>
-        <source>Meowcoin Core</source>
-        <translation>Meowcoin மையம்</translation>
+        <source>Points Core</source>
+        <translation>Points மையம்</translation>
     </message>
     <message>
         <source>(default: %u)</source>

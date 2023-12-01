@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "streams.h"
@@ -145,7 +145,7 @@ const char* GetOpName(opcodetype opcode)
     case OP_NOP10                  : return "OP_NOP10";
 
     /** MEOWCOIN START */
-    case OP_MEWC_ASSET              : return "OP_MEWC_ASSET";
+    case OP_PNT_ASSET              : return "OP_PNT_ASSET";
     /** MEOWCOIN END */
 
     case OP_INVALIDOPCODE          : return "OP_INVALIDOPCODE";
@@ -246,33 +246,33 @@ bool CScript::IsAssetScript(int& nType, bool& isOwner) const
 bool CScript::IsAssetScript(int& nType, bool& fIsOwner, int& nStartingIndex) const
 {
     if (this->size() > 31) {
-        if ((*this)[25] == OP_MEWC_ASSET) { // OP_MEWC_ASSET is always in the 25 index of the script if it exists
+        if ((*this)[25] == OP_PNT_ASSET) { // OP_PNT_ASSET is always in the 25 index of the script if it exists
             int index = -1;
-            if ((*this)[27] == MEWC_N) { // Check to see if MEWC starts at 27 ( this->size() < 105)
-                if ((*this)[28] == MEWC_E)
-                    if ((*this)[29] == MEWC_X)
+            if ((*this)[27] == PNT_N) { // Check to see if PNT starts at 27 ( this->size() < 105)
+                if ((*this)[28] == PNT_E)
+                    if ((*this)[29] == PNT_X)
                         index = 30;
             } else {
-                if ((*this)[28] == MEWC_N) // Check to see if MEWC starts at 28 ( this->size() >= 105)
-                    if ((*this)[29] == MEWC_E)
-                        if ((*this)[30] == MEWC_X)
+                if ((*this)[28] == PNT_N) // Check to see if PNT starts at 28 ( this->size() >= 105)
+                    if ((*this)[29] == PNT_E)
+                        if ((*this)[30] == PNT_X)
                             index = 31;
             }
 
             if (index > 0) {
                 nStartingIndex = index + 1; // Set the index where the asset data begins. Use to serialize the asset data into asset objects
-                if ((*this)[index] == MEWC_T) { // Transfer first anticipating more transfers than other assets operations
+                if ((*this)[index] == PNT_T) { // Transfer first anticipating more transfers than other assets operations
                     nType = TX_TRANSFER_ASSET;
                     return true;
-                } else if ((*this)[index] == MEWC_Q && this->size() > 39) {
+                } else if ((*this)[index] == PNT_Q && this->size() > 39) {
                     nType = TX_NEW_ASSET;
                     fIsOwner = false;
                     return true;
-                } else if ((*this)[index] == MEWC_O) {
+                } else if ((*this)[index] == PNT_O) {
                     nType = TX_NEW_ASSET;
                     fIsOwner = true;
                     return true;
-                } else if ((*this)[index] == MEWC_N) {
+                } else if ((*this)[index] == PNT_N) {
                     nType = TX_REISSUE_ASSET;
                     return true;
                 }
@@ -332,15 +332,15 @@ bool CScript::IsNullAsset() const
 bool CScript::IsNullAssetTxDataScript() const
 {
     return (this->size() > 23 &&
-            (*this)[0] == OP_MEWC_ASSET &&
+            (*this)[0] == OP_PNT_ASSET &&
             (*this)[1] == 0x14);
 }
 
 bool CScript::IsNullGlobalRestrictionAssetTxDataScript() const
 {
-    // 1 OP_MEWC_ASSET followed by two OP_RESERVED + atleast 4 characters for the restricted name $ABC
+    // 1 OP_PNT_ASSET followed by two OP_RESERVED + atleast 4 characters for the restricted name $ABC
     return (this->size() > 6 &&
-            (*this)[0] == OP_MEWC_ASSET &&
+            (*this)[0] == OP_PNT_ASSET &&
             (*this)[1] == OP_RESERVED &&
             (*this)[2] == OP_RESERVED);
 }
@@ -348,9 +348,9 @@ bool CScript::IsNullGlobalRestrictionAssetTxDataScript() const
 
 bool CScript::IsNullAssetVerifierTxDataScript() const
 {
-    // 1 OP_MEWC_ASSET followed by one OP_RESERVED
+    // 1 OP_PNT_ASSET followed by one OP_RESERVED
     return (this->size() > 3 &&
-            (*this)[0] == OP_MEWC_ASSET &&
+            (*this)[0] == OP_PNT_ASSET &&
             (*this)[1] == OP_RESERVED &&
             (*this)[2] != OP_RESERVED);
 }
@@ -450,7 +450,7 @@ bool CScript::HasValidOps() const
 bool CScript::IsUnspendable() const
 {
     CAmount nAmount;
-    return (size() > 0 && *begin() == OP_RETURN) || (size() > 0 && *begin() == OP_MEWC_ASSET) || (size() > MAX_SCRIPT_SIZE) || (GetAssetAmountFromScript(*this, nAmount) && nAmount == 0);
+    return (size() > 0 && *begin() == OP_RETURN) || (size() > 0 && *begin() == OP_PNT_ASSET) || (size() > MAX_SCRIPT_SIZE) || (GetAssetAmountFromScript(*this, nAmount) && nAmount == 0);
 }
 
 //!--------------------------------------------------------------------------------------------------------------------------!//

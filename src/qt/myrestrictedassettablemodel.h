@@ -1,4 +1,4 @@
-#include "meowcoinunits.h"
+#include "pointsunits.h"
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -53,7 +53,7 @@ public:
                 TxPlainTextRole,
         /** Unprocessed icon */
                 RawDecorationRole,
-        /** MEWC or name of an asset */
+        /** PNT or name of an asset */
                 AssetNameRole,
     };
 

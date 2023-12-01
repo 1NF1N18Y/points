@@ -1,11 +1,11 @@
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <assets/assets.h>
 
-#include <test/test_meowcoin.h>
+#include <test/test_points.h>
 
 #include <boost/test/unit_test.hpp>
 #include "core_write.cpp"
@@ -52,7 +52,7 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         BOOST_CHECK(!IsAssetNameValid("RVN", type));
         BOOST_CHECK(!IsAssetNameValid("RAVEN", type));
         BOOST_CHECK(!IsAssetNameValid("RAVENCOIN", type));
-        BOOST_CHECK(!IsAssetNameValid("MEWC", type));
+        BOOST_CHECK(!IsAssetNameValid("PNT", type));
         BOOST_CHECK(!IsAssetNameValid("MEOWCOIN", type));
 
         //- Versions of MEOWCOIN ALLOWED

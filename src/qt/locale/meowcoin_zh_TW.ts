@@ -64,11 +64,11 @@
 			<translation>收款位址</translation>
 		</message>
 		<message>
-			<source>These are your Meowcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+			<source>These are your Points addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
 			<translation>这些是您发送付款的蜂窝地址.在寄出硬币之前,一定要核对金额和收银地址.</translation>
 		</message>
 		<message>
-			<source>These are your Meowcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+			<source>These are your Points addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
 			<translation>这些是您接收付款的蜂巢地址.建议为每个事务使用新的接收地址.</translation>
 		</message>
 		<message>
@@ -182,7 +182,7 @@
 			<translation>錢包已加密</translation>
 		</message>
 		<message>
-			<source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your meowcoinss from being stolen by malware infecting your computer.</source>
+			<source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your pointsss from being stolen by malware infecting your computer.</source>
 			<translation>%1将立即关闭以完成加密过程.记住,加密你的钱包不能完全保护你的蜂箱不被感染你电脑的恶意软件偷走.</translation>
 		</message>
 		<message>
@@ -242,7 +242,7 @@
 		</message>
 	</context>
 	<context>
-		<name>MeowcoinGUI</name>
+		<name>PointsGUI</name>
 		<message>
 			<source>Sign &amp;message...</source>
 			<translation>簽名消息(&amp;M)...</translation>
@@ -348,7 +348,7 @@
 			<translation>正在重新索引磁盘上的块...</translation>
 		</message>
 		<message>
-			<source>Send coins to a Meowcoin address</source>
+			<source>Send coins to a Points address</source>
 			<translation>将硬币发送到蜂巢地址</translation>
 		</message>
 		<message>
@@ -372,7 +372,7 @@
 			<translation>&amp;驗證消息...</translation>
 		</message>
 		<message>
-			<source>Meowcoin</source>
+			<source>Points</source>
 			<translation>蜂巢</translation>
 		</message>
 		<message>
@@ -400,11 +400,11 @@
 			<translation>加密属于你钱包的私钥</translation>
 		</message>
 		<message>
-			<source>Sign messages with your Meowcoin addresses to prove you own them</source>
+			<source>Sign messages with your Points addresses to prove you own them</source>
 			<translation>用你的蜂巢地址签名以证明你拥有它们</translation>
 		</message>
 		<message>
-			<source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
+			<source>Verify messages to ensure they were signed with specified Points addresses</source>
 			<translation>验证消息以确保它们是用指定的配置单元地址签名的</translation>
 		</message>
 		<message>
@@ -424,7 +424,7 @@
 			<translation>选项卡工具栏</translation>
 		</message>
 		<message>
-			<source>Request payments (generates QR codes and meowcoin: URIs)</source>
+			<source>Request payments (generates QR codes and points: URIs)</source>
 			<translation>请求付款(生成二维码和配置单元：uri)</translation>
 		</message>
 		<message>
@@ -436,7 +436,7 @@
 			<translation>显示已使用的接收地址和标签的列表</translation>
 		</message>
 		<message>
-			<source>Open a meowcoin: URI or payment request</source>
+			<source>Open a points: URI or payment request</source>
 			<translation>打开配置单元：URI或付款请求</translation>
 		</message>
 		<message>
@@ -444,7 +444,7 @@
 			<translation>&amp;命令列選項</translation>
 		</message>
 		<message>
-			<source>%n active connection(s) to Meowcoin network</source>
+			<source>%n active connection(s) to Points network</source>
 			<translation>%n到配置单元网络的活动连接</translation>
 		</message>
 		<message>
@@ -488,7 +488,7 @@
 			<translation>最新</translation>
 		</message>
 		<message>
-			<source>Show the %1 help message to get a list with possible Meowcoin command-line options</source>
+			<source>Show the %1 help message to get a list with possible Points command-line options</source>
 			<translation>显示%1帮助消息以获取包含可能的配置单元命令行选项的列表</translation>
 		</message>
 		<message>
@@ -540,7 +540,7 @@
 			<translation>钱包已&lt;b&gt;加密&lt;/b&gt;且当前已&lt;b&gt;锁定&lt;/b&gt;</translation>
 		</message>
 		<message>
-			<source>A fatal error occurred. Meowcoin can no longer continue safely and will quit.</source>
+			<source>A fatal error occurred. Points can no longer continue safely and will quit.</source>
 			<translation>发生致命错误.蜂巢无法继续安全运行,将退出.</translation>
 		</message>
 		<message>
@@ -548,8 +548,8 @@
 			<translation>&amp;轉讓資產</translation>
 		</message>
 		<message>
-			<source>Transfer assets to MEWC addresses</source>
-			<translation>将资产转移到MEWC地址</translation>
+			<source>Transfer assets to PNT addresses</source>
+			<translation>将资产转移到PNT地址</translation>
 		</message>
 		<message>
 			<source>&amp;Create Assets</source>
@@ -600,7 +600,7 @@
 			<translation>打开钱包修复选项</translation>
 		</message>
 		<message>
-			<source>Open a Meowcoin: URI or payment request</source>
+			<source>Open a Points: URI or payment request</source>
 			<translation>打开配置单元：URI或付款请求</translation>
 		</message>
 		<message>
@@ -608,8 +608,8 @@
 			<translation>&amp;錢包</translation>
 		</message>
 		<message>
-			<source>Meowcoin Market Price</source>
-			<translation>Meowcoin 市场价格</translation>
+			<source>Points Market Price</source>
+			<translation>Points 市场价格</translation>
 		</message>
 		<message>
 			<source>Brought to you by binance.com</source>
@@ -846,7 +846,7 @@
 			<translation>編輯付款位址</translation>
 		</message>
 		<message>
-			<source>The entered address "%1" is not a valid Meowcoin address.</source>
+			<source>The entered address "%1" is not a valid Points address.</source>
 			<translation>输入的地址"%1"不是有效的配置单元地址.</translation>
 		</message>
 		<message>
@@ -959,7 +959,7 @@
 			<translation>因為這是程式第一次啓動,你可以選擇 %1 儲存資料的地方.</translation>
 		</message>
 		<message>
-			<source>%1 will download and store a copy of the Meowcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+			<source>%1 will download and store a copy of the Points block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
 			<translation>%1将下载并存储配置单元块链的副本.至少%2GB的数据将存储在此目录中,并且会随着时间的推移而增长.钱包也将存储在此目录中.</translation>
 		</message>
 		<message>
@@ -1007,7 +1007,7 @@
 			<translation>无法在此创建数据目录.</translation>
 		</message>
 		<message>
-			<source>Meowcoin</source>
+			<source>Points</source>
 			<translation>蜂巢</translation>
 		</message>
 		<message>
@@ -1019,7 +1019,7 @@
 			<translation>此目录中将存储大约%1 GB的数据.</translation>
 		</message>
 		<message>
-			<source>%1 will download and store a copy of the Meowcoin block chain.</source>
+			<source>%1 will download and store a copy of the Points block chain.</source>
 			<translation>%1将下载并存储配置单元块链的副本.</translation>
 		</message>
 		<message>
@@ -1038,11 +1038,11 @@
 			<translation>表單</translation>
 		</message>
 		<message>
-			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Meowcoin network, as detailed below.</source>
+			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Points network, as detailed below.</source>
 			<translation>最近的交易可能还不可见,因此您的钱包余额可能不正确.一旦您的钱包完成与蜂窝网络的同步,此信息将是正确的,详情如下.</translation>
 		</message>
 		<message>
-			<source>Attempting to spend meowcoinss that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+			<source>Attempting to spend pointsss that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
 			<translation>网络将不接受尝试使用受尚未显示的事务影响的配置单元.</translation>
 		</message>
 		<message>
@@ -1086,7 +1086,7 @@
 			<translation>不明.正在同步前導資料(%1)中...</translation>
 		</message>
 		<message>
-			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the meowcoin network, as detailed below.</source>
+			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the points network, as detailed below.</source>
 			<translation>最近的交易可能还不可见,因此您的钱包余额可能不正确.一旦您的钱包完成与蜂窝网络的同步,此信息将是正确的,详情如下.</translation>
 		</message>
 	</context>
@@ -1212,7 +1212,7 @@
 			<translation>可以花還沒確認的零錢</translation>
 		</message>
 		<message>
-			<source>Automatically open the Meowcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+			<source>Automatically open the Points client port on the router. This only works when your router supports UPnP and it is enabled.</source>
 			<translation>自动打开路由器上的配置单元客户端端口.这只在路由器支持UPnP且已启用时起作用.</translation>
 		</message>
 		<message>
@@ -1220,7 +1220,7 @@
 			<translation>用 &amp;UPnP 設定通訊埠對應</translation>
 		</message>
 		<message>
-			<source>Connect to the Meowcoin network through a SOCKS5 proxy.</source>
+			<source>Connect to the Points network through a SOCKS5 proxy.</source>
 			<translation>通过SOCKS5代理连接到配置单元网络.</translation>
 		</message>
 		<message>
@@ -1260,7 +1260,7 @@
 			<translation>Tor</translation>
 		</message>
 		<message>
-			<source>Connect to the Meowcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+			<source>Connect to the Points network through a separate SOCKS5 proxy for Tor hidden services.</source>
 			<translation>通过单独的SOCKS5代理连接到配置单元网络,以提供隐藏服务.</translation>
 		</message>
 		<message>
@@ -1383,7 +1383,7 @@
 			<translation>表單</translation>
 		</message>
 		<message>
-			<source>The displayed information may be out of date. Your wallet automatically synchronizes with the Meowcoin network after a connection is established, but this process has not completed yet.</source>
+			<source>The displayed information may be out of date. Your wallet automatically synchronizes with the Points network after a connection is established, but this process has not completed yet.</source>
 			<translation>显示的信息可能已过期.建立连接后,您的钱包将自动与配置单元网络同步,但此过程尚未完成.</translation>
 		</message>
 		<message>
@@ -1483,8 +1483,8 @@
 			<translation>资产余额</translation>
 		</message>
 		<message>
-			<source>MEWC Balances</source>
-			<translation>MEWC余额</translation>
+			<source>PNT Balances</source>
+			<translation>PNT余额</translation>
 		</message>
 	</context>
 	<context>
@@ -1494,7 +1494,7 @@
 			<translation>要求付款時發生錯誤</translation>
 		</message>
 		<message>
-			<source>Cannot start meowcoin: click-to-pay handler</source>
+			<source>Cannot start points: click-to-pay handler</source>
 			<translation>无法启动配置单元：单击付款处理程序</translation>
 		</message>
 		<message>
@@ -1510,7 +1510,7 @@
 			<translation>無效的付款位址 %1</translation>
 		</message>
 		<message>
-			<source>URI cannot be parsed! This can be caused by an invalid Meowcoin address or malformed URI parameters.</source>
+			<source>URI cannot be parsed! This can be caused by an invalid Points address or malformed URI parameters.</source>
 			<translation>无法分析URI!这可能是由无效的配置单元地址或格式错误的URI参数引起的.</translation>
 		</message>
 		<message>
@@ -1612,7 +1612,7 @@
 			<translation>金額</translation>
 		</message>
 		<message>
-			<source>Enter a Meowcoin address (e.g. %1)</source>
+			<source>Enter a Points address (e.g. %1)</source>
 			<translation>输入配置单元地址(例如%1)</translation>
 		</message>
 		<message>
@@ -2096,7 +2096,7 @@
 			<translation>重複使用現有的收款位址(不建議)</translation>
 		</message>
 		<message>
-			<source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Meowcoin network.</source>
+			<source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Points network.</source>
 			<translation>附加到付款请求的可选消息,该消息将在请求打开时显示.注意：消息不会通过配置单元网络与付款一起发送.</translation>
 		</message>
 		<message>
@@ -2341,7 +2341,7 @@
 			<translation>總共最少</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
 			<translation>只要交易量小于区块中的空间,只需支付最低费用就可以了.但是请注意,一旦对配置单元事务的需求超过了网络所能处理的数量,这可能会导致一个从不确认的事务.</translation>
 		</message>
 		<message>
@@ -2501,7 +2501,7 @@
 			<translation>估计将在%n个块内开始确认.</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>警告：配置单元地址无效</translation>
 		</message>
 		<message>
@@ -2556,7 +2556,7 @@
 			<translation>這是一筆正常的付款.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to send the payment to</source>
+			<source>The Points address to send the payment to</source>
 			<translation>要将付款发送到的配置单元地址</translation>
 		</message>
 		<message>
@@ -2576,7 +2576,7 @@
 			<translation>刪掉這個項目</translation>
 		</message>
 		<message>
-			<source>The fee will be deducted from the amount being sent. The recipient will receive less meowcoinss than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+			<source>The fee will be deducted from the amount being sent. The recipient will receive less pointsss than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
 			<translation>费用将从寄出的金额中扣除.收件人将收到比您在"金额"字段中输入的更少的配置单元.如果选择多个收件人,费用将平均分摊.</translation>
 		</message>
 		<message>
@@ -2600,8 +2600,8 @@
 			<translation>請輸入這個位址的標記,來把它加進去已使用過位址的清單.</translation>
 		</message>
 		<message>
-			<source>A message that was attached to the meowcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Meowcoin network.</source>
-			<translation>附加到meowcoin:URI的消息,它将与事务一起存储以供您参考.注意：此消息不会通过配置单元网络发送.</translation>
+			<source>A message that was attached to the points: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Points network.</source>
+			<translation>附加到points:URI的消息,它将与事务一起存储以供您参考.注意：此消息不会通过配置单元网络发送.</translation>
 		</message>
 		<message>
 			<source>Pay To:</source>
@@ -2649,11 +2649,11 @@
 			<translation>簽署訊息</translation>
 		</message>
 		<message>
-			<source>You can sign messages/agreements with your addresses to prove you can receive meowcoinss sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+			<source>You can sign messages/agreements with your addresses to prove you can receive pointsss sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
 			<translation>您可以用您的地址签署消息/协议,以证明您可以接收发送给他们的配置单元.小心不要签署任何含糊或随机的,因为网络钓鱼攻击可能试图诱骗你签署你的身份给他们.只在你同意的详细声明上签字.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to sign the message with</source>
+			<source>The Points address to sign the message with</source>
 			<translation>用于签名邮件的配置单元地址</translation>
 		</message>
 		<message>
@@ -2685,7 +2685,7 @@
 			<translation>複製目前的簽章到系統剪貼簿</translation>
 		</message>
 		<message>
-			<source>Sign the message to prove you own this Meowcoin address</source>
+			<source>Sign the message to prove you own this Points address</source>
 			<translation>在邮件上签名以证明您拥有此蜂窝地址</translation>
 		</message>
 		<message>
@@ -2709,11 +2709,11 @@
 			<translation>請在下面輸入收款人的位址,訊息(請確定完整複製了所包含的換行,空格,跳位符號等等),以及簽章,來驗證這個訊息.請小心,除了訊息內容以外,不要對簽章本身過度解讀,以避免被用「中間人攻擊法」詐騙.請注意,通過驗證的簽章只能證明簽章人確實可以從該位址收款,不能證明任何交易中的付款人身份!</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address the message was signed with</source>
+			<source>The Points address the message was signed with</source>
 			<translation>邮件签名时使用的配置单元地址</translation>
 		</message>
 		<message>
-			<source>Verify the message to ensure it was signed with the specified Meowcoin address</source>
+			<source>Verify the message to ensure it was signed with the specified Points address</source>
 			<translation>验证消息以确保它是用指定的配置单元地址签名的</translation>
 		</message>
 		<message>
@@ -2974,8 +2974,8 @@
 			<translation>生成的硬币必须在%1个街区到期后才能使用.生成此块时,它被广播到网络以添加到块链.如果它不能进入链,它的状态将变为\</translation>
 		</message>
 		<message>
-			<source>Net MEWC amount</source>
-			<translation>MEWC净额</translation>
+			<source>Net PNT amount</source>
+			<translation>PNT净额</translation>
 		</message>
 	</context>
 	<context>
@@ -3128,8 +3128,8 @@
 			<translation>发送的资产</translation>
 		</message>
 		<message>
-			<source>The asset (or MEWC) removed or added to balance.</source>
-			<translation>资产(或MEWC)被移除或添加到余额中.</translation>
+			<source>The asset (or PNT) removed or added to balance.</source>
+			<translation>资产(或PNT)被移除或添加到余额中.</translation>
 		</message>
 	</context>
 	<context>
@@ -3398,7 +3398,7 @@
 		</message>
 	</context>
 	<context>
-		<name>meowcoin-core</name>
+		<name>points-core</name>
 		<message>
 			<source>Options:</source>
 			<translation>选项：</translation>
@@ -3456,7 +3456,7 @@
 			<translation>无法启动HTTP服务器.有关详细信息,请参阅调试日志.</translation>
 		</message>
 		<message>
-			<source>Meowcoin Core</source>
+			<source>Points Core</source>
 			<translation>蜂巢核心</translation>
 		</message>
 		<message>
@@ -4510,7 +4510,7 @@
 			<translation>估计将在%n个块内开始确认.</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>警告：配置单元地址无效</translation>
 		</message>
 		<message>
@@ -4620,7 +4620,7 @@
 			<translation>IPFS/Txid哈希无效.请使用有效的IPFS/Txid哈希</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>警告：配置单元地址无效</translation>
 		</message>
 		<message>
@@ -4776,8 +4776,8 @@
 			<translation>地址：</translation>
 		</message>
 		<message>
-			<source>The MEWC address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-			<translation>将持有此资产的MEWC地址(您必须拥有此地址).留空可创建新地址.</translation>
+			<source>The PNT address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+			<translation>将持有此资产的PNT地址(您必须拥有此地址).留空可创建新地址.</translation>
 		</message>
 		<message>
 			<source>Verifier String:</source>
@@ -4868,7 +4868,7 @@
 			<translation>每千字节</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
 			<translation>只要交易量小于区块中的空间,只需支付最低费用就可以了.但是请注意,一旦对配置单元事务的需求超过了网络所能处理的数量,这可能会导致一个从不确认的事务.</translation>
 		</message>
 		<message>
@@ -4912,14 +4912,14 @@
 			<translation>余额：</translation>
 		</message>
 		<message>
-			<source>123.456 MEWC</source>
+			<source>123.456 PNT</source>
 			<translation>123.456英镑</translation>
 		</message>
 	</context>
 	<context>
 		<name>GUIUtil</name>
 		<message>
-			<source>Enter a Meowcoin address (e.g. %1)</source>
+			<source>Enter a Points address (e.g. %1)</source>
 			<translation>输入配置单元地址(例如%1)</translation>
 		</message>
 		<message>
@@ -5004,9 +5004,9 @@
 		</message>
 	</context>
 	<context>
-		<name>meowcoin</name>
+		<name>points</name>
 		<message>
-			<source>A fatal error occurred. Meowcoin can no longer continue safely and will quit.</source>
+			<source>A fatal error occurred. Points can no longer continue safely and will quit.</source>
 			<translation>发生致命错误.蜂巢无法继续安全运行,将退出.</translation>
 		</message>
 		<message>
@@ -5088,7 +5088,7 @@
 			<translation>数量太多了.最大值为2100000000</translation>
 		</message>
 		<message>
-			<source>Invalid Meowcoin Destination Address</source>
+			<source>Invalid Points Destination Address</source>
 			<translation>配置单元目标地址无效</translation>
 		</message>
 		<message>
@@ -5096,7 +5096,7 @@
 			<translation>警告：限制性资产发行需要地址</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>警告：配置单元地址无效</translation>
 		</message>
 		<message>
@@ -5300,8 +5300,8 @@
 			<translation>地址：</translation>
 		</message>
 		<message>
-			<source>The MEWC address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-			<translation>将持有此资产的MEWC地址(您必须拥有此地址).留空可创建新地址.</translation>
+			<source>The PNT address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+			<translation>将持有此资产的PNT地址(您必须拥有此地址).留空可创建新地址.</translation>
 		</message>
 		<message>
 			<source>Verifier String:</source>
@@ -5392,7 +5392,7 @@
 			<translation>每千字节</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
 			<translation>只要交易量小于区块中的空间,只需支付最低费用就可以了.但是请注意,一旦对配置单元事务的需求超过了网络所能处理的数量,这可能会导致一个从不确认的事务.</translation>
 		</message>
 		<message>
@@ -5436,7 +5436,7 @@
 			<translation>余额：</translation>
 		</message>
 		<message>
-			<source>123.456 MEWC</source>
+			<source>123.456 PNT</source>
 			<translation>123.456英镑</translation>
 		</message>
 	</context>
@@ -5760,8 +5760,8 @@
 			<translation>这是资产支付</translation>
 		</message>
 		<message>
-			<source>A message that was attached to the meowcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Meowcoin network.</source>
-			<translation>附加到meowcoin:URI的消息,它将与事务一起存储以供您参考.注意：此消息不会通过配置单元网络发送.</translation>
+			<source>A message that was attached to the points: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Points network.</source>
+			<translation>附加到points:URI的消息,它将与事务一起存储以供您参考.注意：此消息不会通过配置单元网络发送.</translation>
 		</message>
 		<message>
 			<source>Memo:</source>
@@ -5784,7 +5784,7 @@
 			<translation>资产：</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to send the payment to</source>
+			<source>The Points address to send the payment to</source>
 			<translation>要将付款发送到的配置单元地址</translation>
 		</message>
 		<message>

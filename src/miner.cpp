@@ -42,7 +42,7 @@
 extern std::vector<CWalletRef> vpwallets;
 //////////////////////////////////////////////////////////////////////////////
 //
-// MeowcoinMiner
+// PointsMiner
 //
 
 //
@@ -188,7 +188,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 	std::string  GetCommunityAutonomousAddress 	= GetParams().CommunityAutonomousAddress();
 	CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
     if (!IsValidDestination(destCommunityAutonomous)) {
-		LogPrintf("IsValidDestination: Invalid Meowcoin address %s \n", GetCommunityAutonomousAddress);
+		LogPrintf("IsValidDestination: Invalid Points address %s \n", GetCommunityAutonomousAddress);
     }
     // We need to parse the address ready to send to it
     CScript scriptPubKeyCommunityAutonomous = GetScriptForDestination(destCommunityAutonomous);
@@ -209,7 +209,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     pblocktemplate->vTxFees[0] = -nFees;
 
     LogPrintf("CreateNewBlock(): block weight: %u txs: %u fees: %ld sigops %d\n", GetBlockWeight(*pblock), nBlockTx, nFees, nBlockSigOpsCost);
-    //MEWC END
+    //PNT END
 
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
@@ -562,11 +562,11 @@ CWallet *GetFirstWallet() {
     return(NULL);
 }
 
-void static MeowcoinMiner(const CChainParams& chainparams)
+void static PointsMiner(const CChainParams& chainparams)
 {
-    LogPrintf("MeowcoinMiner -- started\n");
+    LogPrintf("PointsMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("meowcoin-miner");
+    RenameThread("points-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -578,7 +578,7 @@ void static MeowcoinMiner(const CChainParams& chainparams)
 
 
     if (!EnsureWalletIsAvailable(pWallet, false)) {
-        LogPrintf("MeowcoinMiner -- Wallet not available\n");
+        LogPrintf("PointsMiner -- Wallet not available\n");
     }
 #endif
 
@@ -640,13 +640,13 @@ void static MeowcoinMiner(const CChainParams& chainparams)
 
             if (!pblocktemplate.get())
             {
-                LogPrintf("MeowcoinMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("PointsMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("MeowcoinMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("PointsMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -667,7 +667,7 @@ void static MeowcoinMiner(const CChainParams& chainparams)
                         pblock->mix_hash = mix_hash;
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("MeowcoinMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("PointsMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -714,17 +714,17 @@ void static MeowcoinMiner(const CChainParams& chainparams)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("MeowcoinMiner -- terminated\n");
+        LogPrintf("PointsMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("MeowcoinMiner -- runtime error: %s\n", e.what());
+        LogPrintf("PointsMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
-int GenerateMeowcoins(bool fGenerate, int nThreads, const CChainParams& chainparams)
+int GeneratePointss(bool fGenerate, int nThreads, const CChainParams& chainparams)
 {
 
     static boost::thread_group* minerThreads = NULL;
@@ -751,7 +751,7 @@ int GenerateMeowcoins(bool fGenerate, int nThreads, const CChainParams& chainpar
     nHashesPerSec = 0;
 
     for (int i = 0; i < nThreads; i++){
-        minerThreads->create_thread(boost::bind(&MeowcoinMiner, boost::cref(chainparams)));
+        minerThreads->create_thread(boost::bind(&PointsMiner, boost::cref(chainparams)));
     }
 
     return(numCores);

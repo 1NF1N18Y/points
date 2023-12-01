@@ -7,17 +7,17 @@ define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2022)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
-define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Meowcoin Core]])
-AC_INIT([Meowcoin Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/JustAResearcher/Meowcoin/issues],[meowcoin],[https://mewccrypto.com])
+define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Points Core]])
+AC_INIT([Points Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/JustAResearcher/Points/issues],[points],[https://pntcrypto.com])
 AC_CONFIG_SRCDIR([src/validation.cpp])
-AC_CONFIG_HEADERS([src/config/meowcoin-config.h])
+AC_CONFIG_HEADERS([src/config/points-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-MEOWCOIN_DAEMON_NAME=meowcoind
-MEOWCOIN_GUI_NAME=meowcoin-qt
-meowcoin_cli_NAME=meowcoin-cli
-MEOWCOIN_TX_NAME=meowcoin-tx
+MEOWCOIN_DAEMON_NAME=pointsd
+MEOWCOIN_GUI_NAME=points-qt
+points_cli_NAME=points-cli
+MEOWCOIN_TX_NAME=points-tx
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR(ARFLAGS, [Flags for the archiver, defaults to <cr> if not set])
@@ -83,7 +83,7 @@ AC_PATH_TOOL(RANLIB, ranlib)
 AC_PATH_TOOL(STRIP, strip)
 AC_PATH_TOOL(GCOV, gcov)
 AC_PATH_PROG(LCOV, lcov)
-dnl Python 3.x is supported from 3.4 on (see https://github.com/JustAResearcher/Meowcoin/issues/7893)
+dnl Python 3.x is supported from 3.4 on (see https://github.com/JustAResearcher/Points/issues/7893)
 AC_PATH_PROGS([PYTHON], [python3.6 python3.5 python3.4 python3 python2.7 python2 python])
 AC_PATH_PROG(GENHTML, genhtml)
 AC_PATH_PROG([GIT], [git])
@@ -298,27 +298,27 @@ CPPFLAGS="$CPPFLAGS -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS"
 
 AC_ARG_WITH([cli],
   [AS_HELP_STRING([--with-cli],
-  [build meowcoin-cli (default=yes)])],
-  [build_meowcoin_cli=$withval],
-  [build_meowcoin_cli=yes])
+  [build points-cli (default=yes)])],
+  [build_points_cli=$withval],
+  [build_points_cli=yes])
 
 AC_ARG_WITH([tx],
   [AS_HELP_STRING([--with-tx],
-  [build meowcoin-tx (default=no)])],
-  [build_meowcoin_tx=$withval],
-  [build_meowcoin_tx=no])
+  [build points-tx (default=no)])],
+  [build_points_tx=$withval],
+  [build_points_tx=no])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
-  [build_meowcoin_libs=$withval],
-  [build_meowcoin_libs=yes])
+  [build_points_libs=$withval],
+  [build_points_libs=yes])
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build meowcoind daemon (default=yes)])],
-  [build_meowcoind=$withval],
-  [build_meowcoind=yes])
+  [build pointsd daemon (default=yes)])],
+  [build_pointsd=$withval],
+  [build_pointsd=yes])
 
 use_pkgconfig=yes
 case $host in
@@ -515,7 +515,7 @@ AC_C_BIGENDIAN
 dnl Check for pthread compile/link requirements
 AX_PTHREAD
 
-# The following macro will add the necessary defines to meowcoin-config.h, but
+# The following macro will add the necessary defines to points-config.h, but
 # they also need to be passed down to any subprojects. Pull the results out of
 # the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -734,10 +734,10 @@ fi
 
 MEOWCOIN_QT_INIT
 
-dnl sets $meowcoin_enable_qt, $meowcoin_enable_qt_test, $meowcoin_enable_qt_dbus
+dnl sets $points_enable_qt, $points_enable_qt_test, $points_enable_qt_dbus
 MEOWCOIN_QT_CONFIGURE([$use_pkgconfig], [qt5])
 
-if test x$build_meowcoin_cli$build_meowcoin_tx$build_meowcoind$meowcoin_enable_qt$use_tests$use_bench = xnononononono; then
+if test x$build_points_cli$build_points_tx$build_pointsd$points_enable_qt$use_tests$use_bench = xnononononono; then
     use_boost=no
 else
     use_boost=yes
@@ -923,7 +923,7 @@ if test x$use_pkgconfig = xyes; then
       if test x$use_qr != xno; then
         MEOWCOIN_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
       fi
-      if test x$build_meowcoin_cli$build_meowcoin_tx$build_meowcoind$meowcoin_enable_qt$use_tests != xnonononono; then
+      if test x$build_points_cli$build_points_tx$build_pointsd$points_enable_qt$use_tests != xnonononono; then
         PKG_CHECK_MODULES([EVENT], [libevent],, [AC_MSG_ERROR(libevent not found.)])
         if test x$TARGET_OS != xwindows; then
           PKG_CHECK_MODULES([EVENT_PTHREADS], [libevent_pthreads],, [AC_MSG_ERROR(libevent_pthreads not found.)])
@@ -948,7 +948,7 @@ else
   AC_CHECK_HEADER([openssl/ssl.h],, AC_MSG_ERROR(libssl headers missing),)
   AC_CHECK_LIB([ssl],         [main],SSL_LIBS=-lssl, AC_MSG_ERROR(libssl missing))
 
-  if test x$build_meowcoin_cli$build_meowcoin_tx$build_meowcoind$meowcoin_enable_qt$use_tests != xnonononono; then
+  if test x$build_points_cli$build_points_tx$build_pointsd$points_enable_qt$use_tests != xnonononono; then
     AC_CHECK_HEADER([event2/event.h],, AC_MSG_ERROR(libevent headers missing),)
     AC_CHECK_LIB([event],[main],EVENT_LIBS=-levent,AC_MSG_ERROR(libevent missing))
     if test x$TARGET_OS != xwindows; then
@@ -997,7 +997,7 @@ dnl univalue check
 
 need_bundled_univalue=yes
 
-if test x$build_meowcoin_cli$build_meowcoin_tx$build_meowcoind$meowcoin_enable_qt$use_tests$use_bench = xnonononono; then
+if test x$build_points_cli$build_points_tx$build_pointsd$points_enable_qt$use_tests$use_bench = xnonononono; then
   need_bundled_univalue=no
 else
 
@@ -1043,25 +1043,25 @@ AC_SUBST(UNIVALUE_LIBS)
 
 MEOWCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
-AC_MSG_CHECKING([whether to build meowcoind])
-AM_CONDITIONAL([BUILD_MEOWCOIND], [test x$build_meowcoind = xyes])
-AC_MSG_RESULT($build_meowcoind)
+AC_MSG_CHECKING([whether to build pointsd])
+AM_CONDITIONAL([BUILD_MEOWCOIND], [test x$build_pointsd = xyes])
+AC_MSG_RESULT($build_pointsd)
 
-AC_MSG_CHECKING([whether to build meowcoin-cli])
-AM_CONDITIONAL([BUILD_MEOWCOIN_CLI], [test x$build_meowcoin_cli = xyes])
-AC_MSG_RESULT($build_meowcoin_cli)
+AC_MSG_CHECKING([whether to build points-cli])
+AM_CONDITIONAL([BUILD_MEOWCOIN_CLI], [test x$build_points_cli = xyes])
+AC_MSG_RESULT($build_points_cli)
 
-AC_MSG_CHECKING([whether to build meowcoin-tx])
-AM_CONDITIONAL([BUILD_MEOWCOIN_TX], [test x$build_meowcoin_tx = xyes])
-AC_MSG_RESULT($build_meowcoin_tx)
+AC_MSG_CHECKING([whether to build points-tx])
+AM_CONDITIONAL([BUILD_MEOWCOIN_TX], [test x$build_points_tx = xyes])
+AC_MSG_RESULT($build_points_tx)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_MEOWCOIN_LIBS], [test x$build_meowcoin_libs = xyes])
-if test x$build_meowcoin_libs = xyes; then
+AM_CONDITIONAL([BUILD_MEOWCOIN_LIBS], [test x$build_points_libs = xyes])
+if test x$build_points_libs = xyes; then
   AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libmeowcoinconsensus.pc:libmeowcoinconsensus.pc.in])
+  AC_CONFIG_FILES([libpointsconsensus.pc:libpointsconsensus.pc.in])
 fi
-AC_MSG_RESULT($build_meowcoin_libs)
+AC_MSG_RESULT($build_points_libs)
 
 AC_LANG_POP
 
@@ -1123,13 +1123,13 @@ fi
 
 dnl these are only used when qt is enabled
 BUILD_TEST_QT=""
-if test x$meowcoin_enable_qt != xno; then
+if test x$points_enable_qt != xno; then
   dnl enable dbus support
   AC_MSG_CHECKING([whether to build GUI with support for D-Bus])
-  if test x$meowcoin_enable_qt_dbus != xno; then
+  if test x$points_enable_qt_dbus != xno; then
     AC_DEFINE([USE_DBUS],[1],[Define if dbus support should be compiled in])
   fi
-  AC_MSG_RESULT($meowcoin_enable_qt_dbus)
+  AC_MSG_RESULT($points_enable_qt_dbus)
 
   dnl enable qr support
   AC_MSG_CHECKING([whether to build GUI with support for QR codes])
@@ -1152,8 +1152,8 @@ if test x$meowcoin_enable_qt != xno; then
     AC_MSG_WARN("xgettext is required to update qt translations")
   fi
 
-  AC_MSG_CHECKING([whether to build test_meowcoin-qt])
-  if test x$use_gui_tests$meowcoin_enable_qt_test = xyesyes; then
+  AC_MSG_CHECKING([whether to build test_points-qt])
+  if test x$use_gui_tests$points_enable_qt_test = xyesyes; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="yes"
   else
@@ -1163,7 +1163,7 @@ fi
 
 AM_CONDITIONAL([ENABLE_ZMQ], [test "x$use_zmq" = "xyes"])
 
-AC_MSG_CHECKING([whether to build test_meowcoin])
+AC_MSG_CHECKING([whether to build test_points])
 if test x$use_tests = xyes; then
   AC_MSG_RESULT([yes])
   BUILD_TEST="yes"
@@ -1179,7 +1179,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test x$build_meowcoin_cli$build_meowcoin_tx$build_meowcoin_libs$build_meowcoind$meowcoin_enable_qt$use_bench$use_tests = xnonononononono; then
+if test x$build_points_cli$build_points_tx$build_points_libs$build_pointsd$points_enable_qt$use_bench$use_tests = xnonononononono; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-cli --with-tx --with-libs --with-daemon --with-gui --enable-bench or --enable-tests])
 fi
 
@@ -1188,7 +1188,7 @@ AM_CONDITIONAL([BUILD_DARWIN], [test x$BUILD_OS = xdarwin])
 AM_CONDITIONAL([TARGET_WINDOWS], [test x$TARGET_OS = xwindows])
 AM_CONDITIONAL([ENABLE_WALLET],[test x$enable_wallet = xyes])
 AM_CONDITIONAL([ENABLE_TESTS],[test x$BUILD_TEST = xyes])
-AM_CONDITIONAL([ENABLE_QT],[test x$meowcoin_enable_qt = xyes])
+AM_CONDITIONAL([ENABLE_QT],[test x$points_enable_qt = xyes])
 AM_CONDITIONAL([ENABLE_QT_TESTS],[test x$BUILD_TEST_QT = xyes])
 AM_CONDITIONAL([ENABLE_BENCH],[test x$use_bench = xyes])
 AM_CONDITIONAL([USE_QRCODE], [test x$use_qr = xyes])
@@ -1219,7 +1219,7 @@ AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
 AC_SUBST(MEOWCOIN_DAEMON_NAME)
 AC_SUBST(MEOWCOIN_GUI_NAME)
-AC_SUBST(meowcoin_cli_NAME)
+AC_SUBST(points_cli_NAME)
 AC_SUBST(MEOWCOIN_TX_NAME)
 
 AC_SUBST(RELDFLAGS)
@@ -1251,7 +1251,7 @@ AC_CONFIG_FILES([contrib/devtools/split-debug.sh],[chmod +x contrib/devtools/spl
 AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([doc/Doxyfile])])
 AC_CONFIG_LINKS([contrib/filter-lcov.py:contrib/filter-lcov.py])
 AC_CONFIG_LINKS([test/functional/test_runner.py:test/functional/test_runner.py])
-AC_CONFIG_LINKS([test/util/meowcoin-util-test.py:test/util/meowcoin-util-test.py])
+AC_CONFIG_LINKS([test/util/points-util-test.py:test/util/points-util-test.py])
 AC_CONFIG_LINKS([src/crypto/md_helper.c:src/crypto/md_helper.c])
 
 dnl boost's m4 checks do something really nasty: they export these vars. As a
@@ -1307,12 +1307,12 @@ esac
 
 echo
 echo "Options used to compile and link:"
-echo "  build meowcoin-cli = $build_meowcoin_cli"
-echo "  build meowcoin-tx  = $build_meowcoin_tx"
+echo "  build points-cli = $build_points_cli"
+echo "  build points-tx  = $build_points_tx"
 echo "  with wallet     = $enable_wallet"
-echo "  with gui / qt   = $meowcoin_enable_qt"
-if test x$meowcoin_enable_qt != xno; then
-    echo "    qt version    = $meowcoin_qt_got_major_vers"
+echo "  with gui / qt   = $points_enable_qt"
+if test x$points_enable_qt != xno; then
+    echo "    qt version    = $points_qt_got_major_vers"
     echo "    with qr       = $use_qr"
 fi
 echo "  with zmq        = $use_zmq"

@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,12 +18,12 @@
 #include <list>
 
 
-#define MEWC_N 114
-#define MEWC_E 118
-#define MEWC_X 110
-#define MEWC_Q 113
-#define MEWC_T 116
-#define MEWC_O 111
+#define PNT_N 114
+#define PNT_E 118
+#define PNT_X 110
+#define PNT_Q 113
+#define PNT_T 116
+#define PNT_O 111
 
 
 #define DEFAULT_UNITS 0
@@ -469,10 +469,10 @@ bool CheckIssueBurnTx(const CTxOut& txOut, const AssetType& type);
 bool CheckReissueBurnTx(const CTxOut& txOut);
 
 //! issue asset scripts to make sure script meets the standards
-bool CheckIssueDataTx(const CTxOut& txOut); // OP_MEOWCOIN_ASSET MEWCQ (That is a Q as in Que not an O)
-bool CheckOwnerDataTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET MEWCO
-bool CheckReissueDataTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET MEWCR
-bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET MEWCT
+bool CheckIssueDataTx(const CTxOut& txOut); // OP_MEOWCOIN_ASSET PNTQ (That is a Q as in Que not an O)
+bool CheckOwnerDataTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET PNTO
+bool CheckReissueDataTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET PNTR
+bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET PNTT
 
 //! Check the Encoded hash and make sure it is either an IPFS hash or a OIP hash
 bool CheckEncoded(const std::string& hash, std::string& strError);

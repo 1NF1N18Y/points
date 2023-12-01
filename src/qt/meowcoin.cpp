@@ -1,14 +1,14 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/meowcoin-config.h"
+#include "config/points-config.h"
 #endif
 
-#include "meowcoingui.h"
+#include "pointsgui.h"
 
 #include "chainparams.h"
 #include "clientmodel.h"
@@ -100,7 +100,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("meowcoin-core", psz).toStdString();
+    return QCoreApplication::translate("points-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -147,11 +147,11 @@ static void initTranslations(QTranslator &qtTranslatorBase, QTranslator &qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. meowcoin_de.qm (shortcut "de" needs to be defined in meowcoin.qrc)
+    // Load e.g. points_de.qm (shortcut "de" needs to be defined in points.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. meowcoin_de_DE.qm (shortcut "de_DE" needs to be defined in meowcoin.qrc)
+    // Load e.g. points_de_DE.qm (shortcut "de_DE" needs to be defined in points.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -181,11 +181,11 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 /** Class encapsulating OLDNAMENEEDKEEP__Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
-class MeowcoinCore: public QObject
+class PointsCore: public QObject
 {
     Q_OBJECT
 public:
-    explicit MeowcoinCore();
+    explicit PointsCore();
     /** Basic initialization, before starting initialization/shutdown thread.
      * Return true on success.
      */
@@ -209,13 +209,13 @@ private:
     void handleRunawayException(const std::exception *e);
 };
 
-/** Main meowcoin application object */
-class MeowcoinApplication: public QApplication
+/** Main points application object */
+class PointsApplication: public QApplication
 {
     Q_OBJECT
 public:
-    explicit MeowcoinApplication(int &argc, char **argv);
-    ~MeowcoinApplication();
+    explicit PointsApplication(int &argc, char **argv);
+    ~PointsApplication();
 
 #ifdef ENABLE_WALLET
     /// Create payment server
@@ -238,7 +238,7 @@ public:
     /// Get process return value
     int getReturnValue() const { return returnValue; }
 
-    /// Get window identifier of QMainWindow (MeowcoinGUI)
+    /// Get window identifier of QMainWindow (PointsGUI)
     WId getMainWinId() const;
 
     OptionsModel* getOptionsModel() const { return optionsModel; }
@@ -260,7 +260,7 @@ private:
     QThread *coreThread;
     OptionsModel *optionsModel;
     ClientModel *clientModel;
-    MeowcoinGUI *window;
+    PointsGUI *window;
     QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -273,20 +273,20 @@ private:
     void startThread();
 };
 
-#include "meowcoin.moc"
+#include "points.moc"
 
-MeowcoinCore::MeowcoinCore():
+PointsCore::PointsCore():
     QObject()
 {
 }
 
-void MeowcoinCore::handleRunawayException(const std::exception *e)
+void PointsCore::handleRunawayException(const std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
     Q_EMIT runawayException(QString::fromStdString(GetWarnings("gui")));
 }
 
-bool MeowcoinCore::baseInitialize()
+bool PointsCore::baseInitialize()
 {
     if (!AppInitBasicSetup())
     {
@@ -307,7 +307,7 @@ bool MeowcoinCore::baseInitialize()
     return true;
 }
 
-void MeowcoinCore::initialize()
+void PointsCore::initialize()
 {
     try
     {
@@ -321,7 +321,7 @@ void MeowcoinCore::initialize()
     }
 }
 
-void MeowcoinCore::restart(QStringList args)
+void PointsCore::restart(QStringList args)
 {
     static bool executing_restart{false};
 
@@ -348,7 +348,7 @@ void MeowcoinCore::restart(QStringList args)
     }
 }
 
-void MeowcoinCore::shutdown()
+void PointsCore::shutdown()
 {
     try
     {
@@ -365,7 +365,7 @@ void MeowcoinCore::shutdown()
     }
 }
 
-MeowcoinApplication::MeowcoinApplication(int &argc, char **argv):
+PointsApplication::PointsApplication(int &argc, char **argv):
     QApplication(argc, argv),
     coreThread(0),
     optionsModel(0),
@@ -381,17 +381,17 @@ MeowcoinApplication::MeowcoinApplication(int &argc, char **argv):
     setQuitOnLastWindowClosed(false);
 
     // UI per-platform customization
-    // This must be done inside the MeowcoinApplication constructor, or after it, because
+    // This must be done inside the PointsApplication constructor, or after it, because
     // PlatformStyle::instantiate requires a QApplication
     std::string platformName;
-    platformName = gArgs.GetArg("-uiplatform", MeowcoinGUI::DEFAULT_UIPLATFORM);
+    platformName = gArgs.GetArg("-uiplatform", PointsGUI::DEFAULT_UIPLATFORM);
     platformStyle = PlatformStyle::instantiate(QString::fromStdString(platformName));
     if (!platformStyle) // Fall back to "other" if specified name not found
         platformStyle = PlatformStyle::instantiate("other");
     assert(platformStyle);
 }
 
-MeowcoinApplication::~MeowcoinApplication()
+PointsApplication::~PointsApplication()
 {
     if(coreThread)
     {
@@ -414,20 +414,20 @@ MeowcoinApplication::~MeowcoinApplication()
 }
 
 #ifdef ENABLE_WALLET
-void MeowcoinApplication::createPaymentServer()
+void PointsApplication::createPaymentServer()
 {
     paymentServer = new PaymentServer(this);
 }
 #endif
 
-void MeowcoinApplication::createOptionsModel(bool resetSettings)
+void PointsApplication::createOptionsModel(bool resetSettings)
 {
     optionsModel = new OptionsModel(nullptr, resetSettings);
 }
 
-void MeowcoinApplication::createWindow(const NetworkStyle *networkStyle)
+void PointsApplication::createWindow(const NetworkStyle *networkStyle)
 {
-    window = new MeowcoinGUI(platformStyle, networkStyle, 0);
+    window = new PointsGUI(platformStyle, networkStyle, 0);
     window->setMinimumSize(200,200);
     window->setBaseSize(640,640);
 
@@ -436,7 +436,7 @@ void MeowcoinApplication::createWindow(const NetworkStyle *networkStyle)
     pollShutdownTimer->start(200);
 }
 
-void MeowcoinApplication::createSplashScreen(const NetworkStyle *networkStyle)
+void PointsApplication::createSplashScreen(const NetworkStyle *networkStyle)
 {
     SplashScreen *splash = new SplashScreen(0, networkStyle);
     // We don't hold a direct pointer to the splash screen after creation, but the splash
@@ -446,12 +446,12 @@ void MeowcoinApplication::createSplashScreen(const NetworkStyle *networkStyle)
     connect(this, SIGNAL(requestedShutdown()), splash, SLOT(close()));
 }
 
-void MeowcoinApplication::startThread()
+void PointsApplication::startThread()
 {
     if(coreThread)
         return;
     coreThread = new QThread(this);
-    MeowcoinCore *executor = new MeowcoinCore();
+    PointsCore *executor = new PointsCore();
     executor->moveToThread(coreThread);
 
     /*  communication to and from thread */
@@ -468,20 +468,20 @@ void MeowcoinApplication::startThread()
     coreThread->start();
 }
 
-void MeowcoinApplication::parameterSetup()
+void PointsApplication::parameterSetup()
 {
     InitLogging();
     InitParameterInteraction();
 }
 
-void MeowcoinApplication::requestInitialize()
+void PointsApplication::requestInitialize()
 {
     qDebug() << __func__ << ": Requesting initialize";
     startThread();
     Q_EMIT requestedInitialize();
 }
 
-void MeowcoinApplication::requestShutdown()
+void PointsApplication::requestShutdown()
 {
     // Show a simple window indicating shutdown status
     // Do this first as some of the steps may take some time below,
@@ -508,7 +508,7 @@ void MeowcoinApplication::requestShutdown()
     Q_EMIT requestedShutdown();
 }
 
-void MeowcoinApplication::initializeResult(bool success)
+void PointsApplication::initializeResult(bool success)
 {
     qDebug() << __func__ << ": Initialization result: " << success;
     // Set exit result.
@@ -531,8 +531,8 @@ void MeowcoinApplication::initializeResult(bool success)
         {
             walletModel = new WalletModel(platformStyle, vpwallets[0], optionsModel);
 
-            window->addWallet(MeowcoinGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(MeowcoinGUI::DEFAULT_WALLET);
+            window->addWallet(PointsGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(PointsGUI::DEFAULT_WALLET);
 
             connect(walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
                              paymentServer, SLOT(fetchPaymentACK(CWallet*,const SendCoinsRecipient&,QByteArray)));
@@ -552,7 +552,7 @@ void MeowcoinApplication::initializeResult(bool success)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // meowcoin: URIs or payment requests:
+        // points: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
                          window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -576,20 +576,20 @@ void MeowcoinApplication::initializeResult(bool success)
     }
 }
 
-void MeowcoinApplication::shutdownResult(bool success)
+void PointsApplication::shutdownResult(bool success)
 {
     returnValue = success ? EXIT_SUCCESS : EXIT_FAILURE;
     qDebug() << __func__ << ": Shutdown result: " << returnValue;
     quit(); // Exit main loop after shutdown finished
 }
 
-void MeowcoinApplication::handleRunawayException(const QString &message)
+void PointsApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", MeowcoinGUI::tr("A fatal error occurred. meowcoin can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", PointsGUI::tr("A fatal error occurred. points can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(EXIT_FAILURE);
 }
 
-WId MeowcoinApplication::getMainWinId() const
+WId PointsApplication::getMainWinId() const
 {
     if (!window)
         return 0;
@@ -615,8 +615,8 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(meowcoin);
-    Q_INIT_RESOURCE(meowcoin_locale);
+    Q_INIT_RESOURCE(points);
+    Q_INIT_RESOURCE(points_locale);
 
 #if QT_VERSION > 0x050100
     // Generate high-dpi pixmaps
@@ -636,7 +636,7 @@ int main(int argc, char *argv[])
     QSslConfiguration::setDefaultConfiguration(sslconf);
 #endif
 
-    MeowcoinApplication app(argc, argv);
+    PointsApplication app(argc, argv);
     // Register meta types used for QMetaObject::invokeMethod
     qRegisterMetaType< bool* >();
     //   Need to pass name here as CAmount is a typedef (see http://qt-project.org/doc/qt-5/qmetatype.html#qRegisterMetaType)
@@ -672,7 +672,7 @@ int main(int argc, char *argv[])
     if (!Intro::pickDataDirectory())
         return EXIT_SUCCESS;
 
-    /// 6. Determine availability of data directory and parse meowcoin.conf
+    /// 6. Determine availability of data directory and parse points.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!fs::is_directory(GetDataDir(false)))
     {
@@ -724,7 +724,7 @@ int main(int argc, char *argv[])
         exit(EXIT_SUCCESS);
 
     // Start up the payment server early, too, so impatient users that click on
-    // meowcoin: links repeatedly have their payment requests routed to this process:
+    // points: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 
@@ -767,7 +767,7 @@ int main(int argc, char *argv[])
         // Perform base initialization before spinning up initialization/shutdown thread
         // This is acceptable because this function only contains steps that are quick to execute,
         // so the GUI thread won't be held up.
-        if (MeowcoinCore::baseInitialize()) {
+        if (PointsCore::baseInitialize()) {
             app.requestInitialize();
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
             WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("%1 didn't yet exit safely...").arg(QObject::tr(PACKAGE_NAME)), (HWND)app.getMainWinId());

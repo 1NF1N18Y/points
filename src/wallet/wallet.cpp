@@ -2344,7 +2344,7 @@ void CWallet::AvailableCoinsWithAssets(std::vector<COutput> &vCoins, std::map<st
     AvailableCoinsAll(vCoins, mapAssetCoins, true, AreAssetsDeployed(), fOnlySafe, coinControl, nMinimumAmount, nMaximumAmount, nMinimumSumAmount, nMaximumCount, nMinDepth, nMaxDepth);
 }
 
-void CWallet::AvailableCoinsAll(std::vector<COutput>& vCoins, std::map<std::string, std::vector<COutput> >& mapAssetCoins, bool fGetMEWC, bool fGetAssets, bool fOnlySafe, const CCoinControl *coinControl, const CAmount& nMinimumAmount, const CAmount& nMaximumAmount, const CAmount& nMinimumSumAmount, const uint64_t& nMaximumCount, const int& nMinDepth, const int& nMaxDepth) const {
+void CWallet::AvailableCoinsAll(std::vector<COutput>& vCoins, std::map<std::string, std::vector<COutput> >& mapAssetCoins, bool fGetPNT, bool fGetAssets, bool fOnlySafe, const CCoinControl *coinControl, const CAmount& nMinimumAmount, const CAmount& nMaximumAmount, const CAmount& nMinimumSumAmount, const uint64_t& nMaximumCount, const int& nMinDepth, const int& nMaxDepth) const {
     vCoins.clear();
 
     {
@@ -2353,7 +2353,7 @@ void CWallet::AvailableCoinsAll(std::vector<COutput>& vCoins, std::map<std::stri
         CAmount nTotal = 0;
 
         /** MEOWCOIN START */
-        bool fMEWCLimitHit = false;
+        bool fPNTLimitHit = false;
         // A set of the hashes that have already been used
         std::set<uint256> usedMempoolHashes;
 
@@ -2498,11 +2498,11 @@ void CWallet::AvailableCoinsAll(std::vector<COutput>& vCoins, std::map<std::stri
                     }
                 }
 
-                if (fGetMEWC) { // Looking for MEWC Tx OutPoints Only
-                    if (fMEWCLimitHit) // We hit our limit
+                if (fGetPNT) { // Looking for PNT Tx OutPoints Only
+                    if (fPNTLimitHit) // We hit our limit
                         continue;
 
-                    // We only want MEWC OutPoints. Don't include Asset OutPoints
+                    // We only want PNT OutPoints. Don't include Asset OutPoints
                     if (isAssetScript)
                         continue;
 
@@ -2513,13 +2513,13 @@ void CWallet::AvailableCoinsAll(std::vector<COutput>& vCoins, std::map<std::stri
                         nTotal += pcoin->tx->vout[i].nValue;
 
                         if (nTotal >= nMinimumSumAmount) {
-                            fMEWCLimitHit = true;
+                            fPNTLimitHit = true;
                         }
                     }
 
                     // Checks the maximum number of UTXO's.
                     if (nMaximumCount > 0 && vCoins.size() >= nMaximumCount) {
-                        fMEWCLimitHit = true;
+                        fPNTLimitHit = true;
                     }
                     continue;
                 }
@@ -3386,7 +3386,7 @@ bool CWallet::CreateTransactionAll(const std::vector<CRecipient>& vecSend, CWall
             /** MEOWCOIN END */
             // Create change script that will be used if we need change
             // TODO: pass in scriptChange instead of reservekey so
-            // change transaction isn't always pay-to-meowcoin-address
+            // change transaction isn't always pay-to-points-address
             CScript scriptChange;
             CScript assetScriptChange;
 
@@ -3440,7 +3440,7 @@ bool CWallet::CreateTransactionAll(const std::vector<CRecipient>& vecSend, CWall
                     CTxOut txout(recipient.nAmount, recipient.scriptPubKey);
 
                     /** MEOWCOIN START */
-                    // Check to see if you need to make an asset data outpoint OP_MEWC_ASSET data
+                    // Check to see if you need to make an asset data outpoint OP_PNT_ASSET data
                     if (recipient.scriptPubKey.IsNullAssetTxDataScript()) {
                         assert(txout.nValue == 0);
                         txNew.vout.push_back(txout);

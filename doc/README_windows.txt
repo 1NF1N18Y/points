@@ -1,9 +1,9 @@
-Meowcoin Core
+Points Core
 =============
 
 Intro
 -----
-Meowcoin is a free open source peer-to-peer electronic cash system that is
+Points is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -11,13 +11,13 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-Unpack the files into a directory and run meowcoin-qt.exe.
+Unpack the files into a directory and run points-qt.exe.
 
-Meowcoin Core is the original Meowcoin client and it builds the backbone of the network.
-However, it downloads and stores the entire history of Meowcoin transactions;
+Points Core is the original Points client and it builds the backbone of the network.
+However, it downloads and stores the entire history of Points transactions;
 depending on the speed of your computer and network connection, the synchronization
 process can take anywhere from a few hours to a day or more.
 
-See the meowcoin wiki at:
-  https://meowcoin.wiki/wiki/MEOWCOINCOIN_Wiki
+See the points wiki at:
+  https://points.wiki/wiki/MEOWCOINCOIN_Wiki
 for more help and information.

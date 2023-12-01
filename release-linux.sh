@@ -2,35 +2,35 @@ VERSION=1.0.2.0
 rm -rf ./release-linux
 mkdir release-linux
 
-cp ./src/meowcoind ./release-linux/
-cp ./src/meowcoin-cli ./release-linux/
-cp ./src/qt/meowcoin-qt ./release-linux/
+cp ./src/pointsd ./release-linux/
+cp ./src/points-cli ./release-linux/
+cp ./src/qt/points-qt ./release-linux/
 cp ./MEOWCOINCOIN_small.png ./release-linux/
 
 cd ./release-linux/
-strip meowcoind
-strip meowcoin-cli
-strip meowcoin-qt
+strip pointsd
+strip points-cli
+strip points-qt
 
 #==========================================================
 # prepare for packaging deb file.
 
-mkdir meowcoincoin-$VERSION
-cd meowcoincoin-$VERSION
+mkdir pointscoin-$VERSION
+cd pointscoin-$VERSION
 mkdir -p DEBIAN
-echo 'Package: meowcoincoin
+echo 'Package: pointscoin
 Version: '$VERSION'
 Section: base 
 Priority: optional 
 Architecture: all 
 Depends:
-Maintainer: Meowcoin
-Description: Meowcoin coin wallet and service.
+Maintainer: Points
+Description: Points coin wallet and service.
 ' > ./DEBIAN/control
 mkdir -p ./usr/local/bin/
-cp ../meowcoind ./usr/local/bin/
-cp ../meowcoin-cli ./usr/local/bin/
-cp ../meowcoin-qt ./usr/local/bin/
+cp ../pointsd ./usr/local/bin/
+cp ../points-cli ./usr/local/bin/
+cp ../points-qt ./usr/local/bin/
 
 # prepare for desktop shortcut
 mkdir -p ./usr/share/icons/
@@ -43,15 +43,15 @@ echo '
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/local/bin/meowcoin-qt
-Name=meowcoincoin
-Comment= meowcoin coin wallet
+Exec=/usr/local/bin/points-qt
+Name=pointscoin
+Comment= points coin wallet
 Icon=/usr/share/icons/MEOWCOINCOIN_small.png
-' > ./usr/share/applications/meowcoincoin.desktop
+' > ./usr/share/applications/pointscoin.desktop
 
 cd ../
 # build deb file.
-dpkg-deb --build meowcoincoin-$VERSION
+dpkg-deb --build pointscoin-$VERSION
 
 #==========================================================
 # build rpm package
@@ -64,14 +64,14 @@ cat <<EOF >~/.rpmmacros
 EOF
 
 #prepare for build rpm package.
-rm -rf meowcoincoin-$VERSION
-mkdir meowcoincoin-$VERSION
-cd meowcoincoin-$VERSION
+rm -rf pointscoin-$VERSION
+mkdir pointscoin-$VERSION
+cd pointscoin-$VERSION
 
 mkdir -p ./usr/bin/
-cp ../meowcoind ./usr/bin/
-cp ../meowcoin-cli ./usr/bin/
-cp ../meowcoin-qt ./usr/bin/
+cp ../pointsd ./usr/bin/
+cp ../points-cli ./usr/bin/
+cp ../points-qt ./usr/bin/
 
 # prepare for desktop shortcut
 mkdir -p ./usr/share/icons/
@@ -82,32 +82,32 @@ echo '
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/bin/meowcoin-qt
-Name=meowcoincoin
-Comment= meowcoin coin wallet
+Exec=/usr/bin/points-qt
+Name=pointscoin
+Comment= points coin wallet
 Icon=/usr/share/icons/MEOWCOINCOIN_small.png
-' > ./usr/share/applications/meowcoincoin.desktop
+' > ./usr/share/applications/pointscoin.desktop
 cd ../
 
 # make tar ball to source folder.
-tar -zcvf meowcoincoin-$VERSION.tar.gz ./meowcoincoin-$VERSION
-cp meowcoincoin-$VERSION.tar.gz ~/rpmbuild/SOURCES/
+tar -zcvf pointscoin-$VERSION.tar.gz ./pointscoin-$VERSION
+cp pointscoin-$VERSION.tar.gz ~/rpmbuild/SOURCES/
 
 # build rpm package.
 cd ~/rpmbuild
 
-cat <<EOF > SPECS/meowcoincoin.spec
+cat <<EOF > SPECS/pointscoin.spec
 # Don't try fancy stuff like debuginfo, which is useless on binary-only
 # packages. Don't strip binary too
 # Be sure buildpolicy set to do nothing
 
-Summary: Meowcoin wallet rpm package
-Name: meowcoincoin
+Summary: Points wallet rpm package
+Name: pointscoin
 Version: $VERSION
 Release: 1
 License: MIT
 SOURCE0 : %{name}-%{version}.tar.gz
-URL: https://www.meowcoincoin.net/
+URL: https://www.pointscoin.net/
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -133,18 +133,18 @@ rm -rf %{buildroot}
 
 
 %files
-/usr/share/applications/meowcoincoin.desktop
+/usr/share/applications/pointscoin.desktop
 /usr/share/icons/MEOWCOINCOIN_small.png
 %defattr(-,root,root,-)
 %{_bindir}/*
 
 %changelog
-* Tue Aug 24 2021  Meowcoin Project Team.
+* Tue Aug 24 2021  Points Project Team.
 - First Build
 
 EOF
 
-rpmbuild -ba SPECS/meowcoincoin.spec
+rpmbuild -ba SPECS/pointscoin.spec
 
 
 

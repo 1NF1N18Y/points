@@ -27,13 +27,13 @@ import signal  #Used for timeout
 JSON_ONLY_CHECK = False
 FILESIZE_THRESHOLD = 100000000
 
-#Set this to your meowcoin-cli program
-cli = "meowcoin-cli"
+#Set this to your points-cli program
+cli = "points-cli"
 
 #mode = "-testnet"
 mode = ""
 rpc_port = 8766
-#Set this information in your meowcoin.conf file (in datadir, not testnet3)
+#Set this information in your points.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 
@@ -349,8 +349,8 @@ def scan_asset_blocks():
 	        print_debug("txinfo: " + tx_info)
 	        tx_detail = decode_rawtx(tx_info)
 	        for vout in tx_detail.get('vout'):
-	            if (vout.get('scriptPubKey').get('asm')[86:98] == "OP_MEWC_ASSET"):
-	                print_debug("Found OP_MEWC_ASSET")
+	            if (vout.get('scriptPubKey').get('asm')[86:98] == "OP_PNT_ASSET"):
+	                print_debug("Found OP_PNT_ASSET")
 	                print_debug(vout.get('scriptPubKey').get('hex'))
 	                asset_script = decode_script(vout.get('scriptPubKey').get('hex'))
 	                asset_handler(asset_script)
@@ -363,7 +363,7 @@ def monitor_zmq():
 	context = zmq.Context()
 	socket = context.socket(zmq.SUB)
 
-	print("Getting Meowcoin msgs")
+	print("Getting Points msgs")
 	socket.connect("tcp://localhost:28766")
 
 	#socket.setsockopt_string(zmq.SUBSCRIBE, u'hashtx')
@@ -400,8 +400,8 @@ def monitor_zmq():
 			for vout in tx_detail.get('vout'):
 			#print("vout: " + str(vout.get('value')))
 			#print(vout.get('scriptPubKey').get('asm'))
-				if (vout.get('scriptPubKey').get('asm')[86:98] == "OP_MEWC_ASSET"):
-					#print("Found OP_MEWC_ASSET")
+				if (vout.get('scriptPubKey').get('asm')[86:98] == "OP_PNT_ASSET"):
+					#print("Found OP_PNT_ASSET")
 					#print(vout.get('scriptPubKey').get('hex'))
 					asset_script = decode_script(vout.get('scriptPubKey').get('hex'))
 					asset_handler(asset_script)

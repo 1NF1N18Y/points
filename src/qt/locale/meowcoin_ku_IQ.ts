@@ -42,7 +42,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>MeowcoinGUI</name>
+    <name>PointsGUI</name>
     <message>
         <source>&amp;Send</source>
         <translation>&amp;ناردن</translation>
@@ -376,7 +376,7 @@
     </message>
     </context>
 <context>
-    <name>meowcoin-core</name>
+    <name>points-core</name>
     <message>
         <source>Options:</source>
         <translation>هەڵبژاردنەکان:</translation>

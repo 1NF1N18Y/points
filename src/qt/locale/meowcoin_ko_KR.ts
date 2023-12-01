@@ -64,11 +64,11 @@
 			<translation>받은 주소들</translation>
 		</message>
 		<message>
-			<source>These are your Meowcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+			<source>These are your Points addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
 			<translation>이것들 은 당신 이 지불 한 벌집 주소 입 니 다.동전 을 부 치기 전에 반드시 금액 과 수금 주 소 를 체크 해 야 한다.</translation>
 		</message>
 		<message>
-			<source>These are your Meowcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+			<source>These are your Points addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
 			<translation>이것들 은 당신 이 대금 을 받 은 벌집 주소 입 니 다.모든 사무 에 새로운 수신 주 소 를 사용 하 는 것 을 권장 합 니 다.</translation>
 		</message>
 		<message>
@@ -182,7 +182,7 @@
 			<translation>지갑 암호화 완료</translation>
 		</message>
 		<message>
-			<source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your meowcoinss from being stolen by malware infecting your computer.</source>
+			<source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your pointsss from being stolen by malware infecting your computer.</source>
 			<translation>%1 은 (는) 암호 화 과정 을 완료 하기 위해 서 즉시 닫 습 니 다.당신 의 지갑 을 암호 화하 면 당신 의 벌통 이 컴퓨터 의 악성 소프트웨어 에 감염 되 지 않도록 완전히 보호 할 수 없다 는 것 을 기억 하 세 요.</translation>
 		</message>
 		<message>
@@ -242,7 +242,7 @@
 		</message>
 	</context>
 	<context>
-		<name>MeowcoinGUI</name>
+		<name>PointsGUI</name>
 		<message>
 			<source>Sign &amp;message...</source>
 			<translation>서명 메시지 (&amp; M)...</translation>
@@ -348,7 +348,7 @@
 			<translation>디스크 의 블록 을 다시 찾 는 중...</translation>
 		</message>
 		<message>
-			<source>Send coins to a Meowcoin address</source>
+			<source>Send coins to a Points address</source>
 			<translation>동전 을 벌집 주소 로 보 냅 니 다.</translation>
 		</message>
 		<message>
@@ -372,7 +372,7 @@
 			<translation>&amp; 메시지 검증...</translation>
 		</message>
 		<message>
-			<source>Meowcoin</source>
+			<source>Points</source>
 			<translation>벌집.</translation>
 		</message>
 		<message>
@@ -400,11 +400,11 @@
 			<translation>암호 화 는 지갑 의 비밀 키 에 속한다.</translation>
 		</message>
 		<message>
-			<source>Sign messages with your Meowcoin addresses to prove you own them</source>
+			<source>Sign messages with your Points addresses to prove you own them</source>
 			<translation>자신 이 가지 고 있다 는 것 을 증명 하기 위해 벌집 주소 로 서명 하 세 요.</translation>
 		</message>
 		<message>
-			<source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
+			<source>Verify messages to ensure they were signed with specified Points addresses</source>
 			<translation>정 보 를 확인 하여 지정 한 구성 요소 주소 로 서명 하도록 합 니 다.</translation>
 		</message>
 		<message>
@@ -424,7 +424,7 @@
 			<translation>옵션 도구 모음</translation>
 		</message>
 		<message>
-			<source>Request payments (generates QR codes and meowcoin: URIs)</source>
+			<source>Request payments (generates QR codes and points: URIs)</source>
 			<translation>결제 요청 (QR 코드 생 성 및 구성 단위: uri)</translation>
 		</message>
 		<message>
@@ -436,7 +436,7 @@
 			<translation>사용 한 수신 주소 와 태그 목록 을 표시 합 니 다.</translation>
 		</message>
 		<message>
-			<source>Open a meowcoin: URI or payment request</source>
+			<source>Open a points: URI or payment request</source>
 			<translation>설정 부 열기: URI 또는 결제 요청</translation>
 		</message>
 		<message>
@@ -444,7 +444,7 @@
 			<translation>&amp; 명령 행 옵션</translation>
 		</message>
 		<message>
-			<source>%n active connection(s) to Meowcoin network</source>
+			<source>%n active connection(s) to Points network</source>
 			<translation>%n 설정 부 네트워크 로 의 활동 연결</translation>
 		</message>
 		<message>
@@ -488,7 +488,7 @@
 			<translation>최신</translation>
 		</message>
 		<message>
-			<source>Show the %1 help message to get a list with possible Meowcoin command-line options</source>
+			<source>Show the %1 help message to get a list with possible Points command-line options</source>
 			<translation>가능 한 구성 요소 명령 행 옵션 을 포함 하 는%1 도움말 메 시 지 를 보 여 줍 니 다.</translation>
 		</message>
 		<message>
@@ -540,7 +540,7 @@
 			<translation>지갑 이 &lt; b &gt; 암호 화 되 어 있 고 &lt; / b &gt; 현재 &lt; b &gt; 잠 금 &lt; / b &gt; 입 니 다.</translation>
 		</message>
 		<message>
-			<source>A fatal error occurred. Meowcoin can no longer continue safely and will quit.</source>
+			<source>A fatal error occurred. Points can no longer continue safely and will quit.</source>
 			<translation>치 명 적 인 오류 가 발생 하 다.벌집 은 더 이상 안전 한 운행 을 할 수 없습니다. 퇴장 합 니 다.</translation>
 		</message>
 		<message>
@@ -548,8 +548,8 @@
 			<translation>&amp; 양도 자산</translation>
 		</message>
 		<message>
-			<source>Transfer assets to MEWC addresses</source>
-			<translation>자산 을 MEWC 주소 로 옮기다.</translation>
+			<source>Transfer assets to PNT addresses</source>
+			<translation>자산 을 PNT 주소 로 옮기다.</translation>
 		</message>
 		<message>
 			<source>&amp;Create Assets</source>
@@ -600,7 +600,7 @@
 			<translation>지갑 오픈 수리 옵션</translation>
 		</message>
 		<message>
-			<source>Open a Meowcoin: URI or payment request</source>
+			<source>Open a Points: URI or payment request</source>
 			<translation>설정 부 열기: URI 또는 결제 요청</translation>
 		</message>
 		<message>
@@ -608,8 +608,8 @@
 			<translation>&amp; 지갑</translation>
 		</message>
 		<message>
-			<source>Meowcoin Market Price</source>
-			<translation>Meowcoin 시장가 격</translation>
+			<source>Points Market Price</source>
+			<translation>Points 시장가 격</translation>
 		</message>
 		<message>
 			<source>Brought to you by binance.com</source>
@@ -846,7 +846,7 @@
 			<translation>보내는 주소 편집</translation>
 		</message>
 		<message>
-			<source>The entered address "%1" is not a valid Meowcoin address.</source>
+			<source>The entered address "%1" is not a valid Points address.</source>
 			<translation>입력 한 주소 '%1' 은 (는) 올 바른 구성 단위 주소 가 아 닙 니 다.</translation>
 		</message>
 		<message>
@@ -959,7 +959,7 @@
 			<translation>프로그램이 처음으로 실행되고 있습니다. %1가 어디에 데이터를 저장할지 선택할 수 있습니다. </translation>
 		</message>
 		<message>
-			<source>%1 will download and store a copy of the Meowcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+			<source>%1 will download and store a copy of the Points block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
 			<translation>%1 은 (는) 유닛 블록 체인 의 사본 을 다운로드 하고 저장 합 니 다.최소한%2GB 의 데 이 터 는 이 디 렉 터 리 에 저장 되 며 시간 이 지 날수 록 늘 어 납 니 다.지갑 도 이 목록 에 저 장 됩 니 다.</translation>
 		</message>
 		<message>
@@ -1007,7 +1007,7 @@
 			<translation>여기 서 데이터 디 렉 터 리 를 만 들 수 없습니다.</translation>
 		</message>
 		<message>
-			<source>Meowcoin</source>
+			<source>Points</source>
 			<translation>벌집.</translation>
 		</message>
 		<message>
@@ -1019,7 +1019,7 @@
 			<translation>이 디 렉 터 리 는 약%1 GB 의 데 이 터 를 저장 합 니 다.</translation>
 		</message>
 		<message>
-			<source>%1 will download and store a copy of the Meowcoin block chain.</source>
+			<source>%1 will download and store a copy of the Points block chain.</source>
 			<translation>%1 은 (는) 유닛 블록 체인 의 사본 을 다운로드 하고 저장 합 니 다.</translation>
 		</message>
 		<message>
@@ -1038,11 +1038,11 @@
 			<translation>유형</translation>
 		</message>
 		<message>
-			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Meowcoin network, as detailed below.</source>
+			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Points network, as detailed below.</source>
 			<translation>최근 의 거래 가 아직 보이 지 않 을 수도 있 으 므 로 귀하 의 지갑 잔액 이 정확 하지 않 을 수도 있 습 니 다.지갑 이 벌집 네트워크 와 일치 하면 이 정 보 는 다음 과 같 습 니 다.</translation>
 		</message>
 		<message>
-			<source>Attempting to spend meowcoinss that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+			<source>Attempting to spend pointsss that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
 			<translation>네트워크 는 표시 되 지 않 은 트 랜 잭 션 의 영향 을 받 은 설정 부 를 사용 하려 는 시도 도 받 아들 이지 않 습 니 다.</translation>
 		</message>
 		<message>
@@ -1086,7 +1086,7 @@
 			<translation>알수없음. 헤더 동기화중 (%1)...</translation>
 		</message>
 		<message>
-			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the meowcoin network, as detailed below.</source>
+			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the points network, as detailed below.</source>
 			<translation>최근 의 거래 가 아직 보이 지 않 을 수도 있 으 므 로 귀하 의 지갑 잔액 이 정확 하지 않 을 수도 있 습 니 다.지갑 이 벌집 네트워크 와 일치 하면 이 정 보 는 다음 과 같 습 니 다.</translation>
 		</message>
 	</context>
@@ -1212,7 +1212,7 @@
 			<translation>검증되지 않은 잔돈 쓰기 (&amp;S)</translation>
 		</message>
 		<message>
-			<source>Automatically open the Meowcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+			<source>Automatically open the Points client port on the router. This only works when your router supports UPnP and it is enabled.</source>
 			<translation>공유 기의 설정 부 클 라 이언 트 포트 를 자동 으로 엽 니 다.이것 은 공유 기 가 UP NP 를 지원 하고 사용 되 었 을 때 만 작 동 합 니 다.</translation>
 		</message>
 		<message>
@@ -1220,7 +1220,7 @@
 			<translation>사용중인 &amp;UPnP 포트 매핑</translation>
 		</message>
 		<message>
-			<source>Connect to the Meowcoin network through a SOCKS5 proxy.</source>
+			<source>Connect to the Points network through a SOCKS5 proxy.</source>
 			<translation>설정 부 네트워크 에 SOCKS 5 프 록 시 를 통 해 연결 합 니 다.</translation>
 		</message>
 		<message>
@@ -1260,8 +1260,8 @@
 			<translation>Tor</translation>
 		</message>
 		<message>
-			<source>Connect to the Meowcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-			<translation>Connect to the Meowcoin network through a separate SOCKS5 proxy for Tor hidden services.</translation>
+			<source>Connect to the Points network through a separate SOCKS5 proxy for Tor hidden services.</source>
+			<translation>Connect to the Points network through a separate SOCKS5 proxy for Tor hidden services.</translation>
 		</message>
 		<message>
 			<source>Use separate SOCKS&amp;5 proxy to reach peers via Tor hidden services:</source>
@@ -1383,7 +1383,7 @@
 			<translation>유형</translation>
 		</message>
 		<message>
-			<source>The displayed information may be out of date. Your wallet automatically synchronizes with the Meowcoin network after a connection is established, but this process has not completed yet.</source>
+			<source>The displayed information may be out of date. Your wallet automatically synchronizes with the Points network after a connection is established, but this process has not completed yet.</source>
 			<translation>표시 되 는 정보 가 만 료 되 었 을 수도 있 습 니 다.연결 을 만 든 후 지갑 은 자동 으로 설정 부 네트워크 와 일치 하지만 이 과정 은 완료 되 지 않 았 습 니 다.</translation>
 		</message>
 		<message>
@@ -1483,8 +1483,8 @@
 			<translation>자산 잔고</translation>
 		</message>
 		<message>
-			<source>MEWC Balances</source>
-			<translation>MEWC 잔액</translation>
+			<source>PNT Balances</source>
+			<translation>PNT 잔액</translation>
 		</message>
 	</context>
 	<context>
@@ -1494,7 +1494,7 @@
 			<translation>지불 요청 오류</translation>
 		</message>
 		<message>
-			<source>Cannot start meowcoin: click-to-pay handler</source>
+			<source>Cannot start points: click-to-pay handler</source>
 			<translation>설정 부 를 시작 할 수 없습니다: 결제 처리 기 를 클릭 하 십시오.</translation>
 		</message>
 		<message>
@@ -1510,7 +1510,7 @@
 			<translation>잘못된 지불 주소입니다 %1</translation>
 		</message>
 		<message>
-			<source>URI cannot be parsed! This can be caused by an invalid Meowcoin address or malformed URI parameters.</source>
+			<source>URI cannot be parsed! This can be caused by an invalid Points address or malformed URI parameters.</source>
 			<translation>우리 분석 불가!이것 은 잘못된 구성 요소 의 주소 나 형식 이 잘못된 URI 매개 변수 로 인 한 것 일 수 있 습 니 다.</translation>
 		</message>
 		<message>
@@ -1612,7 +1612,7 @@
 			<translation>거래액</translation>
 		</message>
 		<message>
-			<source>Enter a Meowcoin address (e.g. %1)</source>
+			<source>Enter a Points address (e.g. %1)</source>
 			<translation>구성 요소 주소 입력 (예:%1)</translation>
 		</message>
 		<message>
@@ -2096,7 +2096,7 @@
 			<translation>현재의 수취용 주소를 재사용하기(&amp;E) (권장하지 않습니다)</translation>
 		</message>
 		<message>
-			<source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Meowcoin network.</source>
+			<source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Points network.</source>
 			<translation>결제 요청 에 추 가 된 추가 정보 입 니 다. 이 메 시 지 는 요청 시 표 시 됩 니 다.주의: 메 시 지 는 구성 부 네트워크 와 결제 로 발송 되 지 않 습 니 다.</translation>
 		</message>
 		<message>
@@ -2341,7 +2341,7 @@
 			<translation>최소 수수료</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
 			<translation>거래 량 이 블록 중의 공간 보다 적 으 면 최소 비용 만 지불 하면 됩 니 다.그러나 설정 단원 업무 에 대한 수요 가 네트워크 에서 처리 할 수 있 는 수량 을 초과 하면 확인 되 지 않 은 사 무 를 초래 할 수 있 으 므 로 주의해 야 합 니 다.</translation>
 		</message>
 		<message>
@@ -2501,7 +2501,7 @@
 			<translation>Array</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>경고: 구성 요소 주소 가 잘못 되 었 습 니 다</translation>
 		</message>
 		<message>
@@ -2556,7 +2556,7 @@
 			<translation>이것은 정상적인 지불입니다.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to send the payment to</source>
+			<source>The Points address to send the payment to</source>
 			<translation>결제 할 구성 요소 주소</translation>
 		</message>
 		<message>
@@ -2576,7 +2576,7 @@
 			<translation>항목을 지웁니다</translation>
 		</message>
 		<message>
-			<source>The fee will be deducted from the amount being sent. The recipient will receive less meowcoinss than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+			<source>The fee will be deducted from the amount being sent. The recipient will receive less pointsss than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
 			<translation>비용 은 부 치 는 금액 에서 공제 된다.수신 자 는 "금액" 필드 에 입력 한 것 보다 더 적은 설정 부 를 받 을 수 있 습 니 다.여러 수신 자 를 선택 하면, 비용 은 균등 하 게 분담 된다.</translation>
 		</message>
 		<message>
@@ -2600,8 +2600,8 @@
 			<translation>사용된 주소 목록에 새 주소를 추가하기 위해 라벨 이름을 입력해 주세요. </translation>
 		</message>
 		<message>
-			<source>A message that was attached to the meowcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Meowcoin network.</source>
-			<translation>meowcoin: URI 에 추 가 된 메 시 지 는 참고 할 수 있 도록 사무 와 함께 저 장 됩 니 다.메모: 이 메 시 지 는 구성 요소 네트워크 를 통 해 발송 되 지 않 습 니 다.</translation>
+			<source>A message that was attached to the points: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Points network.</source>
+			<translation>points: URI 에 추 가 된 메 시 지 는 참고 할 수 있 도록 사무 와 함께 저 장 됩 니 다.메모: 이 메 시 지 는 구성 요소 네트워크 를 통 해 발송 되 지 않 습 니 다.</translation>
 		</message>
 		<message>
 			<source>Pay To:</source>
@@ -2649,11 +2649,11 @@
 			<translation>메시지 서명(&amp;S)</translation>
 		</message>
 		<message>
-			<source>You can sign messages/agreements with your addresses to prove you can receive meowcoinss sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+			<source>You can sign messages/agreements with your addresses to prove you can receive pointsss sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
 			<translation>귀하 가 자신 에 게 보 낸 설정 부 를 받 아들 일 수 있 음 을 증명 하기 위해 서 주소 로 메시지 / 협 의 를 체결 할 수 있 습 니 다.인터넷 낚시 공격 이 자신 들 에 게 서명 하도록 유도 하려 고 할 수도 있 으 니 애매 하거나 랜 덤 으로 서명 하지 않도록 조심 하 세 요.당신 이 동의 한 상세 한 성명 에 만 서명 하 세 요.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to sign the message with</source>
+			<source>The Points address to sign the message with</source>
 			<translation>메 일 서명 에 사용 할 구성 요소 주소</translation>
 		</message>
 		<message>
@@ -2685,7 +2685,7 @@
 			<translation>현재 서명을 시스템 클립보드에 복사</translation>
 		</message>
 		<message>
-			<source>Sign the message to prove you own this Meowcoin address</source>
+			<source>Sign the message to prove you own this Points address</source>
 			<translation>이 벌집 주소 가 있 음 을 증명 하기 위해 이메일 에 서명 하 십시오.</translation>
 		</message>
 		<message>
@@ -2709,11 +2709,11 @@
 			<translation>메시지를 검증하기 위해 아래 칸에 각각 지갑 주소와 메시지, 전자서명을 입력하세요. (메시지 원본의 띄어쓰기, 들여쓰기, 행 나눔 등이 정확하게 입력되어야 하므로 원본을 복사해서 입력하세요) 이 기능은 메시지 검증이 주 목적이며, 네트워크 침입자에 의해 변조되지 않도록 전자서명 해독에 불필요한 시간을 소모하지 마세요. </translation>
 		</message>
 		<message>
-			<source>The Meowcoin address the message was signed with</source>
+			<source>The Points address the message was signed with</source>
 			<translation>메 일 서명 에 사용 할 구성 요소 주소</translation>
 		</message>
 		<message>
-			<source>Verify the message to ensure it was signed with the specified Meowcoin address</source>
+			<source>Verify the message to ensure it was signed with the specified Points address</source>
 			<translation>정 보 를 확인 하기 위해 서 지정 한 구성 요소 주소 로 서명 하 였 습 니 다.</translation>
 		</message>
 		<message>
@@ -2974,8 +2974,8 @@
 			<translation>생 성 된 코 인 은%1 블록 에서 만 료 되 어야 만 사용 할 수 있 습 니 다.이 블록 을 생 성 할 때 블록 체인 에 추가 하기 위해 네트워크 로 방송 된다.만약 그것 이 체인 에 들 어 갈 수 없다 면, 그 상 태 는 \ 으로 변 합 니 다.</translation>
 		</message>
 		<message>
-			<source>Net MEWC amount</source>
-			<translation>MEWC 순 액</translation>
+			<source>Net PNT amount</source>
+			<translation>PNT 순 액</translation>
 		</message>
 	</context>
 	<context>
@@ -3128,8 +3128,8 @@
 			<translation>보 낸 자산</translation>
 		</message>
 		<message>
-			<source>The asset (or MEWC) removed or added to balance.</source>
-			<translation>자산 (또는 MEWC) 이 잔액 에 삭제 되 거나 첨가 된다.</translation>
+			<source>The asset (or PNT) removed or added to balance.</source>
+			<translation>자산 (또는 PNT) 이 잔액 에 삭제 되 거나 첨가 된다.</translation>
 		</message>
 	</context>
 	<context>
@@ -3398,7 +3398,7 @@
 		</message>
 	</context>
 	<context>
-		<name>meowcoin-core</name>
+		<name>points-core</name>
 		<message>
 			<source>Options:</source>
 			<translation>옵션:</translation>
@@ -3456,7 +3456,7 @@
 			<translation>HTTP 서버 를 시작 할 수 없습니다.자세 한 정 보 는 디 버 깅 로 그 를 참조 하 시기 바 랍 니 다.</translation>
 		</message>
 		<message>
-			<source>Meowcoin Core</source>
+			<source>Points Core</source>
 			<translation>벌집 핵</translation>
 		</message>
 		<message>
@@ -4510,7 +4510,7 @@
 			<translation>아마%n 개 내 에서 확인 이 시 작 될 겁 니 다.</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>경고: 구성 요소 주소 가 잘못 되 었 습 니 다</translation>
 		</message>
 		<message>
@@ -4620,7 +4620,7 @@
 			<translation>IPFS / Txid 해시 가 유효 하지 않 습 니 다.올 바른 IPFS / Txid 해시 사용 하 세 요</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>경고: 구성 요소 주소 가 잘못 되 었 습 니 다</translation>
 		</message>
 		<message>
@@ -4776,8 +4776,8 @@
 			<translation>주소:</translation>
 		</message>
 		<message>
-			<source>The MEWC address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-			<translation>이 자산 을 보유 한 MEWC 주소 (이 주소 가 있어 야 합 니 다).새 주 소 를 만 들 수 있 습 니 다.</translation>
+			<source>The PNT address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+			<translation>이 자산 을 보유 한 PNT 주소 (이 주소 가 있어 야 합 니 다).새 주 소 를 만 들 수 있 습 니 다.</translation>
 		</message>
 		<message>
 			<source>Verifier String:</source>
@@ -4868,7 +4868,7 @@
 			<translation>킬로 바이트</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
 			<translation>거래 량 이 블록 중의 공간 보다 적 으 면 최소 비용 만 지불 하면 됩 니 다.그러나 설정 단원 업무 에 대한 수요 가 네트워크 에서 처리 할 수 있 는 수량 을 초과 하면 확인 되 지 않 은 사 무 를 초래 할 수 있 으 므 로 주의해 야 합 니 다.</translation>
 		</message>
 		<message>
@@ -4912,14 +4912,14 @@
 			<translation>잔액:</translation>
 		</message>
 		<message>
-			<source>123.456 MEWC</source>
+			<source>123.456 PNT</source>
 			<translation>123456 파운드</translation>
 		</message>
 	</context>
 	<context>
 		<name>GUIUtil</name>
 		<message>
-			<source>Enter a Meowcoin address (e.g. %1)</source>
+			<source>Enter a Points address (e.g. %1)</source>
 			<translation>구성 요소 주소 입력 (예:%1)</translation>
 		</message>
 		<message>
@@ -5004,9 +5004,9 @@
 		</message>
 	</context>
 	<context>
-		<name>meowcoin</name>
+		<name>points</name>
 		<message>
-			<source>A fatal error occurred. Meowcoin can no longer continue safely and will quit.</source>
+			<source>A fatal error occurred. Points can no longer continue safely and will quit.</source>
 			<translation>치 명 적 인 오류 가 발생 하 다.벌집 은 더 이상 안전 한 운행 을 할 수 없습니다. 퇴장 합 니 다.</translation>
 		</message>
 		<message>
@@ -5088,7 +5088,7 @@
 			<translation>수량 이 너무 많아 요.최대 치 는 210000000 입 니 다.</translation>
 		</message>
 		<message>
-			<source>Invalid Meowcoin Destination Address</source>
+			<source>Invalid Points Destination Address</source>
 			<translation>구성 부 목표 주소 가 잘못 되 었 습 니 다.</translation>
 		</message>
 		<message>
@@ -5096,7 +5096,7 @@
 			<translation>경고: 제한성 자산 발행 에 필요 한 주소</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
+			<source>Warning: Invalid Points address</source>
 			<translation>경고: 구성 요소 주소 가 잘못 되 었 습 니 다</translation>
 		</message>
 		<message>
@@ -5300,8 +5300,8 @@
 			<translation>주소:</translation>
 		</message>
 		<message>
-			<source>The MEWC address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-			<translation>이 자산 을 보유 한 MEWC 주소 (이 주소 가 있어 야 합 니 다).새 주 소 를 만 들 수 있 습 니 다.</translation>
+			<source>The PNT address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+			<translation>이 자산 을 보유 한 PNT 주소 (이 주소 가 있어 야 합 니 다).새 주 소 를 만 들 수 있 습 니 다.</translation>
 		</message>
 		<message>
 			<source>Verifier String:</source>
@@ -5392,7 +5392,7 @@
 			<translation>킬로 바이트</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
 			<translation>거래 량 이 블록 중의 공간 보다 적 으 면 최소 비용 만 지불 하면 됩 니 다.그러나 설정 단원 업무 에 대한 수요 가 네트워크 에서 처리 할 수 있 는 수량 을 초과 하면 확인 되 지 않 은 사 무 를 초래 할 수 있 으 므 로 주의해 야 합 니 다.</translation>
 		</message>
 		<message>
@@ -5436,7 +5436,7 @@
 			<translation>잔액:</translation>
 		</message>
 		<message>
-			<source>123.456 MEWC</source>
+			<source>123.456 PNT</source>
 			<translation>123456 파운드</translation>
 		</message>
 	</context>
@@ -5760,8 +5760,8 @@
 			<translation>자산 결제 입 니 다.</translation>
 		</message>
 		<message>
-			<source>A message that was attached to the meowcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Meowcoin network.</source>
-			<translation>meowcoin: URI 에 추 가 된 메 시 지 는 참고 할 수 있 도록 사무 와 함께 저 장 됩 니 다.메모: 이 메 시 지 는 구성 요소 네트워크 를 통 해 발송 되 지 않 습 니 다.</translation>
+			<source>A message that was attached to the points: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Points network.</source>
+			<translation>points: URI 에 추 가 된 메 시 지 는 참고 할 수 있 도록 사무 와 함께 저 장 됩 니 다.메모: 이 메 시 지 는 구성 요소 네트워크 를 통 해 발송 되 지 않 습 니 다.</translation>
 		</message>
 		<message>
 			<source>Memo:</source>
@@ -5784,7 +5784,7 @@
 			<translation>자산:</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to send the payment to</source>
+			<source>The Points address to send the payment to</source>
 			<translation>결제 할 구성 요소 주소</translation>
 		</message>
 		<message>

@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Meowcoin
+Upstream-Name: Points
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#meowcoin@freenode.net
-Source: https://github.com/JustAResearcher/Meowcoin
+ irc://#points@freenode.net
+Source: https://github.com/JustAResearcher/Points
 
 Files: *
-Copyright: 2009-2017, Meowcoin Core Developers
+Copyright: 2009-2017, Points Core Developers
 License: Expat
-Comment: The Meowcoin__Core developers encompasses the current developers listed on meowcoincoin.net,
+Comment: The Points__Core developers encompasses the current developers listed on pointscoin.net,
          as well as the numerous contributors to the project.
 
 Files: debian/*
@@ -78,9 +78,9 @@ License: Expat
 Comment: Modifications of Stephan Hutchings Typicons
 
 Files: src/qt/res/icons/about.png
-       src/qt/res/icons/meowcoin.*
-       share/pixmaps/meowcoin*
-       src/qt/res/src/meowcoin.svg
+       src/qt/res/icons/points.*
+       share/pixmaps/points*
+       src/qt/res/src/points.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
 Comment: Site: https://bitcointalk.org/?topic=1756.0

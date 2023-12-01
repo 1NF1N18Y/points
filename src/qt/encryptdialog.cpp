@@ -2,7 +2,7 @@
 #include "ui_encryptdialog.h"
 #include "guiutil.h"
 #include "guiconstants.h"
-#include "meowcoingui.h"
+#include "pointsgui.h"
 
 #include <QMessageBox>
 #include <QCloseEvent>

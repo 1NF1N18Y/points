@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Copyright (c) 2017-2019 The Raven Core developers
-# Copyright (c) 2020-2021 The Meowcoin Core developers
+# Copyright (c) 2020-2021 The Points Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """Test gettxoutproof and verifytxoutproof RPCs."""
 
-from test_framework.test_framework import MeowcoinTestFramework
+from test_framework.test_framework import PointsTestFramework
 from test_framework.util import connect_nodes, assert_equal, assert_raises_rpc_error
 
-class MerkleBlockTest(MeowcoinTestFramework):
+class MerkleBlockTest(PointsTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
         self.setup_clean_chain = True

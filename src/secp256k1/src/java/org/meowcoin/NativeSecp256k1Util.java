@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.meowcoin;
+package org.points;
 
 public class NativeSecp256k1Util{
 

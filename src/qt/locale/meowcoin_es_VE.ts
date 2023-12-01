@@ -70,7 +70,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>MeowcoinGUI</name>
+    <name>PointsGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje...</translation>
@@ -116,8 +116,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Meowcoin address</source>
-        <translation>Enviar monedas a una dirección Meowcoin</translation>
+        <source>Send coins to a Points address</source>
+        <translation>Enviar monedas a una dirección Points</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -132,8 +132,8 @@
         <translation>Abre la consola de depuración y diágnostico</translation>
     </message>
     <message>
-        <source>Meowcoin</source>
-        <translation>Meowcoin</translation>
+        <source>Points</source>
+        <translation>Points</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -160,12 +160,12 @@
         <translation>Encriptar las llaves privadas que pertenecen a tu billetera</translation>
     </message>
     <message>
-        <source>Sign messages with your Meowcoin addresses to prove you own them</source>
-        <translation>Firma mensajes con tus direcciones Meowcoin para probar que eres dueño de ellas</translation>
+        <source>Sign messages with your Points addresses to prove you own them</source>
+        <translation>Firma mensajes con tus direcciones Points para probar que eres dueño de ellas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
-        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones Meowcoin especificas</translation>
+        <source>Verify messages to ensure they were signed with specified Points addresses</source>
+        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones Points especificas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -584,7 +584,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>meowcoin-core</name>
+    <name>points-core</name>
     <message>
         <source>Options:</source>
         <translation>Opciones:</translation>
@@ -610,8 +610,8 @@
         <translation>Correr en segundo plano como daemon y aceptar comandos</translation>
     </message>
     <message>
-        <source>Meowcoin Core</source>
-        <translation>Meowcoin Core</translation>
+        <source>Points Core</source>
+        <translation>Points Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

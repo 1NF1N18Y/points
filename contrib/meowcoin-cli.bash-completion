@@ -1,11 +1,11 @@
-# bash programmable completion for meowcoin-cli(1)
+# bash programmable completion for points-cli(1)
 # Copyright (c) 2012-2016 The Bitcoin Core developers
-# Copyright (c) 2017-2019 The Meowcoin__Core developers
+# Copyright (c) 2017-2019 The Points__Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-# call $meowcoin-cli for RPC
-_meowcoin_rpc() {
+# call $points-cli for RPC
+_points_rpc() {
     # determine already specified args necessary for RPC
     local rpcargs=()
     for i in ${COMP_LINE}; do
@@ -15,23 +15,23 @@ _meowcoin_rpc() {
                 ;;
         esac
     done
-    $meowcoin_cli "${rpcargs[@]}" "$@"
+    $points_cli "${rpcargs[@]}" "$@"
 }
 
 # Add wallet accounts to COMPREPLY
-_meowcoin_accounts() {
+_points_accounts() {
     local accounts
-    accounts=$(_meowcoin_rpc listaccounts | awk -F '"' '{ print $2 }')
+    accounts=$(_points_rpc listaccounts | awk -F '"' '{ print $2 }')
     COMPREPLY=( "${COMPREPLY[@]}" $( compgen -W "$accounts" -- "$cur" ) )
 }
 
-_meowcoin_cli() {
+_points_cli() {
     local cur prev words=() cword
-    local meowcoin_cli
+    local points_cli
 
-    # save and use original argument to invoke meowcoin-cli for -help, help and RPC
-    # as meowcoin-cli might not be in $PATH
-    meowcoin_cli="$1"
+    # save and use original argument to invoke points-cli for -help, help and RPC
+    # as points-cli might not be in $PATH
+    points_cli="$1"
 
     COMPREPLY=()
     _get_comp_words_by_ref -n = cur prev words cword
@@ -61,7 +61,7 @@ _meowcoin_cli() {
     if ((cword > 3)); then
         case ${words[cword-3]} in
             addmultisigaddress)
-                _meowcoin_accounts
+                _points_accounts
                 return 0
                 ;;
             getbalance|gettxout|importaddress|importpubkey|importprivkey|listreceivedbyaccount|listreceivedbyaddress|listsinceblock)
@@ -86,7 +86,7 @@ _meowcoin_cli() {
                 return 0
                 ;;
             move|setaccount)
-                _meowcoin_accounts
+                _points_accounts
                 return 0
                 ;;
         esac
@@ -102,7 +102,7 @@ _meowcoin_cli() {
             return 0
             ;;
         getaccountaddress|getaddressesbyaccount|getbalance|getnewaddress|getreceivedbyaccount|listtransactions|move|sendfrom|sendmany)
-            _meowcoin_accounts
+            _points_accounts
             return 0
             ;;
     esac
@@ -126,12 +126,12 @@ _meowcoin_cli() {
 
             # only parse -help if senseful
             if [[ -z "$cur" || "$cur" =~ ^- ]]; then
-                helpopts=$($meowcoin_cli -help 2>&1 | awk '$1 ~ /^-/ { sub(/=.*/, "="); print $1 }' )
+                helpopts=$($points_cli -help 2>&1 | awk '$1 ~ /^-/ { sub(/=.*/, "="); print $1 }' )
             fi
 
             # only parse help if senseful
             if [[ -z "$cur" || "$cur" =~ ^[a-z] ]]; then
-                commands=$(_meowcoin_rpc help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
+                commands=$(_points_rpc help 2>/dev/null | awk '$1 ~ /^[a-z]/ { print $1; }')
             fi
 
             COMPREPLY=( $( compgen -W "$helpopts $commands" -- "$cur" ) )
@@ -144,7 +144,7 @@ _meowcoin_cli() {
             ;;
     esac
 } &&
-complete -F _meowcoin_cli meowcoin-cli
+complete -F _points_cli points-cli
 
 # Local variables:
 # mode: shell-script

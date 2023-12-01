@@ -1,5 +1,5 @@
 /* XPM */
-static char * meowcoin16_xpm[] = {
+static char * points16_xpm[] = {
 "16 16 2 1",
 " 	c None",
 ".	c #D3C37E",

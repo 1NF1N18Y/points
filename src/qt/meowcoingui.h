@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_MeowcoinGUI_H
-#define MEOWCOIN_QT_MeowcoinGUI_H
+#ifndef MEOWCOIN_QT_PointsGUI_H
+#define MEOWCOIN_QT_PointsGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/meowcoin-config.h"
+#include "config/points-config.h"
 #endif
 
 #include "amount.h"
@@ -41,10 +41,10 @@ class QNetworkRequest;
 QT_END_NAMESPACE
 
 /**
-  meowcoin GUI main class. This class represents the main window of the meowcoin UI. It communicates with both the client and
+  points GUI main class. This class represents the main window of the points UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class MeowcoinGUI : public QMainWindow
+class PointsGUI : public QMainWindow
 {
     Q_OBJECT
 
@@ -52,8 +52,8 @@ public:
     static const QString DEFAULT_WALLET;
     static const std::string DEFAULT_UIPLATFORM;
 
-    explicit MeowcoinGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = 0);
-    ~MeowcoinGUI();
+    explicit PointsGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = 0);
+    ~PointsGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
@@ -62,7 +62,7 @@ public:
 
 #ifdef ENABLE_WALLET
     /** Set the wallet model.
-        The wallet model represents a meowcoin wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a points wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     bool addWallet(const QString& name, WalletModel *walletModel);
@@ -334,4 +334,4 @@ private Q_SLOTS:
     void onMenuSelection(QAction* action);
 };
 
-#endif // MEOWCOIN_QT_MeowcoinGUI_H
+#endif // MEOWCOIN_QT_PointsGUI_H

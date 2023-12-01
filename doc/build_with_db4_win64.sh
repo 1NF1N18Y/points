@@ -1,4 +1,4 @@
-## Please read https://github.com/JustAResearcher/Meowcoin/blob/master/doc/build-windows.md
+## Please read https://github.com/JustAResearcher/Points/blob/master/doc/build-windows.md
 
 ## STEP1: Setup dependency
 # sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils curl nsis
@@ -12,7 +12,7 @@
 
 MEOWCOIN_ROOT=$(pwd)
 
-# Pick some path to install BDB to, here we create a directory within the Meowcoin directory
+# Pick some path to install BDB to, here we create a directory within the Points directory
 BDB_PREFIX="${MEOWCOIN_ROOT}/db4"
 mkdir -p $BDB_PREFIX
 
@@ -33,7 +33,7 @@ cd db-4.8.30.NC/build_unix/
 make
 make install
 
-# Configure Meowcoin Core to use our own-built instance of BDB
+# Configure Points Core to use our own-built instance of BDB
 cd $MEOWCOIN_ROOT
 PATH=$(echo "$PATH" | sed -e 's/:\/mnt.*//g') # strip out problematic Windows %PATH% imported var
 cd depends

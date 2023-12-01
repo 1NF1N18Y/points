@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* MeowcoinGUI -- Size of icons in status bar */
+/* PointsGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -47,17 +47,17 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /** LIGHT MODE */
 /* Background color, very light gray */
 #define COLOR_BACKGROUND_LIGHT QColor("#fbfbfe")
-/* Meowcoin dark orange */
+/* Points dark orange */
 #define COLOR_DARK_ORANGE QColor("#f05239")
-/* Meowcoin light orange */
+/* Points light orange */
 #define COLOR_LIGHT_ORANGE QColor("#f79433")
-/* Meowcoin dark blue */
+/* Points dark blue */
 #define COLOR_DARK_BLUE QColor("#384192")
-/* Meowcoin light blue */
+/* Points light blue */
 #define COLOR_LIGHT_BLUE QColor("#5874cf")
-/* Meowcoin asset text */
+/* Points asset text */
 #define COLOR_ASSET_TEXT QColor(255, 255, 255)
-/* Meowcoin shadow color - light mode */
+/* Points shadow color - light mode */
 #define COLOR_SHADOW_LIGHT QColor("#e1e6f3")
 /* Toolbar not selected text color */
 #define COLOR_TOOLBAR_NOT_SELECTED_TEXT QColor("#a5b7f3")
@@ -70,19 +70,19 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /** DARK MODE */
 /* Widget background color, dark mode */
 #define COLOR_WIDGET_BACKGROUND_DARK QColor("#1c2535")
-/* Meowcoin shadow color - dark mode */
+/* Points shadow color - dark mode */
 #define COLOR_SHADOW_DARK QColor("#0c1b3d")
-/* Meowcoin Light blue - dark mode - dark mode */
+/* Points Light blue - dark mode - dark mode */
 #define COLOR_LIGHT_BLUE_DARK QColor("#1e2636")
-/* Meowcoin Dark blue - dark mode - dark mode */
+/* Points Dark blue - dark mode - dark mode */
 #define COLOR_DARK_BLUE_DARK QColor("#0b1018")
 /* Pricing widget background color */
 #define COLOR_PRICING_WIDGET QColor("#161e2d")
-/* Meowcoin dark mode administrator background color */
+/* Points dark mode administrator background color */
 #define COLOR_ADMIN_CARD_DARK COLOR_BLACK
-/* Meowcoin dark mode regular asset background color */
+/* Points dark mode regular asset background color */
 #define COLOR_REGULAR_CARD_DARK_BLUE_DARK_MODE QColor("#06132a")
-/* Meowcoin dark mode regular asset background color */
+/* Points dark mode regular asset background color */
 #define COLOR_REGULAR_CARD_LIGHT_BLUE_DARK_MODE QColor("#0e1b3b")
 /* Toolbar not selected text color */
 #define COLOR_TOOLBAR_NOT_SELECTED_TEXT_DARK_MODE QColor("#6c80c5")
@@ -92,7 +92,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define COLOR_SENDENTRIES_BACKGROUND_DARK QColor("#1c2535")
 
 
-/* Meowcoin label color as a string */
+/* Points label color as a string */
 #define STRING_LABEL_COLOR "color: #4960ad"
 #define STRING_LABEL_COLOR_WARNING "color: #FF8080"
 
@@ -117,9 +117,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "Meowcoin"
-#define QAPP_ORG_DOMAIN "meowcoin.org"
-#define QAPP_APP_NAME_DEFAULT "Meowcoin-Qt"
-#define QAPP_APP_NAME_TESTNET "Meowcoin-Qt-testnet"
+#define QAPP_ORG_NAME "Points"
+#define QAPP_ORG_DOMAIN "points.org"
+#define QAPP_APP_NAME_DEFAULT "Points-Qt"
+#define QAPP_APP_NAME_TESTNET "Points-Qt-testnet"
 
 #endif // MEOWCOIN_QT_GUICONSTANTS_H

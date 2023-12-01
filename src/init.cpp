@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/meowcoin-config.h"
+#include "config/points-config.h"
 #endif
 
 #include "init.h"
@@ -144,7 +144,7 @@ bool ShutdownRequested()
 /**
  * This is a minimally invasive approach to shutdown on LevelDB read errors from the
  * chainstate, while keeping user interface out of the common library, which is shared
- * between meowcoind, and meowcoin-qt and non-server tools.
+ * between pointsd, and points-qt and non-server tools.
 */
 class CCoinsViewErrorCatcher final : public CCoinsViewBacked
 {
@@ -194,7 +194,7 @@ void PrepareShutdown()
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    RenameThread("meowcoin-shutoff");
+    RenameThread("points-shutoff");
     mempool.AddTransactionsUpdated(1);
 
     StopHTTPRPC();
@@ -204,7 +204,7 @@ void PrepareShutdown()
 #ifdef ENABLE_WALLET
     FlushWallets();
 #endif
-    GenerateMeowcoins(false, 0, GetParams());
+    GeneratePointss(false, 0, GetParams());
 
     MapPort(false);
 
@@ -627,8 +627,8 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/JustAResearcher/Meowcoin>";
-    const std::string URL_WEBSITE = "<https://mewccrypto.com>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/JustAResearcher/Points>";
+    const std::string URL_WEBSITE = "<https://pntcrypto.com>";
 
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2022, COPYRIGHT_YEAR) + " ") + "\n" +
            "\n" +
@@ -732,7 +732,7 @@ void CleanupBlockRevFiles()
 void ThreadImport(std::vector<fs::path> vImportFiles)
 {
     const CChainParams& chainparams = GetParams();
-    RenameThread("meowcoin-loadblk");
+    RenameThread("points-loadblk");
 
     {
     CImportingNow imp;
@@ -802,7 +802,7 @@ void ThreadImport(std::vector<fs::path> vImportFiles)
 }
 
 /** Sanity checks
- *  Ensure that Meowcoin is running in a usable environment with all
+ *  Ensure that Points is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void)
@@ -926,7 +926,7 @@ void InitLogging()
     fLogIPs = gArgs.GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Meowcoin version %s\n", FormatFullVersion());
+    LogPrintf("Points version %s\n", FormatFullVersion());
 }
 
 namespace { // Variables internal to initialization process only
@@ -1267,7 +1267,7 @@ static bool LockDataDirectory(bool probeOnly)
 {
     std::string strDataDir = GetDataDir().string();
 
-    // Make sure only a single Meowcoin process is using the data directory.
+    // Make sure only a single Points process is using the data directory.
     fs::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fsbridge::fopen(pathLockFile, "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);
@@ -1379,7 +1379,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     bool fGenerate = gArgs.GetBoolArg("-regtest", false) ? false : DEFAULT_GENERATE;
     // Generate coins in the background
-    GenerateMeowcoins(fGenerate, gArgs.GetArg("-genproclimit", DEFAULT_GENERATE_THREADS), chainparams);
+    GeneratePointss(fGenerate, gArgs.GetArg("-genproclimit", DEFAULT_GENERATE_THREADS), chainparams);
 
     // ********************************************************* Step 6: network initialization
     // Note that we absolutely cannot open any actual connections

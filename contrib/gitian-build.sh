@@ -1,5 +1,5 @@
 # Copyright (c) 2016 The Bitcoin Core developers
-# Copyright (c) 2017-2019 The Meowcoin__Core developers
+# Copyright (c) 2017-2019 The Points__Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/JustAResearcher/Meowcoin
+url=https://github.com/JustAResearcher/Points
 proc=2
 mem=2000
 lxc=true
@@ -32,7 +32,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the meowcoin, gitian-builder, gitian.sigs, and meowcoin-detached-sigs.
+Run this script from the directory containing the points, gitian-builder, gitian.sigs, and points-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -40,7 +40,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/JustAResearcher/Meowcoin
+-u|--url	Specify the URL of the repository. Default is https://github.com/JustAResearcher/Points
 -v|--verify 	Verify the Gitian build
 -b|--build	Do a Gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -231,8 +231,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/meowcoin-core/gitian.sigs.git
-    git clone https://github.com/meowcoin-core/meowcoin-detached-sigs.git
+    git clone https://github.com/points-core/gitian.sigs.git
+    git clone https://github.com/points-core/points-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -246,7 +246,7 @@ then
 fi
 
 # Set up build
-pushd ./meowcoin
+pushd ./points
 git fetch
 git checkout ${COMMIT}
 popd
@@ -255,7 +255,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./meowcoin-binaries/${VERSION}
+	mkdir -p ./points-binaries/${VERSION}
 	
 	# Build Dependencies
 	echo ""
@@ -265,7 +265,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../meowcoin/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../points/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -273,9 +273,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit meowcoin=${COMMIT} --url meowcoin=${url} ../meowcoin/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/meowcoin-*.tar.gz build/out/src/meowcoin-*.tar.gz ../meowcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit points=${COMMIT} --url points=${url} ../points/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/points-*.tar.gz build/out/src/points-*.tar.gz ../points-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -283,10 +283,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit meowcoin=${COMMIT} --url meowcoin=${url} ../meowcoin/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/meowcoin-*-win-unsigned.tar.gz inputs/meowcoin-win-unsigned.tar.gz
-	    mv build/out/meowcoin-*.zip build/out/meowcoin-*.exe ../meowcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit points=${COMMIT} --url points=${url} ../points/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/points-*-win-unsigned.tar.gz inputs/points-win-unsigned.tar.gz
+	    mv build/out/points-*.zip build/out/points-*.exe ../points-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -294,10 +294,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit meowcoin=${COMMIT} --url meowcoin=${url} ../meowcoin/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/meowcoin-*-osx-unsigned.tar.gz inputs/meowcoin-osx-unsigned.tar.gz
-	    mv build/out/meowcoin-*.tar.gz build/out/meowcoin-*.dmg ../meowcoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit points=${COMMIT} --url points=${url} ../points/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/points-*-osx-unsigned.tar.gz inputs/points-osx-unsigned.tar.gz
+	    mv build/out/points-*.tar.gz build/out/points-*.dmg ../points-binaries/${VERSION}
 	fi
 	popd
 
@@ -324,27 +324,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../meowcoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../points/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../meowcoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../points/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX	
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""	
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../meowcoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../points/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../points/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml	
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../points/contrib/gitian-descriptors/gitian-osx-signer.yml	
 	popd
 fi
 
@@ -359,10 +359,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../meowcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/meowcoin-*win64-setup.exe ../meowcoin-binaries/${VERSION}
-	    mv build/out/meowcoin-*win32-setup.exe ../meowcoin-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../points/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/points-*win64-setup.exe ../points-binaries/${VERSION}
+	    mv build/out/points-*win32-setup.exe ../points-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -370,9 +370,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/meowcoin-osx-signed.dmg ../meowcoin-binaries/${VERSION}/meowcoin-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../points/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/points-osx-signed.dmg ../points-binaries/${VERSION}/points-${VERSION}-osx.dmg
 	fi
 	popd
 

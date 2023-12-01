@@ -8,20 +8,20 @@ EXPOSE $PORT
 
 RUN apt-get update && apt-get install -y bash net-tools && apt-get clean
 
-RUN useradd -ms /bin/bash meowcoin
+RUN useradd -ms /bin/bash points
 
-RUN mkdir /etc/meowcoin
+RUN mkdir /etc/points
 
-RUN mkdir /var/lib/meowcoin
+RUN mkdir /var/lib/points
 
-RUN chown meowcoin:meowcoin /etc/meowcoin /var/lib/meowcoin
+RUN chown points:points /etc/points /var/lib/points
 
-WORKDIR /home/meowcoin
+WORKDIR /home/points
 
-COPY --chown=meowcoin:meowcoin linux64/* /home/meowcoin/
+COPY --chown=points:points linux64/* /home/points/
 
-COPY --chown=meowcoin:meowcoin run.sh /home/meowcoin/
+COPY --chown=points:points run.sh /home/points/
 
-USER meowcoin
+USER points
 
-CMD ["/home/meowcoin/run.sh"]
+CMD ["/home/points/run.sh"]

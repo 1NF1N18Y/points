@@ -64,12 +64,12 @@
 			<translation>Empfangsadressen</translation>
 		</message>
 		<message>
-			<source>These are your Meowcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-			<translation>Das sind Ihre Meowcoin-Adressen für Zahlungen.Überprüfen Sie immer den Betrag und die empfangende Adresse, bevor Sie Münzen versenden.</translation>
+			<source>These are your Points addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+			<translation>Das sind Ihre Points-Adressen für Zahlungen.Überprüfen Sie immer den Betrag und die empfangende Adresse, bevor Sie Münzen versenden.</translation>
 		</message>
 		<message>
-			<source>These are your Meowcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-			<translation>Dies sind Ihre Meowcoin-Adressen für den Empfang von Zahlungen.Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
+			<source>These are your Points addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+			<translation>Dies sind Ihre Points-Adressen für den Empfang von Zahlungen.Es wird empfohlen, für jede Transaktion eine neue Empfangsadresse zu verwenden.</translation>
 		</message>
 		<message>
 			<source>&amp;Copy Address</source>
@@ -182,7 +182,7 @@
 			<translation>Wallet verschlüsselt</translation>
 		</message>
 		<message>
-			<source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your meowcoinss from being stolen by malware infecting your computer.</source>
+			<source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your pointsss from being stolen by malware infecting your computer.</source>
 			<translation>%1 wird nun geschlossen, um den Verschlüsselungsprozess zu beenden.Denken Sie daran, dass die Verschlüsselung Ihrer Geldbörse nicht vollständig schützen kann, Ihre Nesselsucht vor Diebstahl durch Malware infiziert Ihren Computer.</translation>
 		</message>
 		<message>
@@ -242,7 +242,7 @@
 		</message>
 	</context>
 	<context>
-		<name>MeowcoinGUI</name>
+		<name>PointsGUI</name>
 		<message>
 			<source>Sign &amp;message...</source>
 			<translation>Signieren &amp;message...</translation>
@@ -348,8 +348,8 @@
 			<translation>Reindexieren von Blocks auf der Festplatte...</translation>
 		</message>
 		<message>
-			<source>Send coins to a Meowcoin address</source>
-			<translation>Münzen an eine Meowcoin-Adresse senden</translation>
+			<source>Send coins to a Points address</source>
+			<translation>Münzen an eine Points-Adresse senden</translation>
 		</message>
 		<message>
 			<source>Backup wallet to another location</source>
@@ -372,8 +372,8 @@
 			<translation>&amp;Bestätigen Sie Nachricht...</translation>
 		</message>
 		<message>
-			<source>Meowcoin</source>
-			<translation>Meowcoin</translation>
+			<source>Points</source>
+			<translation>Points</translation>
 		</message>
 		<message>
 			<source>Wallet</source>
@@ -400,12 +400,12 @@
 			<translation>Verschlüsseln Sie die privaten Schlüssel, die zu Ihrer Brieftasche gehören</translation>
 		</message>
 		<message>
-			<source>Sign messages with your Meowcoin addresses to prove you own them</source>
-			<translation>Unterschreiben Sie Nachrichten mit Ihren Meowcoin-Adressen, um zu beweisen, dass Sie sie besitzen</translation>
+			<source>Sign messages with your Points addresses to prove you own them</source>
+			<translation>Unterschreiben Sie Nachrichten mit Ihren Points-Adressen, um zu beweisen, dass Sie sie besitzen</translation>
 		</message>
 		<message>
-			<source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
-			<translation>Überprüfen Sie die Nachrichten, um sicherzustellen, dass sie mit angegebenen Meowcoin-Adressen signiert wurden</translation>
+			<source>Verify messages to ensure they were signed with specified Points addresses</source>
+			<translation>Überprüfen Sie die Nachrichten, um sicherzustellen, dass sie mit angegebenen Points-Adressen signiert wurden</translation>
 		</message>
 		<message>
 			<source>&amp;File</source>
@@ -424,8 +424,8 @@
 			<translation>Symbolleiste der Unterfenster</translation>
 		</message>
 		<message>
-			<source>Request payments (generates QR codes and meowcoin: URIs)</source>
-			<translation>Zahlungen anfordern (generiert QR-Codes und Meowcoin: URIs)</translation>
+			<source>Request payments (generates QR codes and points: URIs)</source>
+			<translation>Zahlungen anfordern (generiert QR-Codes und Points: URIs)</translation>
 		</message>
 		<message>
 			<source>Show the list of used sending addresses and labels</source>
@@ -436,7 +436,7 @@
 			<translation>Zeigt die Liste der verwendeten Empfängeradressen und -etiketten an</translation>
 		</message>
 		<message>
-			<source>Open a meowcoin: URI or payment request</source>
+			<source>Open a points: URI or payment request</source>
 			<translation>Ein Bienenstock öffnen: URI oder Zahlungsantrag</translation>
 		</message>
 		<message>
@@ -444,8 +444,8 @@
 			<translation>&amp;Command-line Optionen</translation>
 		</message>
 		<message>
-			<source>%n active connection(s) to Meowcoin network</source>
-			<translation>%n aktive Verbindung(en) zum Meowcoin-Netzwerk</translation>
+			<source>%n active connection(s) to Points network</source>
+			<translation>%n aktive Verbindung(en) zum Points-Netzwerk</translation>
 		</message>
 		<message>
 			<source>Indexing blocks on disk...</source>
@@ -488,8 +488,8 @@
 			<translation>Aktueller Stand</translation>
 		</message>
 		<message>
-			<source>Show the %1 help message to get a list with possible Meowcoin command-line options</source>
-			<translation>Zeigt die%1-Hilfenachricht an, um eine Liste mit möglichen Meowcoin-Kommandozeilen-Optionen zu erhalten</translation>
+			<source>Show the %1 help message to get a list with possible Points command-line options</source>
+			<translation>Zeigt die%1-Hilfenachricht an, um eine Liste mit möglichen Points-Kommandozeilen-Optionen zu erhalten</translation>
 		</message>
 		<message>
 			<source>%1 client</source>
@@ -540,16 +540,16 @@
 			<translation>Brieftasche ist &lt;b&gt;verschlüsselt&lt;/b&gt; und aktuell &lt;b&gt;gesperrt&lt;/b&gt;</translation>
 		</message>
 		<message>
-			<source>A fatal error occurred. Meowcoin can no longer continue safely and will quit.</source>
-			<translation>Ein tödlicher Fehler ist aufgetreten.Meowcoin kann nicht mehr sicher weitermachen und wird kündigen.</translation>
+			<source>A fatal error occurred. Points can no longer continue safely and will quit.</source>
+			<translation>Ein tödlicher Fehler ist aufgetreten.Points kann nicht mehr sicher weitermachen und wird kündigen.</translation>
 		</message>
 		<message>
 			<source>&amp;Transfer Assets</source>
 			<translation>&amp;Transfer Assets</translation>
 		</message>
 		<message>
-			<source>Transfer assets to MEWC addresses</source>
-			<translation>Vermögenstransfers an MEWC-Adressen</translation>
+			<source>Transfer assets to PNT addresses</source>
+			<translation>Vermögenstransfers an PNT-Adressen</translation>
 		</message>
 		<message>
 			<source>&amp;Create Assets</source>
@@ -600,16 +600,16 @@
 			<translation>Optionen zur Portfolioreparatur öffnen</translation>
 		</message>
 		<message>
-			<source>Open a Meowcoin: URI or payment request</source>
-			<translation>Einen Meowcoin öffnen: URI oder Zahlungsantrag</translation>
+			<source>Open a Points: URI or payment request</source>
+			<translation>Einen Points öffnen: URI oder Zahlungsantrag</translation>
 		</message>
 		<message>
 			<source>&amp;Wallet</source>
 			<translation>&amp;Brieftasche</translation>
 		</message>
 		<message>
-			<source>Meowcoin Market Price</source>
-			<translation>Meowcoin Marktpreis</translation>
+			<source>Points Market Price</source>
+			<translation>Points Marktpreis</translation>
 		</message>
 		<message>
 			<source>Brought to you by binance.com</source>
@@ -846,8 +846,8 @@
 			<translation>Zahlungsadresse bearbeiten</translation>
 		</message>
 		<message>
-			<source>The entered address "%1" is not a valid Meowcoin address.</source>
-			<translation>Die eingegebene Adresse "%1" ist keine gültige Meowcoin-Adresse.</translation>
+			<source>The entered address "%1" is not a valid Points address.</source>
+			<translation>Die eingegebene Adresse "%1" ist keine gültige Points-Adresse.</translation>
 		</message>
 		<message>
 			<source>The entered address "%1" is already in the address book.</source>
@@ -959,8 +959,8 @@
 			<translation>Da Sie das Programm gerade zum ersten Mal starten, können Sie nun auswählen wo %1 seine Daten ablegen wird.</translation>
 		</message>
 		<message>
-			<source>%1 will download and store a copy of the Meowcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-			<translation>%1 wird eine Kopie der Meowcoin-Blockkette herunterladen und speichern.Mindestens%2GB Daten werden in diesem Verzeichnis gespeichert und werden mit der Zeit wachsen.Die Brieftasche wird auch in diesem Verzeichnis gespeichert.</translation>
+			<source>%1 will download and store a copy of the Points block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+			<translation>%1 wird eine Kopie der Points-Blockkette herunterladen und speichern.Mindestens%2GB Daten werden in diesem Verzeichnis gespeichert und werden mit der Zeit wachsen.Die Brieftasche wird auch in diesem Verzeichnis gespeichert.</translation>
 		</message>
 		<message>
 			<source>Use the default data directory</source>
@@ -1007,8 +1007,8 @@
 			<translation>Hier kann kein Datenverzeichnis erstellt werden.</translation>
 		</message>
 		<message>
-			<source>Meowcoin</source>
-			<translation>Meowcoin</translation>
+			<source>Points</source>
+			<translation>Points</translation>
 		</message>
 		<message>
 			<source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -1019,8 +1019,8 @@
 			<translation>In diesem Verzeichnis werden etwa%1 GB Daten gespeichert.</translation>
 		</message>
 		<message>
-			<source>%1 will download and store a copy of the Meowcoin block chain.</source>
-			<translation>%1 wird eine Kopie der Meowcoin-Blockkette herunterladen und speichern.</translation>
+			<source>%1 will download and store a copy of the Points block chain.</source>
+			<translation>%1 wird eine Kopie der Points-Blockkette herunterladen und speichern.</translation>
 		</message>
 		<message>
 			<source>The wallet will also be stored in this directory.</source>
@@ -1038,11 +1038,11 @@
 			<translation>Formular</translation>
 		</message>
 		<message>
-			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Meowcoin network, as detailed below.</source>
-			<translation>Neuere Transaktionen sind möglicherweise noch nicht sichtbar, und daher könnte der Saldo Ihrer Brieftasche falsch sein.Diese Informationen werden korrekt sein, sobald Ihre Brieftasche mit dem Meowcoin-Netzwerk synchronisiert ist, wie unten beschrieben.</translation>
+			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Points network, as detailed below.</source>
+			<translation>Neuere Transaktionen sind möglicherweise noch nicht sichtbar, und daher könnte der Saldo Ihrer Brieftasche falsch sein.Diese Informationen werden korrekt sein, sobald Ihre Brieftasche mit dem Points-Netzwerk synchronisiert ist, wie unten beschrieben.</translation>
 		</message>
 		<message>
-			<source>Attempting to spend meowcoinss that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+			<source>Attempting to spend pointsss that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
 			<translation>Der Versuch, Nesselsucht auszugeben, die von noch nicht angezeigten Transaktionen betroffen sind, wird vom Netzwerk nicht akzeptiert.</translation>
 		</message>
 		<message>
@@ -1086,8 +1086,8 @@
 			<translation>Unbekannt. Synchronisiere Headers (%1)...</translation>
 		</message>
 		<message>
-			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the meowcoin network, as detailed below.</source>
-			<translation>Neuere Transaktionen sind möglicherweise noch nicht sichtbar, und daher könnte der Saldo Ihrer Brieftasche falsch sein.Diese Informationen werden korrekt sein, sobald Ihre Brieftasche die Synchronisation mit dem Meowcoin-Netzwerk beendet hat, wie unten beschrieben.</translation>
+			<source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the points network, as detailed below.</source>
+			<translation>Neuere Transaktionen sind möglicherweise noch nicht sichtbar, und daher könnte der Saldo Ihrer Brieftasche falsch sein.Diese Informationen werden korrekt sein, sobald Ihre Brieftasche die Synchronisation mit dem Points-Netzwerk beendet hat, wie unten beschrieben.</translation>
 		</message>
 	</context>
 	<context>
@@ -1212,16 +1212,16 @@
 			<translation>&amp;Unbestätigtes Wechselgeld darf ausgegeben werden</translation>
 		</message>
 		<message>
-			<source>Automatically open the Meowcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-			<translation>Öffnen Sie automatisch den Meowcoin Client Port auf dem Router.Dies funktioniert nur, wenn Ihr Router UPnP unterstützt und es aktiviert ist.</translation>
+			<source>Automatically open the Points client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+			<translation>Öffnen Sie automatisch den Points Client Port auf dem Router.Dies funktioniert nur, wenn Ihr Router UPnP unterstützt und es aktiviert ist.</translation>
 		</message>
 		<message>
 			<source>Map port using &amp;UPnP</source>
 			<translation>Portweiterleitung via &amp;UPnP</translation>
 		</message>
 		<message>
-			<source>Connect to the Meowcoin network through a SOCKS5 proxy.</source>
-			<translation>Verbinden Sie sich mit dem Meowcoin-Netzwerk über einen SOCKS5-Proxy.</translation>
+			<source>Connect to the Points network through a SOCKS5 proxy.</source>
+			<translation>Verbinden Sie sich mit dem Points-Netzwerk über einen SOCKS5-Proxy.</translation>
 		</message>
 		<message>
 			<source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1260,8 +1260,8 @@
 			<translation>Tor</translation>
 		</message>
 		<message>
-			<source>Connect to the Meowcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-			<translation>Verbinden Sie sich mit dem Meowcoin-Netzwerk über einen separaten SOCKS5-Proxy für Tor versteckte Dienste.</translation>
+			<source>Connect to the Points network through a separate SOCKS5 proxy for Tor hidden services.</source>
+			<translation>Verbinden Sie sich mit dem Points-Netzwerk über einen separaten SOCKS5-Proxy für Tor versteckte Dienste.</translation>
 		</message>
 		<message>
 			<source>Use separate SOCKS&amp;5 proxy to reach peers via Tor hidden services:</source>
@@ -1383,8 +1383,8 @@
 			<translation>Formular</translation>
 		</message>
 		<message>
-			<source>The displayed information may be out of date. Your wallet automatically synchronizes with the Meowcoin network after a connection is established, but this process has not completed yet.</source>
-			<translation>Die angezeigten Informationen können veraltet sein.Ihre Brieftasche synchronisiert sich automatisch mit dem Meowcoin-Netzwerk, nachdem eine Verbindung hergestellt wurde, aber dieser Prozess ist noch nicht abgeschlossen.</translation>
+			<source>The displayed information may be out of date. Your wallet automatically synchronizes with the Points network after a connection is established, but this process has not completed yet.</source>
+			<translation>Die angezeigten Informationen können veraltet sein.Ihre Brieftasche synchronisiert sich automatisch mit dem Points-Netzwerk, nachdem eine Verbindung hergestellt wurde, aber dieser Prozess ist noch nicht abgeschlossen.</translation>
 		</message>
 		<message>
 			<source>Watch-only:</source>
@@ -1483,8 +1483,8 @@
 			<translation>Salden der Aktiva</translation>
 		</message>
 		<message>
-			<source>MEWC Balances</source>
-			<translation>MEWC Waagen</translation>
+			<source>PNT Balances</source>
+			<translation>PNT Waagen</translation>
 		</message>
 	</context>
 	<context>
@@ -1494,8 +1494,8 @@
 			<translation>Fehlerhafte Zahlungsanforderung</translation>
 		</message>
 		<message>
-			<source>Cannot start meowcoin: click-to-pay handler</source>
-			<translation>Der Meowcoin kann nicht gestartet werden: click-to-pay handler</translation>
+			<source>Cannot start points: click-to-pay handler</source>
+			<translation>Der Points kann nicht gestartet werden: click-to-pay handler</translation>
 		</message>
 		<message>
 			<source>URI handling</source>
@@ -1510,8 +1510,8 @@
 			<translation>Ungültige Zahlungsadresse %1</translation>
 		</message>
 		<message>
-			<source>URI cannot be parsed! This can be caused by an invalid Meowcoin address or malformed URI parameters.</source>
-			<translation>URI kann nicht analysiert werden!Dies kann durch eine ungültige Meowcoin-Adresse oder fehlerhafte URI-Parameter verursacht werden.</translation>
+			<source>URI cannot be parsed! This can be caused by an invalid Points address or malformed URI parameters.</source>
+			<translation>URI kann nicht analysiert werden!Dies kann durch eine ungültige Points-Adresse oder fehlerhafte URI-Parameter verursacht werden.</translation>
 		</message>
 		<message>
 			<source>Payment request file handling</source>
@@ -1612,8 +1612,8 @@
 			<translation>Betrag</translation>
 		</message>
 		<message>
-			<source>Enter a Meowcoin address (e.g. %1)</source>
-			<translation>Geben Sie eine Meowcoin-Adresse ein (z.B.%1)</translation>
+			<source>Enter a Points address (e.g. %1)</source>
+			<translation>Geben Sie eine Points-Adresse ein (z.B.%1)</translation>
 		</message>
 		<message>
 			<source>%1 d</source>
@@ -2096,8 +2096,8 @@
 			<translation>Vorhandene Empfangsadresse &amp;wiederverwenden (nicht empfohlen)</translation>
 		</message>
 		<message>
-			<source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Meowcoin network.</source>
-			<translation>Eine optionale Nachricht, die dem Zahlungsantrag beizufügen ist, die beim Öffnen der Anfrage angezeigt wird.Hinweis: Die Nachricht wird nicht mit der Zahlung über das Meowcoin-Netzwerk gesendet.</translation>
+			<source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Points network.</source>
+			<translation>Eine optionale Nachricht, die dem Zahlungsantrag beizufügen ist, die beim Öffnen der Anfrage angezeigt wird.Hinweis: Die Nachricht wird nicht mit der Zahlung über das Points-Netzwerk gesendet.</translation>
 		</message>
 		<message>
 			<source>An optional label to associate with the new receiving address.</source>
@@ -2341,8 +2341,8 @@
 			<translation>Mindestbetrag</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
-			<translation>Die Zahlung nur der Mindestgebühr ist nur in Ordnung, solange es weniger Transaktionsvolumen als Platz in den Blöcken gibt.Aber seien Sie sich bewusst, dass dies in einer niemals bestätigenden Transaktion enden kann, sobald es mehr Nachfrage nach Meowcoin-Transaktionen gibt, als das Netzwerk verarbeiten kann.</translation>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
+			<translation>Die Zahlung nur der Mindestgebühr ist nur in Ordnung, solange es weniger Transaktionsvolumen als Platz in den Blöcken gibt.Aber seien Sie sich bewusst, dass dies in einer niemals bestätigenden Transaktion enden kann, sobald es mehr Nachfrage nach Points-Transaktionen gibt, als das Netzwerk verarbeiten kann.</translation>
 		</message>
 		<message>
 			<source>(read the tooltip)</source>
@@ -2501,8 +2501,8 @@
 			<translation>Array</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
-			<translation>Warnung: Ungültige Meowcoin-Adresse</translation>
+			<source>Warning: Invalid Points address</source>
+			<translation>Warnung: Ungültige Points-Adresse</translation>
 		</message>
 		<message>
 			<source>Warning: Unknown change address</source>
@@ -2556,8 +2556,8 @@
 			<translation>Dies ist eine normale Überweisung.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to send the payment to</source>
-			<translation>Die Meowcoin-Adresse, um die Zahlung an</translation>
+			<source>The Points address to send the payment to</source>
+			<translation>Die Points-Adresse, um die Zahlung an</translation>
 		</message>
 		<message>
 			<source>Alt+A</source>
@@ -2576,7 +2576,7 @@
 			<translation>Diesen Eintrag entfernen</translation>
 		</message>
 		<message>
-			<source>The fee will be deducted from the amount being sent. The recipient will receive less meowcoinss than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+			<source>The fee will be deducted from the amount being sent. The recipient will receive less pointsss than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
 			<translation>Die Gebühr wird von dem versandten Betrag abgezogen.Der Empfänger erhält weniger Nesselsucht als Sie im Mengenfeld eingeben.Wenn mehrere Empfänger ausgewählt werden, wird die Gebühr gleichmäßig aufgeteilt.</translation>
 		</message>
 		<message>
@@ -2600,8 +2600,8 @@
 			<translation>Adressbezeichnung eingeben, die dann zusammen mit der Adresse der Liste bereits verwendeter Adressen hinzugefügt wird.</translation>
 		</message>
 		<message>
-			<source>A message that was attached to the meowcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Meowcoin network.</source>
-			<translation>Eine Nachricht, die dem Meowcoin beigefügt wurde: URI, die mit der Transaktion für Ihre Referenz gespeichert wird.Hinweis: Diese Nachricht wird nicht über das Meowcoin-Netzwerk gesendet.</translation>
+			<source>A message that was attached to the points: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Points network.</source>
+			<translation>Eine Nachricht, die dem Points beigefügt wurde: URI, die mit der Transaktion für Ihre Referenz gespeichert wird.Hinweis: Diese Nachricht wird nicht über das Points-Netzwerk gesendet.</translation>
 		</message>
 		<message>
 			<source>Pay To:</source>
@@ -2649,12 +2649,12 @@
 			<translation>Nachricht &amp;signieren</translation>
 		</message>
 		<message>
-			<source>You can sign messages/agreements with your addresses to prove you can receive meowcoinss sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+			<source>You can sign messages/agreements with your addresses to prove you can receive pointsss sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
 			<translation>Sie können Nachrichten/Vereinbarungen mit Ihren Adressen unterzeichnen, um zu beweisen, dass Sie Nesselsucht erhalten können.Achten Sie darauf, nichts vages oder zufälliges zu unterschreiben, da Phishing-Angriffe versuchen, Sie dazu zu bringen, Ihre Identität ihnen zu überschreiben.Unterschreiben Sie nur detaillierte Aussagen, denen Sie zustimmen.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to sign the message with</source>
-			<translation>Die Meowcoin-Adresse, um die Nachricht mit</translation>
+			<source>The Points address to sign the message with</source>
+			<translation>Die Points-Adresse, um die Nachricht mit</translation>
 		</message>
 		<message>
 			<source>Choose previously used address</source>
@@ -2685,8 +2685,8 @@
 			<translation>Aktuelle Signatur in die Zwischenablage kopieren</translation>
 		</message>
 		<message>
-			<source>Sign the message to prove you own this Meowcoin address</source>
-			<translation>Unterschreiben Sie die Nachricht, um zu beweisen, dass Sie diese Meowcoin-Adresse besitzen.</translation>
+			<source>Sign the message to prove you own this Points address</source>
+			<translation>Unterschreiben Sie die Nachricht, um zu beweisen, dass Sie diese Points-Adresse besitzen.</translation>
 		</message>
 		<message>
 			<source>Sign &amp;Message</source>
@@ -2709,12 +2709,12 @@
 			<translation>Geben Sie die Zahlungsadresse des Empfängers, Nachricht (achten Sie darauf Zeilenumbrüche, Leerzeichen, Tabulatoren usw. exakt zu kopieren) und Signatur unten ein, um die Nachricht zu verifizieren. Vorsicht, interpretieren Sie nicht mehr in die Signatur hinein, als in der signierten Nachricht selber enthalten ist, um nicht von einem Man-in-the-middle-Angriff hinters Licht geführt zu werden. Beachten Sie dass dies nur beweist, dass die signierende Partei über diese Adresse Überweisungen empfangen kann.</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address the message was signed with</source>
-			<translation>Die Meowcoin-Adresse, mit der die Nachricht signiert wurde</translation>
+			<source>The Points address the message was signed with</source>
+			<translation>Die Points-Adresse, mit der die Nachricht signiert wurde</translation>
 		</message>
 		<message>
-			<source>Verify the message to ensure it was signed with the specified Meowcoin address</source>
-			<translation>Überprüfen Sie die Nachricht, um sicherzustellen, dass sie mit der angegebenen Meowcoin-Adresse signiert wurde</translation>
+			<source>Verify the message to ensure it was signed with the specified Points address</source>
+			<translation>Überprüfen Sie die Nachricht, um sicherzustellen, dass sie mit der angegebenen Points-Adresse signiert wurde</translation>
 		</message>
 		<message>
 			<source>Verify &amp;Message</source>
@@ -2974,8 +2974,8 @@
 			<translation>Generierte Münzen müssen%1 Blöcke reifen, bevor sie ausgegeben werden können.Als Sie diesen Block generiert haben, wurde er in das Netzwerk übertragen, um der Blockkette hinzugefügt zu werden.Wenn es nicht in die Kette gelangt, wird sein Zustand auf \</translation>
 		</message>
 		<message>
-			<source>Net MEWC amount</source>
-			<translation>Netto-MEWC-Betrag</translation>
+			<source>Net PNT amount</source>
+			<translation>Netto-PNT-Betrag</translation>
 		</message>
 	</context>
 	<context>
@@ -3128,8 +3128,8 @@
 			<translation>Gesendete Vermögenswerte</translation>
 		</message>
 		<message>
-			<source>The asset (or MEWC) removed or added to balance.</source>
-			<translation>Der Vermögenswert (oder MEWC) wurde entfernt oder dem Saldo hinzugefügt.</translation>
+			<source>The asset (or PNT) removed or added to balance.</source>
+			<translation>Der Vermögenswert (oder PNT) wurde entfernt oder dem Saldo hinzugefügt.</translation>
 		</message>
 	</context>
 	<context>
@@ -3398,7 +3398,7 @@
 		</message>
 	</context>
 	<context>
-		<name>meowcoin-core</name>
+		<name>points-core</name>
 		<message>
 			<source>Options:</source>
 			<translation>Optionen:</translation>
@@ -3456,8 +3456,8 @@
 			<translation>Der HTTP-Server kann nicht gestartet werden.Einzelheiten hierzu finden Sie im Debug-Log.</translation>
 		</message>
 		<message>
-			<source>Meowcoin Core</source>
-			<translation>Kern des Meowcoin</translation>
+			<source>Points Core</source>
+			<translation>Kern des Points</translation>
 		</message>
 		<message>
 			<source>The %s developers</source>
@@ -4510,8 +4510,8 @@
 			<translation>Geschätzte Bestätigung innerhalb von%n Block(en).</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
-			<translation>Warnung: Ungültige Meowcoin-Adresse</translation>
+			<source>Warning: Invalid Points address</source>
+			<translation>Warnung: Ungültige Points-Adresse</translation>
 		</message>
 		<message>
 			<source>Warning: Unknown change address</source>
@@ -4620,8 +4620,8 @@
 			<translation>IPFS/Txid Hash ist nicht gültig.Bitte verwenden Sie einen gültigen IPFS/Txid Hash</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
-			<translation>Warnung: Ungültige Meowcoin-Adresse</translation>
+			<source>Warning: Invalid Points address</source>
+			<translation>Warnung: Ungültige Points-Adresse</translation>
 		</message>
 		<message>
 			<source>Warning: Restricted Assets Reissuance requires an address</source>
@@ -4776,8 +4776,8 @@
 			<translation>Adresse:</translation>
 		</message>
 		<message>
-			<source>The MEWC address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-			<translation>Die MEWC-Adresse, die diesen Vermögenswert enthält (Sie müssen diese Adresse besitzen).Leer lassen, um eine neue Adresse zu erstellen.</translation>
+			<source>The PNT address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+			<translation>Die PNT-Adresse, die diesen Vermögenswert enthält (Sie müssen diese Adresse besitzen).Leer lassen, um eine neue Adresse zu erstellen.</translation>
 		</message>
 		<message>
 			<source>Verifier String:</source>
@@ -4868,8 +4868,8 @@
 			<translation>pro Kilobyte</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
-			<translation>Die Zahlung nur der Mindestgebühr ist nur in Ordnung, solange es weniger Transaktionsvolumen als Platz in den Blöcken gibt.Aber seien Sie sich bewusst, dass dies in einer niemals bestätigenden Transaktion enden kann, sobald es mehr Nachfrage nach Meowcoin-Transaktionen gibt, als das Netzwerk verarbeiten kann.</translation>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
+			<translation>Die Zahlung nur der Mindestgebühr ist nur in Ordnung, solange es weniger Transaktionsvolumen als Platz in den Blöcken gibt.Aber seien Sie sich bewusst, dass dies in einer niemals bestätigenden Transaktion enden kann, sobald es mehr Nachfrage nach Points-Transaktionen gibt, als das Netzwerk verarbeiten kann.</translation>
 		</message>
 		<message>
 			<source>(read the tooltip)</source>
@@ -4912,15 +4912,15 @@
 			<translation>Saldo:</translation>
 		</message>
 		<message>
-			<source>123.456 MEWC</source>
-			<translation>123.456 MEWC</translation>
+			<source>123.456 PNT</source>
+			<translation>123.456 PNT</translation>
 		</message>
 	</context>
 	<context>
 		<name>GUIUtil</name>
 		<message>
-			<source>Enter a Meowcoin address (e.g. %1)</source>
-			<translation>Geben Sie eine Meowcoin-Adresse ein (z.B.%1)</translation>
+			<source>Enter a Points address (e.g. %1)</source>
+			<translation>Geben Sie eine Points-Adresse ein (z.B.%1)</translation>
 		</message>
 		<message>
 			<source>Warning: transaction while syncing wallet!</source>
@@ -5004,10 +5004,10 @@
 		</message>
 	</context>
 	<context>
-		<name>meowcoin</name>
+		<name>points</name>
 		<message>
-			<source>A fatal error occurred. Meowcoin can no longer continue safely and will quit.</source>
-			<translation>Ein tödlicher Fehler ist aufgetreten.Meowcoin kann nicht mehr sicher weitermachen und wird kündigen.</translation>
+			<source>A fatal error occurred. Points can no longer continue safely and will quit.</source>
+			<translation>Ein tödlicher Fehler ist aufgetreten.Points kann nicht mehr sicher weitermachen und wird kündigen.</translation>
 		</message>
 		<message>
 			<source>Error: Specified data directory \</source>
@@ -5088,16 +5088,16 @@
 			<translation>Die Menge ist zu groß.Max ist 21,000,000,000</translation>
 		</message>
 		<message>
-			<source>Invalid Meowcoin Destination Address</source>
-			<translation>Ungültige Zieladresse des Meowcoin</translation>
+			<source>Invalid Points Destination Address</source>
+			<translation>Ungültige Zieladresse des Points</translation>
 		</message>
 		<message>
 			<source>Warning: Restricted Assets Issuance requires an address</source>
 			<translation>Warnung: Restricted Assets Issuance benötigt eine Adresse</translation>
 		</message>
 		<message>
-			<source>Warning: Invalid Meowcoin address</source>
-			<translation>Warnung: Ungültige Meowcoin-Adresse</translation>
+			<source>Warning: Invalid Points address</source>
+			<translation>Warnung: Ungültige Points-Adresse</translation>
 		</message>
 		<message>
 			<source>Yes</source>
@@ -5300,8 +5300,8 @@
 			<translation>Adresse:</translation>
 		</message>
 		<message>
-			<source>The MEWC address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-			<translation>Die MEWC-Adresse, die diesen Vermögenswert enthält (Sie müssen diese Adresse besitzen).Leer lassen, um eine neue Adresse zu erstellen.</translation>
+			<source>The PNT address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+			<translation>Die PNT-Adresse, die diesen Vermögenswert enthält (Sie müssen diese Adresse besitzen).Leer lassen, um eine neue Adresse zu erstellen.</translation>
 		</message>
 		<message>
 			<source>Verifier String:</source>
@@ -5392,8 +5392,8 @@
 			<translation>pro Kilobyte</translation>
 		</message>
 		<message>
-			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for meowcoin transactions than the network can process.</source>
-			<translation>Die Zahlung nur der Mindestgebühr ist nur in Ordnung, solange es weniger Transaktionsvolumen als Platz in den Blöcken gibt.Aber seien Sie sich bewusst, dass dies in einer niemals bestätigenden Transaktion enden kann, sobald es mehr Nachfrage nach Meowcoin-Transaktionen gibt, als das Netzwerk verarbeiten kann.</translation>
+			<source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for points transactions than the network can process.</source>
+			<translation>Die Zahlung nur der Mindestgebühr ist nur in Ordnung, solange es weniger Transaktionsvolumen als Platz in den Blöcken gibt.Aber seien Sie sich bewusst, dass dies in einer niemals bestätigenden Transaktion enden kann, sobald es mehr Nachfrage nach Points-Transaktionen gibt, als das Netzwerk verarbeiten kann.</translation>
 		</message>
 		<message>
 			<source>(read the tooltip)</source>
@@ -5436,8 +5436,8 @@
 			<translation>Saldo:</translation>
 		</message>
 		<message>
-			<source>123.456 MEWC</source>
-			<translation>123.456 MEWC</translation>
+			<source>123.456 PNT</source>
+			<translation>123.456 PNT</translation>
 		</message>
 	</context>
 	<context>
@@ -5760,8 +5760,8 @@
 			<translation>Das ist eine Vermögenszahlung</translation>
 		</message>
 		<message>
-			<source>A message that was attached to the meowcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Meowcoin network.</source>
-			<translation>Eine Nachricht, die dem Meowcoin beigefügt wurde: URI, die mit der Transaktion für Ihre Referenz gespeichert wird.Hinweis: Diese Nachricht wird nicht über das Meowcoin-Netzwerk gesendet.</translation>
+			<source>A message that was attached to the points: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Points network.</source>
+			<translation>Eine Nachricht, die dem Points beigefügt wurde: URI, die mit der Transaktion für Ihre Referenz gespeichert wird.Hinweis: Diese Nachricht wird nicht über das Points-Netzwerk gesendet.</translation>
 		</message>
 		<message>
 			<source>Memo:</source>
@@ -5784,8 +5784,8 @@
 			<translation>Ausstattung:</translation>
 		</message>
 		<message>
-			<source>The Meowcoin address to send the payment to</source>
-			<translation>Die Meowcoin-Adresse, um die Zahlung an</translation>
+			<source>The Points address to send the payment to</source>
+			<translation>Die Points-Adresse, um die Zahlung an</translation>
 		</message>
 		<message>
 			<source>Choose previously used address</source>

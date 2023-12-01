@@ -1,5 +1,5 @@
-Building Meowcoin
+Building Points
 ================
 
 See doc/build-*.md for instructions on building the various
-elements of the Meowcoin Core reference implementation of Meowcoin.
+elements of the Points Core reference implementation of Points.

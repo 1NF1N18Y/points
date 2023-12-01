@@ -78,7 +78,7 @@
     </message>
 </context>
 <context>
-    <name>MeowcoinGUI</name>
+    <name>PointsGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Semnează &amp;mesajul...</translation>
@@ -144,8 +144,8 @@
         <translation>Deschide &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Meowcoin address</source>
-        <translation>Trimite monedele către o adresă Meowcoin</translation>
+        <source>Send coins to a Points address</source>
+        <translation>Trimite monedele către o adresă Points</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -168,8 +168,8 @@
         <translation>&amp;Verifică mesajul...</translation>
     </message>
     <message>
-        <source>Meowcoin</source>
-        <translation>Meowcoin</translation>
+        <source>Points</source>
+        <translation>Points</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -196,12 +196,12 @@
         <translation>Criptează cheile private care aparțin portofelului tău.</translation>
     </message>
     <message>
-        <source>Sign messages with your Meowcoin addresses to prove you own them</source>
-        <translation>Semnează mesajele cu adresa ta de Meowcoin pentru a face dovada că îți aparțin.</translation>
+        <source>Sign messages with your Points addresses to prove you own them</source>
+        <translation>Semnează mesajele cu adresa ta de Points pentru a face dovada că îți aparțin.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
-        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Meowcoin specificată.</translation>
+        <source>Verify messages to ensure they were signed with specified Points addresses</source>
+        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Points specificată.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -216,12 +216,12 @@
         <translation>&amp;Ajutor</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and meowcoin: URIs)</source>
-        <translation>Cerere plată (generează coduri QR și meowcoin: URIs)</translation>
+        <source>Request payments (generates QR codes and points: URIs)</source>
+        <translation>Cerere plată (generează coduri QR și points: URIs)</translation>
     </message>
     <message>
-        <source>Open a meowcoin: URI or payment request</source>
-        <translation>Deschide un meowcoin: URI sau cerere de plată</translation>
+        <source>Open a points: URI or payment request</source>
+        <translation>Deschide un points: URI sau cerere de plată</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -748,10 +748,10 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>meowcoin-core</name>
+    <name>points-core</name>
     <message>
-        <source>Meowcoin Core</source>
-        <translation>Meowcoin Core</translation>
+        <source>Points Core</source>
+        <translation>Points Core</translation>
     </message>
     <message>
         <source>Information</source>

@@ -7,7 +7,7 @@
 
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
-#include "meowcoingui.h"
+#include "pointsgui.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -114,7 +114,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setMeowcoinGUI(MeowcoinGUI *gui)
+void WalletView::setPointsGUI(PointsGUI *gui)
 {
     if (gui)
     {
@@ -186,7 +186,7 @@ void WalletView::setWalletModel(WalletModel *_walletModel)
         updateEncryptionStatus();
 
         // update HD status
-        Q_EMIT hdEnabledStatusChanged(_walletModel->hd44Enabled() ? MeowcoinGUI::HD44_ENABLED : _walletModel->hdEnabled() ? MeowcoinGUI::HD_ENABLED : MeowcoinGUI::HD_DISABLED);
+        Q_EMIT hdEnabledStatusChanged(_walletModel->hd44Enabled() ? PointsGUI::HD44_ENABLED : _walletModel->hdEnabled() ? PointsGUI::HD_ENABLED : PointsGUI::HD_DISABLED);
 
         // Balloon pop-up for new transaction
         connect(_walletModel->getTransactionTableModel(), SIGNAL(rowsInserted(QModelIndex,int,int)),

@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Copyright (c) 2017-2019 The Raven Core developers
-# Copyright (c) 2020-2021 The Meowcoin Core developers
+# Copyright (c) 2020-2021 The Points Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """Test the importmulti RPC."""
 
-from test_framework.test_framework import MeowcoinTestFramework
+from test_framework.test_framework import PointsTestFramework
 from test_framework.util import assert_equal, assert_greater_than, assert_raises_rpc_error
 
-class ImportMultiTest (MeowcoinTestFramework):
+class ImportMultiTest (PointsTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.setup_clean_chain = True
@@ -40,7 +40,7 @@ class ImportMultiTest (MeowcoinTestFramework):
 
         # RPC importmulti -----------------------------------------------
 
-        # Meowcoin Address
+        # Points Address
         self.log.info("Should import an address")
         address = self.nodes[0].validateaddress(self.nodes[0].getnewaddress())
         result = self.nodes[1].importmulti([{

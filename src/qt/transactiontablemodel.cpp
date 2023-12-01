@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -270,7 +270,7 @@ TransactionTableModel::~TransactionTableModel()
 /** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
 //void TransactionTableModel::updateAmountColumnTitle()
 //{
-//    columns[Amount] = MeowcoinUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+//    columns[Amount] = PointsUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
 //    Q_EMIT headerDataChanged(Qt::Horizontal,Amount,Amount);
 //}
 
@@ -476,7 +476,7 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord *wtx) const
     return QVariant();
 }
 
-QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed, MeowcoinUnits::SeparatorStyle separators) const
+QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed, PointsUnits::SeparatorStyle separators) const
 {
     QString str;
     switch(wtx->type) {
@@ -489,7 +489,7 @@ QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool
             } break;
         default:
             {
-            str = MeowcoinUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), wtx->credit + wtx->debit,
+            str = PointsUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), wtx->credit + wtx->debit,
                                              false, separators);
             } break;
     }
@@ -595,12 +595,12 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         case ToAddress:
             return formatTxToAddress(rec, false);
         case Amount:
-            return formatTxAmount(rec, true, MeowcoinUnits::separatorAlways);
+            return formatTxAmount(rec, true, PointsUnits::separatorAlways);
         case AssetName:
-            if (rec->assetName != "MEWC")
+            if (rec->assetName != "PNT")
                return QString::fromStdString(rec->assetName);
             else
-               return QString(MeowcoinUnits::name(walletModel->getOptionsModel()->getDisplayUnit()));
+               return QString(PointsUnits::name(walletModel->getOptionsModel()->getDisplayUnit()));
         }
         break;
     case Qt::EditRole:
@@ -648,7 +648,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         }
         if(index.column() == AssetName)
         {
-            if (rec->assetName != "MEWC")
+            if (rec->assetName != "PNT")
                return platformStyle->AssetTxColor();
         }
         break;
@@ -699,21 +699,21 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
                 details.append(QString::fromStdString(rec->address));
                 details.append(" ");
             }
-            details.append(formatTxAmount(rec, false, MeowcoinUnits::separatorNever));
+            details.append(formatTxAmount(rec, false, PointsUnits::separatorNever));
             return details;
         }
     case ConfirmedRole:
         return rec->status.countsForBalance;
     case FormattedAmountRole:
         // Used for copy/export, so don't include separators
-        return formatTxAmount(rec, false, MeowcoinUnits::separatorNever);
+        return formatTxAmount(rec, false, PointsUnits::separatorNever);
     case AssetNameRole:
         {
             QString assetName;
-            if (rec->assetName != "MEWC")
+            if (rec->assetName != "PNT")
                assetName.append(QString::fromStdString(rec->assetName));
             else
-               assetName.append(QString(MeowcoinUnits::name(walletModel->getOptionsModel()->getDisplayUnit())));
+               assetName.append(QString(PointsUnits::name(walletModel->getOptionsModel()->getDisplayUnit())));
             return assetName;
         }
     case StatusRole:
@@ -750,7 +750,7 @@ QVariant TransactionTableModel::headerData(int section, Qt::Orientation orientat
             case Amount:
                 return tr("Amount removed from or added to balance.");
             case AssetName:
-                return tr("The asset (or MEWC) removed or added to balance.");
+                return tr("The asset (or PNT) removed or added to balance.");
             }
         }
     }

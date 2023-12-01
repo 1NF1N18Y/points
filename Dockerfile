@@ -34,27 +34,27 @@ RUN apt-get update && \
 	apt-get clean
 
 
-#Build Meowcoin from source
-COPY . /home/meowcoin/build/Meowcoin/
-WORKDIR /home/meowcoin/build/Meowcoin
+#Build Points from source
+COPY . /home/points/build/Points/
+WORKDIR /home/points/build/Points
 RUN ./autogen.sh && ./configure --disable-tests --with-gui=no && make
 
 FROM base AS final
 
 #Add our service account user
-RUN useradd -ms /bin/bash meowcoin && \
-	mkdir /var/lib/meowcoin && \
-	chown meowcoin:meowcoin /var/lib/meowcoin && \
-	ln -s /var/lib/meowcoin /home/meowcoin/.meowcoin && \
-	chown -h meowcoin:meowcoin /home/meowcoin/.meowcoin
+RUN useradd -ms /bin/bash points && \
+	mkdir /var/lib/points && \
+	chown points:points /var/lib/points && \
+	ln -s /var/lib/points /home/points/.points && \
+	chown -h points:points /home/points/.points
 
-VOLUME /var/lib/meowcoin
+VOLUME /var/lib/points
 
 #Copy the compiled binaries from the build
-COPY --from=build /home/meowcoin/build/Meowcoin/src/meowcoind /usr/local/bin/meowcoind
-COPY --from=build /home/meowcoin/build/Meowcoin/src/meowcoin-cli /usr/local/bin/meowcoin-cli
+COPY --from=build /home/points/build/Points/src/pointsd /usr/local/bin/pointsd
+COPY --from=build /home/points/build/Points/src/points-cli /usr/local/bin/points-cli
 
-WORKDIR /home/meowcoin
-USER meowcoin
+WORKDIR /home/points
+USER points
 
-CMD /usr/local/bin/meowcoind -datadir=/var/lib/meowcoin -printtoconsole -onlynet=ipv4
+CMD /usr/local/bin/pointsd -datadir=/var/lib/points -printtoconsole -onlynet=ipv4

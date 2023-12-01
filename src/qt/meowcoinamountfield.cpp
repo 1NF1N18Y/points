@@ -1,12 +1,12 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "meowcoinamountfield.h"
+#include "pointsamountfield.h"
 
-#include "meowcoinunits.h"
+#include "pointsunits.h"
 #include "guiconstants.h"
 #include "qvaluecombobox.h"
 #include "platformstyle.h"
@@ -32,7 +32,7 @@ class AmountSpinBox: public QAbstractSpinBox
 public:
     explicit AmountSpinBox(QWidget *parent):
         QAbstractSpinBox(parent),
-        currentUnit(MeowcoinUnits::MEWC),
+        currentUnit(PointsUnits::PNT),
         singleStep(100000), // satoshis
         assetUnit(-1)
     {
@@ -57,7 +57,7 @@ public:
         CAmount val = parse(input, &valid);
         if(valid)
         {
-            input = MeowcoinUnits::format(currentUnit, val, false, MeowcoinUnits::separatorAlways, assetUnit);
+            input = PointsUnits::format(currentUnit, val, false, PointsUnits::separatorAlways, assetUnit);
             lineEdit()->setText(input);
         }
     }
@@ -69,7 +69,7 @@ public:
 
     void setValue(const CAmount& value)
     {
-        lineEdit()->setText(MeowcoinUnits::format(currentUnit, value, false, MeowcoinUnits::separatorAlways, assetUnit));
+        lineEdit()->setText(PointsUnits::format(currentUnit, value, false, PointsUnits::separatorAlways, assetUnit));
         Q_EMIT valueChanged();
     }
 
@@ -78,7 +78,7 @@ public:
         bool valid = false;
         CAmount val = value(&valid);
         val = val + steps * singleStep;
-        val = qMin(qMax(val, CAmount(0)), MeowcoinUnits::maxMoney());
+        val = qMin(qMax(val, CAmount(0)), PointsUnits::maxMoney());
         setValue(val);
     }
 
@@ -125,9 +125,9 @@ public:
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
 			#ifndef QTversionPreFiveEleven
-            	int w = fm.horizontalAdvance(MeowcoinUnits::format(MeowcoinUnits::MEWC, MeowcoinUnits::maxMoney(), false, MeowcoinUnits::separatorAlways, assetUnit));
+            	int w = fm.horizontalAdvance(PointsUnits::format(PointsUnits::PNT, PointsUnits::maxMoney(), false, PointsUnits::separatorAlways, assetUnit));
 			#else
-				int w = fm.width(MeowcoinUnits::format(MeowcoinUnits::MEWC, MeowcoinUnits::maxMoney(), false, MeowcoinUnits::separatorAlways, assetUnit));
+				int w = fm.width(PointsUnits::format(PointsUnits::PNT, PointsUnits::maxMoney(), false, PointsUnits::separatorAlways, assetUnit));
 			#endif
             w += 2; // cursor blinking space
 
@@ -171,14 +171,14 @@ private:
         // Update parsing function to work with asset parsing units
         bool valid = false;
         if (assetUnit >= 0) {
-            valid = MeowcoinUnits::assetParse(assetUnit, text, &val);
+            valid = PointsUnits::assetParse(assetUnit, text, &val);
         }
         else
-            valid = MeowcoinUnits::parse(currentUnit, text, &val);
+            valid = PointsUnits::parse(currentUnit, text, &val);
 
         if(valid)
         {
-            if(val < 0 || val > MeowcoinUnits::maxMoney())
+            if(val < 0 || val > PointsUnits::maxMoney())
                 valid = false;
         }
         if(valid_out)
@@ -216,7 +216,7 @@ protected:
         {
             if(val > 0)
                 rv |= StepDownEnabled;
-            if(val < MeowcoinUnits::maxMoney())
+            if(val < PointsUnits::maxMoney())
                 rv |= StepUpEnabled;
         }
         return rv;
@@ -226,9 +226,9 @@ Q_SIGNALS:
     void valueChanged();
 };
 
-#include "meowcoinamountfield.moc"
+#include "pointsamountfield.moc"
 
-MeowcoinAmountField::MeowcoinAmountField(QWidget *parent) :
+PointsAmountField::PointsAmountField(QWidget *parent) :
     QWidget(parent),
     amount(0)
 {
@@ -240,7 +240,7 @@ MeowcoinAmountField::MeowcoinAmountField(QWidget *parent) :
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox();
-    unit->setModel(new MeowcoinUnits(this));
+    unit->setModel(new PointsUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -259,19 +259,19 @@ MeowcoinAmountField::MeowcoinAmountField(QWidget *parent) :
 
 }
 
-void MeowcoinAmountField::clear()
+void PointsAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-void MeowcoinAmountField::setEnabled(bool fEnabled)
+void PointsAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
     unit->setEnabled(fEnabled);
 }
 
-bool MeowcoinAmountField::validate()
+bool PointsAmountField::validate()
 {
     bool valid = false;
     value(&valid);
@@ -279,7 +279,7 @@ bool MeowcoinAmountField::validate()
     return valid;
 }
 
-void MeowcoinAmountField::setValid(bool valid)
+void PointsAmountField::setValid(bool valid)
 {
     if (valid) {
             amount->setStyleSheet("");
@@ -288,7 +288,7 @@ void MeowcoinAmountField::setValid(bool valid)
     }
 }
 
-bool MeowcoinAmountField::eventFilter(QObject *object, QEvent *event)
+bool PointsAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -298,45 +298,45 @@ bool MeowcoinAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *MeowcoinAmountField::setupTabChain(QWidget *prev)
+QWidget *PointsAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     QWidget::setTabOrder(amount, unit);
     return unit;
 }
 
-CAmount MeowcoinAmountField::value(bool *valid_out) const
+CAmount PointsAmountField::value(bool *valid_out) const
 {
     return amount->value(valid_out);
 }
 
-void MeowcoinAmountField::setValue(const CAmount& value)
+void PointsAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
 }
 
-void MeowcoinAmountField::setReadOnly(bool fReadOnly)
+void PointsAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
 }
 
-void MeowcoinAmountField::unitChanged(int idx)
+void PointsAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, MeowcoinUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, PointsUnits::UnitRole).toInt();
 
     amount->setDisplayUnit(newUnit);
 }
 
-void MeowcoinAmountField::setDisplayUnit(int newUnit)
+void PointsAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }
 
-void MeowcoinAmountField::setSingleStep(const CAmount& step)
+void PointsAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }
@@ -407,7 +407,7 @@ bool AssetAmountField::eventFilter(QObject *object, QEvent *event)
 
 CAmount AssetAmountField::value(bool *valid_out) const
 {
-    return amount->value(valid_out) * MeowcoinUnits::factorAsset(8 - assetUnit);
+    return amount->value(valid_out) * PointsUnits::factorAsset(8 - assetUnit);
 }
 
 void AssetAmountField::setValue(const CAmount& value)

@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 # Copyright (c) 2017 The Bitcoin Core developers
 # Copyright (c) 2017-2019 The Raven Core developers
-# Copyright (c) 2020-2021 The Meowcoin Core developers
+# Copyright (c) 2020-2021 The Points Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """Testing asset use cases"""
 
-from test_framework.test_framework import MeowcoinTestFramework
+from test_framework.test_framework import PointsTestFramework
 from test_framework.util import assert_equal, assert_is_hash_string, assert_does_not_contain_key, assert_raises_rpc_error, JSONRPCException, Decimal
 
 import string
 
 
-class AssetTest(MeowcoinTestFramework):
+class AssetTest(PointsTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3
         self.extra_args = [['-assetindex'], ['-assetindex'], ['-assetindex']]
 
     def activate_assets(self):
-        self.log.info("Generating MEWC for node[0] and activating assets...")
+        self.log.info("Generating PNT for node[0] and activating assets...")
         n0 = self.nodes[0]
 
         n0.generate(1)
@@ -162,10 +162,10 @@ class AssetTest(MeowcoinTestFramework):
         assert_equal(assetdata["has_ipfs"], 1)
         assert_equal(assetdata["ipfs_hash"], ipfs_hash)
 
-        meowcoin_assets = n0.listassets(asset="MEOWCOIN*", verbose=False, count=2, start=-2)
-        assert_equal(len(meowcoin_assets), 2)
-        assert_equal(meowcoin_assets[0], "MEOWCOIN2")
-        assert_equal(meowcoin_assets[1], "MEOWCOIN3")
+        points_assets = n0.listassets(asset="MEOWCOIN*", verbose=False, count=2, start=-2)
+        assert_equal(len(points_assets), 2)
+        assert_equal(points_assets[0], "MEOWCOIN2")
+        assert_equal(points_assets[1], "MEOWCOIN3")
         self.sync_all()
 
     def issue_param_checks(self):

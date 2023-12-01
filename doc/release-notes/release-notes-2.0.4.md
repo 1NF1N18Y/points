@@ -1,4 +1,4 @@
-Meowcoin Core version *2.0.4.0* is now available!!
+Points Core version *2.0.4.0* is now available!!
 ==============
 
   <https://github.com/bitcoin/bitcoin/releases/tag/v2.0.4>
@@ -9,19 +9,19 @@ upgrade to this version.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/JustAResearcher/Meowcoin/issues>
+  <https://github.com/JustAResearcher/Points/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://mewccrypto.com/en/list/announcements/join/>
+  <https://pntcrypto.com/en/list/announcements/join/>
 
 How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the 
-installer (on Windows) or just copy over `/Applications/Meowcoin-Qt` (on Mac)
-or `meowcoind`/`meowcoin-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/Points-Qt` (on Mac)
+or `pointsd`/`points-qt` (on Linux).
 
 The first time you run version 2.0.4 or higher, your chainstate database may
 be converted to a new format, which will take anywhere from a few minutes to
@@ -46,11 +46,11 @@ will not be valid.
 Compatibility
 ==============
 
-Meowcoin Core is extensively tested on multiple operating systems using
+Points Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. 32-bit versions of Windows,
 and Windows XP are not supported.
 
-Meowcoin Core should also work on most other Unix-like systems but is not
+Points Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -68,14 +68,14 @@ Notable changes
 2.0.4.0-b175d7350 Change log
 ==============
 
-Changelog available here: <https://github.com/JustAResearcher/Meowcoin/commits/release_2.0.4>
+Changelog available here: <https://github.com/JustAResearcher/Points/commits/release_2.0.4>
 
 Credits
 ==============
 
 Thanks to everyone who directly contributed to this release:
 
-- Most importantly - The Meowcoin Community!
+- Most importantly - The Points Community!
 - Tron Black
 - Jesse Empey
 - Jeremy Anderson

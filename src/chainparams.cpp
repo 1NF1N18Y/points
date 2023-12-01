@@ -180,7 +180,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xe8916cf6592c8433d598c3a5fe60a9741fd2a997b39d93af2d789cdd9d9a7390"));
 
 
-        vSeeds.emplace_back("seed-mainnet-mewc.meowcoin.cc", false);
+        vSeeds.emplace_back("seed-mainnet-pnt.points.cc", false);
 
         // Address start with M
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,50);
@@ -218,7 +218,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Meowcoin chain from rpc: getchaintxstats 50000
+            // Update as we know more about the contents of the Points chain from rpc: getchaintxstats 50000
         	1665504479, // * UNIX timestamp of last known number of transactions
             99360,      // * total number of transactions between genesis and that timestamp
                         // * (the tx=... number in the SetBestChain debug.log lines)
@@ -349,7 +349,7 @@ public:
 		
         vFixedSeeds.clear();
         vSeeds.clear();
-	    vSeeds.emplace_back("seed-testnet-mewc.meowcoin.cc", false);
+	    vSeeds.emplace_back("seed-testnet-pnt.points.cc", false);
 		
 	    base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,109);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,124);
@@ -357,7 +357,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Meowcoin BIP44 cointype in testnet
+        // Points BIP44 cointype in testnet
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -374,7 +374,7 @@ public:
         };
 
         chainTxData = ChainTxData{
-            // Update as we know more about the contents of the Meowcoin chain
+            // Update as we know more about the contents of the Points chain
             1661734222, // * UNIX timestamp of last known number of transactions
             0,     // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
@@ -525,7 +525,7 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-        // Meowcoin BIP44 cointype in regtest
+        // Points BIP44 cointype in regtest
         nExtCoinType = 1;
 
         /** MEOWCOIN Start **/

@@ -24,23 +24,23 @@ MEOWCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLA
 MEOWCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 MEOWCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBMEOWCOIN_SERVER=libmeowcoin_server.a
-LIBMEOWCOIN_COMMON=libmeowcoin_common.a
-LIBMEOWCOIN_CONSENSUS=libmeowcoin_consensus.a
-LIBmeowcoin_cli=libmeowcoin_cli.a
-LIBMEOWCOIN_UTIL=libmeowcoin_util.a
-LIBMEOWCOIN_CRYPTO=crypto/libmeowcoin_crypto.a
-LIBMEOWCOINQT=qt/libmeowcoinqt.a
+LIBMEOWCOIN_SERVER=libpoints_server.a
+LIBMEOWCOIN_COMMON=libpoints_common.a
+LIBMEOWCOIN_CONSENSUS=libpoints_consensus.a
+LIBpoints_cli=libpoints_cli.a
+LIBMEOWCOIN_UTIL=libpoints_util.a
+LIBMEOWCOIN_CRYPTO=crypto/libpoints_crypto.a
+LIBMEOWCOINQT=qt/libpointsqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBMEOWCOIN_ZMQ=libmeowcoin_zmq.a
+LIBMEOWCOIN_ZMQ=libpoints_zmq.a
 endif
 if BUILD_MEOWCOIN_LIBS
-LIBMEOWCOINCONSENSUS=libmeowcoinconsensus.la
+LIBMEOWCOINCONSENSUS=libpointsconsensus.la
 endif
 if ENABLE_WALLET
-LIBMEOWCOIN_WALLET=libmeowcoin_wallet.a
+LIBMEOWCOIN_WALLET=libpoints_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -54,7 +54,7 @@ EXTRA_LIBRARIES += \
   $(LIBMEOWCOIN_COMMON) \
   $(LIBMEOWCOIN_CONSENSUS) \
   $(LIBMEOWCOIN_SERVER) \
-  $(LIBmeowcoin_cli) \
+  $(LIBpoints_cli) \
   $(LIBMEOWCOIN_WALLET) \
   $(LIBMEOWCOIN_ZMQ)
 
@@ -66,19 +66,19 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_MEOWCOIND
-  bin_PROGRAMS += meowcoind
+  bin_PROGRAMS += pointsd
 endif
 
 if BUILD_MEOWCOIN_CLI
-  bin_PROGRAMS += meowcoin-cli
+  bin_PROGRAMS += points-cli
 endif
 
 if BUILD_MEOWCOIN_TX
-  bin_PROGRAMS += meowcoin-tx
+  bin_PROGRAMS += points-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# meowcoin core #
+# points core #
 MEOWCOIN_CORE_H = \
   addrdb.h \
   addressindex.h \
@@ -240,12 +240,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libmeowcoin_util_a-clientversion.$(OBJEXT): obj/build.h
+libpoints_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between meowcoind and meowcoin-qt
-libmeowcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libmeowcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_server_a_SOURCES = \
+# server: shared between pointsd and points-qt
+libpoints_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libpoints_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_server_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   bloom.cpp \
@@ -300,20 +300,20 @@ libmeowcoin_server_a_SOURCES = \
   $(MEOWCOIN_CORE_H)
 
 if ENABLE_ZMQ
-libmeowcoin_zmq_a_CPPFLAGS = $(MEOWCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libmeowcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_zmq_a_SOURCES = \
+libpoints_zmq_a_CPPFLAGS = $(MEOWCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libpoints_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between meowcoind and meowcoin-qt, but only linked
+# wallet: shared between pointsd and points-qt, but only linked
 # when wallet enabled
-libmeowcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-libmeowcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_wallet_a_SOURCES = \
+libpoints_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_wallet_a_SOURCES = \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/feebumper.cpp \
@@ -327,9 +327,9 @@ libmeowcoin_wallet_a_SOURCES = \
   $(MEOWCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libmeowcoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libmeowcoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libmeowcoin_crypto_a_SOURCES = \
+crypto_libpoints_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libpoints_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libpoints_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -372,13 +372,13 @@ crypto_libmeowcoin_crypto_a_SOURCES = \
   crypto/ethash/progpow_test_vectors.hpp
 
 if USE_ASM
-crypto_libmeowcoin_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+crypto_libpoints_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libmeowcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-libmeowcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_consensus_a_SOURCES = \
+libpoints_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -395,7 +395,7 @@ libmeowcoin_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/meowcoinconsensus.cpp \
+  script/pointsconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -415,10 +415,10 @@ libmeowcoin_consensus_a_SOURCES = \
   LibBoolEE.h \
   $(MEOWCOIN_CORE_H)
 
-# common: shared between meowcoind, and meowcoin-qt and non-server tools
-libmeowcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-libmeowcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_common_a_SOURCES = \
+# common: shared between pointsd, and points-qt and non-server tools
+libpoints_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_common_a_SOURCES = \
   base58.cpp \
   chainparams.cpp \
   coins.cpp \
@@ -440,9 +440,9 @@ libmeowcoin_common_a_SOURCES = \
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libmeowcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-libmeowcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_util_a_SOURCES = \
+libpoints_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -461,31 +461,31 @@ libmeowcoin_util_a_SOURCES = \
   $(MEOWCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libmeowcoin_util_a_SOURCES += compat/glibc_compat.cpp
+libpoints_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between meowcoin-cli and meowcoin-qt
-libmeowcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-libmeowcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libmeowcoin_cli_a_SOURCES = \
+# cli: shared between points-cli and points-qt
+libpoints_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpoints_cli_a_SOURCES = \
   rpc/client.cpp \
   $(MEOWCOIN_CORE_H)
 
-nodist_libmeowcoin_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libpoints_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# meowcoind binary #
-meowcoind_SOURCES = meowcoind.cpp
-meowcoind_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-meowcoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-meowcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# pointsd binary #
+pointsd_SOURCES = pointsd.cpp
+pointsd_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+pointsd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+pointsd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-meowcoind_SOURCES += meowcoind-res.rc
+pointsd_SOURCES += pointsd-res.rc
 endif
 
-meowcoind_LDADD = \
+pointsd_LDADD = \
   $(LIBMEOWCOIN_SERVER) \
   $(LIBMEOWCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -499,38 +499,38 @@ meowcoind_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-meowcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+pointsd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# meowcoin-cli binary #
-meowcoin_cli_SOURCES = meowcoin-cli.cpp
-meowcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) $(EVENT_CFLAGS)
-meowcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-meowcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# points-cli binary #
+points_cli_SOURCES = points-cli.cpp
+points_cli_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) $(EVENT_CFLAGS)
+points_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+points_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-meowcoin_cli_SOURCES += meowcoin-cli-res.rc
+points_cli_SOURCES += points-cli-res.rc
 endif
 
-meowcoin_cli_LDADD = \
-  $(LIBmeowcoin_cli) \
+points_cli_LDADD = \
+  $(LIBpoints_cli) \
   $(LIBUNIVALUE) \
   $(LIBMEOWCOIN_UTIL) \
   $(LIBMEOWCOIN_CRYPTO)
 
-meowcoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+points_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# meowcoin-tx binary #
-meowcoin_tx_SOURCES = meowcoin-tx.cpp
-meowcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
-meowcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-meowcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# points-tx binary #
+points_tx_SOURCES = points-tx.cpp
+points_tx_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+points_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+points_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-meowcoin_tx_SOURCES += meowcoin-tx-res.rc
+points_tx_SOURCES += points-tx-res.rc
 endif
 
-meowcoin_tx_LDADD = \
+points_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBMEOWCOIN_COMMON) \
   $(LIBMEOWCOIN_UTIL) \
@@ -538,22 +538,22 @@ meowcoin_tx_LDADD = \
   $(LIBMEOWCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-meowcoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+points_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# meowcoinconsensus library #
+# pointsconsensus library #
 if BUILD_MEOWCOIN_LIBS
-include_HEADERS = script/meowcoinconsensus.h
-libmeowcoinconsensus_la_SOURCES = $(crypto_libmeowcoin_crypto_a_SOURCES) $(libmeowcoin_consensus_a_SOURCES)
+include_HEADERS = script/pointsconsensus.h
+libpointsconsensus_la_SOURCES = $(crypto_libpoints_crypto_a_SOURCES) $(libpoints_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libmeowcoinconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libpointsconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libmeowcoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libmeowcoinconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
-libmeowcoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_MEOWCOIN_INTERNAL
-libmeowcoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libpointsconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libpointsconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
+libpointsconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_MEOWCOIN_INTERNAL
+libpointsconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -583,12 +583,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/meowcoin-config.h: config/stamp-h1
+config/points-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/meowcoin-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/points-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/meowcoin-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/meowcoin-config.h.in
+$(top_srcdir)/$(subdir)/config/points-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/points-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

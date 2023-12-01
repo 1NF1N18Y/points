@@ -1,2 +1,2 @@
-usr/local/bin/meowcoind usr/bin
-usr/local/bin/meowcoin-cli usr/bin
+usr/local/bin/pointsd usr/bin
+usr/local/bin/points-cli usr/bin

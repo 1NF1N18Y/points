@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Meowcoin"
-            VALUE "FileDescription",    "meowcoin-tx (CLI Meowcoin transaction editor utility)"
+            VALUE "CompanyName",        "Points"
+            VALUE "FileDescription",    "points-tx (CLI Points transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "meowcoin-tx"
+            VALUE "InternalName",       "points-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "meowcoin-tx.exe"
-            VALUE "ProductName",        "meowcoin-tx"
+            VALUE "OriginalFilename",   "points-tx.exe"
+            VALUE "ProductName",        "points-tx"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

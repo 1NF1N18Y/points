@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Copyright (c) 2017-2019 The Raven Core developers
-# Copyright (c) 2020-2021 The Meowcoin Core developers
+# Copyright (c) 2020-2021 The Points Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """
-Test running meowcoind with -reindex and -reindex-chainstate options.
+Test running pointsd with -reindex and -reindex-chainstate options.
 
 - Start a single node and generate 3 blocks.
 - Stop the node and restart it with -reindex. Verify that the node has re-indexed up to block 3.
@@ -14,10 +14,10 @@ Test running meowcoind with -reindex and -reindex-chainstate options.
 """
 
 import time
-from test_framework.test_framework import MeowcoinTestFramework
+from test_framework.test_framework import PointsTestFramework
 from test_framework.util import assert_equal
 
-class ReindexTest(MeowcoinTestFramework):
+class ReindexTest(PointsTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True

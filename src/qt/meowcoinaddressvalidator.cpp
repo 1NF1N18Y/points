@@ -1,10 +1,10 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "meowcoinaddressvalidator.h"
+#include "pointsaddressvalidator.h"
 
 #include "base58.h"
 
@@ -17,12 +17,12 @@
   - All lower-case letters except for 'l'
 */
 
-MeowcoinAddressEntryValidator::MeowcoinAddressEntryValidator(QObject *parent) :
+PointsAddressEntryValidator::PointsAddressEntryValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State MeowcoinAddressEntryValidator::validate(QString &input, int &pos) const
+QValidator::State PointsAddressEntryValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
 
@@ -82,15 +82,15 @@ QValidator::State MeowcoinAddressEntryValidator::validate(QString &input, int &p
     return state;
 }
 
-MeowcoinAddressCheckValidator::MeowcoinAddressCheckValidator(QObject *parent) :
+PointsAddressCheckValidator::PointsAddressCheckValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State MeowcoinAddressCheckValidator::validate(QString &input, int &pos) const
+QValidator::State PointsAddressCheckValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
-    // Validate the passed meowcoin address
+    // Validate the passed points address
     if (IsValidDestinationString(input.toStdString())) {
         return QValidator::Acceptable;
     }

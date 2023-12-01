@@ -64,12 +64,12 @@
         <translation>Vastuvõtvad aadressid</translation>
     </message>
     <message>
-        <source>These are your Meowcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Need on sinu Meowcoin aadressid maksete saatmiseks. Ennem müntide saatmist kontrolli alati summat ja makse saaja aadressi.</translation>
+        <source>These are your Points addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Need on sinu Points aadressid maksete saatmiseks. Ennem müntide saatmist kontrolli alati summat ja makse saaja aadressi.</translation>
     </message>
     <message>
-        <source>These are your Meowcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Need on sinu Meowcoin aadressid sisenevate maksete vastu võtmiseks. Soovitav on iga tehingu tarbeks kasutada uut aadressi.</translation>
+        <source>These are your Points addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Need on sinu Points aadressid sisenevate maksete vastu võtmiseks. Soovitav on iga tehingu tarbeks kasutada uut aadressi.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -171,7 +171,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR MEOWCOIN&lt;/b&gt;!</source>
-        <translation>Hoiatus:Kui sa krüpteerid oma rahakoti ja kaotad salafraasi, siis sa&lt;b&gt;KAOTAD OMA Meowcoin&lt;/b&gt;!</translation>
+        <translation>Hoiatus:Kui sa krüpteerid oma rahakoti ja kaotad salafraasi, siis sa&lt;b&gt;KAOTAD OMA Points&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -222,7 +222,7 @@
     </message>
     </context>
 <context>
-    <name>MeowcoinGUI</name>
+    <name>PointsGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Signeeri &amp;sõnum</translation>
@@ -292,8 +292,8 @@
         <translation>Kettal olevate blokkide re-indekseerimine...</translation>
     </message>
     <message>
-        <source>Send coins to a Meowcoin address</source>
-        <translation>Saada münte Meowcoin aadressile</translation>
+        <source>Send coins to a Points address</source>
+        <translation>Saada münte Points aadressile</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -316,8 +316,8 @@
         <translation>&amp;Kontrolli sõnumit...</translation>
     </message>
     <message>
-        <source>Meowcoin</source>
-        <translation>Meowcoin</translation>
+        <source>Points</source>
+        <translation>Points</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -344,12 +344,12 @@
         <translation>Krüpteeri oma rahakoti privaatvõtmed</translation>
     </message>
     <message>
-        <source>Sign messages with your Meowcoin addresses to prove you own them</source>
-        <translation>Omandi tõestamiseks allkirjasta sõnumid oma Meowcoin aadressiga</translation>
+        <source>Sign messages with your Points addresses to prove you own them</source>
+        <translation>Omandi tõestamiseks allkirjasta sõnumid oma Points aadressiga</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Meowcoin addresses</source>
-        <translation>Kinnita sõnumid kindlustamaks et need allkirjastati määratud Meowcoin aadressiga</translation>
+        <source>Verify messages to ensure they were signed with specified Points addresses</source>
+        <translation>Kinnita sõnumid kindlustamaks et need allkirjastati määratud Points aadressiga</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -368,20 +368,20 @@
         <translation>Vahelehe tööriistariba</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and meowcoin: URIs)</source>
-        <translation>Loo maksepäring (genereerib QR koodid ja meowcoinsi: URId)</translation>
+        <source>Request payments (generates QR codes and points: URIs)</source>
+        <translation>Loo maksepäring (genereerib QR koodid ja pointssi: URId)</translation>
     </message>
     <message>
-        <source>Open a meowcoin: URI or payment request</source>
-        <translation>Ava meowcoinsi: URI või maksepäring</translation>
+        <source>Open a points: URI or payment request</source>
+        <translation>Ava pointssi: URI või maksepäring</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Käsurea valikud</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Meowcoin network</source>
-        <translation><numerusform>%n aktiivne ühendus Meowcoin võrku</numerusform><numerusform>%n aktiivset ühendust Meowcoin võrku</numerusform></translation>
+        <source>%n active connection(s) to Points network</source>
+        <translation><numerusform>%n aktiivne ühendus Points võrku</numerusform><numerusform>%n aktiivset ühendust Points võrku</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -628,8 +628,8 @@
         <translation>Muuda saatvat aadressi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Meowcoin address.</source>
-        <translation>Sisestatud aadress "%1" ei ole korrektne Meowcoin aadress.</translation>
+        <source>The entered address "%1" is not a valid Points address.</source>
+        <translation>Sisestatud aadress "%1" ei ole korrektne Points aadress.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -758,8 +758,8 @@
         <translation>Ekspert</translation>
     </message>
     <message>
-        <source>Automatically open the Meowcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Meowcoin kliendi pordi automaatne avamine ruuteris. Toimib, kui sinu ruuter aktsepteerib UPnP ühendust.</translation>
+        <source>Automatically open the Points client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Points kliendi pordi automaatne avamine ruuteris. Toimib, kui sinu ruuter aktsepteerib UPnP ühendust.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -857,7 +857,7 @@
         <translation>Vorm</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Meowcoin network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Points network after a connection is established, but this process has not completed yet.</source>
         <translation>Kuvatav info ei pruugi olla ajakohane. Ühenduse loomisel süngitakse sinu rahakott automaatselt Bitconi võrgustikuga, kuid see toiming on hetkel lõpetamata.</translation>
     </message>
     <message>
@@ -1339,8 +1339,8 @@
         <translation>Maksepäring aegunud.</translation>
     </message>
     <message>
-        <source>Warning: Invalid Meowcoin address</source>
-        <translation>Hoiatus: Ebakorrektne Meowcoin aadress</translation>
+        <source>Warning: Invalid Points address</source>
+        <translation>Hoiatus: Ebakorrektne Points aadress</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1419,8 +1419,8 @@
         <translation>&amp;Allkirjastamise teade</translation>
     </message>
     <message>
-        <source>The Meowcoin address to sign the message with</source>
-        <translation>Meowcoin aadress millega sõnum allkirjastada</translation>
+        <source>The Points address to sign the message with</source>
+        <translation>Points aadress millega sõnum allkirjastada</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1451,8 +1451,8 @@
         <translation>Kopeeri praegune signatuur vahemällu</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Meowcoin address</source>
-        <translation>Allkirjasta sõnum Meowcoin aadressi sulle kuulumise tõestamiseks</translation>
+        <source>Sign the message to prove you own this Points address</source>
+        <translation>Allkirjasta sõnum Points aadressi sulle kuulumise tõestamiseks</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1471,12 +1471,12 @@
         <translation>&amp;Kinnita Sõnum</translation>
     </message>
     <message>
-        <source>The Meowcoin address the message was signed with</source>
-        <translation>Meowcoin aadress millega sõnum on allkirjastatud</translation>
+        <source>The Points address the message was signed with</source>
+        <translation>Points aadress millega sõnum on allkirjastatud</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Meowcoin address</source>
-        <translation>Kinnita sõnum tõestamaks selle allkirjastatust määratud Meowcoin aadressiga.</translation>
+        <source>Verify the message to ensure it was signed with the specified Points address</source>
+        <translation>Kinnita sõnum tõestamaks selle allkirjastatust määratud Points aadressiga.</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1734,7 +1734,7 @@
     <name>WalletView</name>
     </context>
 <context>
-    <name>meowcoin-core</name>
+    <name>points-core</name>
     <message>
         <source>Options:</source>
         <translation>Valikud:</translation>
@@ -1760,8 +1760,8 @@
         <translation>Tööta taustal ning aktsepteeri käsklusi</translation>
     </message>
     <message>
-        <source>Meowcoin Core</source>
-        <translation>Meowcoin tuumik</translation>
+        <source>Points Core</source>
+        <translation>Points tuumik</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

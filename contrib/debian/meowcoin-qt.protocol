@@ -1,6 +1,6 @@
 [Protocol]
-exec=meowcoin-qt '%u'
-protocol=meowcoin
+exec=points-qt '%u'
+protocol=points
 input=none
 output=none
 helper=true

@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
 env
-if [[ -e /etc/meowcoin/meowcoind.conf ]]; then
-    source /etc/meowcoin/meowcoind.conf
-    /home/meowcoin/meowcoind \
+if [[ -e /etc/points/pointsd.conf ]]; then
+    source /etc/points/pointsd.conf
+    /home/points/pointsd \
       -server=$SERVER \
       -printtoconsole=$PRINTTOCONSOLE \
       -maxconnections=$MAXCONNECTIONS \
@@ -37,7 +37,7 @@ else
     $SERVER_ARG = "-server=$SERVER"
   fi
 
-  /home/meowcoin/meowcoind \
+  /home/points/pointsd \
     $SERVER_ARG \
     -printtoconsole=$PRINTTOCONSOLE \
     -maxconnections=$MAXCONNECTIONS \

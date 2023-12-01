@@ -1,13 +1,13 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "guiutil.h"
 
-#include "meowcoinaddressvalidator.h"
-#include "meowcoinunits.h"
+#include "pointsaddressvalidator.h"
+#include "pointsunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -213,11 +213,11 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a meowcoin address (e.g. %1)").arg(
+    widget->setPlaceholderText(QObject::tr("Enter a points address (e.g. %1)").arg(
         QString::fromStdString(DummyAddress(GetParams()))));
 #endif
-    widget->setValidator(new MeowcoinAddressEntryValidator(parent));
-    widget->setCheckValidator(new MeowcoinAddressCheckValidator(parent));
+    widget->setValidator(new PointsAddressEntryValidator(parent));
+    widget->setCheckValidator(new PointsAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -229,10 +229,10 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseMeowcoinURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parsePointsURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no meowcoin: URI
-    if(!uri.isValid() || uri.scheme() != QString("meowcoin"))
+    // return if URI is not valid or is no points: URI
+    if(!uri.isValid() || uri.scheme() != QString("points"))
         return false;
 
     SendCoinsRecipient rv;
@@ -272,7 +272,7 @@ bool parseMeowcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!MeowcoinUnits::parse(MeowcoinUnits::MEWC, i->second, &rv.amount))
+                if(!PointsUnits::parse(PointsUnits::PNT, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -290,28 +290,28 @@ bool parseMeowcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseMeowcoinURI(QString uri, SendCoinsRecipient *out)
+bool parsePointsURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert meowcoin:// to meowcoin:
+    // Convert points:// to points:
     //
-    //    Cannot handle this later, because meowcoin:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because points:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("meowcoin://", Qt::CaseInsensitive))
+    if(uri.startsWith("points://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 10, "meowcoin:");
+        uri.replace(0, 10, "points:");
     }
     QUrl uriInstance(uri);
-    return parseMeowcoinURI(uriInstance, out);
+    return parsePointsURI(uriInstance, out);
 }
 
-QString formatMeowcoinURI(const SendCoinsRecipient &info)
+QString formatPointsURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("meowcoin:%1").arg(info.address);
+    QString ret = QString("points:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(MeowcoinUnits::format(MeowcoinUnits::MEWC, info.amount, false, MeowcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(PointsUnits::format(PointsUnits::PNT, info.amount, false, PointsUnits::separatorNever));
         paramCount++;
     }
  
@@ -501,11 +501,11 @@ void openDebugLogfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathDebug)));
 }
 
-bool openMeowcoinConf()
+bool openPointsConf()
 {
     fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", MEOWCOIN_CONF_FILENAME));
 
-    /* Open meowcoin.conf with the associated application */
+    /* Open points.conf with the associated application */
     if (fs::exists(pathConfig))
         return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -715,15 +715,15 @@ fs::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Meowcoin.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Points.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Meowcoin (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Meowcoin (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Points (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Points (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Meowcoin*.lnk
+    // check for Points*.lnk
     return fs::exists(StartupShortcutPath());
 }
 
@@ -813,8 +813,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "meowcoin.desktop";
-    return GetAutostartDir() / strprintf("meowcoin-%s.lnk", chain);
+        return GetAutostartDir() / "points.desktop";
+    return GetAutostartDir() / strprintf("points-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -854,13 +854,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a meowcoin.desktop file to the autostart directory:
+        // Write a points.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Meowcoin\n";
+            optionFile << "Name=Points\n";
         else
-            optionFile << strprintf("Name=Meowcoin (%s)\n", chain);
+            optionFile << strprintf("Name=Points (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", gArgs.GetBoolArg("-testnet", false), gArgs.GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -886,7 +886,7 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
         return nullptr;
     }
     
-    // loop through the list of startup items and try to find the meowcoin app
+    // loop through the list of startup items and try to find the points app
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
@@ -920,38 +920,38 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef meowcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    if (meowcoinAppUrl == nullptr) {
+    CFURLRef pointsAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    if (pointsAppUrl == nullptr) {
         return false;
     }
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, meowcoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, pointsAppUrl);
 
-    CFRelease(meowcoinAppUrl);
+    CFRelease(pointsAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef meowcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    if (meowcoinAppUrl == nullptr) {
+    CFURLRef pointsAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    if (pointsAppUrl == nullptr) {
         return false;
     }
     
     LSSharedFileListRef loginItems = LSSharedFileListCreate(nullptr, kLSSharedFileListSessionLoginItems, nullptr);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, meowcoinAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, pointsAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add meowcoin app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, meowcoinAppUrl, nullptr, nullptr);
+        // add points app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, nullptr, nullptr, pointsAppUrl, nullptr, nullptr);
     }
     else if(!fAutoStart && foundItem) {
         // remove item
         LSSharedFileListItemRemove(loginItems, foundItem);
     }
     
-    CFRelease(meowcoinAppUrl);
+    CFRelease(pointsAppUrl);
     return true;
 }
 #pragma GCC diagnostic pop

@@ -3,9 +3,9 @@ Release Process
 
 Before every release candidate:
 
-* Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/JustAResearcher/Meowcoin/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/JustAResearcher/Points/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/JustAResearcher/Meowcoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/JustAResearcher/Points/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
 Before every minor and major release:
 
@@ -21,7 +21,7 @@ Before every minor and major release:
 
 Before every major release:
 
-* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/JustAResearcher/Meowcoin/pull/7415) for an example.
+* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/JustAResearcher/Points/pull/7415) for an example.
 * Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
 * Update `src/chainparams.cpp` chainTxData with statistics about the transaction count and rate.
 * Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
@@ -33,12 +33,12 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/meowcoin-core/gitian.sigs.git
-    git clone https://github.com/meowcoin-core/meowcoin-detached-sigs.git
+    git clone https://github.com/points-core/gitian.sigs.git
+    git clone https://github.com/points-core/points-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/JustAResearcher/Meowcoin.git
+    git clone https://github.com/JustAResearcher/Points.git
 
-### Meowcoin maintainers/release engineers, suggestion for writing release notes
+### Points maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -61,7 +61,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./meowcoin
+    pushd ./points
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -95,7 +95,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../meowcoin/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../points/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -103,50 +103,50 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url meowcoin=/path/to/meowcoin,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url points=/path/to/points,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Meowcoin Core for Linux, Windows, and OS X:
+### Build and sign Points Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --num-make 2 --memory 3000 --commit meowcoin=v${VERSION} ../meowcoin/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/meowcoin-*.tar.gz build/out/src/meowcoin-*.tar.gz ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit points=v${VERSION} ../points/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/points-*.tar.gz build/out/src/points-*.tar.gz ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit meowcoin=v${VERSION} ../meowcoin/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/meowcoin-*-win-unsigned.tar.gz inputs/meowcoin-win-unsigned.tar.gz
-    mv build/out/meowcoin-*.zip build/out/meowcoin-*.exe ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit points=v${VERSION} ../points/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/points-*-win-unsigned.tar.gz inputs/points-win-unsigned.tar.gz
+    mv build/out/points-*.zip build/out/points-*.exe ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit meowcoin=v${VERSION} ../meowcoin/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/meowcoin-*-osx-unsigned.tar.gz inputs/meowcoin-osx-unsigned.tar.gz
-    mv build/out/meowcoin-*.tar.gz build/out/meowcoin-*.dmg ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit points=v${VERSION} ../points/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/points-*-osx-unsigned.tar.gz inputs/points-osx-unsigned.tar.gz
+    mv build/out/points-*.tar.gz build/out/points-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`meowcoin-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`meowcoin-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`meowcoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `meowcoin-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`meowcoin-${VERSION}-osx-unsigned.dmg`, `meowcoin-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`points-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`points-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`points-${VERSION}-win[32|64]-setup-unsigned.exe`, `points-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`points-${VERSION}-osx-unsigned.dmg`, `points-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import meowcoin/contrib/gitian-keys/*.pgp
+    gpg --import points/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../meowcoin/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../meowcoin/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../meowcoin/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../points/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../points/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../points/contrib/gitian-descriptors/gitian-osx.yml
     popd
 
 ### Next steps:
@@ -167,22 +167,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer meowcoin-osx-unsigned.tar.gz to osx for signing
-    tar xf meowcoin-osx-unsigned.tar.gz
+    transfer points-osx-unsigned.tar.gz to osx for signing
+    tar xf points-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf meowcoin-win-unsigned.tar.gz
+    tar xf points-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/meowcoin-detached-sigs
+    cd ~/points-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -195,25 +195,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [meowcoin-detached-sigs](https://github.com/meowcoin-core/meowcoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [points-detached-sigs](https://github.com/points-core/points-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../meowcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/meowcoin-osx-signed.dmg ../meowcoin-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../points/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../points/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/points-osx-signed.dmg ../points-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../meowcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../meowcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../meowcoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/meowcoin-*win64-setup.exe ../meowcoin-${VERSION}-win64-setup.exe
-    mv build/out/meowcoin-*win32-setup.exe ../meowcoin-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../points/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../points/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../points/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/points-*win64-setup.exe ../points-${VERSION}-win64-setup.exe
+    mv build/out/points-*win32-setup.exe ../points-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -235,23 +235,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-meowcoin-${VERSION}-aarch64-linux-gnu.tar.gz
-meowcoin-${VERSION}-arm-linux-gnueabihf.tar.gz
-meowcoin-${VERSION}-i686-pc-linux-gnu.tar.gz
-meowcoin-${VERSION}-x86_64-linux-gnu.tar.gz
-meowcoin-${VERSION}-osx64.tar.gz
-meowcoin-${VERSION}-osx.dmg
-meowcoin-${VERSION}.tar.gz
-meowcoin-${VERSION}-win32-setup.exe
-meowcoin-${VERSION}-win32.zip
-meowcoin-${VERSION}-win64-setup.exe
-meowcoin-${VERSION}-win64.zip
+points-${VERSION}-aarch64-linux-gnu.tar.gz
+points-${VERSION}-arm-linux-gnueabihf.tar.gz
+points-${VERSION}-i686-pc-linux-gnu.tar.gz
+points-${VERSION}-x86_64-linux-gnu.tar.gz
+points-${VERSION}-osx64.tar.gz
+points-${VERSION}-osx.dmg
+points-${VERSION}.tar.gz
+points-${VERSION}-win32-setup.exe
+points-${VERSION}-win32.zip
+points-${VERSION}-win64-setup.exe
+points-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the meowcoincoin.net server, nor put them in the torrent*.
+space *do not upload these to the pointscoin.net server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -261,47 +261,47 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the meowcoincoin.net server
-  into `/var/www/bin/meowcoin-core-${VERSION}`
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the pointscoin.net server
+  into `/var/www/bin/points-core-${VERSION}`
 
 - A `.torrent` will appear in the directory after a few minutes. Optionally help seed this torrent. To get the `magnet:` URI use:
 ```bash
 transmission-show -m <torrent file>
 ```
 Insert the magnet URI into the announcement sent to mailing lists. This permits
-people without access to `meowcoincoin.net` to download the binary distribution.
+people without access to `pointscoin.net` to download the binary distribution.
 Also put it into the `optional_magnetlink:` slot in the YAML file for
-meowcoincoin.net (see below for meowcoincoin.net update instructions).
+pointscoin.net (see below for pointscoin.net update instructions).
 
-- Update meowcoincoin.net version
+- Update pointscoin.net version
 
-  - First, check to see if the Meowcoin.org maintainers have prepared a
-    release: https://github.com/meowcoin-dot-org/meowcoincoin.net/labels/Releases
+  - First, check to see if the Points.org maintainers have prepared a
+    release: https://github.com/points-dot-org/pointscoin.net/labels/Releases
 
       - If they have, it will have previously failed their Travis CI
         checks because the final release files weren't uploaded.
         Trigger a Travis CI rebuild---if it passes, merge.
 
-  - If they have not prepared a release, follow the Meowcoin.org release
-    instructions: https://github.com/meowcoin-dot-org/meowcoincoin.net#release-notes
+  - If they have not prepared a release, follow the Points.org release
+    instructions: https://github.com/points-dot-org/pointscoin.net#release-notes
 
   - After the pull request is merged, the website will automatically show the newest version within 15 minutes, as well
     as update the OS download links. Ping @saivann/@harding (saivann/harding on Freenode) in case anything goes wrong
 
 - Announce the release:
 
-  - meowcoin-dev and meowcoin-core-dev mailing list
+  - points-dev and points-core-dev mailing list
 
-  - Meowcoin Core announcements list https://mewccrypto.com/en/list/announcements/join/
+  - Points Core announcements list https://pntcrypto.com/en/list/announcements/join/
 
-  - Update title of #meowcoin on Freenode IRC
+  - Update title of #points on Freenode IRC
 
-  - Optionally twitter, reddit /r/Meowcoin, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/Points, ... but this will usually sort out itself
 
-  - Notify BlueMatt so that he can start building [the PPAs](https://launchpad.net/~meowcoin/+archive/ubuntu/meowcoin)
+  - Notify BlueMatt so that he can start building [the PPAs](https://launchpad.net/~points/+archive/ubuntu/points)
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/JustAResearcher/Meowcoin/releases/new) with a link to the arcMEOWCOIND release notes.
+  - Create a [new GitHub release](https://github.com/JustAResearcher/Points/releases/new) with a link to the arcMEOWCOIND release notes.
 
   - Celebrate

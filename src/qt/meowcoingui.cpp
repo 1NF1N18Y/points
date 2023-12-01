@@ -4,12 +4,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/meowcoin-config.h"
+#include "config/points-config.h"
 #endif
 
-#include "meowcoingui.h"
+#include "pointsgui.h"
 
-#include "meowcoinunits.h"
+#include "pointsunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -90,7 +90,7 @@ using namespace boost::placeholders;
 #define QTversionPreFiveEleven
 #endif
 
-const std::string MeowcoinGUI::DEFAULT_UIPLATFORM =
+const std::string PointsGUI::DEFAULT_UIPLATFORM =
 #if defined(Q_OS_MAC)
         "macosx"
 #elif defined(Q_OS_WIN)
@@ -102,9 +102,9 @@ const std::string MeowcoinGUI::DEFAULT_UIPLATFORM =
 
 /** Display name for default wallet name. Uses tilde to avoid name
  * collisions in the future with additional wallets */
-const QString MeowcoinGUI::DEFAULT_WALLET = "~Default";
+const QString PointsGUI::DEFAULT_WALLET = "~Default";
 
-MeowcoinGUI::MeowcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
+PointsGUI::PointsGUI(const PlatformStyle *_platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
     QMainWindow(parent),
     enableWallet(false),
     clientModel(0),
@@ -330,7 +330,7 @@ MeowcoinGUI::MeowcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle
 #endif
 }
 
-MeowcoinGUI::~MeowcoinGUI()
+PointsGUI::~PointsGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -347,7 +347,7 @@ MeowcoinGUI::~MeowcoinGUI()
     delete rpcConsole;
 }
 
-void MeowcoinGUI::loadFonts()
+void PointsGUI::loadFonts()
 {
     QFontDatabase::addApplicationFont(":/fonts/opensans-bold");
     QFontDatabase::addApplicationFont(":/fonts/opensans-bolditalic");
@@ -362,7 +362,7 @@ void MeowcoinGUI::loadFonts()
 }
 
 
-void MeowcoinGUI::createActions()
+void PointsGUI::createActions()
 {
     QFont font = QFont();
     font.setPixelSize(22);
@@ -383,7 +383,7 @@ void MeowcoinGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(platformStyle->SingleColorIconOnOff(":/icons/send_selected", ":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a meowcoin address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a points address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -395,7 +395,7 @@ void MeowcoinGUI::createActions()
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
     receiveCoinsAction = new QAction(platformStyle->SingleColorIconOnOff(":/icons/receiving_addresses_selected", ":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and meowcoin: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and points: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
@@ -416,7 +416,7 @@ void MeowcoinGUI::createActions()
 
     /** MEOWCOIN START */
     transferAssetAction = new QAction(platformStyle->SingleColorIconOnOff(":/icons/asset_transfer_selected", ":/icons/asset_transfer"), tr("&Transfer Assets"), this);
-    transferAssetAction->setStatusTip(tr("Transfer assets to MEWC addresses"));
+    transferAssetAction->setStatusTip(tr("Transfer assets to PNT addresses"));
     transferAssetAction->setToolTip(transferAssetAction->statusTip());
     transferAssetAction->setCheckable(true);
     transferAssetAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
@@ -526,9 +526,9 @@ void MeowcoinGUI::createActions()
     getMnemonicAction->setStatusTip(tr("View the mnemonic phrase of the wallet"));
 
     signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your meowcoin addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your points addresses to prove you own them"));
     verifyMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/verify"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified meowcoin addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified points addresses"));
 
     openInformationAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Information"), this);
     openInformationAction->setStatusTip(tr("Show diagnostic information"));
@@ -551,11 +551,11 @@ void MeowcoinGUI::createActions()
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a Meowcoin: URI or payment request"));
+    openAction->setStatusTip(tr("Open a Points: URI or payment request"));
 
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible meowcoin command-line options").arg(tr(PACKAGE_NAME)));
+    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible points command-line options").arg(tr(PACKAGE_NAME)));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -593,7 +593,7 @@ void MeowcoinGUI::createActions()
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
 }
 
-void MeowcoinGUI::createMenuBar()
+void PointsGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -650,7 +650,7 @@ void MeowcoinGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void MeowcoinGUI::createToolBars()
+void PointsGUI::createToolBars()
 {
     if(walletFrame)
     {
@@ -663,7 +663,7 @@ void MeowcoinGUI::createToolBars()
         toolbarWidget->setStyleSheet(widgetStyleSheet.arg(platformStyle->LightBlueColor().name(), platformStyle->DarkBlueColor().name()));
 
         QLabel* label = new QLabel();
-        label->setPixmap(QPixmap::fromImage(QImage(":/icons/meowcoincointext")));
+        label->setPixmap(QPixmap::fromImage(QImage(":/icons/pointscointext")));
         label->setContentsMargins(0,0,0,50);
         label->setStyleSheet(".QLabel{background-color: transparent;}");
         /** MEOWCOIN END */
@@ -715,11 +715,11 @@ void MeowcoinGUI::createToolBars()
 
         overviewAction->setChecked(true);
 
-        QVBoxLayout* meowcoinLabelLayout = new QVBoxLayout(toolbarWidget);
-        meowcoinLabelLayout->addWidget(label);
-        meowcoinLabelLayout->addWidget(toolbar);
-        meowcoinLabelLayout->setDirection(QBoxLayout::TopToBottom);
-        meowcoinLabelLayout->addStretch(1);
+        QVBoxLayout* pointsLabelLayout = new QVBoxLayout(toolbarWidget);
+        pointsLabelLayout->addWidget(label);
+        pointsLabelLayout->addWidget(toolbar);
+        pointsLabelLayout->setDirection(QBoxLayout::TopToBottom);
+        pointsLabelLayout->addStretch(1);
 
         QString mainWalletWidgetStyle = QString(".QWidget{background-color: %1}").arg(platformStyle->MainBackGroundColor().name());
         QWidget* mainWalletWidget = new QWidget();
@@ -759,7 +759,7 @@ void MeowcoinGUI::createToolBars()
         labelCurrentMarket->setAlignment(Qt::AlignVCenter);
         labelCurrentMarket->setStyleSheet(STRING_LABEL_COLOR);
         labelCurrentMarket->setFont(currentMarketFont);
-        labelCurrentMarket->setText(tr("Meowcoin Market Price"));
+        labelCurrentMarket->setText(tr("Points Market Price"));
 
         QString currentPriceStyleSheet = ".QLabel{color: %1;}";
         labelCurrentPrice->setContentsMargins(25,0,0,0);
@@ -769,7 +769,7 @@ void MeowcoinGUI::createToolBars()
         labelCurrentPrice->setFont(currentMarketFont);
 
         QLabel* labelBtcNeox = new QLabel();
-        labelBtcNeox->setText("BTC / MEWC");
+        labelBtcNeox->setText("BTC / PNT");
         labelBtcNeox->setContentsMargins(15,0,0,0);
         labelBtcNeox->setFixedHeight(75);
         labelBtcNeox->setAlignment(Qt::AlignVCenter);
@@ -866,7 +866,7 @@ void MeowcoinGUI::createToolBars()
         getPriceInfo();
         /** MEOWCOIN END */
 
-        // Get the latest Meowcoin release and let the user know if they are using the latest version
+        // Get the latest Points release and let the user know if they are using the latest version
         // Network request code for the header widget
         QObject::connect(networkVersionManager, &QNetworkAccessManager::finished,
                          this, [=](QNetworkReply *reply) {
@@ -963,7 +963,7 @@ void MeowcoinGUI::createToolBars()
     }
 }
 
-void MeowcoinGUI::setClientModel(ClientModel *_clientModel)
+void PointsGUI::setClientModel(ClientModel *_clientModel)
 {
     this->clientModel = _clientModel;
     if(_clientModel)
@@ -1026,7 +1026,7 @@ void MeowcoinGUI::setClientModel(ClientModel *_clientModel)
 }
 
 #ifdef ENABLE_WALLET
-bool MeowcoinGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool PointsGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     if(!walletFrame)
         return false;
@@ -1034,14 +1034,14 @@ bool MeowcoinGUI::addWallet(const QString& name, WalletModel *walletModel)
     return walletFrame->addWallet(name, walletModel);
 }
 
-bool MeowcoinGUI::setCurrentWallet(const QString& name)
+bool PointsGUI::setCurrentWallet(const QString& name)
 {
     if(!walletFrame)
         return false;
     return walletFrame->setCurrentWallet(name);
 }
 
-void MeowcoinGUI::removeAllWallets()
+void PointsGUI::removeAllWallets()
 {
     if(!walletFrame)
         return;
@@ -1050,7 +1050,7 @@ void MeowcoinGUI::removeAllWallets()
 }
 #endif // ENABLE_WALLET
 
-void MeowcoinGUI::setWalletActionsEnabled(bool enabled)
+void PointsGUI::setWalletActionsEnabled(bool enabled)
 {
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
@@ -1079,7 +1079,7 @@ void MeowcoinGUI::setWalletActionsEnabled(bool enabled)
     /** MEOWCOIN END */
 }
 
-void MeowcoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
+void PointsGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -1092,7 +1092,7 @@ void MeowcoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-void MeowcoinGUI::createTrayIconMenu()
+void PointsGUI::createTrayIconMenu()
 {
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-Mac OSes)
@@ -1129,7 +1129,7 @@ void MeowcoinGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void MeowcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void PointsGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -1139,7 +1139,7 @@ void MeowcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void MeowcoinGUI::optionsClicked()
+void PointsGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -1149,7 +1149,7 @@ void MeowcoinGUI::optionsClicked()
     dlg.exec();
 }
 
-void MeowcoinGUI::aboutClicked()
+void PointsGUI::aboutClicked()
 {
     if(!clientModel)
         return;
@@ -1158,7 +1158,7 @@ void MeowcoinGUI::aboutClicked()
     dlg.exec();
 }
 
-void MeowcoinGUI::showDebugWindow()
+void PointsGUI::showDebugWindow()
 {
     rpcConsole->showNormal();
     rpcConsole->show();
@@ -1166,43 +1166,43 @@ void MeowcoinGUI::showDebugWindow()
     rpcConsole->activateWindow();
 }
 
-void MeowcoinGUI::showDebugWindowActivateInformation()
+void PointsGUI::showDebugWindowActivateInformation()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_INFO);
     showDebugWindow();
 }
 
-void MeowcoinGUI::showDebugWindowActivateConsole()
+void PointsGUI::showDebugWindowActivateConsole()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_CONSOLE);
     showDebugWindow();
 }
 
-void MeowcoinGUI::showDebugWindowPeerList()
+void PointsGUI::showDebugWindowPeerList()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_PEERS);
     showDebugWindow();
 }
 
-void MeowcoinGUI::showDebugWindowNetworkTraffic()
+void PointsGUI::showDebugWindowNetworkTraffic()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_GRAPH);
     showDebugWindow();
 }
 
-void MeowcoinGUI::showWalletRepair()
+void PointsGUI::showWalletRepair()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_REPAIR);
     showDebugWindow();
 }
 
-void MeowcoinGUI::showHelpMessageClicked()
+void PointsGUI::showHelpMessageClicked()
 {
     helpMessageDialog->show();
 }
 
 #ifdef ENABLE_WALLET
-void MeowcoinGUI::openClicked()
+void PointsGUI::openClicked()
 {
     OpenURIDialog dlg(this);
     if(dlg.exec())
@@ -1211,60 +1211,60 @@ void MeowcoinGUI::openClicked()
     }
 }
 
-void MeowcoinGUI::gotoOverviewPage()
+void PointsGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void MeowcoinGUI::gotoHistoryPage()
+void PointsGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void MeowcoinGUI::gotoReceiveCoinsPage()
+void PointsGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void MeowcoinGUI::gotoSendCoinsPage(QString addr)
+void PointsGUI::gotoSendCoinsPage(QString addr)
 {
     sendCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void MeowcoinGUI::gotoSignMessageTab(QString addr)
+void PointsGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void MeowcoinGUI::gotoVerifyMessageTab(QString addr)
+void PointsGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 
 /** MEOWCOIN START */
-void MeowcoinGUI::gotoAssetsPage()
+void PointsGUI::gotoAssetsPage()
 {
     transferAssetAction->setChecked(true);
     if (walletFrame) walletFrame->gotoAssetsPage();
 };
 
-void MeowcoinGUI::gotoCreateAssetsPage()
+void PointsGUI::gotoCreateAssetsPage()
 {
     createAssetAction->setChecked(true);
     if (walletFrame) walletFrame->gotoCreateAssetsPage();
 };
 
-void MeowcoinGUI::gotoManageAssetsPage()
+void PointsGUI::gotoManageAssetsPage()
 {
     manageAssetAction->setChecked(true);
     if (walletFrame) walletFrame->gotoManageAssetsPage();
 };
 
-void MeowcoinGUI::gotoRestrictedAssetsPage()
+void PointsGUI::gotoRestrictedAssetsPage()
 {
     restrictedAssetAction->setChecked(true);
     if (walletFrame) walletFrame->gotoRestrictedAssetsPage();
@@ -1272,7 +1272,7 @@ void MeowcoinGUI::gotoRestrictedAssetsPage()
 /** MEOWCOIN END */
 #endif // ENABLE_WALLET
 
-void MeowcoinGUI::updateNetworkState()
+void PointsGUI::updateNetworkState()
 {
     int count = clientModel->getNumConnections();
     QString icon;
@@ -1288,7 +1288,7 @@ void MeowcoinGUI::updateNetworkState()
     QString tooltip;
 
     if (clientModel->getNetworkActive()) {
-        tooltip = tr("%n active connection(s) to meowcoin network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
+        tooltip = tr("%n active connection(s) to points network", "", count) + QString(".<br>") + tr("Click to disable network activity.");
     } else {
         tooltip = tr("Network activity disabled.") + QString("<br>") + tr("Click to enable network activity again.");
         icon = ":/icons/network_disabled";
@@ -1301,17 +1301,17 @@ void MeowcoinGUI::updateNetworkState()
     connectionsControl->setPixmap(platformStyle->SingleColorIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
 }
 
-void MeowcoinGUI::setNumConnections(int count)
+void PointsGUI::setNumConnections(int count)
 {
     updateNetworkState();
 }
 
-void MeowcoinGUI::setNetworkActive(bool networkActive)
+void PointsGUI::setNetworkActive(bool networkActive)
 {
     updateNetworkState();
 }
 
-void MeowcoinGUI::updateHeadersSyncProgressLabel()
+void PointsGUI::updateHeadersSyncProgressLabel()
 {
     int64_t headersTipTime = clientModel->getHeaderTipTime();
     int headersTipHeight = clientModel->getHeaderTipHeight();
@@ -1320,7 +1320,7 @@ void MeowcoinGUI::updateHeadersSyncProgressLabel()
         progressBarLabel->setText(tr("Syncing Headers (%1%)...").arg(QString::number(100.0 / (headersTipHeight+estHeadersLeft)*headersTipHeight, 'f', 1)));
 }
 
-void MeowcoinGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
+void PointsGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
 {
     if (modalOverlay)
     {
@@ -1431,9 +1431,9 @@ void MeowcoinGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVe
     progressBar->setToolTip(tooltip);
 }
 
-void MeowcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void PointsGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Meowcoin"); // default title
+    QString strTitle = tr("Points"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1459,7 +1459,7 @@ void MeowcoinGUI::message(const QString &title, const QString &message, unsigned
             break;
         }
     }
-    // Append title to "Meowcoin - "
+    // Append title to "Points - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 
@@ -1490,7 +1490,7 @@ void MeowcoinGUI::message(const QString &title, const QString &message, unsigned
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void MeowcoinGUI::changeEvent(QEvent *e)
+void PointsGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -1509,7 +1509,7 @@ void MeowcoinGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void MeowcoinGUI::closeEvent(QCloseEvent *event)
+void PointsGUI::closeEvent(QCloseEvent *event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if(clientModel && clientModel->getOptionsModel())
@@ -1532,7 +1532,7 @@ void MeowcoinGUI::closeEvent(QCloseEvent *event)
 #endif
 }
 
-void MeowcoinGUI::showEvent(QShowEvent *event)
+void PointsGUI::showEvent(QShowEvent *event)
 {
     // enable the debug window when the main window shows up
     openRPCConsoleAction->setEnabled(true);
@@ -1541,14 +1541,14 @@ void MeowcoinGUI::showEvent(QShowEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-void MeowcoinGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label, const QString& assetName)
+void PointsGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label, const QString& assetName)
 {
     // On new transaction, make an info balloon
     QString msg = tr("Date: %1\n").arg(date);
-    if (assetName == "MEWC")
-        msg += tr("Amount: %1\n").arg(MeowcoinUnits::formatWithUnit(unit, amount, true));
+    if (assetName == "PNT")
+        msg += tr("Amount: %1\n").arg(PointsUnits::formatWithUnit(unit, amount, true));
     else
-        msg += tr("Amount: %1\n").arg(MeowcoinUnits::formatWithCustomName(assetName, amount, MAX_ASSET_UNITS, true));
+        msg += tr("Amount: %1\n").arg(PointsUnits::formatWithCustomName(assetName, amount, MAX_ASSET_UNITS, true));
 
     msg += tr("Type: %1\n").arg(type);
 
@@ -1560,12 +1560,12 @@ void MeowcoinGUI::incomingTransaction(const QString& date, int unit, const CAmou
              msg, CClientUIInterface::MSG_INFORMATION);
 }
 
-void MeowcoinGUI::checkAssets()
+void PointsGUI::checkAssets()
 {
     // Check that status of HIP2 and activate the assets icon if it is active
     if(AreAssetsDeployed()) {
         transferAssetAction->setDisabled(false);
-        transferAssetAction->setToolTip(tr("Transfer assets to MEWC addresses"));
+        transferAssetAction->setToolTip(tr("Transfer assets to PNT addresses"));
         createAssetAction->setDisabled(false);
         createAssetAction->setToolTip(tr("Create new main/sub/unique assets"));
         manageAssetAction->setDisabled(false);
@@ -1589,14 +1589,14 @@ void MeowcoinGUI::checkAssets()
 }
 #endif // ENABLE_WALLET
 
-void MeowcoinGUI::dragEnterEvent(QDragEnterEvent *event)
+void PointsGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void MeowcoinGUI::dropEvent(QDropEvent *event)
+void PointsGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -1608,7 +1608,7 @@ void MeowcoinGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-bool MeowcoinGUI::eventFilter(QObject *object, QEvent *event)
+bool PointsGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -1621,7 +1621,7 @@ bool MeowcoinGUI::eventFilter(QObject *object, QEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-bool MeowcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
+bool PointsGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     // URI has to be valid
     if (walletFrame && walletFrame->handlePaymentRequest(recipient))
@@ -1633,7 +1633,7 @@ bool MeowcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
     return false;
 }
 
-void MeowcoinGUI::setHDStatus(int hdEnabled)
+void PointsGUI::setHDStatus(int hdEnabled)
 {
     QString icon = "";
     if (hdEnabled == HD_DISABLED) {
@@ -1651,7 +1651,7 @@ void MeowcoinGUI::setHDStatus(int hdEnabled)
     labelWalletHDStatusIcon->setEnabled(hdEnabled);
 }
 
-void MeowcoinGUI::setEncryptionStatus(int status)
+void PointsGUI::setEncryptionStatus(int status)
 {
     switch(status)
     {
@@ -1683,7 +1683,7 @@ void MeowcoinGUI::setEncryptionStatus(int status)
 }
 #endif // ENABLE_WALLET
 
-void MeowcoinGUI::showNormalIfMinimized(bool fToggleHidden)
+void PointsGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     if(!clientModel)
         return;
@@ -1708,12 +1708,12 @@ void MeowcoinGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void MeowcoinGUI::toggleHidden()
+void PointsGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void MeowcoinGUI::detectShutdown()
+void PointsGUI::detectShutdown()
 {
     if (ShutdownRequested())
     {
@@ -1723,7 +1723,7 @@ void MeowcoinGUI::detectShutdown()
     }
 }
 
-void MeowcoinGUI::showProgress(const QString &title, int nProgress)
+void PointsGUI::showProgress(const QString &title, int nProgress)
 {
     if (nProgress == 0)
     {
@@ -1746,7 +1746,7 @@ void MeowcoinGUI::showProgress(const QString &title, int nProgress)
         progressDialog->setValue(nProgress);
 }
 
-void MeowcoinGUI::setTrayIconVisible(bool fHideTrayIcon)
+void PointsGUI::setTrayIconVisible(bool fHideTrayIcon)
 {
     if (trayIcon)
     {
@@ -1754,13 +1754,13 @@ void MeowcoinGUI::setTrayIconVisible(bool fHideTrayIcon)
     }
 }
 
-void MeowcoinGUI::showModalOverlay()
+void PointsGUI::showModalOverlay()
 {
     if (modalOverlay && (progressBar->isVisible() || modalOverlay->isLayerVisible()))
         modalOverlay->toggleVisibility();
 }
 
-static bool ThreadSafeMessageBox(MeowcoinGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(PointsGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -1777,7 +1777,7 @@ static bool ThreadSafeMessageBox(MeowcoinGUI *gui, const std::string& message, c
     return ret;
 }
 
-static bool ThreadSafeMnemonic(MeowcoinGUI *gui, unsigned int style)
+static bool ThreadSafeMnemonic(PointsGUI *gui, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -1790,7 +1790,7 @@ static bool ThreadSafeMnemonic(MeowcoinGUI *gui, unsigned int style)
     return ret;
 }
 
-void MeowcoinGUI::subscribeToCoreSignals()
+void PointsGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
@@ -1798,7 +1798,7 @@ void MeowcoinGUI::subscribeToCoreSignals()
     uiInterface.ShowMnemonic.connect(boost::bind(ThreadSafeMnemonic, this, _1));
 }
 
-void MeowcoinGUI::unsubscribeFromCoreSignals()
+void PointsGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
@@ -1806,7 +1806,7 @@ void MeowcoinGUI::unsubscribeFromCoreSignals()
     uiInterface.ShowMnemonic.disconnect(boost::bind(ThreadSafeMnemonic, this, _1));
 }
 
-void MeowcoinGUI::toggleNetworkActive()
+void PointsGUI::toggleNetworkActive()
 {
     if (clientModel) {
         clientModel->setNetworkActive(!clientModel->getNetworkActive());
@@ -1814,7 +1814,7 @@ void MeowcoinGUI::toggleNetworkActive()
 }
 
 /** Get restart command-line parameters and request restart */
-void MeowcoinGUI::handleRestart(QStringList args)
+void PointsGUI::handleRestart(QStringList args)
 {
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
@@ -1826,15 +1826,15 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
 {
     createContextMenu(platformStyle);
     setToolTip(tr("Unit to show amounts in. Click to select another unit."));
-    QList<MeowcoinUnits::Unit> units = MeowcoinUnits::availableUnits();
+    QList<PointsUnits::Unit> units = PointsUnits::availableUnits();
     int max_width = 0;
     const QFontMetrics fm(font());
-    for (const MeowcoinUnits::Unit unit : units)
+    for (const PointsUnits::Unit unit : units)
     {
     	#ifndef QTversionPreFiveEleven
-        	max_width = qMax(max_width, fm.horizontalAdvance(MeowcoinUnits::name(unit)));
+        	max_width = qMax(max_width, fm.horizontalAdvance(PointsUnits::name(unit)));
         #else
-        	max_width = qMax(max_width, fm.width(MeowcoinUnits::name(unit)));
+        	max_width = qMax(max_width, fm.width(PointsUnits::name(unit)));
         #endif
     }
     setMinimumSize(max_width, 0);
@@ -1852,9 +1852,9 @@ void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event)
 void UnitDisplayStatusBarControl::createContextMenu(const PlatformStyle *platformStyle)
 {
     menu = new QMenu(this);
-    for (MeowcoinUnits::Unit u : MeowcoinUnits::availableUnits())
+    for (PointsUnits::Unit u : PointsUnits::availableUnits())
     {
-        QAction *menuAction = new QAction(QString(MeowcoinUnits::name(u)), this);
+        QAction *menuAction = new QAction(QString(PointsUnits::name(u)), this);
         menuAction->setData(QVariant(u));
         menu->addAction(menuAction);
     }
@@ -1880,7 +1880,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *_optionsModel)
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
-    setText(MeowcoinUnits::name(newUnits));
+    setText(PointsUnits::name(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */
@@ -1899,22 +1899,22 @@ void UnitDisplayStatusBarControl::onMenuSelection(QAction* action)
     }
 }
 
-void MeowcoinGUI::getPriceInfo()
+void PointsGUI::getPriceInfo()
 {
-    request->setUrl(QUrl("https://api.binance.com/api/v1/ticker/price?symbol=MEWCBTC"));
+    request->setUrl(QUrl("https://api.binance.com/api/v1/ticker/price?symbol=PNTBTC"));
     networkManager->get(*request);
 }
 
 #ifdef ENABLE_WALLET
-void MeowcoinGUI::mnemonic()
+void PointsGUI::mnemonic()
 {
         MnemonicDialog dlg(this);
         dlg.exec();
 }
 #endif
 
-void MeowcoinGUI::getLatestVersion()
+void PointsGUI::getLatestVersion()
 {
-    versionRequest->setUrl(QUrl("https://api.github.com/repos/JustAResearcher/Meowcoin/releases"));
+    versionRequest->setUrl(QUrl("https://api.github.com/repos/JustAResearcher/Points/releases"));
     networkVersionManager->get(*versionRequest);
 }

@@ -1,10 +1,10 @@
-package org.meowcoin;
+package org.points;
 
 import com.google.common.io.BaseEncoding;
 import java.util.Arrays;
 import java.math.BigInteger;
 import javax.xml.bind.DatatypeConverter;
-import static org.meowcoin.NativeSecp256k1Util.*;
+import static org.points.NativeSecp256k1Util.*;
 
 /**
  * This class holds test cases defined for testing this library.

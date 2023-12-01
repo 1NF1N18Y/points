@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -215,13 +215,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 namespace
 {
 
-class CMeowcoinAddressVisitor : public boost::static_visitor<bool>
+class CPointsAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CMeowcoinAddress* addr;
+    CPointsAddress* addr;
 
 public:
-    explicit CMeowcoinAddressVisitor(CMeowcoinAddress* addrIn) : addr(addrIn) {}
+    explicit CPointsAddressVisitor(CPointsAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -230,29 +230,29 @@ public:
 
 } // namespace
 
-bool CMeowcoinAddress::Set(const CKeyID& id)
+bool CPointsAddress::Set(const CKeyID& id)
 {
     SetData(GetParams().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CMeowcoinAddress::Set(const CScriptID& id)
+bool CPointsAddress::Set(const CScriptID& id)
 {
     SetData(GetParams().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CMeowcoinAddress::Set(const CTxDestination& dest)
+bool CPointsAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CMeowcoinAddressVisitor(this), dest);
+    return boost::apply_visitor(CPointsAddressVisitor(this), dest);
 }
 
-bool CMeowcoinAddress::IsValid() const
+bool CPointsAddress::IsValid() const
 {
     return IsValid(GetParams());
 }
 
-bool CMeowcoinAddress::IsValid(const CChainParams& params) const
+bool CPointsAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -260,7 +260,7 @@ bool CMeowcoinAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-CTxDestination CMeowcoinAddress::Get() const
+CTxDestination CPointsAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -274,7 +274,7 @@ CTxDestination CMeowcoinAddress::Get() const
         return CNoDestination();
 }
 
-bool CMeowcoinAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CPointsAddress::GetIndexKey(uint160& hashBytes, int& type) const
 {
     if (!IsValid()) {
         return false;
@@ -291,7 +291,7 @@ bool CMeowcoinAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-void CMeowcoinSecret::SetKey(const CKey& vchSecret)
+void CPointsSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(GetParams().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -299,7 +299,7 @@ void CMeowcoinSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey CMeowcoinSecret::GetKey()
+CKey CPointsSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -307,41 +307,41 @@ CKey CMeowcoinSecret::GetKey()
     return ret;
 }
 
-bool CMeowcoinSecret::IsValid() const
+bool CPointsSecret::IsValid() const
 {
     bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
     bool fCorrectVersion = vchVersion == GetParams().Base58Prefix(CChainParams::SECRET_KEY);
     return fExpectedFormat && fCorrectVersion;
 }
 
-bool CMeowcoinSecret::SetString(const char* pszSecret)
+bool CPointsSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool CMeowcoinSecret::SetString(const std::string& strSecret)
+bool CPointsSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }
 
 std::string EncodeDestination(const CTxDestination& dest)
 {
-    CMeowcoinAddress addr(dest);
+    CPointsAddress addr(dest);
     if (!addr.IsValid()) return "";
     return addr.ToString();
 }
 
 CTxDestination DecodeDestination(const std::string& str)
 {
-    return CMeowcoinAddress(str).Get();
+    return CPointsAddress(str).Get();
 }
 
 bool IsValidDestinationString(const std::string& str, const CChainParams& params)
 {
-    return CMeowcoinAddress(str).IsValid(params);
+    return CPointsAddress(str).IsValid(params);
 }
 
 bool IsValidDestinationString(const std::string& str)
 {
-    return CMeowcoinAddress(str).IsValid();
+    return CPointsAddress(str).IsValid();
 }

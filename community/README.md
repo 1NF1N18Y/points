@@ -1,2 +1,2 @@
-# Meowcoin - Community Ideas
+# Points - Community Ideas
 

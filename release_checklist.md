@@ -2,15 +2,15 @@
 
   1. Check PROTOCOL_VERSION in the following location: src/version.h
 
-  2. Check Meowcoind Version in the following locations: configure.ac, src/version.h
+  2. Check Pointsd Version in the following locations: configure.ac, src/version.h
 
   3. All unit and functional tests pass
 
-  4. Check PROTOCOL_VERSION in the iOS app located at meowcoinwallet-ios
+  4. Check PROTOCOL_VERSION in the iOS app located at pointswallet-ios
 
-  5. Check PROTOCOL_VERSION is the android app located at meowcoinwallet-android
+  5. Check PROTOCOL_VERSION is the android app located at pointswallet-android
 
-  6. Check the Javascript stack (meowcoincore) for any block serialization or rpc changes
+  6. Check the Javascript stack (pointscore) for any block serialization or rpc changes
   
   7. Build release notes for all new features and bug fixes
 
@@ -20,9 +20,9 @@
 
 **Post Release :**
 
-  1. Update meowcoincoin.net with correct popup version
+  1. Update pointscoin.net with correct popup version
   
-  2. Update meowcoincoin.net with correct release download urls for each platform (Windows, Linux, Mac)
+  2. Update pointscoin.net with correct release download urls for each platform (Windows, Linux, Mac)
 
 **Build Process**
 

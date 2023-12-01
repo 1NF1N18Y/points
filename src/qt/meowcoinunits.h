@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -48,24 +48,24 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** meowcoin unit definitions. Encapsulates parsing and formatting
+/** points unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class MeowcoinUnits: public QAbstractListModel
+class PointsUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit MeowcoinUnits(QObject *parent);
+    explicit PointsUnits(QObject *parent);
 
-    /** meowcoin units.
+    /** points units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit
     {
-        MEWC,
-        mMEWC,
-        uMEWC
+        PNT,
+        mPNT,
+        uPNT
     };
 
     enum SeparatorStyle
@@ -133,8 +133,8 @@ public:
     static CAmount maxMoney();
 
 private:
-    QList<MeowcoinUnits::Unit> unitlist;
+    QList<PointsUnits::Unit> unitlist;
 };
-typedef MeowcoinUnits::Unit MeowcoinUnit;
+typedef PointsUnits::Unit PointsUnit;
 
 #endif // MEOWCOIN_QT_MEOWCOINUNITS_H

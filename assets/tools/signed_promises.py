@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Script to find signed contract_urls
-# Reads from a Meowcoin node - make sure its running
+# Reads from a Points node - make sure its running
 # Runs through the assets looking for ones with meta data
 # Checks the meta data for contract_url
 # Downloads the documents - (named by asset)
@@ -23,7 +23,7 @@ import json
 import hashlib
 
 
-cli = "meowcoin-cli"
+cli = "points-cli"
 mode =  "-testnet"
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'

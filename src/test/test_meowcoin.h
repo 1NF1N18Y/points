@@ -1,11 +1,11 @@
 // Copyright (c) 2015-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_TEST_test_meowcoin_H
-#define MEOWCOIN_TEST_test_meowcoin_H
+#ifndef MEOWCOIN_TEST_test_points_H
+#define MEOWCOIN_TEST_test_points_H
 
 #include "chainparamsbase.h"
 #include "fs.h"

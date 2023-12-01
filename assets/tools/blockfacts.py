@@ -6,13 +6,13 @@ import subprocess
 import json
 
 
-#Set this to your meowcoin-cli program
-cli = "meowcoin-cli"
+#Set this to your points-cli program
+cli = "points-cli"
 
 #mode = "-testnet"
 mode = ""
 rpc_port = 8766
-#Set this information in your meowcoin.conf file (in datadir, not testnet3)
+#Set this information in your points.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
 

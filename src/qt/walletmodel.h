@@ -162,7 +162,7 @@ public:
     }
 };
 
-/** Interface to meowcoin wallet from Qt view code. */
+/** Interface to points wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

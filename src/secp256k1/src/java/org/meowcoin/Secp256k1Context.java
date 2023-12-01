@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.meowcoin;
+package org.points;
 
 /**
  * This class holds the context reference used in native methods 

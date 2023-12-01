@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -95,13 +95,13 @@ public:
     bool operator< (const CBase58Data& b58) const { return CompareTo(b58) <  0; }
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
-/** base58-encoded Meowcoin addresses.
+/** base58-encoded Points addresses.
  * Public-key-hash-addresses have version 0 (or 111 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 5 (or 196 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CMeowcoinAddress : public CBase58Data {
+class CPointsAddress : public CBase58Data {
 public:
     bool Set(const CKeyID &id);
     bool Set(const CScriptID &id);
@@ -109,10 +109,10 @@ public:
     bool IsValid() const;
     bool IsValid(const CChainParams &params) const;
 
-    CMeowcoinAddress() {}
-    CMeowcoinAddress(const CTxDestination &dest) { Set(dest); }
-    CMeowcoinAddress(const std::string& strAddress) { SetString(strAddress); }
-    CMeowcoinAddress(const char* pszAddress) { SetString(pszAddress); }
+    CPointsAddress() {}
+    CPointsAddress(const CTxDestination &dest) { Set(dest); }
+    CPointsAddress(const std::string& strAddress) { SetString(strAddress); }
+    CPointsAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetIndexKey(uint160& hashBytes, int& type) const;
@@ -121,7 +121,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class CMeowcoinSecret : public CBase58Data
+class CPointsSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -130,11 +130,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CMeowcoinSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CMeowcoinSecret() {}
+    CPointsSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CPointsSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CMeowcoinExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CPointsExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -152,19 +152,19 @@ public:
         return ret;
     }
 
-    CMeowcoinExtKeyBase(const K &key) {
+    CPointsExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CMeowcoinExtKeyBase(const std::string& strBase58c) {
+    CPointsExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), GetParams().Base58Prefix(Type).size());
     }
 
-    CMeowcoinExtKeyBase() {}
+    CPointsExtKeyBase() {}
 };
 
-typedef CMeowcoinExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CMeowcoinExtKey;
-typedef CMeowcoinExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CMeowcoinExtPubKey;
+typedef CPointsExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_SECRET_KEY> CPointsExtKey;
+typedef CPointsExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE, CChainParams::EXT_PUBLIC_KEY> CPointsExtPubKey;
 
 std::string EncodeDestination(const CTxDestination& dest);
 CTxDestination DecodeDestination(const std::string& str);

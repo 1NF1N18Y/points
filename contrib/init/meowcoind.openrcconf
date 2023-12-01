@@ -1,31 +1,31 @@
-# /etc/conf.d/meowcoind: config file for /etc/init.d/meowcoind
+# /etc/conf.d/pointsd: config file for /etc/init.d/pointsd
 
 # Config file location
-#MEOWCOIND_CONFIGFILE="/etc/meowcoin/meowcoin.conf"
+#MEOWCOIND_CONFIGFILE="/etc/points/points.conf"
 
 # What directory to write pidfile to?  (created and owned by $MEOWCOIND_USER)
-#MEOWCOIND_PIDDIR="/var/run/meowcoind"
+#MEOWCOIND_PIDDIR="/var/run/pointsd"
 
 # What filename to give the pidfile
-#MEOWCOIND_PIDFILE="${MEOWCOIND_PIDDIR}/meowcoind.pid"
+#MEOWCOIND_PIDFILE="${MEOWCOIND_PIDDIR}/pointsd.pid"
 
-# Where to write meowcoind data (be mindful that the blockchain is large)
-#MEOWCOIND_DATADIR="/var/lib/meowcoind"
+# Where to write pointsd data (be mindful that the blockchain is large)
+#MEOWCOIND_DATADIR="/var/lib/pointsd"
 
-# User and group to own meowcoind process
-#MEOWCOIND_USER="meowcoin"
-#MEOWCOIND_GROUP="meowcoin"
+# User and group to own pointsd process
+#MEOWCOIND_USER="points"
+#MEOWCOIND_GROUP="points"
 
-# Path to meowcoind executable
-#MEOWCOIND_BIN="/usr/bin/meowcoind"
+# Path to pointsd executable
+#MEOWCOIND_BIN="/usr/bin/pointsd"
 
-# Nice value to run meowcoind under
+# Nice value to run pointsd under
 #MEOWCOIND_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
 #MEOWCOIND_OPTS=""
 
-# The timeout in seconds OpenRC will wait for meowcoind to terminate
+# The timeout in seconds OpenRC will wait for pointsd to terminate
 # after a SIGTERM has been raised.
 # Note that this will be mapped as argument to start-stop-daemon's
 # '--retry' option, which means you can specify a retry schedule

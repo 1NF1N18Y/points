@@ -1,12 +1,12 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "paymentserver.h"
 
-#include "meowcoinunits.h"
+#include "pointsunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -49,14 +49,14 @@
 #endif
 
 const int MEOWCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString MEOWCOIN_IPC_PREFIX("meowcoin:");
+const QString MEOWCOIN_IPC_PREFIX("points:");
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
 // BIP71 payment protocol media types
-const char* BIP71_MIMETYPE_PAYMENT = "application/meowcoin-payment";
-const char* BIP71_MIMETYPE_PAYMENTACK = "application/meowcoin-paymentack";
-const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/meowcoin-paymentrequest";
+const char* BIP71_MIMETYPE_PAYMENT = "application/points-payment";
+const char* BIP71_MIMETYPE_PAYMENTACK = "application/points-paymentack";
+const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/points-paymentrequest";
 
 struct X509StoreDeleter {
       void operator()(X509_STORE* b) {
@@ -80,7 +80,7 @@ namespace // Anon namespace
 //
 static QString ipcServerName()
 {
-    QString name("MeowcoinQt");
+    QString name("PointsQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -210,16 +210,16 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         if (arg.startsWith("-"))
             continue;
 
-        // If the meowcoin: URI contains a payment request, we are not able to detect the
+        // If the points: URI contains a payment request, we are not able to detect the
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(MEOWCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // meowcoin: URI
+        if (arg.startsWith(MEOWCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // points: URI
         {
             savedPaymentRequests.append(arg);
 
             SendCoinsRecipient r;
-            if (GUIUtil::parseMeowcoinURI(arg, &r) && !r.address.isEmpty())
+            if (GUIUtil::parsePointsURI(arg, &r) && !r.address.isEmpty())
             {
                 auto tempChainParams = CreateChainParams(CBaseChainParams::MAIN);
 
@@ -310,7 +310,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
     // Install global event filter to catch QFileOpenEvents
-    // on Mac: sent when you click meowcoin: links
+    // on Mac: sent when you click points: links
     // other OSes: helpful when dealing with payment request files
     if (parent)
         parent->installEventFilter(this);
@@ -327,7 +327,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
             QMessageBox::critical(0, tr("Payment request error"),
-                tr("Cannot start meowcoin: click-to-pay handler"));
+                tr("Cannot start points: click-to-pay handler"));
         }
         else {
             connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
@@ -342,7 +342,7 @@ PaymentServer::~PaymentServer()
 }
 
 //
-// OSX-specific way of handling meowcoin: URIs and PaymentRequest mime types.
+// OSX-specific way of handling points: URIs and PaymentRequest mime types.
 // Also used by paymentservertests.cpp and when opening a payment request file
 // via "Open URI..." menu entry.
 //
@@ -368,7 +368,7 @@ void PaymentServer::initNetManager()
     if (netManager != nullptr)
         delete netManager;
 
-    // netManager is used to fetch paymentrequests given in meowcoin: URIs
+    // netManager is used to fetch paymentrequests given in points: URIs
     netManager = new QNetworkAccessManager(this);
 
     QNetworkProxy proxy;
@@ -408,7 +408,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith(MEOWCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // meowcoin: URI
+    if (s.startsWith(MEOWCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // points: URI
     {
 #if QT_VERSION < 0x050000
         QUrl uri(s);
@@ -440,7 +440,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         else // normal URI
         {
             SendCoinsRecipient recipient;
-            if (GUIUtil::parseMeowcoinURI(s, &recipient))
+            if (GUIUtil::parsePointsURI(s, &recipient))
             {
                 if (!IsValidDestinationString(recipient.address.toStdString())) {
                     Q_EMIT message(tr("URI handling"), tr("Invalid payment address %1").arg(recipient.address),
@@ -451,7 +451,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
             }
             else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid meowcoin address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid points address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;
@@ -563,7 +563,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
             addresses.append(QString::fromStdString(EncodeDestination(dest)));
         }
         else if (!recipient.authenticatedMerchant.isEmpty()) {
-            // Unauthenticated payment requests to custom meowcoin addresses are not supported
+            // Unauthenticated payment requests to custom points addresses are not supported
             // (there is no good way to tell the user where they are paying in a way they'd
             // have a chance of understanding).
             Q_EMIT message(tr("Payment request rejected"),
@@ -572,7 +572,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
             return false;
         }
 
-        // meowcoin amounts are stored as (optional) uint64 in the protobuf messages (see paymentrequest.proto),
+        // points amounts are stored as (optional) uint64 in the protobuf messages (see paymentrequest.proto),
         // but CAmount is defined as int64_t. Because of that we need to verify that amounts are in a valid range
         // and no overflow has happened.
         if (!verifyAmount(sendingTo.second)) {
@@ -584,7 +584,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
         CTxOut txOut(sendingTo.second, sendingTo.first);
         if (IsDust(txOut, ::dustRelayFee)) {
             Q_EMIT message(tr("Payment request error"), tr("Requested payment amount of %1 is too small (considered dust).")
-                .arg(MeowcoinUnits::formatWithUnit(optionsModel->getDisplayUnit(), sendingTo.second)),
+                .arg(PointsUnits::formatWithUnit(optionsModel->getDisplayUnit(), sendingTo.second)),
                 CClientUIInterface::MSG_ERROR);
 
             return false;

@@ -1,10 +1,10 @@
 
-## <summary>policy for meowcoin</summary>
+## <summary>policy for points</summary>
 
 
 ########################################
 ## <summary>
-##	Transition to meowcoin.
+##	Transition to points.
 ## </summary>
 ## <param name="domain">
 ## <summary>
@@ -12,19 +12,19 @@
 ## </summary>
 ## </param>
 #
-interface(`meowcoin_domtrans',`
+interface(`points_domtrans',`
 	gen_require(`
-		type meowcoin_t, meowcoin_exec_t;
+		type points_t, points_exec_t;
 	')
 
 	corecmd_search_bin($1)
-	domtrans_pattern($1, meowcoin_exec_t, meowcoin_t)
+	domtrans_pattern($1, points_exec_t, points_t)
 ')
 
 
 ########################################
 ## <summary>
-##	Execute meowcoin server in the meowcoin domain.
+##	Execute points server in the points domain.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -32,18 +32,18 @@ interface(`meowcoin_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`meowcoin_initrc_domtrans',`
+interface(`points_initrc_domtrans',`
 	gen_require(`
-		type meowcoin_initrc_exec_t;
+		type points_initrc_exec_t;
 	')
 
-	init_labeled_script_domtrans($1, meowcoin_initrc_exec_t)
+	init_labeled_script_domtrans($1, points_initrc_exec_t)
 ')
 
 
 ########################################
 ## <summary>
-##	Search meowcoin lib directories.
+##	Search points lib directories.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -51,18 +51,18 @@ interface(`meowcoin_initrc_domtrans',`
 ##	</summary>
 ## </param>
 #
-interface(`meowcoin_search_lib',`
+interface(`points_search_lib',`
 	gen_require(`
-		type meowcoin_var_lib_t;
+		type points_var_lib_t;
 	')
 
-	allow $1 meowcoin_var_lib_t:dir search_dir_perms;
+	allow $1 points_var_lib_t:dir search_dir_perms;
 	files_search_var_lib($1)
 ')
 
 ########################################
 ## <summary>
-##	Read meowcoin lib files.
+##	Read points lib files.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -70,18 +70,18 @@ interface(`meowcoin_search_lib',`
 ##	</summary>
 ## </param>
 #
-interface(`meowcoin_read_lib_files',`
+interface(`points_read_lib_files',`
 	gen_require(`
-		type meowcoin_var_lib_t;
+		type points_var_lib_t;
 	')
 
 	files_search_var_lib($1)
-	read_files_pattern($1, meowcoin_var_lib_t, meowcoin_var_lib_t)
+	read_files_pattern($1, points_var_lib_t, points_var_lib_t)
 ')
 
 ########################################
 ## <summary>
-##	Manage meowcoin lib files.
+##	Manage points lib files.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -89,18 +89,18 @@ interface(`meowcoin_read_lib_files',`
 ##	</summary>
 ## </param>
 #
-interface(`meowcoin_manage_lib_files',`
+interface(`points_manage_lib_files',`
 	gen_require(`
-		type meowcoin_var_lib_t;
+		type points_var_lib_t;
 	')
 
 	files_search_var_lib($1)
-	manage_files_pattern($1, meowcoin_var_lib_t, meowcoin_var_lib_t)
+	manage_files_pattern($1, points_var_lib_t, points_var_lib_t)
 ')
 
 ########################################
 ## <summary>
-##	Manage meowcoin lib directories.
+##	Manage points lib directories.
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -108,20 +108,20 @@ interface(`meowcoin_manage_lib_files',`
 ##	</summary>
 ## </param>
 #
-interface(`meowcoin_manage_lib_dirs',`
+interface(`points_manage_lib_dirs',`
 	gen_require(`
-		type meowcoin_var_lib_t;
+		type points_var_lib_t;
 	')
 
 	files_search_var_lib($1)
-	manage_dirs_pattern($1, meowcoin_var_lib_t, meowcoin_var_lib_t)
+	manage_dirs_pattern($1, points_var_lib_t, points_var_lib_t)
 ')
 
 
 ########################################
 ## <summary>
 ##	All of the rules required to administrate
-##	a meowcoin environment
+##	a points environment
 ## </summary>
 ## <param name="domain">
 ##	<summary>
@@ -135,23 +135,23 @@ interface(`meowcoin_manage_lib_dirs',`
 ## </param>
 ## <rolecap/>
 #
-interface(`meowcoin_admin',`
+interface(`points_admin',`
 	gen_require(`
-		type meowcoin_t;
-		type meowcoin_initrc_exec_t;
-		type meowcoin_var_lib_t;
+		type points_t;
+		type points_initrc_exec_t;
+		type points_var_lib_t;
 	')
 
-	allow $1 meowcoin_t:process { ptrace signal_perms };
-	ps_process_pattern($1, meowcoin_t)
+	allow $1 points_t:process { ptrace signal_perms };
+	ps_process_pattern($1, points_t)
 
-	meowcoin_initrc_domtrans($1)
+	points_initrc_domtrans($1)
 	domain_system_change_exemption($1)
-	role_transition $2 meowcoin_initrc_exec_t system_r;
+	role_transition $2 points_initrc_exec_t system_r;
 	allow $2 system_r;
 
 	files_search_var_lib($1)
-	admin_pattern($1, meowcoin_var_lib_t)
+	admin_pattern($1, points_var_lib_t)
 
 ')
 

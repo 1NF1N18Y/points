@@ -1,77 +1,77 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
 // Copyright (c) 2017-2019 The Raven Core developers
-// Copyright (c) 2020-2021 The Meowcoin Core developers
+// Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "meowcoinunits.h"
+#include "pointsunits.h"
 
 #include "primitives/transaction.h"
 
 #include <QStringList>
 
-MeowcoinUnits::MeowcoinUnits(QObject *parent):
+PointsUnits::PointsUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<MeowcoinUnits::Unit> MeowcoinUnits::availableUnits()
+QList<PointsUnits::Unit> PointsUnits::availableUnits()
 {
-    QList<MeowcoinUnits::Unit> unitlist;
-    unitlist.append(MEWC);
-    unitlist.append(mMEWC);
-    unitlist.append(uMEWC);
+    QList<PointsUnits::Unit> unitlist;
+    unitlist.append(PNT);
+    unitlist.append(mPNT);
+    unitlist.append(uPNT);
     return unitlist;
 }
 
-bool MeowcoinUnits::valid(int unit)
+bool PointsUnits::valid(int unit)
 {
     switch(unit)
     {
-    case MEWC:
-    case mMEWC:
-    case uMEWC:
+    case PNT:
+    case mPNT:
+    case uPNT:
         return true;
     default:
         return false;
     }
 }
 
-QString MeowcoinUnits::name(int unit)
+QString PointsUnits::name(int unit)
 {
     switch(unit)
     {
-    case MEWC: return QString("MEWC");
-    case mMEWC: return QString("mMEWC");
-    case uMEWC: return QString::fromUtf8("μMEWC");
+    case PNT: return QString("PNT");
+    case mPNT: return QString("mPNT");
+    case uPNT: return QString::fromUtf8("μPNT");
     default: return QString("???");
     }
 }
 
-QString MeowcoinUnits::description(int unit)
+QString PointsUnits::description(int unit)
 {
     switch(unit)
     {
-    case MEWC: return QString("Meowcoin");
-    case mMEWC: return QString("Milli-Meowcoin (1 / 1" THIN_SP_UTF8 "000)");
-    case uMEWC: return QString("Micro-Meowcoin (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case PNT: return QString("Points");
+    case mPNT: return QString("Milli-Points (1 / 1" THIN_SP_UTF8 "000)");
+    case uPNT: return QString("Micro-Points (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
 
-qint64 MeowcoinUnits::factor(int unit)
+qint64 PointsUnits::factor(int unit)
 {
     switch(unit)
     {
-    case MEWC:  return 100000000;
-    case mMEWC: return 100000;
-    case uMEWC: return 100;
+    case PNT:  return 100000000;
+    case mPNT: return 100000;
+    case uPNT: return 100;
     default:   return 100000000;
     }
 }
 
-qint64 MeowcoinUnits::factorAsset(int unit)
+qint64 PointsUnits::factorAsset(int unit)
 {
     switch(unit)
     {
@@ -88,18 +88,18 @@ qint64 MeowcoinUnits::factorAsset(int unit)
     }
 }
 
-int MeowcoinUnits::decimals(int unit)
+int PointsUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case MEWC: return 8;
-    case mMEWC: return 5;
-    case uMEWC: return 2;
+    case PNT: return 8;
+    case mPNT: return 5;
+    case uPNT: return 2;
     default: return 0;
     }
 }
 
-QString MeowcoinUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators, const int nAssetUnit)
+QString PointsUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators, const int nAssetUnit)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -144,17 +144,17 @@ QString MeowcoinUnits::format(int unit, const CAmount& nIn, bool fPlus, Separato
 // Please take care to use formatHtmlWithUnit instead, when
 // appropriate.
 
-QString MeowcoinUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString PointsUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
 }
 
-QString MeowcoinUnits::formatWithCustomName(QString customName, const CAmount& amount, int unit, bool plussign, SeparatorStyle separators)
+QString PointsUnits::formatWithCustomName(QString customName, const CAmount& amount, int unit, bool plussign, SeparatorStyle separators)
 {
-    return format(MEWC, amount / factorAsset(MAX_ASSET_UNITS - unit), plussign, separators, unit) + QString(" ") + customName;
+    return format(PNT, amount / factorAsset(MAX_ASSET_UNITS - unit), plussign, separators, unit) + QString(" ") + customName;
 }
 
-QString MeowcoinUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString PointsUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
@@ -162,7 +162,7 @@ QString MeowcoinUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool 
 }
 
 
-bool MeowcoinUnits::parse(int unit, const QString &value, CAmount *val_out)
+bool PointsUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -201,7 +201,7 @@ bool MeowcoinUnits::parse(int unit, const QString &value, CAmount *val_out)
     return ok;
 }
 
-bool MeowcoinUnits::assetParse(int assetUnit, const QString &value, CAmount *val_out)
+bool PointsUnits::assetParse(int assetUnit, const QString &value, CAmount *val_out)
 {
     if(!(assetUnit >= 0 && assetUnit <= 8) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -240,23 +240,23 @@ bool MeowcoinUnits::assetParse(int assetUnit, const QString &value, CAmount *val
     return ok;
 }
 
-QString MeowcoinUnits::getAmountColumnTitle(int unit)
+QString PointsUnits::getAmountColumnTitle(int unit)
 {
     QString amountTitle = QObject::tr("Amount");
-    if (MeowcoinUnits::valid(unit))
+    if (PointsUnits::valid(unit))
     {
-        amountTitle += " ("+MeowcoinUnits::name(unit) + ")";
+        amountTitle += " ("+PointsUnits::name(unit) + ")";
     }
     return amountTitle;
 }
 
-int MeowcoinUnits::rowCount(const QModelIndex &parent) const
+int PointsUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant MeowcoinUnits::data(const QModelIndex &index, int role) const
+QVariant PointsUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())
@@ -276,7 +276,7 @@ QVariant MeowcoinUnits::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-CAmount MeowcoinUnits::maxMoney()
+CAmount PointsUnits::maxMoney()
 {
     return MAX_MONEY;
 }

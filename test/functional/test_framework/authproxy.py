@@ -2,7 +2,7 @@
 # Previous copyright, from python-jsonrpc/jsonrpc/proxy.py:
 # Copyright (c) 2007 Jan-Klaas Kollhof
 # Copyright (c) 2017-2019 The Raven Core developers
-# Copyright (c) 2020-2021 The Meowcoin Core developers
+# Copyright (c) 2020-2021 The Points Core developers
 #
 # This file is part of jsonrpc.
 #
@@ -21,7 +21,7 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 """
-HTTP proxy for opening RPC connection to meowcoind.
+HTTP proxy for opening RPC connection to pointsd.
 
 AuthServiceProxy has the following improvements over python-jsonrpc's
 ServiceProxy class:
@@ -49,7 +49,7 @@ import urllib.parse
 HTTP_TIMEOUT = 30
 USER_AGENT = "AuthServiceProxy/0.1"
 
-log = logging.getLogger("MeowcoinRPC")
+log = logging.getLogger("PointsRPC")
 
 
 class JSONRPCException(Exception):

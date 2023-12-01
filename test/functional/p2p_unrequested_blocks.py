@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2015-2016 The Bitcoin Core developers
 # Copyright (c) 2017-2019 The Raven Core developers
-# Copyright (c) 2020-2021 The Meowcoin Core developers
+# Copyright (c) 2020-2021 The Points Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -63,15 +63,15 @@ work on its chain).
 
 import time
 from test_framework.mininode import NodeConn, NodeConnCB, NetworkThread, MsgBlock, MsgHeaders, CBlockHeader, mininode_lock, MsgInv, CInv
-from test_framework.test_framework import MeowcoinTestFramework
+from test_framework.test_framework import PointsTestFramework
 from test_framework.util import os, p2p_port, assert_equal, assert_raises_rpc_error, connect_nodes, sync_blocks
 from test_framework.blocktools import create_block, create_coinbase
 
-class AcceptBlockTest(MeowcoinTestFramework):
+class AcceptBlockTest(PointsTestFramework):
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("MEOWCOIND", "meowcoind"),
-                          help="meowcoind binary to test")
+                          default=os.getenv("MEOWCOIND", "pointsd"),
+                          help="pointsd binary to test")
 
     def set_test_params(self):
         self.setup_clean_chain = True

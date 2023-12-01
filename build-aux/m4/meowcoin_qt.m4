@@ -1,24 +1,24 @@
 dnl Copyright (c) 2013-2016 The Bitcoin Core developers
-dnl Copyright (c) 2017 The Meowcoin__Core developers
+dnl Copyright (c) 2017 The Points__Core developers
 dnl Distributed under the MIT software license, see the accompanying
 dnl file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 dnl Helper for cases where a qt dependency is not met.
-dnl Output: If qt version is auto, set meowcoin_enable_qt to false. Else, exit.
+dnl Output: If qt version is auto, set points_enable_qt to false. Else, exit.
 AC_DEFUN([MEOWCOIN_QT_FAIL],[
-  if test "x$meowcoin_qt_want_version" = "xauto" && test x$meowcoin_qt_force != xyes; then
-    if test x$meowcoin_enable_qt != xno; then
-      AC_MSG_WARN([$1; meowcoin-qt frontend will not be built])
+  if test "x$points_qt_want_version" = "xauto" && test x$points_qt_force != xyes; then
+    if test x$points_enable_qt != xno; then
+      AC_MSG_WARN([$1; points-qt frontend will not be built])
     fi
-    meowcoin_enable_qt=no
-    meowcoin_enable_qt_test=no
+    points_enable_qt=no
+    points_enable_qt_test=no
   else
     AC_MSG_ERROR([$1])
   fi
 ])
 
 AC_DEFUN([MEOWCOIN_QT_CHECK],[
-  if test "x$meowcoin_enable_qt" != "xno" && test x$meowcoin_qt_want_version != xno; then
+  if test "x$points_enable_qt" != "xno" && test x$points_qt_want_version != xno; then
     true
     $1
   else
@@ -55,15 +55,15 @@ AC_DEFUN([MEOWCOIN_QT_INIT],[
   dnl enable qt support
   AC_ARG_WITH([gui],
     [AS_HELP_STRING([--with-gui@<:@=no|qt4|qt5|auto@:>@],
-    [build meowcoin-qt GUI (default=auto, qt5 tried first)])],
+    [build points-qt GUI (default=auto, qt5 tried first)])],
     [
-     meowcoin_qt_want_version=$withval
-     if test x$meowcoin_qt_want_version = xyes; then
-       meowcoin_qt_force=yes
-       meowcoin_qt_want_version=auto
+     points_qt_want_version=$withval
+     if test x$points_qt_want_version = xyes; then
+       points_qt_force=yes
+       points_qt_want_version=auto
      fi
     ],
-    [meowcoin_qt_want_version=auto])
+    [points_qt_want_version=auto])
 
   AC_ARG_WITH([qt-incdir],[AS_HELP_STRING([--with-qt-incdir=INC_DIR],[specify qt include path (overridden by pkgconfig)])], [qt_include_path=$withval], [])
   AC_ARG_WITH([qt-libdir],[AS_HELP_STRING([--with-qt-libdir=LIB_DIR],[specify qt lib path (overridden by pkgconfig)])], [qt_lib_path=$withval], [])
@@ -86,7 +86,7 @@ dnl Inputs: $2: If $1 is "yes" and --with-gui=auto, which qt version should be
 dnl         tried first.
 dnl Outputs: See _MEOWCOIN_QT_FIND_LIBS_*
 dnl Outputs: Sets variables for all qt-related tools.
-dnl Outputs: meowcoin_enable_qt, meowcoin_enable_qt_dbus, meowcoin_enable_qt_test
+dnl Outputs: points_enable_qt, points_enable_qt_dbus, points_enable_qt_test
 AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
   use_pkgconfig=$1
 
@@ -114,21 +114,21 @@ AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
   TEMP_CXXFLAGS=$CXXFLAGS
   CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
-  if test x$meowcoin_qt_got_major_vers = x5; then
+  if test x$points_qt_got_major_vers = x5; then
     _MEOWCOIN_QT_IS_STATIC
-    if test x$meowcoin_cv_static_qt = xyes; then
+    if test x$points_cv_static_qt = xyes; then
       _MEOWCOIN_QT_FIND_STATIC_PLUGINS
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      AC_CACHE_CHECK(for Qt < 5.4, meowcoin_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
+      AC_CACHE_CHECK(for Qt < 5.4, points_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
           [[#include <QtCore>]],[[
           #if QT_VERSION >= 0x050400
           choke;
           #endif
           ]])],
-        [meowcoin_cv_need_acc_widget=yes],
-        [meowcoin_cv_need_acc_widget=no])
+        [points_cv_need_acc_widget=yes],
+        [points_cv_need_acc_widget=no])
       ])
-      if test "x$meowcoin_cv_need_acc_widget" = "xyes"; then
+      if test "x$points_cv_need_acc_widget" = "xyes"; then
         _MEOWCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
       fi
       _MEOWCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QMinimalIntegrationPlugin)],[-lqminimal])
@@ -162,7 +162,7 @@ AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
   ])
 
   if test x$use_pkgconfig$qt_bin_path = xyes; then
-    if test x$meowcoin_qt_got_major_vers = x5; then
+    if test x$points_qt_got_major_vers = x5; then
       qt_bin_path="`$PKG_CONFIG --variable=host_bins Qt5Core 2>/dev/null`"
     fi
   fi
@@ -204,11 +204,11 @@ AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
     ])
   fi
 
-  MEOWCOIN_QT_PATH_PROGS([MOC], [moc-qt${meowcoin_qt_got_major_vers} moc${meowcoin_qt_got_major_vers} moc], $qt_bin_path)
-  MEOWCOIN_QT_PATH_PROGS([UIC], [uic-qt${meowcoin_qt_got_major_vers} uic${meowcoin_qt_got_major_vers} uic], $qt_bin_path)
-  MEOWCOIN_QT_PATH_PROGS([RCC], [rcc-qt${meowcoin_qt_got_major_vers} rcc${meowcoin_qt_got_major_vers} rcc], $qt_bin_path)
-  MEOWCOIN_QT_PATH_PROGS([LRELEASE], [lrelease-qt${meowcoin_qt_got_major_vers} lrelease${meowcoin_qt_got_major_vers} lrelease], $qt_bin_path)
-  MEOWCOIN_QT_PATH_PROGS([LUPDATE], [lupdate-qt${meowcoin_qt_got_major_vers} lupdate${meowcoin_qt_got_major_vers} lupdate],$qt_bin_path, yes)
+  MEOWCOIN_QT_PATH_PROGS([MOC], [moc-qt${points_qt_got_major_vers} moc${points_qt_got_major_vers} moc], $qt_bin_path)
+  MEOWCOIN_QT_PATH_PROGS([UIC], [uic-qt${points_qt_got_major_vers} uic${points_qt_got_major_vers} uic], $qt_bin_path)
+  MEOWCOIN_QT_PATH_PROGS([RCC], [rcc-qt${points_qt_got_major_vers} rcc${points_qt_got_major_vers} rcc], $qt_bin_path)
+  MEOWCOIN_QT_PATH_PROGS([LRELEASE], [lrelease-qt${points_qt_got_major_vers} lrelease${points_qt_got_major_vers} lrelease], $qt_bin_path)
+  MEOWCOIN_QT_PATH_PROGS([LUPDATE], [lupdate-qt${points_qt_got_major_vers} lupdate${points_qt_got_major_vers} lupdate],$qt_bin_path, yes)
 
   MOC_DEFS='-DHAVE_CONFIG_H -I$(srcdir)'
   case $host in
@@ -229,14 +229,14 @@ AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
   dnl enable qt support
   AC_MSG_CHECKING(whether to build ]AC_PACKAGE_NAME[ GUI)
   MEOWCOIN_QT_CHECK([
-    meowcoin_enable_qt=yes
-    meowcoin_enable_qt_test=yes
+    points_enable_qt=yes
+    points_enable_qt_test=yes
     if test x$have_qt_test = xno; then
-      meowcoin_enable_qt_test=no
+      points_enable_qt_test=no
     fi
-    meowcoin_enable_qt_dbus=no
+    points_enable_qt_dbus=no
     if test x$use_dbus != xno && test x$have_qt_dbus = xyes; then
-      meowcoin_enable_qt_dbus=yes
+      points_enable_qt_dbus=yes
     fi
     if test x$use_dbus = xyes && test x$have_qt_dbus = xno; then
       AC_MSG_ERROR("libQtDBus not found. Install libQtDBus or remove --with-qtdbus.")
@@ -245,9 +245,9 @@ AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
       AC_MSG_WARN("lupdate is required to update qt translations")
     fi
   ],[
-    meowcoin_enable_qt=no
+    points_enable_qt=no
   ])
-  AC_MSG_RESULT([$meowcoin_enable_qt (Qt${meowcoin_qt_got_major_vers})])
+  AC_MSG_RESULT([$points_enable_qt (Qt${points_qt_got_major_vers})])
 
   AC_SUBST(QT_PIE_FLAGS)
   AC_SUBST(QT_INCLUDES)
@@ -257,7 +257,7 @@ AC_DEFUN([MEOWCOIN_QT_CONFIGURE],[
   AC_SUBST(QT_DBUS_LIBS)
   AC_SUBST(QT_TEST_INCLUDES)
   AC_SUBST(QT_TEST_LIBS)
-  AC_SUBST(QT_SELECT, qt${meowcoin_qt_got_major_vers})
+  AC_SUBST(QT_SELECT, qt${points_qt_got_major_vers})
   AC_SUBST(MOC_DEFS)
 ])
 
@@ -267,9 +267,9 @@ dnl ----
 
 dnl Internal. Check if the included version of Qt is Qt5.
 dnl Requires: INCLUDES must be populated as necessary.
-dnl Output: meowcoin_cv_qt5=yes|no
+dnl Output: points_cv_qt5=yes|no
 AC_DEFUN([_MEOWCOIN_QT_CHECK_QT5],[
-  AC_CACHE_CHECK(for Qt 5, meowcoin_cv_qt5,[
+  AC_CACHE_CHECK(for Qt 5, points_cv_qt5,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
     [[#include <QtCore>]],
     [[
@@ -279,17 +279,17 @@ AC_DEFUN([_MEOWCOIN_QT_CHECK_QT5],[
       return 0;
       #endif
     ]])],
-    [meowcoin_cv_qt5=yes],
-    [meowcoin_cv_qt5=no])
+    [points_cv_qt5=yes],
+    [points_cv_qt5=no])
 ])])
 
 dnl Internal. Check if the linked version of Qt was built as static libs.
 dnl Requires: Qt5. This check cannot determine if Qt4 is static.
 dnl Requires: INCLUDES and LIBS must be populated as necessary.
-dnl Output: meowcoin_cv_static_qt=yes|no
+dnl Output: points_cv_static_qt=yes|no
 dnl Output: Defines QT_STATICPLUGIN if plugins are static.
 AC_DEFUN([_MEOWCOIN_QT_IS_STATIC],[
-  AC_CACHE_CHECK(for static Qt, meowcoin_cv_static_qt,[
+  AC_CACHE_CHECK(for static Qt, points_cv_static_qt,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
     [[#include <QtCore>]],
     [[
@@ -299,10 +299,10 @@ AC_DEFUN([_MEOWCOIN_QT_IS_STATIC],[
       choke me
       #endif
     ]])],
-    [meowcoin_cv_static_qt=yes],
-    [meowcoin_cv_static_qt=no])
+    [points_cv_static_qt=yes],
+    [points_cv_static_qt=no])
   ])
-  if test xmeowcoin_cv_static_qt = xyes; then
+  if test xpoints_cv_static_qt = xyes; then
     AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol for static Qt plugins])
   fi
 ])
@@ -327,11 +327,11 @@ AC_DEFUN([_MEOWCOIN_QT_CHECK_STATIC_PLUGINS],[
 ])
 
 dnl Internal. Find paths necessary for linking qt static plugins
-dnl Inputs: meowcoin_qt_got_major_vers. 4 or 5.
+dnl Inputs: points_qt_got_major_vers. 4 or 5.
 dnl Inputs: qt_plugin_path. optional.
 dnl Outputs: QT_LIBS is appended
 AC_DEFUN([_MEOWCOIN_QT_FIND_STATIC_PLUGINS],[
-  if test x$meowcoin_qt_got_major_vers = x5; then
+  if test x$points_qt_got_major_vers = x5; then
       if test x$qt_plugin_path != x; then
         QT_LIBS="$QT_LIBS -L$qt_plugin_path/platforms"
         if test -d "$qt_plugin_path/accessible"; then
@@ -353,16 +353,16 @@ AC_DEFUN([_MEOWCOIN_QT_FIND_STATIC_PLUGINS],[
      ])
      else
        if test x$TARGET_OS = xwindows; then
-         AC_CACHE_CHECK(for Qt >= 5.6, meowcoin_cv_need_platformsupport,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
+         AC_CACHE_CHECK(for Qt >= 5.6, points_cv_need_platformsupport,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
              [[#include <QtCore>]],[[
              #if QT_VERSION < 0x050600
              choke;
              #endif
              ]])],
-           [meowcoin_cv_need_platformsupport=yes],
-           [meowcoin_cv_need_platformsupport=no])
+           [points_cv_need_platformsupport=yes],
+           [points_cv_need_platformsupport=no])
          ])
-         if test x$meowcoin_cv_need_platformsupport = xyes; then
+         if test x$points_cv_need_platformsupport = xyes; then
            MEOWCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}PlatformSupport],[main],,MEOWCOIN_QT_FAIL(lib$QT_LIB_PREFIXPlatformSupport not found)))
          fi
        fi
@@ -376,12 +376,12 @@ AC_DEFUN([_MEOWCOIN_QT_FIND_STATIC_PLUGINS],[
 ])
 
 dnl Internal. Find Qt libraries using pkg-config.
-dnl Inputs: meowcoin_qt_want_version (from --with-gui=). The version to check
+dnl Inputs: points_qt_want_version (from --with-gui=). The version to check
 dnl         first.
-dnl Inputs: $1: If meowcoin_qt_want_version is "auto", check for this version
+dnl Inputs: $1: If points_qt_want_version is "auto", check for this version
 dnl         first.
 dnl Outputs: All necessary QT_* variables are set.
-dnl Outputs: meowcoin_qt_got_major_vers is set to "4" or "5".
+dnl Outputs: points_qt_got_major_vers is set to "4" or "5".
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
 AC_DEFUN([_MEOWCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
   m4_ifdef([PKG_CHECK_MODULES],[
@@ -389,28 +389,28 @@ AC_DEFUN([_MEOWCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
   if test x$auto_priority_version = x; then
     auto_priority_version=qt5
   fi
-    if test x$meowcoin_qt_want_version = xqt5 ||  ( test x$meowcoin_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+    if test x$points_qt_want_version = xqt5 ||  ( test x$points_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
       QT_LIB_PREFIX=Qt5
-      meowcoin_qt_got_major_vers=5
+      points_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      meowcoin_qt_got_major_vers=4
+      points_qt_got_major_vers=4
     fi
     qt5_modules="Qt5Core Qt5Gui Qt5Network Qt5Widgets"
     qt4_modules="QtCore QtGui QtNetwork"
     MEOWCOIN_QT_CHECK([
-      if test x$meowcoin_qt_want_version = xqt5 || ( test x$meowcoin_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+      if test x$points_qt_want_version = xqt5 || ( test x$points_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
         PKG_CHECK_MODULES([QT5], [$qt5_modules], [QT_INCLUDES="$QT5_CFLAGS"; QT_LIBS="$QT5_LIBS" have_qt=yes],[have_qt=no])
-      elif test x$meowcoin_qt_want_version = xqt4 || ( test x$meowcoin_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
+      elif test x$points_qt_want_version = xqt4 || ( test x$points_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
         PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes], [have_qt=no])
       fi
 
       dnl qt version is set to 'auto' and the preferred version wasn't found. Now try the other.
-      if test x$have_qt = xno && test x$meowcoin_qt_want_version = xauto; then
+      if test x$have_qt = xno && test x$points_qt_want_version = xauto; then
         if test x$auto_priority_version = xqt5; then
-          PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt; meowcoin_qt_got_major_vers=4], [have_qt=no])
+          PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt; points_qt_got_major_vers=4], [have_qt=no])
         else
-          PKG_CHECK_MODULES([QT5], [$qt5_modules], [QT_INCLUDES="$QT5_CFLAGS"; QT_LIBS="$QT5_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt5; meowcoin_qt_got_major_vers=5], [have_qt=no])
+          PKG_CHECK_MODULES([QT5], [$qt5_modules], [QT_INCLUDES="$QT5_CFLAGS"; QT_LIBS="$QT5_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt5; points_qt_got_major_vers=5], [have_qt=no])
         fi
       fi
       if test x$have_qt != xyes; then
@@ -430,10 +430,10 @@ AC_DEFUN([_MEOWCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
 
 dnl Internal. Find Qt libraries without using pkg-config. Version is deduced
 dnl from the discovered headers.
-dnl Inputs: meowcoin_qt_want_version (from --with-gui=). The version to use.
+dnl Inputs: points_qt_want_version (from --with-gui=). The version to use.
 dnl         If "auto", the version will be discovered by _MEOWCOIN_QT_CHECK_QT5.
 dnl Outputs: All necessary QT_* variables are set.
-dnl Outputs: meowcoin_qt_got_major_vers is set to "4" or "5".
+dnl Outputs: points_qt_got_major_vers is set to "4" or "5".
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
 AC_DEFUN([_MEOWCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
   TEMP_CPPFLAGS="$CPPFLAGS"
@@ -452,15 +452,15 @@ AC_DEFUN([_MEOWCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
   MEOWCOIN_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, MEOWCOIN_QT_FAIL(QtNetwork headers missing))])
 
   MEOWCOIN_QT_CHECK([
-    if test x$meowcoin_qt_want_version = xauto; then
+    if test x$points_qt_want_version = xauto; then
       _MEOWCOIN_QT_CHECK_QT5
     fi
-    if test x$meowcoin_cv_qt5 = xyes || test x$meowcoin_qt_want_version = xqt5; then
+    if test x$points_cv_qt5 = xyes || test x$points_qt_want_version = xqt5; then
       QT_LIB_PREFIX=Qt5
-      meowcoin_qt_got_major_vers=5
+      points_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      meowcoin_qt_got_major_vers=4
+      points_qt_got_major_vers=4
     fi
   ])
 
@@ -483,7 +483,7 @@ AC_DEFUN([_MEOWCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
   MEOWCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Core]   ,[main],,MEOWCOIN_QT_FAIL(lib$QT_LIB_PREFIXCore not found)))
   MEOWCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Gui]    ,[main],,MEOWCOIN_QT_FAIL(lib$QT_LIB_PREFIXGui not found)))
   MEOWCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Network],[main],,MEOWCOIN_QT_FAIL(lib$QT_LIB_PREFIXNetwork not found)))
-  if test x$meowcoin_qt_got_major_vers = x5; then
+  if test x$points_qt_got_major_vers = x5; then
     MEOWCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Widgets],[main],,MEOWCOIN_QT_FAIL(lib$QT_LIB_PREFIXWidgets not found)))
   fi
   QT_LIBS="$LIBS"

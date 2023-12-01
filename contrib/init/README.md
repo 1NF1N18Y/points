@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: meowcoind.service
-Upstart: meowcoind.conf
-OpenRC:  meowcoind.openrc
-         meowcoind.openrcconf
-CentOS:  meowcoind.init
-OS X:    org.meowcoin.meowcoind.plist
+SystemD: pointsd.service
+Upstart: pointsd.conf
+OpenRC:  pointsd.openrc
+         pointsd.openrcconf
+CentOS:  pointsd.init
+OS X:    org.points.pointsd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 
