@@ -43,8 +43,9 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "The WSJ 08/28/2022 Investors Ramp Up Bets Against Stock Market";
-    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+    const char* pszTimestamp = "Points was made on 12/1/2023 for learning blockchain";
+    const CScript genesisOutputScript = CScript() << ParseHex("0492fa0716eb6e529044d9bc1c8d6dc9649d7af52665dbe36ef8e7ff70a5bcff40541d56007f1c897815b457366bd43806258440fb103e90984a284c8d339ef9999
+") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -165,19 +166,19 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x4d; // M
-        pchMessageStart[1] = 0x45; // E
-        pchMessageStart[2] = 0x57; // W
-        pchMessageStart[3] = 0x43; // C
+        pchMessageStart[0] = 0x50; // P
+        pchMessageStart[1] = 0x4E; // N
+        pchMessageStart[2] = 0x54; // T
+        pchMessageStart[3] = 0x53; // S
         nDefaultPort = 3466;
         nPruneAfterHeight = 100000;
 		
-	    uint32_t nGenesisTime = 1661730843;	
+	    uint32_t nGenesisTime = 1701427325;	
 
 	    genesis = CreateGenesisBlock(nGenesisTime, 351574, 0x1e00ffff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
-	    assert(consensus.hashGenesisBlock == uint256S("0x000000edd819220359469c54f2614b5602ebc775ea67a64602f354bdaa320f70"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe8916cf6592c8433d598c3a5fe60a9741fd2a997b39d93af2d789cdd9d9a7390"));
+	    assert(consensus.hashGenesisBlock == uint256S("0x"));
+        assert(genesis.hashMerkleRoot == uint256S("0x"));
 
 
         vSeeds.emplace_back("seed-mainnet-pnt.points.cc", false);
