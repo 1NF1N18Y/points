@@ -189,8 +189,8 @@ public:
 
 	    genesis = CreateGenesisBlock(nGenesisTime, 966191, 0x1e00ffff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();	
-	    // assert(consensus.hashGenesisBlock == uint256S("0x00000d7c675d0d8d55e8f555ad04bc98fc038b1c2d8ead21db10ef524f792677"));
-        // assert(genesis.hashMerkleRoot == uint256S("0x658ea6b3943ac763910a5a2e6b5c456089b0e7b6db030d239c921674828b2360"));
+	    assert(consensus.hashGenesisBlock == uint256S("0x00000d7c675d0d8d55e8f555ad04bc98fc038b1c2d8ead21db10ef524f792677"));
+        assert(genesis.hashMerkleRoot == uint256S("0x658ea6b3943ac763910a5a2e6b5c456089b0e7b6db030d239c921674828b2360"));
 
 
         vSeeds.emplace_back("seed-mainnet-pnt.points.cc", false);
