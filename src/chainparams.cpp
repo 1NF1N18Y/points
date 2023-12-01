@@ -171,7 +171,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000100010"); // block 1
 
         // By default assume that the signatures in ancestors of this block are valid
-        consensus.defaultAssumeValid = uint256S("0x0000000000000000000000000000000000000000000000000000000000100010"); // Block 1
+        consensus.defaultAssumeValid = uint256S("0x004be34bb6e7c20aad94b1638a1e50c5fb6bc5523a5f962bb80b0c84124f1333"); // Block 113
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -258,7 +258,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("85c1058564afa9f0ef033b305f3a8815cfb90c75099ff9498739955d5ea242bf"));
 
 
-        vSeeds.emplace_back("cojin.xyz", false);
+        vSeeds.emplace_back("194.163.179.204:3466", false);
 
         // Address start with P
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55);  
@@ -282,14 +282,15 @@ public:
             {
             	{
             	    {0, uint256S("0x000000d21317d68f5253f7ef4cecb163e09d004b598a98be62e857708719fc33")},
+                    {113, uint256S("0x004be34bb6e7c20aad94b1638a1e50c5fb6bc5523a5f962bb80b0c84124f1333")}
             	}
             }
         };
 
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Points chain from rpc: getchaintxstats 50000
-        	1701429301, // * UNIX timestamp of last known number of transactions
-            16349779,      // * total number of transactions between genesis and that timestamp
+        	1701462148, // * UNIX timestamp of last known number of transactions
+            116,      // * total number of transactions between genesis and that timestamp
                         // * (the tx=... number in the SetBestChain debug.log lines)
             0.01 // * estimated number of transactions per second after that timestamp
         };
@@ -310,21 +311,21 @@ public:
 	    nCommunityAutonomousAmount = 2;
 
         // Burn Addresses
-	    strIssueAssetBurnAddress = "MCissueAssetXXXXXXXXXXXXXXXXa1oUfD";
-        strReissueAssetBurnAddress = "MCReissueAssetXXXXXXXXXXXXXXUdjigq";
-        strIssueSubAssetBurnAddress = "MCissueSubAssetXXXXXXXXXXXXXbCnNFk";
-        strIssueUniqueAssetBurnAddress = "MCissueUniqueAssetXXXXXXXXXXSVUgF5";
-        strIssueMsgChannelAssetBurnAddress = "MCissueMsgChanneLAssetXXXXXXUe6Pvr";
-        strIssueQualifierAssetBurnAddress = "MCissueQuaLifierXXXXXXXXXXXXWLyvs5";
-        strIssueSubQualifierAssetBurnAddress = "MCissueSubQuaLifierXXXXXXXXXVHmaXW";
-        strIssueRestrictedAssetBurnAddress = "MCissueRestrictedXXXXXXXXXXXXfEYLU";
-        strAddNullQualifierTagBurnAddress = "MCaddTagBurnXXXXXXXXXXXXXXXXUrKr7b";
+	    strIssueAssetBurnAddress = "PissueAssetXXXXXXXXXXXXXXXXa1oUfD";
+        strReissueAssetBurnAddress = "PReissueAssetXXXXXXXXXXXXXXUdjigq";
+        strIssueSubAssetBurnAddress = "PissueSubAssetXXXXXXXXXXXXXbCnNFk";
+        strIssueUniqueAssetBurnAddress = "PissueUniqueAssetXXXXXXXXXXSVUgF5";
+        strIssueMsgChannelAssetBurnAddress = "PissueMsgChanneLAssetXXXXXXUe6Pvr";
+        strIssueQualifierAssetBurnAddress = "PissueQuaLifierXXXXXXXXXXXXWLyvs5";
+        strIssueSubQualifierAssetBurnAddress = "PissueSubQuaLifierXXXXXXXXXVHmaXW";
+        strIssueRestrictedAssetBurnAddress = "PissueRestrictedXXXXXXXXXXXXfEYLU";
+        strAddNullQualifierTagBurnAddress = "PaddTagBurnXXXXXXXXXXXXXXXXUrKr7b";
         
         //Global Burn Address
-        strGlobalBurnAddress = "MCBurnXXXXXXXXXXXXXXXXXXXXXXUkdzqy";
+        strGlobalBurnAddress = "PBurnXXXXXXXXXXXXXXXXXXXXXXUkdzqy";
 
         // Donation Address
-        strCommunityAutonomousAddress = "MPyNGZSSZ4rbjkVJRLn3v64pMcktpEYJnU";
+        strCommunityAutonomousAddress = "PK8d2WCRHkwWyyrtJ2fdbisRuxxjWWnjwR";
 
         // DGW Activation
         nDGWActivationBlock = 1;
