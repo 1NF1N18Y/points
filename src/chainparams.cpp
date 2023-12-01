@@ -168,7 +168,7 @@ public:
 
 
         // The best chain should have at least this much work
-        consensus.nMinimumChainWork = uint256S("0x00"); // block 1
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000100010"); // block 1
 
         // By default assume that the signatures in ancestors of this block are valid
         consensus.defaultAssumeValid = uint256S("0x00"); // Block 1
@@ -258,7 +258,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("85c1058564afa9f0ef033b305f3a8815cfb90c75099ff9498739955d5ea242bf"));
 
 
-        vSeeds.emplace_back("seed-mainnet-pnt.points.cc", false);
+        vSeeds.emplace_back("cojin.xyz", false);
 
         // Address start with P
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55);  
@@ -413,18 +413,18 @@ public:
         genesis = CreateGenesisBlock(nGenesisTime, 7680541, 0x1e00ffff, 4, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetX16RHash();
 	    
-        assert(consensus.hashGenesisBlock == uint256S("0x000000eaab417d6dfe9bd75119972e1d07ecfe8ff655bef7c2acb3d9a0eeed81"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe8916cf6592c8433d598c3a5fe60a9741fd2a997b39d93af2d789cdd9d9a7390"));		
+        assert(consensus.hashGenesisBlock == uint256S("0x00"));
+        assert(genesis.hashMerkleRoot == uint256S("0x00"));		
 		
         vFixedSeeds.clear();
         vSeeds.clear();
 	    vSeeds.emplace_back("seed-testnet-pnt.points.cc", false);
 		
-	    base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,109);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,124);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,114);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55);  
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,117); 
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,107); 
+        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x86, 0xF4, 0x1E};
+        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x8F, 0xD6, 0x54};
 
         // Points BIP44 cointype in testnet
         nExtCoinType = 1;
@@ -438,7 +438,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {0, uint256S("0x000000eaab417d6dfe9bd75119972e1d07ecfe8ff655bef7c2acb3d9a0eeed81")},
+                {0, uint256S("0x")},
             }
         };
 
