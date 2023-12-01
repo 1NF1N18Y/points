@@ -169,7 +169,7 @@ public:
         pchMessageStart[1] = 0x45; // E
         pchMessageStart[2] = 0x57; // W
         pchMessageStart[3] = 0x43; // C
-        nDefaultPort = 8788;
+        nDefaultPort = 3466;
         nPruneAfterHeight = 100000;
 		
 	    uint32_t nGenesisTime = 1661730843;	

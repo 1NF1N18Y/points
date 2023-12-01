@@ -554,7 +554,7 @@ Low-level RPC changes
 ### Tests and QA
 - #9744 `8efd1c8` Remove unused module from rpc-tests (34ro)
 - #9657 `7ff4a53` Improve rpc-tests.py (jnewbery)
-- #9766 `7146d96` Add --exclude option to rpc-tests.py (jnewbery)
+- #3465 `7146d96` Add --exclude option to rpc-tests.py (jnewbery)
 - #9577 `d6064a8` Fix docstrings in qa tests (jnewbery)
 - #9823 `a13a417` qa: Set correct path for binaries in rpc tests (MarcoFalke)
 - #9847 `6206252` Extra test vector for BIP32 (sipa)

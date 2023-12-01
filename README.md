@@ -7,8 +7,8 @@ Meowcoin Core
 
 Meowcoin Specs
 -----------------
-* P2P Port - 8788
-* RPC Port - 9766
+* P2P Port - 3466
+* RPC Port - 3465
 * Block Time - 1 min
 * Block Reward - 5000 MEOW (3000 reward, 2000 donation)
 

@@ -6,7 +6,7 @@ option. In the GUI it is possible to execute RPC methods in the Debug Console
 Dialog.
 
 ## Setup JSON-RPC
-By default port 9766 for mainnet, port 19766 for testnet,
+By default port 3465 for mainnet, port 13465 for testnet,
 and port 19443 for regtest.
 
 We can add rpc user in  ~/.meowcoin/meowcoin.conf
@@ -37,7 +37,7 @@ bitcoin-cli getblockcount
 
 json-rpc
 ```
-curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockcount", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:9766/
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockcount", "params": []}' -H 'content-type: text/plain;' http://127.0.0.1:3465/
 ```
 
 
