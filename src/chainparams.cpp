@@ -282,15 +282,14 @@ public:
             {
             	{
             	    {0, uint256S("0x000000d21317d68f5253f7ef4cecb163e09d004b598a98be62e857708719fc33")},
-                    {113, uint256S("0x004be34bb6e7c20aad94b1638a1e50c5fb6bc5523a5f962bb80b0c84124f1333")}
             	}
             }
         };
 
         chainTxData = ChainTxData{
             // Update as we know more about the contents of the Points chain from rpc: getchaintxstats 50000
-        	1701462148, // * UNIX timestamp of last known number of transactions
-            116,      // * total number of transactions between genesis and that timestamp
+        	1701429301, // * UNIX timestamp of last known number of transactions
+            0,      // * total number of transactions between genesis and that timestamp
                         // * (the tx=... number in the SetBestChain debug.log lines)
             0.01 // * estimated number of transactions per second after that timestamp
         };
