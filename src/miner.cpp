@@ -198,16 +198,16 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     coinbaseTx.vout[1].nValue = nSubsidy * nCommunityAutonomousAmount / 100;
 
     // Nodes Address
-    std::string strNodes = "PK8d2WCRHkwWyyrtJ2fdbisRuxxjWWnjwR";
-    CTxDestination destNodes = DecodeDestination(strNodes);
+    std::string GetNodes = GetParams().Nodes();
+    CTxDestination destNodes = DecodeDestination(GetNodes);
     if (!IsValidDestination(destNodes)) {
-        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", strNodes);
+        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", GetNodes);
     }
     // Parse Nodes address
     CScript scriptPubKeyNodes = GetScriptForDestination(destNodes);
-
+    CAmount nNodesPercentage = GetParams().NodesPercentage();
     coinbaseTx.vout[2].scriptPubKey = scriptPubKeyNodes;
-    coinbaseTx.vout[2].nValue = nSubsidy * 3 / 100; // Assuming 5% for Nodes
+    coinbaseTx.vout[2].nValue = nSubsidy * nNodesPercentage / 100; // Assuming 3% for Nodes
 
     // Calculate total reward and adjust if necessary
     CAmount nTotalReward = coinbaseTx.vout[0].nValue + coinbaseTx.vout[1].nValue + coinbaseTx.vout[2].nValue;

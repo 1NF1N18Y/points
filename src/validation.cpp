@@ -2782,16 +2782,16 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     }
 
     // Nodes Address Check
-    std::string strNodes = "PK8d2WCRHkwWyyrtJ2fdbisRuxxjWWnjwR";
-    CTxDestination destNodes = DecodeDestination(strNodes);
+    std::string GetNodes = GetParams().Nodes();
+    CTxDestination destNodes = DecodeDestination(GetNodes);
     if (!IsValidDestination(destNodes)) {
-        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", strNodes);
+        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", GetNodes);
     }
 
     // Parse Nodes address
     CScript scriptPubKeyNodes = GetScriptForDestination(destNodes);
 
-    CAmount nNodesPercentage = 3;
+    CAmount nNodesPercentage = GetParams().NodesPercentage();
     CAmount nNodesAmountValue = nSubsidy * nNodesPercentage / 100;
 
     // Check Nodes Amount

@@ -264,8 +264,8 @@ public:
         strGlobalBurnAddress = "PBurnXXXXXXXXXXXXXXXXXXXXXXUkdzqy";
 
         // Donation Address
-        strCommunityAutonomousAddress = "PK8d2WCRHkwWyyrtJ2fdbisRuxxjWWnjwR";
-        strNodes = "PK8d2WCRHkwWyyrtJ2fdbisRuxxjWWnjwR";
+        strCommunityAutonomousAddress = "PMusU6LgjQ3Yp947M7mm5Nca7avLJgvxfL";
+        strNodes = "PMusU6LgjQ3Yp947M7mm5Nca7avLJgvxfL";
 
         // DGW Activation
         nDGWActivationBlock = 1;
