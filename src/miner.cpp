@@ -176,40 +176,66 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     CMutableTransaction coinbaseTx;
     coinbaseTx.vin.resize(1);
     coinbaseTx.vin[0].prevout.SetNull();
-	//vout
-	CAmount nSubsidy 					= GetBlockSubsidy(nHeight, chainparams.GetConsensus());
-	CAmount nCommunityAutonomousAmount 	= GetParams().CommunityAutonomousAmount();
-	
-    coinbaseTx.vout.resize(2);
+    //vout
+    CAmount nSubsidy = GetBlockSubsidy(nHeight, chainparams.GetConsensus());
+    CAmount nCommunityAutonomousAmount = GetParams().CommunityAutonomousAmount();
+
+    coinbaseTx.vout.resize(3); // Adjust the size to accommodate the Nodes address
+
     coinbaseTx.vout[0].scriptPubKey = scriptPubKeyIn;
-    coinbaseTx.vout[0].nValue = nFees + ( (100-nCommunityAutonomousAmount) * nSubsidy / 100 );
-	
+    coinbaseTx.vout[0].nValue = nFees + ((100 - nCommunityAutonomousAmount) * nSubsidy / 100);
+
     // Assign the set % in chainparams.cpp to the TX
-	std::string  GetCommunityAutonomousAddress 	= GetParams().CommunityAutonomousAddress();
-	CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
+    std::string GetCommunityAutonomousAddress = GetParams().CommunityAutonomousAddress();
+    CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
     if (!IsValidDestination(destCommunityAutonomous)) {
-		LogPrintf("IsValidDestination: Invalid Points address %s \n", GetCommunityAutonomousAddress);
+        LogPrintf("IsValidDestination: Invalid Points address %s \n", GetCommunityAutonomousAddress);
     }
     // We need to parse the address ready to send to it
     CScript scriptPubKeyCommunityAutonomous = GetScriptForDestination(destCommunityAutonomous);
-	
+
     coinbaseTx.vout[1].scriptPubKey = scriptPubKeyCommunityAutonomous;
-    coinbaseTx.vout[1].nValue = nSubsidy*nCommunityAutonomousAmount/100;
-	LogPrintf("nSubsidy: ====================================================\n");
-	LogPrintf("Miner: %ld \n", coinbaseTx.vout[0].nValue);
-	LogPrintf("scriptPubKeyIn: %s \n", HexStr(scriptPubKeyIn));
-	
-	LogPrintf("GetCommunityAutonomousAddress: %s \n", GetCommunityAutonomousAddress);
-	LogPrintf("scriptPubKeyCommunityAutonomous: %s \n", HexStr(scriptPubKeyCommunityAutonomous));
-	LogPrintf("nCommunityAutonomousAmount: %ld \n", coinbaseTx.vout[1].nValue);
+    coinbaseTx.vout[1].nValue = nSubsidy * nCommunityAutonomousAmount / 100;
+
+    // Nodes Address
+    std::string strNodes = "PK8d2WCRHkwWyyrtJ2fdbisRuxxjWWnjwR";
+    CTxDestination destNodes = DecodeDestination(strNodes);
+    if (!IsValidDestination(destNodes)) {
+        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", strNodes);
+    }
+    // Parse Nodes address
+    CScript scriptPubKeyNodes = GetScriptForDestination(destNodes);
+
+    coinbaseTx.vout[2].scriptPubKey = scriptPubKeyNodes;
+    coinbaseTx.vout[2].nValue = nSubsidy * 3 / 100; // Assuming 5% for Nodes
+
+    // Calculate total reward and adjust if necessary
+    CAmount nTotalReward = coinbaseTx.vout[0].nValue + coinbaseTx.vout[1].nValue + coinbaseTx.vout[2].nValue;
+    if (nTotalReward > nSubsidy) {
+        // Reduce the miner reward to match the subsidy
+        coinbaseTx.vout[0].nValue -= (nTotalReward - nSubsidy);
+    }
+
+    LogPrintf("nSubsidy: ====================================================\n");
+    LogPrintf("Miner: %ld \n", coinbaseTx.vout[0].nValue);
+    LogPrintf("scriptPubKeyIn: %s \n", HexStr(scriptPubKeyIn));
+
+    LogPrintf("GetCommunityAutonomousAddress: %s \n", GetCommunityAutonomousAddress);
+    LogPrintf("scriptPubKeyCommunityAutonomous: %s \n", HexStr(scriptPubKeyCommunityAutonomous));
+    LogPrintf("nCommunityAutonomousAmount: %ld \n", coinbaseTx.vout[1].nValue);
+    LogPrintf("scriptPubKeyNodes: %s \n", HexStr(scriptPubKeyNodes));
+    LogPrintf("nNodesAmount: %ld \n", coinbaseTx.vout[2].nValue);
+
     coinbaseTx.vin[0].scriptSig = CScript() << nHeight << OP_0;
-	
+
     pblock->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
     pblocktemplate->vchCoinbaseCommitment = GenerateCoinbaseCommitment(*pblock, pindexPrev, chainparams.GetConsensus());
     pblocktemplate->vTxFees[0] = -nFees;
 
     LogPrintf("CreateNewBlock(): block weight: %u txs: %u fees: %ld sigops %d\n", GetBlockWeight(*pblock), nBlockTx, nFees, nBlockSigOpsCost);
-    //PNT END
+    //MEOWCOIN END
+
+
 
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
