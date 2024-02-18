@@ -1337,9 +1337,6 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         // Subsidy is 31.25 COIN for blocks between 400k and 3 million
         nSubsidy = 31.25 * COIN;
     } else if (nHeight < 500) {
-        // Subsidy is constant at 31.25 COIN from 400k to 3 million
-        nSubsidy = 31.25 * COIN;
-    } else if (nHeight < 600) {
         // Calculate the number of blocks after the initial 3,000,000 blocks
         int blocksAfterInitial = nHeight - 600;
 
@@ -1347,11 +1344,11 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         int additionalHalvings = blocksAfterInitial / 50;
 
         // Halve the subsidy every 525,000 blocks
-        nSubsidy = 1.95 * COIN;
+        nSubsidy = 15.625 * COIN;
         nSubsidy >>= additionalHalvings;
     } else if (nHeight < 800) {
         // Subsidy is constant at 1.95 COIN from 5.1 million to 8.85 million
-        nSubsidy = 1.95 * COIN;
+        nSubsidy = 1.953125 * COIN;
     } else {
         // Calculate the number of blocks after the initial 8,850,000 blocks
         int blocksAfterSecondPhase = nHeight - 800;
@@ -1360,7 +1357,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         int additionalHalvingsSecondPhase = blocksAfterSecondPhase / 20;
 
         // Halve the subsidy every 1,050,000 blocks from 8.85 million onwards
-        nSubsidy = 1.95 * COIN;
+        nSubsidy = 0.9765625 * COIN;
         nSubsidy >>= additionalHalvingsSecondPhase;
     }
 
