@@ -1327,10 +1327,21 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         return 0;
 
     CAmount nSubsidy = 500 * COIN;
-    // Subsidy is cut in half every 2,100,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
+    
+    // Subsidy is cut in half every consensusParams.nSubsidyHalvingInterval blocks for the first 4 halvings.
+    if (halvings < 4)
+        nSubsidy >>= halvings;
+    else if (nHeight >= (4 * consensusParams.nSubsidyHalvingInterval + 250))
+        // After the 4 halvings, halve every 2500000 blocks.
+        nSubsidy >>= ((nHeight - 4 * consensusParams.nSubsidyHalvingInterval - 250) / 250);
+    else
+        // After the 4 halvings and 2500000 blocks, halve every 525000 blocks.
+        nSubsidy >>= ((nHeight - 4 * consensusParams.nSubsidyHalvingInterval) / 525);
+
     return nSubsidy;
 }
+
+
 
 bool IsInitialBlockDownload()
 {
@@ -2777,6 +2788,10 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                          REJECT_INVALID, "bad-cb-community-autonomous-address");
 	}
 	/** AIPG END */
+
+
+
+
 	
     if (!control.Wait())
         return state.DoS(100, error("%s: CheckQueue failed", __func__), REJECT_INVALID, "block-validation-failed");
