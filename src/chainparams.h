@@ -101,7 +101,6 @@ public:
     const CAmount& IssueRestrictedAssetBurnAmount() const { return nIssueRestrictedAssetBurnAmount; }
     const CAmount& AddNullQualifierTagBurnAmount() const { return nAddNullQualifierTagBurnAmount; }
     const CAmount& CommunityAutonomousAmount() const { return nCommunityAutonomousAmount; }
-    const CAmount& NodesPercentage() const { return nNodesPercentage; }
 
     const std::string& IssueAssetBurnAddress() const { return strIssueAssetBurnAddress; }
     const std::string& ReissueAssetBurnAddress() const { return strReissueAssetBurnAddress; }
@@ -114,7 +113,6 @@ public:
     const std::string& AddNullQualifierTagBurnAddress() const { return strAddNullQualifierTagBurnAddress; }
     const std::string& GlobalBurnAddress() const { return strGlobalBurnAddress; }
     const std::string& CommunityAutonomousAddress() const { return strCommunityAutonomousAddress; }
-        const std::string& Nodes() const { return strNodes; }
 
     //  Indicates whether or not the provided address is a burn address
     bool IsBurnAddress(const std::string & p_address) const
@@ -131,7 +129,6 @@ public:
             || p_address == strAddNullQualifierTagBurnAddress
             || p_address == strGlobalBurnAddress
             || p_address == strCommunityAutonomousAddress
-            || p_address == strNodes
         ) {
             return true;
         }
@@ -182,7 +179,6 @@ protected:
     CAmount nIssueRestrictedAssetBurnAmount;
     CAmount nAddNullQualifierTagBurnAmount;
     CAmount nCommunityAutonomousAmount;
-    CAmount nNodesPercentage;
 
     // Burn Addresses
     std::string strIssueAssetBurnAddress;
@@ -200,7 +196,6 @@ protected:
 	
 	//Community Autonomous Address   
     std::string strCommunityAutonomousAddress;
-    std::string strNodes;
 
     unsigned int nDGWActivationBlock;
     unsigned int nMessagingActivationBlock;

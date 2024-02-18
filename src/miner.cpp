@@ -171,7 +171,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     nLastBlockTx = nBlockTx;
     nLastBlockWeight = nBlockWeight;
 
-    //AIPG START
+    //MEOWCOIN START
     // Coinbase TX is created
     CMutableTransaction coinbaseTx;
     coinbaseTx.vin.resize(1);
@@ -188,7 +188,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
 	std::string  GetCommunityAutonomousAddress 	= GetParams().CommunityAutonomousAddress();
 	CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
     if (!IsValidDestination(destCommunityAutonomous)) {
-		LogPrintf("IsValidDestination: Invalid Aipg address %s \n", GetCommunityAutonomousAddress);
+		LogPrintf("IsValidDestination: Invalid Points address %s \n", GetCommunityAutonomousAddress);
     }
     // We need to parse the address ready to send to it
     CScript scriptPubKeyCommunityAutonomous = GetScriptForDestination(destCommunityAutonomous);
@@ -209,7 +209,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     pblocktemplate->vTxFees[0] = -nFees;
 
     LogPrintf("CreateNewBlock(): block weight: %u txs: %u fees: %ld sigops %d\n", GetBlockWeight(*pblock), nBlockTx, nFees, nBlockSigOpsCost);
-    //aipg END
+    //PNT END
 
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
