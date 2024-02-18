@@ -247,7 +247,7 @@ public:
 		
         // 2% of 5000 COIN to Donation
 	    nCommunityAutonomousAmount = 5;
-        nNodesPercentage = 3;
+        // nNodesPercentage = 3;
 
         // Burn Addresses
 	    strIssueAssetBurnAddress = "PissueAssetXXXXXXXXXXXXXXXXa1oUfD";
