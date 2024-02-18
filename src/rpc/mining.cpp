@@ -371,9 +371,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             "  },\n"
             "  \"coinbasevalue\" : n,              (numeric) maximum allowable input to coinbase transaction, including the generation award and transaction fees (in satoshis)\n"
             "  \"CommunityAutonomousAddress\" : n, (string) Community Autonomous Address\n"
-            "  \"CommunityAutonomousValue\" : n,   (numeric) Community Autonomous Value, 5% of the coinbase\n"
-            "  \"Nodes\" : n, (string) Nodes Autonomous Address\n"
-            "  \"NodesPrecentage\" : n,   (numeric) Community Autonomous Value, 3% of the coinbase\n"
+            "  \"CommunityAutonomousValue\" : n,   (numeric) Community Autonomous Value, 10% of the coinbase\n"
             "  \"coinbasetxn\" : { ... },          (json object) information for coinbase transaction\n"
             "  \"target\" : \"xxxx\",                (string) The hash target\n"
             "  \"mintime\" : xxx,                  (numeric) The minimum timestamp appropriate for next block time in seconds since epoch (Jan 1 1970 GMT)\n"
@@ -694,8 +692,6 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     result.push_back(Pair("coinbasevalue", (int64_t)pblock->vtx[0]->vout[0].nValue));
     result.push_back(Pair("CommunityAutonomousAddress", GetParams().CommunityAutonomousAddress()));
     result.push_back(Pair("CommunityAutonomousValue", (int64_t)pblock->vtx[0]->vout[1].nValue) );
-    result.push_back(Pair("Nodes", GetParams().CommunityAutonomousAddress()));
-    result.push_back(Pair("NodesAmountValue", (int64_t)pblock->vtx[0]->vout[2].nValue) );
     result.push_back(Pair("longpollid", chainActive.Tip()->GetBlockHash().GetHex() + i64tostr(nTransactionsUpdatedLast)));
     result.push_back(Pair("target", hashTarget.GetHex()));
     result.push_back(Pair("mintime", (int64_t)pindexPrev->GetMedianTimePast()+1));
