@@ -1322,24 +1322,30 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
     int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+
     // Force block reward to zero when right shift is undefined.
     if (halvings >= 64)
         return 0;
 
-    CAmount nSubsidy = 500 * COIN;
-    
-    // Subsidy is cut in half every consensusParams.nSubsidyHalvingInterval blocks for the first 4 halvings.
-    if (halvings < 4)
-        nSubsidy >>= halvings;
-    else if (nHeight >= (4 * consensusParams.nSubsidyHalvingInterval + 250))
-        // After the 4 halvings, halve every 2500000 blocks.
-        nSubsidy >>= ((nHeight - 4 * consensusParams.nSubsidyHalvingInterval - 250) / 250);
-    else
-        // After the 4 halvings and 2500000 blocks, halve every 525000 blocks.
-        nSubsidy >>= ((nHeight - 4 * consensusParams.nSubsidyHalvingInterval) / 525);
+    CAmount nSubsidy;
+
+    if (nHeight < 100) {
+        nSubsidy = 500 * COIN;  // Initial subsidy of 500 COIN
+    } else if (nHeight < 200) {
+        nSubsidy = 250 * COIN;  // Halved at 100k blocks
+    } else if (nHeight < 300) {
+        nSubsidy = 125 * COIN;  // Halved at 200k blocks
+    } else if (nHeight < 400) {
+        nSubsidy = 62.5 * COIN; // Halved at 300k blocks
+    } else if (nHeight < 500) {
+        nSubsidy = 31.25 * COIN;  // Halved at 400k blocks
+    } else {
+        nSubsidy = 31.25 * COIN;  // Constant subsidy from 500k to 3 million blocks
+    }
 
     return nSubsidy;
 }
+
 
 
 
