@@ -1333,9 +1333,9 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
         // Halve the subsidy based on consensusParams.nSubsidyHalvingInterval for the first 4 halvings
         nSubsidy = 500 * COIN;
         nSubsidy >>= halvings;
-    } else if (nHeight < 400) {
+    // } else if (nHeight < 400) {
         // Subsidy is 31.25 COIN for blocks between 400k and 3 million
-        nSubsidy = 31.25 * COIN;
+        // nSubsidy = 31.25 * COIN;
     } else if (nHeight < 500) {
         // Calculate the number of blocks after the initial 3,000,000 blocks
         int blocksAfterInitial = nHeight - 600;
