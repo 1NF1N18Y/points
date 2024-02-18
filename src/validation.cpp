@@ -1332,7 +1332,6 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     return nSubsidy;
 }
 
-
 bool IsInitialBlockDownload()
 {
     // Once this function has returned false, it must remain false.
@@ -2745,73 +2744,39 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                          REJECT_INVALID, "bad-cb-amount");
 	
     /** AIPG START */
-    std::string GetCommunityAutonomousAddress = GetParams().CommunityAutonomousAddress();
-    CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
+	//CommunityAutonomousAddress Assign 10%
+	std::string  GetCommunityAutonomousAddress 	= GetParams().CommunityAutonomousAddress();
+	CTxDestination destCommunityAutonomous 		= DecodeDestination(GetCommunityAutonomousAddress);
     if (!IsValidDestination(destCommunityAutonomous)) {
-        LogPrintf("IsValidDestination: Invalid Aipg address %s \n", GetCommunityAutonomousAddress);
+		LogPrintf("IsValidDestination: Invalid Aipg address %s \n", GetCommunityAutonomousAddress);
     }
-
-    // Parse Aipg address
-    CScript scriptPubKeyCommunityAutonomous = GetScriptForDestination(destCommunityAutonomous);
-
-    CAmount nCommunityAutonomousAmount = GetParams().CommunityAutonomousAmount();
-    CAmount nSubsidy = GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
-    CAmount nCommunityAutonomousAmountValue = nSubsidy * nCommunityAutonomousAmount / 100;
-
-    /* Remove Log to console
-    LogPrintf("==>block.vtx[0]->vout[1].nValue:    %ld \n", block.vtx[0]->vout[1].nValue);
-    LogPrintf("==>nCommunityAutonomousAmountValue: %ld \n", nCommunityAutonomousAmountValue);
-    LogPrintf("==>block.vtx[0]->vout[1].scriptPubKey: %s \n", block.vtx[0]->vout[1].scriptPubKey[3]);
-    LogPrintf("==>GetCommunityAutonomousAddress:   %s \n", GetCommunityAutonomousAddress);
-    LogPrintf("==>scriptPubKeyCommunityAutonomous    Actual: %s \n", HexStr(block.vtx[0]->vout[1].scriptPubKey));
-    LogPrintf("==>scriptPubKeyCommunityAutonomous Should Be: %s \n", HexStr(scriptPubKeyCommunityAutonomous));
-    */
-
-    // Check 10% Amount
-    if (block.vtx[0]->vout[1].nValue != nCommunityAutonomousAmountValue) {
-        return state.DoS(100,
-                        error("ConnectBlock(): coinbase Community Autonomous Amount Is Invalid. Actual: %ld Should be:%ld ", block.vtx[0]->vout[1].nValue, nCommunityAutonomousAmountValue),
-                        REJECT_INVALID, "bad-cb-community-autonomous-amount");
-    }
-
-    // Check 10% Address
-    if (HexStr(block.vtx[0]->vout[1].scriptPubKey) != HexStr(scriptPubKeyCommunityAutonomous)) {
-        return state.DoS(100,
-                        error("ConnectBlock(): coinbase Community Autonomous Address Is Invalid. Actual: %s Should Be: %s \n", HexStr(block.vtx[0]->vout[1].scriptPubKey), HexStr(scriptPubKeyCommunityAutonomous)),
-                        REJECT_INVALID, "bad-cb-community-autonomous-address");
-    }
-
-    // Nodes Address Check
-    std::string GetNodes = GetParams().Nodes();
-    CTxDestination destNodes = DecodeDestination(GetNodes);
-    if (!IsValidDestination(destNodes)) {
-        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", GetNodes);
-    }
-
-    // Parse Nodes address
-    CScript scriptPubKeyNodes = GetScriptForDestination(destNodes);
-
-    CAmount nNodesPercentage = GetParams().NodesPercentage();
-    CAmount nNodesAmountValue = nSubsidy * nNodesPercentage / 100;
-
-    // Check Nodes Amount
-    if (block.vtx[0]->vout[2].nValue != nNodesAmountValue) {
-        return state.DoS(100,
-                        error("ConnectBlock(): coinbase Nodes Amount Is Invalid. Actual: %ld Should be:%ld ", block.vtx[0]->vout[2].nValue, nNodesAmountValue),
-                        REJECT_INVALID, "bad-cb-nodes-amount");
-    }
-
-    // Check Nodes Address
-    if (HexStr(block.vtx[0]->vout[2].scriptPubKey) != HexStr(scriptPubKeyNodes)) {
-        return state.DoS(100,
-                        error("ConnectBlock(): coinbase Nodes Address Is Invalid. Actual: %s Should Be: %s \n", HexStr(block.vtx[0]->vout[2].scriptPubKey), HexStr(scriptPubKeyNodes)),
-                        REJECT_INVALID, "bad-cb-nodes-address");
-    }
-    /** AIPG END */
-
-
-
-
+	// Parse Aipg address
+    CScript scriptPubKeyCommunityAutonomous 	= GetScriptForDestination(destCommunityAutonomous);
+	
+	CAmount nCommunityAutonomousAmount 			= GetParams().CommunityAutonomousAmount();
+	CAmount nSubsidy 							= GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
+	CAmount nCommunityAutonomousAmountValue		= nSubsidy*nCommunityAutonomousAmount/100;
+	/* Remove Log to console
+	LogPrintf("==>block.vtx[0]->vout[1].nValue:    %ld \n", block.vtx[0]->vout[1].nValue);
+	LogPrintf("==>nCommunityAutonomousAmountValue: %ld \n", nCommunityAutonomousAmountValue);
+	LogPrintf("==>block.vtx[0]->vout[1].scriptPubKey: %s \n", block.vtx[0]->vout[1].scriptPubKey[3]);
+	LogPrintf("==>GetCommunityAutonomousAddress:   %s \n", GetCommunityAutonomousAddress);
+	LogPrintf("==>scriptPubKeyCommunityAutonomous    Actual: %s \n", HexStr(block.vtx[0]->vout[1].scriptPubKey));
+	LogPrintf("==>scriptPubKeyCommunityAutonomous Should Be: %s \n", HexStr(scriptPubKeyCommunityAutonomous));
+	*/
+	//Check 10% Amount
+	if(block.vtx[0]->vout[1].nValue != nCommunityAutonomousAmountValue )		{
+		return state.DoS(100,
+                         error("ConnectBlock(): coinbase Community Autonomous Amount Is Invalid. Actual: %ld Should be:%ld ",block.vtx[0]->vout[1].nValue, nCommunityAutonomousAmountValue),
+                         REJECT_INVALID, "bad-cb-community-autonomous-amount");
+	}
+	//Check 10% Address
+	if( HexStr(block.vtx[0]->vout[1].scriptPubKey) != HexStr(scriptPubKeyCommunityAutonomous) )		{
+		return state.DoS(100,
+                         error("ConnectBlock(): coinbase Community Autonomous Address Is Invalid. Actual: %s Should Be: %s \n",HexStr(block.vtx[0]->vout[1].scriptPubKey), HexStr(scriptPubKeyCommunityAutonomous)),
+                         REJECT_INVALID, "bad-cb-community-autonomous-address");
+	}
+	/** AIPG END */
 	
     if (!control.Wait())
         return state.DoS(100, error("%s: CheckQueue failed", __func__), REJECT_INVALID, "block-validation-failed");

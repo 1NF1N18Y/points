@@ -42,7 +42,7 @@
 extern std::vector<CWalletRef> vpwallets;
 //////////////////////////////////////////////////////////////////////////////
 //
-// PointsMiner
+// AipgMiner
 //
 
 //
@@ -171,71 +171,45 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     nLastBlockTx = nBlockTx;
     nLastBlockWeight = nBlockWeight;
 
-    //MEOWCOIN START
+    //AIPG START
     // Coinbase TX is created
     CMutableTransaction coinbaseTx;
     coinbaseTx.vin.resize(1);
     coinbaseTx.vin[0].prevout.SetNull();
-    //vout
-    CAmount nSubsidy = GetBlockSubsidy(nHeight, chainparams.GetConsensus());
-    CAmount nCommunityAutonomousAmount = GetParams().CommunityAutonomousAmount();
-
-    coinbaseTx.vout.resize(3); // Adjust the size to accommodate the Nodes address
-
+	//vout
+	CAmount nSubsidy 					= GetBlockSubsidy(nHeight, chainparams.GetConsensus());
+	CAmount nCommunityAutonomousAmount 	= GetParams().CommunityAutonomousAmount();
+	
+    coinbaseTx.vout.resize(2);
     coinbaseTx.vout[0].scriptPubKey = scriptPubKeyIn;
-    coinbaseTx.vout[0].nValue = nFees + ((100 - nCommunityAutonomousAmount) * nSubsidy / 100);
-
+    coinbaseTx.vout[0].nValue = nFees + ( (100-nCommunityAutonomousAmount) * nSubsidy / 100 );
+	
     // Assign the set % in chainparams.cpp to the TX
-    std::string GetCommunityAutonomousAddress = GetParams().CommunityAutonomousAddress();
-    CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
+	std::string  GetCommunityAutonomousAddress 	= GetParams().CommunityAutonomousAddress();
+	CTxDestination destCommunityAutonomous = DecodeDestination(GetCommunityAutonomousAddress);
     if (!IsValidDestination(destCommunityAutonomous)) {
-        LogPrintf("IsValidDestination: Invalid Points address %s \n", GetCommunityAutonomousAddress);
+		LogPrintf("IsValidDestination: Invalid Aipg address %s \n", GetCommunityAutonomousAddress);
     }
     // We need to parse the address ready to send to it
     CScript scriptPubKeyCommunityAutonomous = GetScriptForDestination(destCommunityAutonomous);
-
+	
     coinbaseTx.vout[1].scriptPubKey = scriptPubKeyCommunityAutonomous;
-    coinbaseTx.vout[1].nValue = nSubsidy * nCommunityAutonomousAmount / 100;
-
-    // Nodes Address
-    std::string GetNodes = GetParams().Nodes();
-    CTxDestination destNodes = DecodeDestination(GetNodes);
-    if (!IsValidDestination(destNodes)) {
-        LogPrintf("IsValidDestination: Invalid Nodes address %s \n", GetNodes);
-    }
-    // Parse Nodes address
-    CScript scriptPubKeyNodes = GetScriptForDestination(destNodes);
-    CAmount nNodesPercentage = GetParams().NodesPercentage();
-    coinbaseTx.vout[2].scriptPubKey = scriptPubKeyNodes;
-    coinbaseTx.vout[2].nValue = nSubsidy * nNodesPercentage / 100; // Assuming 3% for Nodes
-
-    // Calculate total reward and adjust if necessary
-    CAmount nTotalReward = coinbaseTx.vout[0].nValue + coinbaseTx.vout[1].nValue + coinbaseTx.vout[2].nValue;
-    if (nTotalReward > nSubsidy) {
-        // Reduce the miner reward to match the subsidy
-        coinbaseTx.vout[0].nValue -= (nTotalReward - nSubsidy);
-    }
-
-    LogPrintf("nSubsidy: ====================================================\n");
-    LogPrintf("Miner: %ld \n", coinbaseTx.vout[0].nValue);
-    LogPrintf("scriptPubKeyIn: %s \n", HexStr(scriptPubKeyIn));
-
-    LogPrintf("GetCommunityAutonomousAddress: %s \n", GetCommunityAutonomousAddress);
-    LogPrintf("scriptPubKeyCommunityAutonomous: %s \n", HexStr(scriptPubKeyCommunityAutonomous));
-    LogPrintf("nCommunityAutonomousAmount: %ld \n", coinbaseTx.vout[1].nValue);
-    LogPrintf("scriptPubKeyNodes: %s \n", HexStr(scriptPubKeyNodes));
-    LogPrintf("nNodesAmount: %ld \n", coinbaseTx.vout[2].nValue);
-
+    coinbaseTx.vout[1].nValue = nSubsidy*nCommunityAutonomousAmount/100;
+	LogPrintf("nSubsidy: ====================================================\n");
+	LogPrintf("Miner: %ld \n", coinbaseTx.vout[0].nValue);
+	LogPrintf("scriptPubKeyIn: %s \n", HexStr(scriptPubKeyIn));
+	
+	LogPrintf("GetCommunityAutonomousAddress: %s \n", GetCommunityAutonomousAddress);
+	LogPrintf("scriptPubKeyCommunityAutonomous: %s \n", HexStr(scriptPubKeyCommunityAutonomous));
+	LogPrintf("nCommunityAutonomousAmount: %ld \n", coinbaseTx.vout[1].nValue);
     coinbaseTx.vin[0].scriptSig = CScript() << nHeight << OP_0;
-
+	
     pblock->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
     pblocktemplate->vchCoinbaseCommitment = GenerateCoinbaseCommitment(*pblock, pindexPrev, chainparams.GetConsensus());
     pblocktemplate->vTxFees[0] = -nFees;
 
     LogPrintf("CreateNewBlock(): block weight: %u txs: %u fees: %ld sigops %d\n", GetBlockWeight(*pblock), nBlockTx, nFees, nBlockSigOpsCost);
-    //MEOWCOIN END
-
-
+    //aipg END
 
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
@@ -588,11 +562,11 @@ CWallet *GetFirstWallet() {
     return(NULL);
 }
 
-void static PointsMiner(const CChainParams& chainparams)
+void static AipgMiner(const CChainParams& chainparams)
 {
-    LogPrintf("PointsMiner -- started\n");
+    LogPrintf("AipgMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("points-miner");
+    RenameThread("aipg-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -604,7 +578,7 @@ void static PointsMiner(const CChainParams& chainparams)
 
 
     if (!EnsureWalletIsAvailable(pWallet, false)) {
-        LogPrintf("PointsMiner -- Wallet not available\n");
+        LogPrintf("AipgMiner -- Wallet not available\n");
     }
 #endif
 
@@ -666,13 +640,13 @@ void static PointsMiner(const CChainParams& chainparams)
 
             if (!pblocktemplate.get())
             {
-                LogPrintf("PointsMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("AipgMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("PointsMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("AipgMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -693,7 +667,7 @@ void static PointsMiner(const CChainParams& chainparams)
                         pblock->mix_hash = mix_hash;
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("PointsMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("AipgMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -740,17 +714,17 @@ void static PointsMiner(const CChainParams& chainparams)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("PointsMiner -- terminated\n");
+        LogPrintf("AipgMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("PointsMiner -- runtime error: %s\n", e.what());
+        LogPrintf("AipgMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
-int GeneratePointss(bool fGenerate, int nThreads, const CChainParams& chainparams)
+int GenerateAipgs(bool fGenerate, int nThreads, const CChainParams& chainparams)
 {
 
     static boost::thread_group* minerThreads = NULL;
@@ -777,7 +751,7 @@ int GeneratePointss(bool fGenerate, int nThreads, const CChainParams& chainparam
     nHashesPerSec = 0;
 
     for (int i = 0; i < nThreads; i++){
-        minerThreads->create_thread(boost::bind(&PointsMiner, boost::cref(chainparams)));
+        minerThreads->create_thread(boost::bind(&AipgMiner, boost::cref(chainparams)));
     }
 
     return(numCores);
