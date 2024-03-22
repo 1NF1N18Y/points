@@ -14,10 +14,10 @@ AC_CONFIG_HEADERS([src/config/points-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
-MEOWCOIN_DAEMON_NAME=pointsd
-MEOWCOIN_GUI_NAME=points-qt
+POINTS_DAEMON_NAME=pointsd
+POINTS_GUI_NAME=points-qt
 points_cli_NAME=points-cli
-MEOWCOIN_TX_NAME=points-tx
+POINTS_TX_NAME=points-tx
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR(ARFLAGS, [Flags for the archiver, defaults to <cr> if not set])
@@ -27,9 +27,9 @@ fi
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef MEOWCOIN_CONFIG_H])
-AH_TOP([#define MEOWCOIN_CONFIG_H])
-AH_BOTTOM([#endif //MEOWCOIN_CONFIG_H])
+AH_TOP([#ifndef POINTS_CONFIG_H])
+AH_TOP([#define POINTS_CONFIG_H])
+AH_BOTTOM([#endif //POINTS_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -720,7 +720,7 @@ AC_SUBST(LIBMEMENV)
 
 if test x$enable_wallet != xno; then
     dnl Check for libdb_cxx only if wallet enabled
-    MEOWCOIN_FIND_BDB48
+    POINTS_FIND_BDB48
 fi
 
 dnl Check for libminiupnpc (optional)
@@ -732,10 +732,10 @@ if test x$use_upnp != xno; then
   )
 fi
 
-MEOWCOIN_QT_INIT
+POINTS_QT_INIT
 
 dnl sets $points_enable_qt, $points_enable_qt_test, $points_enable_qt_dbus
-MEOWCOIN_QT_CONFIGURE([$use_pkgconfig], [qt5])
+POINTS_QT_CONFIGURE([$use_pkgconfig], [qt5])
 
 if test x$build_points_cli$build_points_tx$build_pointsd$points_enable_qt$use_tests$use_bench = xnononononono; then
     use_boost=no
@@ -919,9 +919,9 @@ if test x$use_pkgconfig = xyes; then
     [
       PKG_CHECK_MODULES([SSL], [libssl],, [AC_MSG_ERROR(openssl  not found.)])
       PKG_CHECK_MODULES([CRYPTO], [libcrypto],,[AC_MSG_ERROR(libcrypto  not found.)])
-      MEOWCOIN_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [MEOWCOIN_QT_FAIL(libprotobuf not found)])])
+      POINTS_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [POINTS_QT_FAIL(libprotobuf not found)])])
       if test x$use_qr != xno; then
-        MEOWCOIN_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+        POINTS_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
       fi
       if test x$build_points_cli$build_points_tx$build_pointsd$points_enable_qt$use_tests != xnonononono; then
         PKG_CHECK_MODULES([EVENT], [libevent],, [AC_MSG_ERROR(libevent not found.)])
@@ -979,10 +979,10 @@ else
     esac
   fi
 
-  MEOWCOIN_QT_CHECK(AC_CHECK_LIB([protobuf] ,[main],[PROTOBUF_LIBS=-lprotobuf], MEOWCOIN_QT_FAIL(libprotobuf not found)))
+  POINTS_QT_CHECK(AC_CHECK_LIB([protobuf] ,[main],[PROTOBUF_LIBS=-lprotobuf], POINTS_QT_FAIL(libprotobuf not found)))
   if test x$use_qr != xno; then
-    MEOWCOIN_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
-    MEOWCOIN_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
+    POINTS_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
+    POINTS_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
   fi
 fi
 
@@ -1041,22 +1041,22 @@ AM_CONDITIONAL([EMBEDDED_UNIVALUE],[test x$need_bundled_univalue = xyes])
 AC_SUBST(UNIVALUE_CFLAGS)
 AC_SUBST(UNIVALUE_LIBS)
 
-MEOWCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
+POINTS_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
 
 AC_MSG_CHECKING([whether to build pointsd])
 AM_CONDITIONAL([BUILD_POINTSD], [test x$build_pointsd = xyes])
 AC_MSG_RESULT($build_pointsd)
 
 AC_MSG_CHECKING([whether to build points-cli])
-AM_CONDITIONAL([BUILD_MEOWCOIN_CLI], [test x$build_points_cli = xyes])
+AM_CONDITIONAL([BUILD_POINTS_CLI], [test x$build_points_cli = xyes])
 AC_MSG_RESULT($build_points_cli)
 
 AC_MSG_CHECKING([whether to build points-tx])
-AM_CONDITIONAL([BUILD_MEOWCOIN_TX], [test x$build_points_tx = xyes])
+AM_CONDITIONAL([BUILD_POINTS_TX], [test x$build_points_tx = xyes])
 AC_MSG_RESULT($build_points_tx)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_MEOWCOIN_LIBS], [test x$build_points_libs = xyes])
+AM_CONDITIONAL([BUILD_POINTS_LIBS], [test x$build_points_libs = xyes])
 if test x$build_points_libs = xyes; then
   AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
   AC_CONFIG_FILES([libpointsconsensus.pc:libpointsconsensus.pc.in])
@@ -1217,10 +1217,10 @@ AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS")
 AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
-AC_SUBST(MEOWCOIN_DAEMON_NAME)
-AC_SUBST(MEOWCOIN_GUI_NAME)
+AC_SUBST(POINTS_DAEMON_NAME)
+AC_SUBST(POINTS_GUI_NAME)
 AC_SUBST(points_cli_NAME)
-AC_SUBST(MEOWCOIN_TX_NAME)
+AC_SUBST(POINTS_TX_NAME)
 
 AC_SUBST(RELDFLAGS)
 AC_SUBST(COMPAT_LDFLAGS)
