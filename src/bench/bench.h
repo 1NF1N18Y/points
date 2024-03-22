@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_BENCH_BENCH_H
-#define MEOWCOIN_BENCH_BENCH_H
+#ifndef POINTS_BENCH_BENCH_H
+#define POINTS_BENCH_BENCH_H
 
 #include <functional>
 #include <limits>
@@ -79,4 +79,4 @@ namespace benchmark {
 #define BENCHMARK(n) \
     benchmark::BenchRunner BOOST_PP_CAT(bench_, BOOST_PP_CAT(__LINE__, n))(BOOST_PP_STRINGIZE(n), n);
 
-#endif // MEOWCOIN_BENCH_BENCH_H
+#endif // POINTS_BENCH_BENCH_H

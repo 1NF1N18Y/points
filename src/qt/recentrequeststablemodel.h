@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_RECENTREQUESTSTABLEMODEL_H
-#define MEOWCOIN_QT_RECENTREQUESTSTABLEMODEL_H
+#ifndef POINTS_QT_RECENTREQUESTSTABLEMODEL_H
+#define POINTS_QT_RECENTREQUESTSTABLEMODEL_H
 
 #include "walletmodel.h"
 
@@ -106,4 +106,4 @@ private:
     QString getAmountTitle();
 };
 
-#endif // MEOWCOIN_QT_RECENTREQUESTSTABLEMODEL_H
+#endif // POINTS_QT_RECENTREQUESTSTABLEMODEL_H

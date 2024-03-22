@@ -14,15 +14,15 @@ endif
 override GZIP_ENV = "-9n"
 export PYTHONPATH
 
-if BUILD_MEOWCOIN_LIBS
+if BUILD_POINTS_LIBS
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libpointsconsensus.pc
 endif
 
-POINTSD_BIN=$(top_builddir)/src/$(MEOWCOIN_DAEMON_NAME)$(EXEEXT)
-MEOWCOIN_QT_BIN=$(top_builddir)/src/qt/$(MEOWCOIN_GUI_NAME)$(EXEEXT)
+POINTSD_BIN=$(top_builddir)/src/$(POINTS_DAEMON_NAME)$(EXEEXT)
+POINTS_QT_BIN=$(top_builddir)/src/qt/$(POINTS_GUI_NAME)$(EXEEXT)
 points_cli_BIN=$(top_builddir)/src/$(points_cli_NAME)$(EXEEXT)
-MEOWCOIN_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
+POINTS_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
 points_cli_INSTALL=$(top_builddir)/contrib/install_cli.sh
 
 empty :=
@@ -73,10 +73,10 @@ COVERAGE_INFO = baseline.info \
 dist-hook:
 	-$(GIT) archive --format=tar HEAD -- src/clientversion.cpp | $(AMTAR) -C $(top_distdir) -xf -
 
-$(MEOWCOIN_WIN_INSTALLER): all-recursive
+$(POINTS_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(POINTSD_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(MEOWCOIN_QT_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(POINTS_QT_BIN) $(top_builddir)/release
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(points_cli_BIN) $(top_builddir)/release
 	@test -f $(MAKENSIS) && $(MAKENSIS) -V2 $(top_builddir)/share/setup.nsi || \
 	  echo error: could not build $@
@@ -102,7 +102,7 @@ $(OSX_APP)/Contents/MacOS/install_cli.sh: $(points_cli_INSTALL)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/Points-Qt: $(MEOWCOIN_QT_BIN)
+$(OSX_APP)/Contents/MacOS/Points-Qt: $(POINTS_QT_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
@@ -172,10 +172,10 @@ appbundle: $(OSX_APP_BUILT)
 deploy: $(OSX_DMG)
 endif
 if TARGET_WINDOWS
-deploy: $(MEOWCOIN_WIN_INSTALLER)
+deploy: $(POINTS_WIN_INSTALLER)
 endif
 
-$(MEOWCOIN_QT_BIN): FORCE
+$(POINTS_QT_BIN): FORCE
 	$(MAKE) -C src qt/$(@F)
 
 $(POINTSD_BIN): FORCE
@@ -287,7 +287,7 @@ EXTRA_DIST += \
     test/util/data/txcreatesignv1.json \
     test/util/data/txcreatesignv2.hex
 
-CLEANFILES = $(OSX_DMG) $(MEOWCOIN_WIN_INSTALLER)
+CLEANFILES = $(OSX_DMG) $(POINTS_WIN_INSTALLER)
 
 .INTERMEDIATE: $(COVERAGE_INFO)
 

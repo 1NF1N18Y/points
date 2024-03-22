@@ -127,5 +127,5 @@ int pointsconsensus_verify_script(const unsigned char *scriptPubKey, unsigned in
 unsigned int pointsconsensus_version()
 {
     // Just use the API version for now
-    return MEOWCOINCONSENSUS_API_VER;
+    return POINTSCONSENSUS_API_VER;
 }

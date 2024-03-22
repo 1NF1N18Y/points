@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
-#define MEOWCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#ifndef POINTS_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#define POINTS_ZMQ_ZMQNOTIFICATIONINTERFACE_H
 
 #include "validationinterface.h"
 #include <string>
@@ -40,4 +40,4 @@ private:
     std::list<CZMQAbstractNotifier*> notifiers;
 };
 
-#endif // MEOWCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
+#endif // POINTS_ZMQ_ZMQNOTIFICATIONINTERFACE_H

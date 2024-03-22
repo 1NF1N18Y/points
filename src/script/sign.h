@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SCRIPT_SIGN_H
-#define MEOWCOIN_SCRIPT_SIGN_H
+#ifndef POINTS_SCRIPT_SIGN_H
+#define POINTS_SCRIPT_SIGN_H
 
 #include "script/interpreter.h"
 
@@ -83,4 +83,4 @@ SignatureData CombineSignatures(const CScript& scriptPubKey, const BaseSignature
 SignatureData DataFromTransaction(const CMutableTransaction& tx, unsigned int nIn);
 void UpdateTransaction(CMutableTransaction& tx, unsigned int nIn, const SignatureData& data);
 
-#endif // MEOWCOIN_SCRIPT_SIGN_H
+#endif // POINTS_SCRIPT_SIGN_H

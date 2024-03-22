@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SCHEDULER_H
-#define MEOWCOIN_SCHEDULER_H
+#ifndef POINTS_SCHEDULER_H
+#define POINTS_SCHEDULER_H
 
 //
 // NOTE:

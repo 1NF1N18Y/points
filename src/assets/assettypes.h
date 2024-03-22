@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOINCOIN_NEWASSET_H
-#define MEOWCOINCOIN_NEWASSET_H
+#ifndef POINTSCOIN_NEWASSET_H
+#define POINTSCOIN_NEWASSET_H
 
 #include <string>
 #include <sstream>
@@ -652,4 +652,4 @@ private:
     size_t maxSize;
 };
 
-#endif //MEOWCOINCOIN_NEWASSET_H
+#endif //POINTSCOIN_NEWASSET_H

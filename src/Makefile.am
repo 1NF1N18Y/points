@@ -19,28 +19,28 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-MEOWCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+POINTS_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-MEOWCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
-MEOWCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+POINTS_INCLUDES += -I$(srcdir)/secp256k1/include
+POINTS_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBMEOWCOIN_SERVER=libpoints_server.a
-LIBMEOWCOIN_COMMON=libpoints_common.a
-LIBMEOWCOIN_CONSENSUS=libpoints_consensus.a
+LIBPOINTS_SERVER=libpoints_server.a
+LIBPOINTS_COMMON=libpoints_common.a
+LIBPOINTS_CONSENSUS=libpoints_consensus.a
 LIBpoints_cli=libpoints_cli.a
-LIBMEOWCOIN_UTIL=libpoints_util.a
-LIBMEOWCOIN_CRYPTO=crypto/libpoints_crypto.a
-LIBMEOWCOINQT=qt/libpointsqt.a
+LIBPOINTS_UTIL=libpoints_util.a
+LIBPOINTS_CRYPTO=crypto/libpoints_crypto.a
+LIBPOINTSQT=qt/libpointsqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBMEOWCOIN_ZMQ=libpoints_zmq.a
+LIBPOINTS_ZMQ=libpoints_zmq.a
 endif
-if BUILD_MEOWCOIN_LIBS
-LIBMEOWCOINCONSENSUS=libpointsconsensus.la
+if BUILD_POINTS_LIBS
+LIBPOINTSCONSENSUS=libpointsconsensus.la
 endif
 if ENABLE_WALLET
-LIBMEOWCOIN_WALLET=libpoints_wallet.a
+LIBPOINTS_WALLET=libpoints_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -49,16 +49,16 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBMEOWCOIN_CRYPTO) \
-  $(LIBMEOWCOIN_UTIL) \
-  $(LIBMEOWCOIN_COMMON) \
-  $(LIBMEOWCOIN_CONSENSUS) \
-  $(LIBMEOWCOIN_SERVER) \
+  $(LIBPOINTS_CRYPTO) \
+  $(LIBPOINTS_UTIL) \
+  $(LIBPOINTS_COMMON) \
+  $(LIBPOINTS_CONSENSUS) \
+  $(LIBPOINTS_SERVER) \
   $(LIBpoints_cli) \
-  $(LIBMEOWCOIN_WALLET) \
-  $(LIBMEOWCOIN_ZMQ)
+  $(LIBPOINTS_WALLET) \
+  $(LIBPOINTS_ZMQ)
 
-lib_LTLIBRARIES = $(LIBMEOWCOINCONSENSUS)
+lib_LTLIBRARIES = $(LIBPOINTSCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
@@ -69,17 +69,17 @@ if BUILD_POINTSD
   bin_PROGRAMS += pointsd
 endif
 
-if BUILD_MEOWCOIN_CLI
+if BUILD_POINTS_CLI
   bin_PROGRAMS += points-cli
 endif
 
-if BUILD_MEOWCOIN_TX
+if BUILD_POINTS_TX
   bin_PROGRAMS += points-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
 # points core #
-MEOWCOIN_CORE_H = \
+POINTS_CORE_H = \
   addrdb.h \
   addressindex.h \
   algo/sph_groestl.h \
@@ -243,7 +243,7 @@ obj/build.h: FORCE
 libpoints_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between pointsd and points-qt
-libpoints_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libpoints_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libpoints_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_server_a_SOURCES = \
   addrdb.cpp \
@@ -297,10 +297,10 @@ libpoints_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(MEOWCOIN_CORE_H)
+  $(POINTS_CORE_H)
 
 if ENABLE_ZMQ
-libpoints_zmq_a_CPPFLAGS = $(MEOWCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libpoints_zmq_a_CPPFLAGS = $(POINTS_INCLUDES) $(ZMQ_CFLAGS)
 libpoints_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
@@ -311,7 +311,7 @@ endif
 
 # wallet: shared between pointsd and points-qt, but only linked
 # when wallet enabled
-libpoints_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 libpoints_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_wallet_a_SOURCES = \
   wallet/crypter.cpp \
@@ -324,7 +324,7 @@ libpoints_wallet_a_SOURCES = \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
   wallet/bip39.cpp \
-  $(MEOWCOIN_CORE_H)
+  $(POINTS_CORE_H)
 
 # crypto primitives library
 crypto_libpoints_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
@@ -376,7 +376,7 @@ crypto_libpoints_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libpoints_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 libpoints_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_consensus_a_SOURCES = \
   amount.h \
@@ -413,10 +413,10 @@ libpoints_consensus_a_SOURCES = \
   version.h \
   LibBoolEE.cpp \
   LibBoolEE.h \
-  $(MEOWCOIN_CORE_H)
+  $(POINTS_CORE_H)
 
 # common: shared between pointsd, and points-qt and non-server tools
-libpoints_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 libpoints_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_common_a_SOURCES = \
   base58.cpp \
@@ -435,12 +435,12 @@ libpoints_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(MEOWCOIN_CORE_H)
+  $(POINTS_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libpoints_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 libpoints_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_util_a_SOURCES = \
   support/lockedpool.cpp \
@@ -458,7 +458,7 @@ libpoints_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(MEOWCOIN_CORE_H)
+  $(POINTS_CORE_H)
 
 if GLIBC_BACK_COMPAT
 libpoints_util_a_SOURCES += compat/glibc_compat.cpp
@@ -466,18 +466,18 @@ AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
 # cli: shared between points-cli and points-qt
-libpoints_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+libpoints_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 libpoints_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libpoints_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(MEOWCOIN_CORE_H)
+  $(POINTS_CORE_H)
 
 nodist_libpoints_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # pointsd binary #
 pointsd_SOURCES = pointsd.cpp
-pointsd_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+pointsd_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 pointsd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 pointsd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
@@ -486,14 +486,14 @@ pointsd_SOURCES += pointsd-res.rc
 endif
 
 pointsd_LDADD = \
-  $(LIBMEOWCOIN_SERVER) \
-  $(LIBMEOWCOIN_COMMON) \
+  $(LIBPOINTS_SERVER) \
+  $(LIBPOINTS_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBMEOWCOIN_UTIL) \
-  $(LIBMEOWCOIN_WALLET) \
-  $(LIBMEOWCOIN_ZMQ) \
-  $(LIBMEOWCOIN_CONSENSUS) \
-  $(LIBMEOWCOIN_CRYPTO) \
+  $(LIBPOINTS_UTIL) \
+  $(LIBPOINTS_WALLET) \
+  $(LIBPOINTS_ZMQ) \
+  $(LIBPOINTS_CONSENSUS) \
+  $(LIBPOINTS_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
@@ -503,7 +503,7 @@ pointsd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNP
 
 # points-cli binary #
 points_cli_SOURCES = points-cli.cpp
-points_cli_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) $(EVENT_CFLAGS)
+points_cli_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES) $(EVENT_CFLAGS)
 points_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 points_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
@@ -514,15 +514,15 @@ endif
 points_cli_LDADD = \
   $(LIBpoints_cli) \
   $(LIBUNIVALUE) \
-  $(LIBMEOWCOIN_UTIL) \
-  $(LIBMEOWCOIN_CRYPTO)
+  $(LIBPOINTS_UTIL) \
+  $(LIBPOINTS_CRYPTO)
 
 points_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # points-tx binary #
 points_tx_SOURCES = points-tx.cpp
-points_tx_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+points_tx_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 points_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 points_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
@@ -532,17 +532,17 @@ endif
 
 points_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBMEOWCOIN_COMMON) \
-  $(LIBMEOWCOIN_UTIL) \
-  $(LIBMEOWCOIN_CONSENSUS) \
-  $(LIBMEOWCOIN_CRYPTO) \
+  $(LIBPOINTS_COMMON) \
+  $(LIBPOINTS_UTIL) \
+  $(LIBPOINTS_CONSENSUS) \
+  $(LIBPOINTS_CRYPTO) \
   $(LIBSECP256K1)
 
 points_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # pointsconsensus library #
-if BUILD_MEOWCOIN_LIBS
+if BUILD_POINTS_LIBS
 include_HEADERS = script/pointsconsensus.h
 libpointsconsensus_la_SOURCES = $(crypto_libpoints_crypto_a_SOURCES) $(libpoints_consensus_a_SOURCES)
 
@@ -552,7 +552,7 @@ endif
 
 libpointsconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
 libpointsconsensus_la_LIBADD = $(LIBSECP256K1) $(BOOST_LIBS)
-libpointsconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_MEOWCOIN_INTERNAL
+libpointsconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_POINTS_INTERNAL
 libpointsconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif

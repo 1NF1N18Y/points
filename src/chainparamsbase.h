@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CHAINPARAMSBASE_H
-#define MEOWCOIN_CHAINPARAMSBASE_H
+#ifndef POINTS_CHAINPARAMSBASE_H
+#define POINTS_CHAINPARAMSBASE_H
 
 #include <memory>
 #include <string>
@@ -62,4 +62,4 @@ void SelectBaseParams(const std::string& chain);
  */
 std::string ChainNameFromCommandLine();
 
-#endif // MEOWCOIN_CHAINPARAMSBASE_H
+#endif // POINTS_CHAINPARAMSBASE_H

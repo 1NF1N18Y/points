@@ -5,7 +5,7 @@ mkdir release-linux
 cp ./src/pointsd ./release-linux/
 cp ./src/points-cli ./release-linux/
 cp ./src/qt/points-qt ./release-linux/
-cp ./MEOWCOINCOIN_small.png ./release-linux/
+cp ./POINTSCOIN_small.png ./release-linux/
 
 cd ./release-linux/
 strip pointsd
@@ -34,7 +34,7 @@ cp ../points-qt ./usr/local/bin/
 
 # prepare for desktop shortcut
 mkdir -p ./usr/share/icons/
-cp ../MEOWCOINCOIN_small.png ./usr/share/icons/
+cp ../POINTSCOIN_small.png ./usr/share/icons/
 mkdir -p ./usr/share/applications/
 echo '
 #!/usr/bin/env xdg-open
@@ -46,7 +46,7 @@ Terminal=false
 Exec=/usr/local/bin/points-qt
 Name=pointscoin
 Comment= points coin wallet
-Icon=/usr/share/icons/MEOWCOINCOIN_small.png
+Icon=/usr/share/icons/POINTSCOIN_small.png
 ' > ./usr/share/applications/pointscoin.desktop
 
 cd ../
@@ -75,7 +75,7 @@ cp ../points-qt ./usr/bin/
 
 # prepare for desktop shortcut
 mkdir -p ./usr/share/icons/
-cp ../MEOWCOINCOIN_small.png ./usr/share/icons/
+cp ../POINTSCOIN_small.png ./usr/share/icons/
 mkdir -p ./usr/share/applications/
 echo '
 [Desktop Entry]
@@ -85,7 +85,7 @@ Terminal=false
 Exec=/usr/bin/points-qt
 Name=pointscoin
 Comment= points coin wallet
-Icon=/usr/share/icons/MEOWCOINCOIN_small.png
+Icon=/usr/share/icons/POINTSCOIN_small.png
 ' > ./usr/share/applications/pointscoin.desktop
 cd ../
 
@@ -134,7 +134,7 @@ rm -rf %{buildroot}
 
 %files
 /usr/share/applications/pointscoin.desktop
-/usr/share/icons/MEOWCOINCOIN_small.png
+/usr/share/icons/POINTSCOIN_small.png
 %defattr(-,root,root,-)
 %{_bindir}/*
 

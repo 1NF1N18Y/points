@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_WINSHUTDOWNMONITOR_H
-#define MEOWCOIN_QT_WINSHUTDOWNMONITOR_H
+#ifndef POINTS_QT_WINSHUTDOWNMONITOR_H
+#define POINTS_QT_WINSHUTDOWNMONITOR_H
 
 #ifdef WIN32
 #include <QByteArray>
@@ -28,4 +28,4 @@ public:
 #endif
 #endif
 
-#endif // MEOWCOIN_QT_WINSHUTDOWNMONITOR_H
+#endif // POINTS_QT_WINSHUTDOWNMONITOR_H

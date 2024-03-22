@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ADDRDB_H
-#define MEOWCOIN_ADDRDB_H
+#ifndef POINTS_ADDRDB_H
+#define POINTS_ADDRDB_H
 
 #include "fs.h"
 #include "serialize.h"
@@ -101,4 +101,4 @@ public:
     bool Read(banmap_t& banSet);
 };
 
-#endif // MEOWCOIN_ADDRDB_H
+#endif // POINTS_ADDRDB_H

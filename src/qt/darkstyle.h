@@ -11,8 +11,8 @@
 ###############################################################################
 */
 
-#ifndef MEOWCOIN_DARKSTYLE_H
-#define MEOWCOIN_DARKSTYLE_H
+#ifndef POINTS_DARKSTYLE_H
+#define POINTS_DARKSTYLE_H
 
 #include <QApplication>
 #include <QProxyStyle>
@@ -37,4 +37,4 @@ private:
     QStyle *styleBase(QStyle *style = Q_NULLPTR) const;
 };
 
-#endif //MEOWCOIN_DARKSTYLE_H
+#endif //POINTS_DARKSTYLE_H

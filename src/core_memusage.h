@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CORE_MEMUSAGE_H
-#define MEOWCOIN_CORE_MEMUSAGE_H
+#ifndef POINTS_CORE_MEMUSAGE_H
+#define POINTS_CORE_MEMUSAGE_H
 
 #include "primitives/transaction.h"
 #include "primitives/block.h"
@@ -70,4 +70,4 @@ static inline size_t RecursiveDynamicUsage(const std::shared_ptr<X>& p) {
     return p ? memusage::DynamicUsage(p) + RecursiveDynamicUsage(*p) : 0;
 }
 
-#endif // MEOWCOIN_CORE_MEMUSAGE_H
+#endif // POINTS_CORE_MEMUSAGE_H

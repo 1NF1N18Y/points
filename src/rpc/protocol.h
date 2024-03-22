@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_RPCPROTOCOL_H
-#define MEOWCOIN_RPCPROTOCOL_H
+#ifndef POINTS_RPCPROTOCOL_H
+#define POINTS_RPCPROTOCOL_H
 
 #include "fs.h"
 
@@ -103,4 +103,4 @@ void DeleteAuthCookie();
 /** Parse JSON-RPC batch reply into a vector */
 std::vector<UniValue> JSONRPCProcessBatchReply(const UniValue &in, size_t num);
 
-#endif // MEOWCOIN_RPCPROTOCOL_H
+#endif // POINTS_RPCPROTOCOL_H

@@ -1,5 +1,5 @@
-#ifndef MEOWCOIN_QT_TEST_WALLETTESTS_H
-#define MEOWCOIN_QT_TEST_WALLETTESTS_H
+#ifndef POINTS_QT_TEST_WALLETTESTS_H
+#define POINTS_QT_TEST_WALLETTESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -12,4 +12,4 @@ private Q_SLOTS:
     void walletTests();
 };
 
-#endif // MEOWCOIN_QT_TEST_WALLETTESTS_H
+#endif // POINTS_QT_TEST_WALLETTESTS_H

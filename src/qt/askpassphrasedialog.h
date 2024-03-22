@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_ASKPASSPHRASEDIALOG_H
-#define MEOWCOIN_QT_ASKPASSPHRASEDIALOG_H
+#ifndef POINTS_QT_ASKPASSPHRASEDIALOG_H
+#define POINTS_QT_ASKPASSPHRASEDIALOG_H
 
 #include <QDialog>
 
@@ -50,4 +50,4 @@ protected:
     bool eventFilter(QObject *object, QEvent *event);
 };
 
-#endif // MEOWCOIN_QT_ASKPASSPHRASEDIALOG_H
+#endif // POINTS_QT_ASKPASSPHRASEDIALOG_H

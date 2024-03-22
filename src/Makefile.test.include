@@ -24,7 +24,7 @@ RAW_TEST_FILES =
 GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
 
 # test_points binary #
-MEOWCOIN_TESTS =\
+POINTS_TESTS =\
   test/assets/asset_tests.cpp \
   test/assets/serialization_tests.cpp \
   test/assets/asset_tx_tests.cpp \
@@ -102,7 +102,7 @@ MEOWCOIN_TESTS =\
   test/util_tests.cpp
 
 if ENABLE_WALLET
-MEOWCOIN_TESTS += \
+POINTS_TESTS += \
   wallet/test/wallet_test_fixture.cpp \
   wallet/test/wallet_test_fixture.h \
   wallet/test/accounting_tests.cpp \
@@ -110,17 +110,17 @@ MEOWCOIN_TESTS += \
   wallet/test/crypto_tests.cpp
 endif
 
-test_test_points_SOURCES = $(MEOWCOIN_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_points_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
+test_test_points_SOURCES = $(POINTS_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_points_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES) -I$(builddir)/test/ $(TESTDEFS) $(EVENT_CFLAGS)
 test_test_points_LDADD =
 if ENABLE_WALLET
-test_test_points_LDADD += $(LIBMEOWCOIN_WALLET)
+test_test_points_LDADD += $(LIBPOINTS_WALLET)
 endif
-test_test_points_LDADD += $(LIBMEOWCOIN_SERVER) $(LIBpoints_cli) $(LIBMEOWCOIN_COMMON) $(LIBMEOWCOIN_UTIL) $(LIBMEOWCOIN_CONSENSUS) $(LIBMEOWCOIN_CRYPTO) $(LIBUNIVALUE) \
+test_test_points_LDADD += $(LIBPOINTS_SERVER) $(LIBpoints_cli) $(LIBPOINTS_COMMON) $(LIBPOINTS_UTIL) $(LIBPOINTS_CONSENSUS) $(LIBPOINTS_CRYPTO) $(LIBUNIVALUE) \
   $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
 test_test_points_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-test_test_points_LDADD += $(LIBMEOWCOIN_CONSENSUS) $(LIBMEOWCOIN_CRYPTO) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
+test_test_points_LDADD += $(LIBPOINTS_CONSENSUS) $(LIBPOINTS_CRYPTO) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
 test_test_points_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
 
 if ENABLE_ZMQ
@@ -130,17 +130,17 @@ endif
 
 # test_points_fuzzy binary #
 test_test_points_fuzzy_SOURCES = test/test_points_fuzzy.cpp
-test_test_points_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+test_test_points_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 test_test_points_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 test_test_points_fuzzy_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 test_test_points_fuzzy_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBMEOWCOIN_SERVER) \
-  $(LIBMEOWCOIN_COMMON) \
-  $(LIBMEOWCOIN_UTIL) \
-  $(LIBMEOWCOIN_CONSENSUS) \
-  $(LIBMEOWCOIN_CRYPTO) \
+  $(LIBPOINTS_SERVER) \
+  $(LIBPOINTS_COMMON) \
+  $(LIBPOINTS_UTIL) \
+  $(LIBPOINTS_CONSENSUS) \
+  $(LIBPOINTS_CRYPTO) \
   $(LIBSECP256K1)
 
 test_test_points_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
@@ -148,27 +148,27 @@ test_test_points_fuzzy_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 
 # test_points_hash binary #
 test_test_points_hash_SOURCES = test/test_points_hash.cpp
-test_test_points_hash_CPPFLAGS = $(AM_CPPFLAGS) $(MEOWCOIN_INCLUDES)
+test_test_points_hash_CPPFLAGS = $(AM_CPPFLAGS) $(POINTS_INCLUDES)
 test_test_points_hash_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 test_test_points_hash_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_AP_LDFLAGS)
 
 test_test_points_hash_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBMEOWCOIN_COMMON) \
-  $(LIBMEOWCOIN_UTIL) \
-  $(LIBMEOWCOIN_CONSENSUS) \
-  $(LIBMEOWCOIN_CRYPTO)
+  $(LIBPOINTS_COMMON) \
+  $(LIBPOINTS_UTIL) \
+  $(LIBPOINTS_CONSENSUS) \
+  $(LIBPOINTS_CRYPTO)
 
 test_test_points_hash_LDADD += $(CRYPTO_LIBS)
 #
 
 nodist_test_test_points_SOURCES = $(GENERATED_TEST_FILES)
 
-$(MEOWCOIN_TESTS): $(GENERATED_TEST_FILES)
+$(POINTS_TESTS): $(GENERATED_TEST_FILES)
 
-CLEAN_MEOWCOIN_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
+CLEAN_POINTS_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
 
-CLEANFILES += $(CLEAN_MEOWCOIN_TEST)
+CLEANFILES += $(CLEAN_POINTS_TEST)
 
 points_test: $(TEST_BINARY)
 
@@ -176,7 +176,7 @@ points_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
 points_test_clean : FORCE
-	rm -f $(CLEAN_MEOWCOIN_TEST) $(test_test_points_OBJECTS) $(TEST_BINARY)
+	rm -f $(CLEAN_POINTS_TEST) $(test_test_points_OBJECTS) $(TEST_BINARY)
 
 check-local:
 	@echo "Running test/util/points-util-test.py..."

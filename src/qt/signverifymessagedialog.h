@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
-#define MEOWCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
+#ifndef POINTS_QT_SIGNVERIFYMESSAGEDIALOG_H
+#define POINTS_QT_SIGNVERIFYMESSAGEDIALOG_H
 
 #include <QDialog>
 
@@ -52,4 +52,4 @@ private Q_SLOTS:
     void on_clearButton_VM_clicked();
 };
 
-#endif // MEOWCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
+#endif // POINTS_QT_SIGNVERIFYMESSAGEDIALOG_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_NETMESSAGEMAKER_H
-#define MEOWCOIN_NETMESSAGEMAKER_H
+#ifndef POINTS_NETMESSAGEMAKER_H
+#define POINTS_NETMESSAGEMAKER_H
 
 #include "net.h"
 #include "serialize.h"
@@ -35,4 +35,4 @@ private:
     const int nVersion;
 };
 
-#endif // MEOWCOIN_NETMESSAGEMAKER_H
+#endif // POINTS_NETMESSAGEMAKER_H

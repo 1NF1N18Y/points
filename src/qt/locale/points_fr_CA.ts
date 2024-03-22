@@ -170,8 +170,8 @@
 			<translation>Confirmer le chiffrement du porte-monnaie</translation>
 		</message>
 		<message>
-			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR MEOWCOIN&lt;/b&gt;!</source>
-			<translation>Avertissement : si vous chiffrez votre porte-monnaie et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ TOUS VOS MEOWCOIN&lt;/b&gt; !</translation>
+			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR POINTS&lt;/b&gt;!</source>
+			<translation>Avertissement : si vous chiffrez votre porte-monnaie et perdez votre phrase de passe, vous &lt;b&gt;PERDREZ TOUS VOS POINTS&lt;/b&gt; !</translation>
 		</message>
 		<message>
 			<source>Are you sure you wish to encrypt your wallet?</source>
@@ -4025,7 +4025,7 @@
 			<translation>Confirmer le chiffrement du portefeuille</translation>
 		</message>
 		<message>
-			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR MEOWCOIN&lt;/b&gt;!</source>
+			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR POINTS&lt;/b&gt;!</source>
 			<translation>Attention: Si vous avez chiffré votre portefeuille et perdu votre mot de passe, vous perdrez toutes vos ruches!</translation>
 		</message>
 		<message>

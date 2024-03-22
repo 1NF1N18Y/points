@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOINCOIN_REWARDS_H
-#define MEOWCOINCOIN_REWARDS_H
+#ifndef POINTSCOIN_REWARDS_H
+#define POINTSCOIN_REWARDS_H
 
 #include "amount.h"
 #include "tinyformat.h"
@@ -168,4 +168,4 @@ void CheckRewardDistributions(CWallet * p_wallet);
 
 
 
-#endif //MEOWCOINCOIN_REWARDS_H
+#endif //POINTSCOIN_REWARDS_H

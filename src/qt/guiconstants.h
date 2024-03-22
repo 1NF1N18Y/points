@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_GUICONSTANTS_H
-#define MEOWCOIN_QT_GUICONSTANTS_H
+#ifndef POINTS_QT_GUICONSTANTS_H
+#define POINTS_QT_GUICONSTANTS_H
 
 /* Milliseconds between model updates */
 static const int MODEL_UPDATE_DELAY = 250;
@@ -122,4 +122,4 @@ static const int MAX_URI_LENGTH = 255;
 #define QAPP_APP_NAME_DEFAULT "Points-Qt"
 #define QAPP_APP_NAME_TESTNET "Points-Qt-testnet"
 
-#endif // MEOWCOIN_QT_GUICONSTANTS_H
+#endif // POINTS_QT_GUICONSTANTS_H

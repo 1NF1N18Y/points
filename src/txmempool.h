@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_TXMEMPOOL_H
-#define MEOWCOIN_TXMEMPOOL_H
+#ifndef POINTS_TXMEMPOOL_H
+#define POINTS_TXMEMPOOL_H
 
 #include <memory>
 #include <set>
@@ -847,4 +847,4 @@ struct ConnectedBlockAssetData
     std::set<CAssetCacheQualifierAddress> newQualifiersToAdd;
 };
 
-#endif // MEOWCOIN_TXMEMPOOL_H
+#endif // POINTS_TXMEMPOOL_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_TXDB_H
-#define MEOWCOIN_TXDB_H
+#ifndef POINTS_TXDB_H
+#define POINTS_TXDB_H
 
 #include "coins.h"
 #include "dbwrapper.h"
@@ -150,4 +150,4 @@ public:
     bool LoadBlockIndexGuts(const Consensus::Params& consensusParams, std::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // MEOWCOIN_TXDB_H
+#endif // POINTS_TXDB_H

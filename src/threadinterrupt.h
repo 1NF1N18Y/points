@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_THREADINTERRUPT_H
-#define MEOWCOIN_THREADINTERRUPT_H
+#ifndef POINTS_THREADINTERRUPT_H
+#define POINTS_THREADINTERRUPT_H
 
 #include <atomic>
 #include <chrono>
@@ -33,4 +33,4 @@ private:
     std::atomic<bool> flag;
 };
 
-#endif //MEOWCOIN_THREADINTERRUPT_H
+#endif //POINTS_THREADINTERRUPT_H

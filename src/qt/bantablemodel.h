@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_BANTABLEMODEL_H
-#define MEOWCOIN_QT_BANTABLEMODEL_H
+#ifndef POINTS_QT_BANTABLEMODEL_H
+#define POINTS_QT_BANTABLEMODEL_H
 
 #include "net.h"
 
@@ -72,4 +72,4 @@ private:
     std::unique_ptr<BanTablePriv> priv;
 };
 
-#endif // MEOWCOIN_QT_BANTABLEMODEL_H
+#endif // POINTS_QT_BANTABLEMODEL_H

@@ -1114,10 +1114,10 @@ bool EvalScript(std::vector<std::vector<unsigned char> > &stack, const CScript &
                     }
                         break;
 
-                        /** MEOWCOIN START */
+                        /** POINTS START */
                     case OP_PNT_ASSET:
                         break;
-                        /** MEOWCOIN END */
+                        /** POINTS END */
 
 
                     default:

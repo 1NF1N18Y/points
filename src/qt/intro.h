@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_INTRO_H
-#define MEOWCOIN_QT_INTRO_H
+#ifndef POINTS_QT_INTRO_H
+#define POINTS_QT_INTRO_H
 
 #include <QDialog>
 #include <QMutex>
@@ -77,4 +77,4 @@ private:
     friend class FreespaceChecker;
 };
 
-#endif // MEOWCOIN_QT_INTRO_H
+#endif // POINTS_QT_INTRO_H

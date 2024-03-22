@@ -219,7 +219,7 @@ PointsGUI::PointsGUI(const PlatformStyle *_platformStyle, const NetworkStyle *ne
         setCentralWidget(rpcConsole);
     }
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     labelCurrentMarket = new QLabel();
     labelCurrentPrice = new QLabel();
     headerWidget = new QWidget();
@@ -229,7 +229,7 @@ PointsGUI::PointsGUI(const PlatformStyle *_platformStyle, const NetworkStyle *ne
     labelVersionUpdate = new QLabel();
     networkVersionManager = new QNetworkAccessManager();
     versionRequest = new QNetworkRequest();
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     // Accept D&D of URIs
     setAcceptDrops(true);
@@ -414,7 +414,7 @@ void PointsGUI::createActions()
     historyAction->setFont(font);
     tabGroup->addAction(historyAction);
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     transferAssetAction = new QAction(platformStyle->SingleColorIconOnOff(":/icons/asset_transfer_selected", ":/icons/asset_transfer"), tr("&Transfer Assets"), this);
     transferAssetAction->setStatusTip(tr("Transfer assets to PNT addresses"));
     transferAssetAction->setToolTip(transferAssetAction->statusTip());
@@ -463,7 +463,7 @@ void PointsGUI::createActions()
     restrictedAssetAction->setFont(font);
     tabGroup->addAction(restrictedAssetAction);
 
-    /** MEOWCOIN END */
+    /** POINTS END */
 
 #ifdef ENABLE_WALLET
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
@@ -654,7 +654,7 @@ void PointsGUI::createToolBars()
 {
     if(walletFrame)
     {
-        /** MEOWCOIN START */
+        /** POINTS START */
         // Create the orange background and the vertical tool bar
         QWidget* toolbarWidget = new QWidget();
 
@@ -666,7 +666,7 @@ void PointsGUI::createToolBars()
         label->setPixmap(QPixmap::fromImage(QImage(":/icons/pointscointext")));
         label->setContentsMargins(0,0,0,50);
         label->setStyleSheet(".QLabel{background-color: transparent;}");
-        /** MEOWCOIN END */
+        /** POINTS END */
 
         QToolBar *toolbar = new QToolBar();
         toolbar->setStyle(style());
@@ -695,7 +695,7 @@ void PointsGUI::createToolBars()
         stringToUse = normalString;
 #endif
 
-        /** MEOWCOIN START */
+        /** POINTS START */
         QString tbStyleSheet = ".QToolBar {background-color : transparent; border-color: transparent; }  "
                                ".QToolButton {background-color: transparent; border-color: transparent; width: 249px; color: %1; border: none;} "
                                ".QToolButton:checked {background: none; background-color: none; selection-background-color: none; color: %2; border: none; font: %4} "
@@ -864,7 +864,7 @@ void PointsGUI::createToolBars()
         connect(pricingTimer, SIGNAL(timeout()), this, SLOT(getPriceInfo()));
         pricingTimer->start(10000);
         getPriceInfo();
-        /** MEOWCOIN END */
+        /** POINTS END */
 
         // Get the latest Points release and let the user know if they are using the latest version
         // Network request code for the header widget
@@ -1069,14 +1069,14 @@ void PointsGUI::setWalletActionsEnabled(bool enabled)
     usedReceivingAddressesAction->setEnabled(enabled);
     openAction->setEnabled(enabled);
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     transferAssetAction->setEnabled(false);
     createAssetAction->setEnabled(false);
     manageAssetAction->setEnabled(false);
     messagingAction->setEnabled(false);
     votingAction->setEnabled(false);
     restrictedAssetAction->setEnabled(false);
-    /** MEOWCOIN END */
+    /** POINTS END */
 }
 
 void PointsGUI::createTrayIcon(const NetworkStyle *networkStyle)
@@ -1245,7 +1245,7 @@ void PointsGUI::gotoVerifyMessageTab(QString addr)
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 
-/** MEOWCOIN START */
+/** POINTS START */
 void PointsGUI::gotoAssetsPage()
 {
     transferAssetAction->setChecked(true);
@@ -1269,7 +1269,7 @@ void PointsGUI::gotoRestrictedAssetsPage()
     restrictedAssetAction->setChecked(true);
     if (walletFrame) walletFrame->gotoRestrictedAssetsPage();
 };
-/** MEOWCOIN END */
+/** POINTS END */
 #endif // ENABLE_WALLET
 
 void PointsGUI::updateNetworkState()

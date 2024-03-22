@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_PUBKEY_H
-#define MEOWCOIN_PUBKEY_H
+#ifndef POINTS_PUBKEY_H
+#define POINTS_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -249,4 +249,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // MEOWCOIN_PUBKEY_H
+#endif // POINTS_PUBKEY_H

@@ -1,5 +1,5 @@
-#ifndef MEOWCOIN_QT_CALLBACK_H
-#define MEOWCOIN_QT_CALLBACK_H
+#ifndef POINTS_QT_CALLBACK_H
+#define POINTS_QT_CALLBACK_H
 
 #include <QObject>
 
@@ -27,4 +27,4 @@ FunctionCallback<F>* makeCallback(F f)
     return new FunctionCallback<F>(std::move(f));
 }
 
-#endif // MEOWCOIN_QT_CALLBACK_H
+#endif // POINTS_QT_CALLBACK_H

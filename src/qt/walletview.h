@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_WALLETVIEW_H
-#define MEOWCOIN_QT_WALLETVIEW_H
+#ifndef POINTS_QT_WALLETVIEW_H
+#define POINTS_QT_WALLETVIEW_H
 
 #include "amount.h"
 
@@ -77,12 +77,12 @@ private:
     const PlatformStyle *platformStyle;
 
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     AssetsDialog *assetsPage;
     CreateAssetDialog *createAssetsPage;
     ReissueAssetDialog *manageAssetsPage;
     RestrictedAssetsDialog *restrictedAssetsPage;
-    /** MEOWCOIN END */
+    /** POINTS END */
 
 public Q_SLOTS:
     /** Switch to overview (home) page */
@@ -129,7 +129,7 @@ public Q_SLOTS:
     void requestedSyncWarningInfo();
 
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     /** Switch to assets page */
 
     void gotoAssetsPage();
@@ -137,7 +137,7 @@ public Q_SLOTS:
     void gotoManageAssetsPage();
     void gotoRestrictedAssetsPage();
 
-    /** MEOWCOIN END */
+    /** POINTS END */
 
 Q_SIGNALS:
     /** Signal that we want to show the main window */
@@ -156,4 +156,4 @@ Q_SIGNALS:
     void checkAssets();
 };
 
-#endif // MEOWCOIN_QT_WALLETVIEW_H
+#endif // POINTS_QT_WALLETVIEW_H

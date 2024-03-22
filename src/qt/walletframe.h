@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_WALLETFRAME_H
-#define MEOWCOIN_QT_WALLETFRAME_H
+#ifndef POINTS_QT_WALLETFRAME_H
+#define POINTS_QT_WALLETFRAME_H
 
 #include <QFrame>
 #include <QMap>
@@ -96,14 +96,14 @@ public Q_SLOTS:
     /** Pass on signal over requested out-of-sync-warning information */
     void outOfSyncWarningClicked();
 
-    /** MEOWCOIN START */
+    /** POINTS START */
 
     /** Switch to assets page */
     void gotoAssetsPage();
     void gotoCreateAssetsPage();
     void gotoManageAssetsPage();
     void gotoRestrictedAssetsPage();
-    /** MEOWCOIN END */
+    /** POINTS END */
 };
 
-#endif // MEOWCOIN_QT_WALLETFRAME_H
+#endif // POINTS_QT_WALLETFRAME_H

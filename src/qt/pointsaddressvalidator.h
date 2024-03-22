@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_MEOWCOINADDRESSVALIDATOR_H
-#define MEOWCOIN_QT_MEOWCOINADDRESSVALIDATOR_H
+#ifndef POINTS_QT_POINTSADDRESSVALIDATOR_H
+#define POINTS_QT_POINTSADDRESSVALIDATOR_H
 
 #include <QValidator>
 
@@ -34,4 +34,4 @@ public:
     State validate(QString &input, int &pos) const;
 };
 
-#endif // MEOWCOIN_QT_MEOWCOINADDRESSVALIDATOR_H
+#endif // POINTS_QT_POINTSADDRESSVALIDATOR_H

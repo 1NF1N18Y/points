@@ -7,8 +7,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef MEOWCOIN_TORCONTROL_H
-#define MEOWCOIN_TORCONTROL_H
+#ifndef POINTS_TORCONTROL_H
+#define POINTS_TORCONTROL_H
 
 #include "scheduler.h"
 
@@ -19,4 +19,4 @@ void StartTorControl(boost::thread_group& threadGroup, CScheduler& scheduler);
 void InterruptTorControl();
 void StopTorControl();
 
-#endif /* MEOWCOIN_TORCONTROL_H */
+#endif /* POINTS_TORCONTROL_H */

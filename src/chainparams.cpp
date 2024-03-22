@@ -515,7 +515,7 @@ public:
             0.0        // * estimated number of transactions per second after that timestamp
         };
 
-        /** MEOWCOIN Start **/
+        /** POINTS Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -560,7 +560,7 @@ public:
 
         nKAAAWWWPOWActivationTime = 1661833868;
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** MEOWCOIN End **/
+        /** POINTS End **/
     }
 };
 
@@ -662,7 +662,7 @@ public:
         // Points BIP44 cointype in regtest
         nExtCoinType = 1;
 
-        /** MEOWCOIN Start **/
+        /** POINTS Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 500 * COIN;
         nReissueAssetBurnAmount = 100 * COIN;
@@ -709,7 +709,7 @@ public:
         // If you are looking to test the kawpow hashing function in regtest. You will need to change this number
         nKAAAWWWPOWActivationTime = 3582830167;
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** MEOWCOIN End **/
+        /** POINTS End **/
     }
 };
 

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_MODALOVERLAY_H
-#define MEOWCOIN_QT_MODALOVERLAY_H
+#ifndef POINTS_QT_MODALOVERLAY_H
+#define POINTS_QT_MODALOVERLAY_H
 
 #include <QDateTime>
 #include <QWidget>
@@ -49,4 +49,4 @@ private:
     bool userClosed;
 };
 
-#endif // MEOWCOIN_QT_MODALOVERLAY_H
+#endif // POINTS_QT_MODALOVERLAY_H

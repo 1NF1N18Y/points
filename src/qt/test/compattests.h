@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_TEST_COMPATTESTS_H
-#define MEOWCOIN_QT_TEST_COMPATTESTS_H
+#ifndef POINTS_QT_TEST_COMPATTESTS_H
+#define POINTS_QT_TEST_COMPATTESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -18,4 +18,4 @@ private Q_SLOTS:
     void bswapTests();
 };
 
-#endif // MEOWCOIN_QT_TEST_COMPATTESTS_H
+#endif // POINTS_QT_TEST_COMPATTESTS_H

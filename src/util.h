@@ -9,8 +9,8 @@
  * Server/client environment: argument handling, config file parsing,
  * logging, thread wrappers, startup time
  */
-#ifndef MEOWCOIN_UTIL_H
-#define MEOWCOIN_UTIL_H
+#ifndef POINTS_UTIL_H
+#define POINTS_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -55,8 +55,8 @@ extern bool fLogIPs;
 extern std::atomic<bool> fReopenDebugLog;
 extern CTranslationInterface translationInterface;
 
-extern const char *const MEOWCOIN_CONF_FILENAME;
-extern const char *const MEOWCOIN_PID_FILENAME;
+extern const char *const POINTS_CONF_FILENAME;
+extern const char *const POINTS_PID_FILENAME;
 
 extern std::atomic<uint32_t> logCategories;
 
@@ -363,4 +363,4 @@ std::string CopyrightHolders(const std::string &strPrefix);
 
 void SetThreadPriority(int nPriority);
 
-#endif // MEOWCOIN_UTIL_H
+#endif // POINTS_UTIL_H

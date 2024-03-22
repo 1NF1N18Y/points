@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_WALLET_WALLET_H
-#define MEOWCOIN_WALLET_WALLET_H
+#ifndef POINTS_WALLET_WALLET_H
+#define POINTS_WALLET_WALLET_H
 
 #include "amount.h"
 #include "policy/feerate.h"
@@ -190,7 +190,7 @@ struct COutputEntry
     int vout;
 };
 
-/** MEOWCOIN START */
+/** POINTS START */
 struct CAssetOutputEntry
 {
     txnouttype type;
@@ -201,7 +201,7 @@ struct CAssetOutputEntry
     int64_t expireTime;
     int vout;
 };
-/** MEOWCOIN END */
+/** POINTS END */
 
 /** A transaction with a merkle branch linking it to the block chain. */
 class CMerkleTx
@@ -1006,7 +1006,7 @@ public:
     bool FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nChangePosInOut, std::string& strFailReason, bool lockUnspents, const std::set<int>& setSubtractFeeFromOutputs, CCoinControl);
     bool SignTransaction(CMutableTransaction& tx);
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     bool CreateTransactionWithAssets(const std::vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, int& nChangePosInOut,
                                    std::string& strFailReason, const CCoinControl& coin_control, const std::vector<CNewAsset> assets, const CTxDestination destination, const AssetType& assetType, bool sign = true);
 
@@ -1032,7 +1032,7 @@ public:
 
     bool CreateNewChangeAddress(CReserveKey& reservekey, CKeyID& keyID, std::string& strFailReason);
 
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, CConnman* connman, CValidationState& state);
 
@@ -1315,4 +1315,4 @@ bool CWallet::DummySignTx(CMutableTransaction &txNew, const ContainerType &coins
     return allSigned;
 }
 
-#endif // MEOWCOIN_WALLET_WALLET_H
+#endif // POINTS_WALLET_WALLET_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CHAINPARAMS_H
-#define MEOWCOIN_CHAINPARAMS_H
+#ifndef POINTS_CHAINPARAMS_H
+#define POINTS_CHAINPARAMS_H
 
 #include "chainparamsbase.h"
 #include "consensus/params.h"
@@ -90,7 +90,7 @@ public:
     bool BIP66();
     bool CSVEnabled() const;
 
-    /** MEOWCOIN Start **/
+    /** POINTS Start **/
     const CAmount& IssueAssetBurnAmount() const { return nIssueAssetBurnAmount; }
     const CAmount& ReissueAssetBurnAmount() const { return nReissueAssetBurnAmount; }
     const CAmount& IssueSubAssetBurnAmount() const { return nIssueSubAssetBurnAmount; }
@@ -145,7 +145,7 @@ public:
     int MinReorganizationAge() const { return nMinReorganizationAge; }
 
     int GetAssetActivationHeight() const { return nAssetActivationHeight; }
-    /** MEOWCOIN End **/
+    /** POINTS End **/
 
 protected:
     CChainParams() {}
@@ -167,7 +167,7 @@ protected:
     CCheckpointData checkpointData;
     ChainTxData chainTxData;
 
-    /** MEOWCOIN Start **/
+    /** POINTS Start **/
     // Burn Amounts
     CAmount nIssueAssetBurnAmount;
     CAmount nReissueAssetBurnAmount;
@@ -208,7 +208,7 @@ protected:
     int nAssetActivationHeight;
 
     uint32_t nKAAAWWWPOWActivationTime;
-    /** MEOWCOIN End **/
+    /** POINTS End **/
 };
 
 /**
@@ -245,4 +245,4 @@ void TurnOffBIP66();
 
 void TurnOffCSV();
 
-#endif // MEOWCOIN_CHAINPARAMS_H
+#endif // POINTS_CHAINPARAMS_H

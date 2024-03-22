@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_REISSUEASSETDIALOG_H
-#define MEOWCOIN_QT_REISSUEASSETDIALOG_H
+#ifndef POINTS_QT_REISSUEASSETDIALOG_H
+#define POINTS_QT_REISSUEASSETDIALOG_H
 
 #include "walletmodel.h"
 
@@ -141,4 +141,4 @@ Q_SIGNALS:
     void message(const QString &title, const QString &message, unsigned int style);
 };
 
-#endif // MEOWCOIN_QT_REISSUEASSETDIALOG_H
+#endif // POINTS_QT_REISSUEASSETDIALOG_H

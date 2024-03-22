@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_MERKLE
-#define MEOWCOIN_MERKLE
+#ifndef POINTS_MERKLE
+#define POINTS_MERKLE
 
 #include <stdint.h>
 #include <vector>

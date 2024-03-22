@@ -1,4 +1,4 @@
-TOR SUPPORT IN MEOWCOIN
+TOR SUPPORT IN POINTS
 ======================
 
 It is possible to run Points as a Tor hidden service, and connect to such services.

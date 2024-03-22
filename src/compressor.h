@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_COMPRESSOR_H
-#define MEOWCOIN_COMPRESSOR_H
+#ifndef POINTS_COMPRESSOR_H
+#define POINTS_COMPRESSOR_H
 
 #include "primitives/transaction.h"
 #include "script/script.h"
@@ -120,4 +120,4 @@ public:
     }
 };
 
-#endif // MEOWCOIN_COMPRESSOR_H
+#endif // POINTS_COMPRESSOR_H

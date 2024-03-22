@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_SENDCOINSDIALOG_H
-#define MEOWCOIN_QT_SENDCOINSDIALOG_H
+#ifndef POINTS_QT_SENDCOINSDIALOG_H
+#define POINTS_QT_SENDCOINSDIALOG_H
 
 #include "walletmodel.h"
 
@@ -125,4 +125,4 @@ private:
     int secDelay;
 };
 
-#endif // MEOWCOIN_QT_SENDCOINSDIALOG_H
+#endif // POINTS_QT_SENDCOINSDIALOG_H

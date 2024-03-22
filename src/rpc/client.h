@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_RPCCLIENT_H
-#define MEOWCOIN_RPCCLIENT_H
+#ifndef POINTS_RPCCLIENT_H
+#define POINTS_RPCCLIENT_H
 
 #include <univalue.h>
 
@@ -21,4 +21,4 @@ UniValue RPCConvertNamedValues(const std::string& strMethod, const std::vector<s
  */
 UniValue ParseNonRFCJSONValue(const std::string& strVal);
 
-#endif // MEOWCOIN_RPCCLIENT_H
+#endif // POINTS_RPCCLIENT_H

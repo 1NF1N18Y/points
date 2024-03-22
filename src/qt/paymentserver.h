@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_PAYMENTSERVER_H
-#define MEOWCOIN_QT_PAYMENTSERVER_H
+#ifndef POINTS_QT_PAYMENTSERVER_H
+#define POINTS_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
 // points: URIs
@@ -147,4 +147,4 @@ private:
     OptionsModel *optionsModel;
 };
 
-#endif // MEOWCOIN_QT_PAYMENTSERVER_H
+#endif // POINTS_QT_PAYMENTSERVER_H

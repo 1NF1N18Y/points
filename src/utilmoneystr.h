@@ -8,8 +8,8 @@
 /**
  * Money parsing/formatting utilities.
  */
-#ifndef MEOWCOIN_UTILMONEYSTR_H
-#define MEOWCOIN_UTILMONEYSTR_H
+#ifndef POINTS_UTILMONEYSTR_H
+#define POINTS_UTILMONEYSTR_H
 
 #include <stdint.h>
 #include <string>
@@ -23,4 +23,4 @@ std::string FormatMoney(const CAmount& n);
 bool ParseMoney(const std::string& str, CAmount& nRet);
 bool ParseMoney(const char* pszIn, CAmount& nRet);
 
-#endif // MEOWCOIN_UTILMONEYSTR_H
+#endif // POINTS_UTILMONEYSTR_H

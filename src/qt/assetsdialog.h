@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_ASSETSDIALOG_H
-#define MEOWCOIN_QT_ASSETSDIALOG_H
+#ifndef POINTS_QT_ASSETSDIALOG_H
+#define POINTS_QT_ASSETSDIALOG_H
 
 #include "walletmodel.h"
 
@@ -109,14 +109,14 @@ private Q_SLOTS:
 
     void customFeeFeatureChanged(bool);
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     void assetControlUpdateSendCoinsDialog();
     void focusAsset(const QModelIndex& index);
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     Q_SIGNALS:
             // Fired when a message should be reported to the user
             void message(const QString &title, const QString &message, unsigned int style);
 };
 
-#endif // MEOWCOIN_QT_ASSETSSDIALOG_H
+#endif // POINTS_QT_ASSETSSDIALOG_H

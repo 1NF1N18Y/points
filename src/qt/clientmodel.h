@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_CLIENTMODEL_H
-#define MEOWCOIN_QT_CLIENTMODEL_H
+#ifndef POINTS_QT_CLIENTMODEL_H
+#define POINTS_QT_CLIENTMODEL_H
 
 #include <QObject>
 #include <QDateTime>
@@ -118,4 +118,4 @@ public Q_SLOTS:
     void updateBanlist();
 };
 
-#endif // MEOWCOIN_QT_CLIENTMODEL_H
+#endif // POINTS_QT_CLIENTMODEL_H

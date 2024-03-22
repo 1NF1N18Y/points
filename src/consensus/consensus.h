@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CONSENSUS_CONSENSUS_H
-#define MEOWCOIN_CONSENSUS_CONSENSUS_H
+#ifndef POINTS_CONSENSUS_CONSENSUS_H
+#define POINTS_CONSENSUS_CONSENSUS_H
 
 #include <stdlib.h>
 #include <stdint.h>
@@ -52,4 +52,4 @@ enum {
     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),
 };
 
-#endif // MEOWCOIN_CONSENSUS_CONSENSUS_H
+#endif // POINTS_CONSENSUS_CONSENSUS_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_VALIDATION_H
-#define MEOWCOIN_VALIDATION_H
+#ifndef POINTS_VALIDATION_H
+#define POINTS_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -503,7 +503,7 @@ extern CCoinsViewCache *pcoinsTip;
 /** Global variable that points to the active block tree (protected by cs_main) */
 extern CBlockTreeDB *pblocktree;
 
-/** MEOWCOIN START */
+/** POINTS START */
 
 /** Global variable that point to the active assets database (protected by cs_main) */
 extern CAssetsDB *passetsdb;
@@ -555,7 +555,7 @@ extern CAssetSnapshotDB *pAssetSnapshotDb;
 
 extern CDistributeSnapshotRequestDB *pDistributeSnapshotDb;
 
-/** MEOWCOIN END */
+/** POINTS END */
 
 /**
  * Return the spend height, which is one more than the inputs.GetBestBlock().
@@ -588,7 +588,7 @@ bool DumpMempool();
 /** Load the mempool from disk. */
 bool LoadMempool();
 
-/** MEOWCOIN START */
+/** POINTS START */
 bool AreAssetsDeployed();
 
 bool AreMessagesDeployed();
@@ -612,6 +612,6 @@ bool IsMessagingActive(unsigned int nBlockNumber);
 bool IsRestrictedActive(unsigned int nBlockNumber);
 
 CAssetsCache* GetCurrentAssetCache();
-/** MEOWCOIN END */
+/** POINTS END */
 
-#endif // MEOWCOIN_VALIDATION_H
+#endif // POINTS_VALIDATION_H

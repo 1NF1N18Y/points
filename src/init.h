@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_INIT_H
-#define MEOWCOIN_INIT_H
+#ifndef POINTS_INIT_H
+#define POINTS_INIT_H
 
 #include <string>
 
@@ -73,7 +73,7 @@ void PrepareShutdown();
 enum HelpMessageMode
 {
     HMM_POINTSD,
-    HMM_MEOWCOIN_QT
+    HMM_POINTS_QT
 };
 
 /** Help for options shared between UI and daemon (for -help) */
@@ -82,4 +82,4 @@ std::string HelpMessage(HelpMessageMode mode);
 /** Returns licensing information (for -version) */
 std::string LicenseInfo();
 
-#endif // MEOWCOIN_INIT_H
+#endif // POINTS_INIT_H

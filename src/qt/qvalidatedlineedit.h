@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_QVALIDATEDLINEEDIT_H
-#define MEOWCOIN_QT_QVALIDATEDLINEEDIT_H
+#ifndef POINTS_QT_QVALIDATEDLINEEDIT_H
+#define POINTS_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -42,4 +42,4 @@ private Q_SLOTS:
     void checkValidity();
 };
 
-#endif // MEOWCOIN_QT_QVALIDATEDLINEEDIT_H
+#endif // POINTS_QT_QVALIDATEDLINEEDIT_H

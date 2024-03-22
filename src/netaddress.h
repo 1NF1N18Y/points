@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_NETADDRESS_H
-#define MEOWCOIN_NETADDRESS_H
+#ifndef POINTS_NETADDRESS_H
+#define POINTS_NETADDRESS_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -176,4 +176,4 @@ class CService : public CNetAddr
         }
 };
 
-#endif // MEOWCOIN_NETADDRESS_H
+#endif // POINTS_NETADDRESS_H

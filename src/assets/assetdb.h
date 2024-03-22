@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ASSETDB_H
-#define MEOWCOIN_ASSETDB_H
+#ifndef POINTS_ASSETDB_H
+#define POINTS_ASSETDB_H
 
 #include "fs.h"
 #include "serialize.h"
@@ -96,4 +96,4 @@ public:
 };
 
 
-#endif //MEOWCOIN_ASSETDB_H
+#endif //POINTS_ASSETDB_H

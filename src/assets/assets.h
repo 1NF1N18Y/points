@@ -4,8 +4,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef MEOWCOINCOIN_ASSET_PROTOCOL_H
-#define MEOWCOINCOIN_ASSET_PROTOCOL_H
+#ifndef POINTSCOIN_ASSET_PROTOCOL_H
+#define POINTSCOIN_ASSET_PROTOCOL_H
 
 #include "amount.h"
 #include "tinyformat.h"
@@ -469,10 +469,10 @@ bool CheckIssueBurnTx(const CTxOut& txOut, const AssetType& type);
 bool CheckReissueBurnTx(const CTxOut& txOut);
 
 //! issue asset scripts to make sure script meets the standards
-bool CheckIssueDataTx(const CTxOut& txOut); // OP_MEOWCOIN_ASSET PNTQ (That is a Q as in Que not an O)
-bool CheckOwnerDataTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET PNTO
-bool CheckReissueDataTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET PNTR
-bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_MEOWCOIN_ASSET PNTT
+bool CheckIssueDataTx(const CTxOut& txOut); // OP_POINTS_ASSET PNTQ (That is a Q as in Que not an O)
+bool CheckOwnerDataTx(const CTxOut& txOut);// OP_POINTS_ASSET PNTO
+bool CheckReissueDataTx(const CTxOut& txOut);// OP_POINTS_ASSET PNTR
+bool CheckTransferOwnerTx(const CTxOut& txOut);// OP_POINTS_ASSET PNTT
 
 //! Check the Encoded hash and make sure it is either an IPFS hash or a OIP hash
 bool CheckEncoded(const std::string& hash, std::string& strError);
@@ -585,4 +585,4 @@ bool ContextualCheckReissueAsset(CAssetsCache* assetCache, const CReissueAsset& 
 bool ContextualCheckUniqueAssetTx(CAssetsCache* assetCache, std::string& strError, const CTransaction& tx);
 bool ContextualCheckUniqueAsset(CAssetsCache* assetCache, const CNewAsset& unique_asset, std::string& strError);
 
-#endif //MEOWCOINCOIN_ASSET_PROTOCOL_H
+#endif //POINTSCOIN_ASSET_PROTOCOL_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_TRANSACTIONDESC_H
-#define MEOWCOIN_QT_TRANSACTIONDESC_H
+#ifndef POINTS_QT_TRANSACTIONDESC_H
+#define POINTS_QT_TRANSACTIONDESC_H
 
 #include <QObject>
 #include <QString>
@@ -32,4 +32,4 @@ private:
     static QString FormatTxStatus(const CWalletTx& wtx);
 };
 
-#endif // MEOWCOIN_QT_TRANSACTIONDESC_H
+#endif // POINTS_QT_TRANSACTIONDESC_H

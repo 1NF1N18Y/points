@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_PRIMITIVES_BLOCK_H
-#define MEOWCOIN_PRIMITIVES_BLOCK_H
+#ifndef POINTS_PRIMITIVES_BLOCK_H
+#define POINTS_PRIMITIVES_BLOCK_H
 
 #include "primitives/transaction.h"
 #include "serialize.h"
@@ -232,4 +232,4 @@ public:
     }
 };
 
-#endif // MEOWCOIN_PRIMITIVES_BLOCK_H
+#endif // POINTS_PRIMITIVES_BLOCK_H

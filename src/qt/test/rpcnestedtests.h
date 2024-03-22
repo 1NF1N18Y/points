@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_TEST_RPC_NESTED_TESTS_H
-#define MEOWCOIN_QT_TEST_RPC_NESTED_TESTS_H
+#ifndef POINTS_QT_TEST_RPC_NESTED_TESTS_H
+#define POINTS_QT_TEST_RPC_NESTED_TESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -24,4 +24,4 @@ private:
     CCoinsViewDB *pcoinsdbview;
 };
 
-#endif // MEOWCOIN_QT_TEST_RPC_NESTED_TESTS_H
+#endif // POINTS_QT_TEST_RPC_NESTED_TESTS_H

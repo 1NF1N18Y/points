@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ADDRMAN_H
-#define MEOWCOIN_ADDRMAN_H
+#ifndef POINTS_ADDRMAN_H
+#define POINTS_ADDRMAN_H
 
 #include "netaddress.h"
 #include "protocol.h"
@@ -604,4 +604,4 @@ public:
 
 };
 
-#endif // MEOWCOIN_ADDRMAN_H
+#endif // POINTS_ADDRMAN_H

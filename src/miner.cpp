@@ -171,7 +171,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     nLastBlockTx = nBlockTx;
     nLastBlockWeight = nBlockWeight;
 
-    //MEOWCOIN START
+    //POINTS START
     // Coinbase TX is created
     CMutableTransaction coinbaseTx;
     coinbaseTx.vin.resize(1);

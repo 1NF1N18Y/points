@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_PAYMENTREQUESTPLUS_H
-#define MEOWCOIN_QT_PAYMENTREQUESTPLUS_H
+#ifndef POINTS_QT_PAYMENTREQUESTPLUS_H
+#define POINTS_QT_PAYMENTREQUESTPLUS_H
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -50,4 +50,4 @@ private:
     payments::PaymentDetails details;
 };
 
-#endif // MEOWCOIN_QT_PAYMENTREQUESTPLUS_H
+#endif // POINTS_QT_PAYMENTREQUESTPLUS_H

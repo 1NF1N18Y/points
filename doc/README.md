@@ -100,7 +100,7 @@ To resolve, you will need to copy libboost_system.dylib to libboost_system-mt.dy
 
 ### Need Help?
 
-- See the documentation at the [Points Wiki](https://points.wiki/wiki/MEOWCOINCOIN_Wiki)
+- See the documentation at the [Points Wiki](https://points.wiki/wiki/POINTSCOIN_Wiki)
 for help and more information.
 - Ask for help on [Discord](https://discord.gg/DUkcBst), [Telegram](https://t.me/PointsDev) or [Reddit](https://www.reddit.com/r/Points/).
 - Ask for help on the [PointsTalk](https://www.bitcointalk.org/) forums, in the [Development and Technical discussion board](https://www.bitcointalk.org/?forum=661517).

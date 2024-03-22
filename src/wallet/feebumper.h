@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_WALLET_FEEBUMPER_H
-#define MEOWCOIN_WALLET_FEEBUMPER_H
+#ifndef POINTS_WALLET_FEEBUMPER_H
+#define POINTS_WALLET_FEEBUMPER_H
 
 #include <primitives/transaction.h>
 
@@ -60,4 +60,4 @@ private:
     CAmount nNewFee;
 };
 
-#endif // MEOWCOIN_WALLET_FEEBUMPER_H
+#endif // POINTS_WALLET_FEEBUMPER_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_DBWRAPPER_H
-#define MEOWCOIN_DBWRAPPER_H
+#ifndef POINTS_DBWRAPPER_H
+#define POINTS_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "fs.h"
@@ -342,4 +342,4 @@ public:
 
 };
 
-#endif // MEOWCOIN_DBWRAPPER_H
+#endif // POINTS_DBWRAPPER_H

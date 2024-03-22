@@ -170,7 +170,7 @@
 			<translation>确认钱包加密</translation>
 		</message>
 		<message>
-			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR MEOWCOIN&lt;/b&gt;!</source>
+			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR POINTS&lt;/b&gt;!</source>
 			<translation>警告:如果您加密了钱包并丢失了密码,您将丢失所有蜂箱！</translation>
 		</message>
 		<message>

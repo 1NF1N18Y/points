@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_MEOWCOINUNITS_H
-#define MEOWCOIN_QT_MEOWCOINUNITS_H
+#ifndef POINTS_QT_POINTSUNITS_H
+#define POINTS_QT_POINTSUNITS_H
 
 #include "amount.h"
 
@@ -137,4 +137,4 @@ private:
 };
 typedef PointsUnits::Unit PointsUnit;
 
-#endif // MEOWCOIN_QT_MEOWCOINUNITS_H
+#endif // POINTS_QT_POINTSUNITS_H

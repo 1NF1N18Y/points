@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_BLOOM_H
-#define MEOWCOIN_BLOOM_H
+#ifndef POINTS_BLOOM_H
+#define POINTS_BLOOM_H
 
 #include "serialize.h"
 
@@ -142,4 +142,4 @@ private:
     int nHashFuncs;
 };
 
-#endif // MEOWCOIN_BLOOM_H
+#endif // POINTS_BLOOM_H

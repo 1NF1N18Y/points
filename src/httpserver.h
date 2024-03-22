@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_HTTPSERVER_H
-#define MEOWCOIN_HTTPSERVER_H
+#ifndef POINTS_HTTPSERVER_H
+#define POINTS_HTTPSERVER_H
 
 #include <string>
 #include <stdint.h>
@@ -152,4 +152,4 @@ private:
 
 std::string urlDecode(const std::string &urlEncoded);
 
-#endif // MEOWCOIN_HTTPSERVER_H
+#endif // POINTS_HTTPSERVER_H

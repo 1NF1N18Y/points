@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CRYPTO_HMAC_SHA256_H
-#define MEOWCOIN_CRYPTO_HMAC_SHA256_H
+#ifndef POINTS_CRYPTO_HMAC_SHA256_H
+#define POINTS_CRYPTO_HMAC_SHA256_H
 
 #include "crypto/sha256.h"
 
@@ -31,4 +31,4 @@ public:
     void Finalize(unsigned char hash[OUTPUT_SIZE]);
 };
 
-#endif // MEOWCOIN_CRYPTO_HMAC_SHA256_H
+#endif // POINTS_CRYPTO_HMAC_SHA256_H

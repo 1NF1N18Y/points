@@ -48,8 +48,8 @@
 #include <QUrlQuery>
 #endif
 
-const int MEOWCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString MEOWCOIN_IPC_PREFIX("points:");
+const int POINTS_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
+const QString POINTS_IPC_PREFIX("points:");
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
@@ -214,7 +214,7 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(MEOWCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // points: URI
+        if (arg.startsWith(POINTS_IPC_PREFIX, Qt::CaseInsensitive)) // points: URI
         {
             savedPaymentRequests.append(arg);
 
@@ -272,7 +272,7 @@ bool PaymentServer::ipcSendCommandLine()
     {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
-        if (!socket->waitForConnected(MEOWCOIN_IPC_CONNECT_TIMEOUT))
+        if (!socket->waitForConnected(POINTS_IPC_CONNECT_TIMEOUT))
         {
             delete socket;
             socket = nullptr;
@@ -287,7 +287,7 @@ bool PaymentServer::ipcSendCommandLine()
 
         socket->write(block);
         socket->flush();
-        socket->waitForBytesWritten(MEOWCOIN_IPC_CONNECT_TIMEOUT);
+        socket->waitForBytesWritten(POINTS_IPC_CONNECT_TIMEOUT);
         socket->disconnectFromServer();
 
         delete socket;
@@ -408,7 +408,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith(MEOWCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // points: URI
+    if (s.startsWith(POINTS_IPC_PREFIX, Qt::CaseInsensitive)) // points: URI
     {
 #if QT_VERSION < 0x050000
         QUrl uri(s);

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_TRAFFICGRAPHWIDGET_H
-#define MEOWCOIN_QT_TRAFFICGRAPHWIDGET_H
+#ifndef POINTS_QT_TRAFFICGRAPHWIDGET_H
+#define POINTS_QT_TRAFFICGRAPHWIDGET_H
 
 #include <QWidget>
 #include <QQueue>
@@ -47,4 +47,4 @@ private:
     ClientModel *clientModel;
 };
 
-#endif // MEOWCOIN_QT_TRAFFICGRAPHWIDGET_H
+#endif // POINTS_QT_TRAFFICGRAPHWIDGET_H

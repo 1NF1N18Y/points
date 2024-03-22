@@ -196,7 +196,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
         if (!MoneyRange(nValueOut))
             return state.DoS(100, false, REJECT_INVALID, "bad-txns-txouttotal-toolarge");
 
-        /** MEOWCOIN START */
+        /** POINTS START */
         // Find and handle all new OP_PNT_ASSET null data transactions
         if (txout.scriptPubKey.IsNullAsset()) {
             CNullAssetTxData data;
@@ -251,9 +251,9 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
                 fContainsNullAssetVerifierTx = true;
             }
         }
-        /** MEOWCOIN END */
+        /** POINTS END */
 
-        /** MEOWCOIN START */
+        /** POINTS START */
         bool isAsset = false;
         int nType;
         bool fIsOwner;
@@ -363,7 +363,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
         }
     }
 
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     if (fCheckDuplicateInputs) {
         std::set<COutPoint> vInOutPoints;
@@ -395,7 +395,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
                 return state.DoS(10, false, REJECT_INVALID, "bad-txns-prevout-null");
     }
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     if (tx.IsNewAsset()) {
         /** Verify the reissue assets data */
         std::string strError = "";
@@ -554,7 +554,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, bool fChe
     }
 
     // we allow restricted asset reissuance without having a verifier string transaction, we don't force it to be update
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     return true;
 }

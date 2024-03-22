@@ -213,7 +213,7 @@ UniValue validateaddress(const JSONRPCRequest& request)
 	
 	
 	//#################################################################
-	//MEOWCOIN START FOR LOOKING FOR BURN ADDRESS -- BEGIN
+	//POINTS START FOR LOOKING FOR BURN ADDRESS -- BEGIN
 	//Just use to looking suitable prefix address.
 	//1 use command 'pointsd -daemon=0', do not use command pointsd -daemon
 	//2 'points-cli validateaddress HSFs8aqGLDbYk242PQiv5oguQL5Tqk5d' in other console window.
@@ -350,7 +350,7 @@ UniValue validateaddress(const JSONRPCRequest& request)
 			}
 		}
 	}
-	//MEOWCOIN START FOR LOOKING FOR BURN ADDRESS -- END
+	//POINTS START FOR LOOKING FOR BURN ADDRESS -- END
 	*/
 	//#################################################################
 

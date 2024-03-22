@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_POLICY_FEERATE_H
-#define MEOWCOIN_POLICY_FEERATE_H
+#ifndef POINTS_POLICY_FEERATE_H
+#define POINTS_POLICY_FEERATE_H
 
 #include "amount.h"
 #include "serialize.h"
@@ -58,4 +58,4 @@ public:
     }
 };
 
-#endif //  MEOWCOIN_POLICY_FEERATE_H
+#endif //  POINTS_POLICY_FEERATE_H

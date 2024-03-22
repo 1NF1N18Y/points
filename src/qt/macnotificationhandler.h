@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_MACNOTIFICATIONHANDLER_H
-#define MEOWCOIN_QT_MACNOTIFICATIONHANDLER_H
+#ifndef POINTS_QT_MACNOTIFICATIONHANDLER_H
+#define POINTS_QT_MACNOTIFICATIONHANDLER_H
 
 #include <QObject>
 
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif // MEOWCOIN_QT_MACNOTIFICATIONHANDLER_H
+#endif // POINTS_QT_MACNOTIFICATIONHANDLER_H

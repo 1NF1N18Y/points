@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SYNC_H
-#define MEOWCOIN_SYNC_H
+#ifndef POINTS_SYNC_H
+#define POINTS_SYNC_H
 
 #include "threadsafety.h"
 
@@ -288,4 +288,4 @@ public:
     }
 };
 
-#endif // MEOWCOIN_SYNC_H
+#endif // POINTS_SYNC_H

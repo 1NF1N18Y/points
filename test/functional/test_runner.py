@@ -378,7 +378,7 @@ def run_tests(test_list, src_dir, build_dir, exeext, tmpdir, use_term_control, j
     #Set env vars
     if "POINTSD" not in os.environ:
         os.environ["POINTSD"] = build_dir + '/src/pointsd' + exeext
-        os.environ["MEOWCOINCLI"] = build_dir + '/src/points-cli' + exeext
+        os.environ["POINTSCLI"] = build_dir + '/src/points-cli' + exeext
 
     tests_dir = src_dir + '/test/functional/'
 

@@ -13,8 +13,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef MEOWCOIN_BASE58_H
-#define MEOWCOIN_BASE58_H
+#ifndef POINTS_BASE58_H
+#define POINTS_BASE58_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -171,4 +171,4 @@ CTxDestination DecodeDestination(const std::string& str);
 bool IsValidDestinationString(const std::string& str);
 bool IsValidDestinationString(const std::string& str, const CChainParams& params);
 
-#endif // MEOWCOIN_BASE58_H
+#endif // POINTS_BASE58_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_RECEIVECOINSDIALOG_H
-#define MEOWCOIN_QT_RECEIVECOINSDIALOG_H
+#ifndef POINTS_QT_RECEIVECOINSDIALOG_H
+#define POINTS_QT_RECEIVECOINSDIALOG_H
 
 #include "guiutil.h"
 
@@ -81,4 +81,4 @@ private Q_SLOTS:
     void copyAmount();
 };
 
-#endif // MEOWCOIN_QT_RECEIVECOINSDIALOG_H
+#endif // POINTS_QT_RECEIVECOINSDIALOG_H

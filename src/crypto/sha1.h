@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CRYPTO_SHA1_H
-#define MEOWCOIN_CRYPTO_SHA1_H
+#ifndef POINTS_CRYPTO_SHA1_H
+#define POINTS_CRYPTO_SHA1_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -27,4 +27,4 @@ public:
     CSHA1& Reset();
 };
 
-#endif // MEOWCOIN_CRYPTO_SHA1_H
+#endif // POINTS_CRYPTO_SHA1_H

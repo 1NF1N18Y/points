@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SCRIPT_SCRIPT_H
-#define MEOWCOIN_SCRIPT_SCRIPT_H
+#ifndef POINTS_SCRIPT_SCRIPT_H
+#define POINTS_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -185,9 +185,9 @@ enum opcodetype
     OP_NOP9 = 0xb8,
     OP_NOP10 = 0xb9,
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     OP_PNT_ASSET = 0xc0,
-    /** MEOWCOIN END */
+    /** POINTS END */
 
 
     // template matching params
@@ -663,7 +663,7 @@ public:
     bool IsPayToWitnessScriptHash() const;
     bool IsWitnessProgram(int& version, std::vector<unsigned char>& program) const;
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     enum class txnouttype;
     bool IsAssetScript(int& nType, bool& fIsOwner, int& nStartingIndex) const;
     bool IsAssetScript(int& nType, bool& fIsOwner) const;
@@ -677,7 +677,7 @@ public:
     bool IsNullAssetTxDataScript() const;
     bool IsNullAssetVerifierTxDataScript() const;
     bool IsNullGlobalRestrictionAssetTxDataScript() const;
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     /** Used for obsolete pay-to-pubkey addresses indexing. */
     bool IsPayToPublicKey() const;
@@ -740,4 +740,4 @@ bool ScriptNewAsset(const CScript& scriptPubKey, int& nStartingIndex);
 bool ScriptTransferAsset(const CScript& scriptPubKey, int& nStartingIndex);
 bool ScriptReissueAsset(const CScript& scriptPubKey, int& nStartingIndex);
 
-#endif // MEOWCOIN_SCRIPT_SCRIPT_H
+#endif // POINTS_SCRIPT_SCRIPT_H

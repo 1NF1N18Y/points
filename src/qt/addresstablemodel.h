@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_ADDRESSTABLEMODEL_H
-#define MEOWCOIN_QT_ADDRESSTABLEMODEL_H
+#ifndef POINTS_QT_ADDRESSTABLEMODEL_H
+#define POINTS_QT_ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -94,4 +94,4 @@ public Q_SLOTS:
     friend class AddressTablePriv;
 };
 
-#endif // MEOWCOIN_QT_ADDRESSTABLEMODEL_H
+#endif // POINTS_QT_ADDRESSTABLEMODEL_H

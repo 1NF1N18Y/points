@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_PointsGUI_H
-#define MEOWCOIN_QT_PointsGUI_H
+#ifndef POINTS_QT_PointsGUI_H
+#define POINTS_QT_PointsGUI_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -127,7 +127,7 @@ private:
     QAction *openNetworkAction;
     QAction *openPeerAction;
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     QAction *transferAssetAction;
     QAction *createAssetAction;
     QAction *manageAssetAction;
@@ -143,7 +143,7 @@ private:
     QLabel *labelVersionUpdate;
     QNetworkAccessManager* networkVersionManager;
     QNetworkRequest* versionRequest;
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
@@ -255,13 +255,13 @@ private Q_SLOTS:
     /** Show open dialog */
     void openClicked();
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     /** Switch to assets page */
     void gotoAssetsPage();
     void gotoCreateAssetsPage();
     void gotoManageAssetsPage();
     void gotoRestrictedAssetsPage();
-    /** MEOWCOIN END */
+    /** POINTS END */
 
 #endif // ENABLE_WALLET
     /** Show configuration dialog */
@@ -334,4 +334,4 @@ private Q_SLOTS:
     void onMenuSelection(QAction* action);
 };
 
-#endif // MEOWCOIN_QT_PointsGUI_H
+#endif // POINTS_QT_PointsGUI_H

@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_COMPAT_H
-#define MEOWCOIN_COMPAT_H
+#ifndef POINTS_COMPAT_H
+#define POINTS_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -102,4 +102,4 @@ bool static inline IsSelectableSocket(const SOCKET& s) {
 #endif
 }
 
-#endif // MEOWCOIN_COMPAT_H
+#endif // POINTS_COMPAT_H

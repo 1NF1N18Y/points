@@ -8,10 +8,10 @@ if ENABLE_QT
   dist_man1_MANS+=points-qt.1
 endif
 
-if BUILD_MEOWCOIN_CLI
+if BUILD_POINTS_CLI
   dist_man1_MANS+=points-cli.1
 endif
 
-if BUILD_MEOWCOIN_TX
+if BUILD_POINTS_TX
   dist_man1_MANS+=points-tx.1
 endif

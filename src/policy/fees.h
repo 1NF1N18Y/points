@@ -4,8 +4,8 @@
 // Copyright (c) 2020-2021 The Points Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef MEOWCOIN_POLICYESTIMATOR_H
-#define MEOWCOIN_POLICYESTIMATOR_H
+#ifndef POINTS_POLICYESTIMATOR_H
+#define POINTS_POLICYESTIMATOR_H
 
 #include "amount.h"
 #include "feerate.h"
@@ -302,4 +302,4 @@ static const std::array<int, 9> confTargets = { {2, 4, 6, 12, 24, 48, 144, 504, 
 int getConfTargetForIndex(int index);
 int getIndexForConfTarget(int target);
 
-#endif /*MEOWCOIN_POLICYESTIMATOR_H */
+#endif /*POINTS_POLICYESTIMATOR_H */

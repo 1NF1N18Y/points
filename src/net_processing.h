@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_NET_PROCESSING_H
-#define MEOWCOIN_NET_PROCESSING_H
+#ifndef POINTS_NET_PROCESSING_H
+#define POINTS_NET_PROCESSING_H
 
 #include "net.h"
 #include "validationinterface.h"
@@ -83,4 +83,4 @@ bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 /** Increase a node's misbehavior score. */
 void Misbehaving(NodeId nodeid, int howmuch);
 
-#endif // MEOWCOIN_NET_PROCESSING_H
+#endif // POINTS_NET_PROCESSING_H

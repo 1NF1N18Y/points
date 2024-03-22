@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_WALLETMODELTRANSACTION_H
-#define MEOWCOIN_QT_WALLETMODELTRANSACTION_H
+#ifndef POINTS_QT_WALLETMODELTRANSACTION_H
+#define POINTS_QT_WALLETMODELTRANSACTION_H
 
 #include "walletmodel.h"
 
@@ -47,4 +47,4 @@ private:
     CAmount fee;
 };
 
-#endif // MEOWCOIN_QT_WALLETMODELTRANSACTION_H
+#endif // POINTS_QT_WALLETMODELTRANSACTION_H

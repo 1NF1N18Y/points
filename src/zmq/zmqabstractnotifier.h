@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
-#define MEOWCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
+#ifndef POINTS_ZMQ_ZMQABSTRACTNOTIFIER_H
+#define POINTS_ZMQ_ZMQABSTRACTNOTIFIER_H
 
 #include "zmqconfig.h"
 
@@ -45,4 +45,4 @@ protected:
     std::string address;
 };
 
-#endif // MEOWCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
+#endif // POINTS_ZMQ_ZMQABSTRACTNOTIFIER_H

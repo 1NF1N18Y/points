@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_HTTPRPC_H
-#define MEOWCOIN_HTTPRPC_H
+#ifndef POINTS_HTTPRPC_H
+#define POINTS_HTTPRPC_H
 
 #include <string>
 #include <map>

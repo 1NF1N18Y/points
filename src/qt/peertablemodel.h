@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_PEERTABLEMODEL_H
-#define MEOWCOIN_QT_PEERTABLEMODEL_H
+#ifndef POINTS_QT_PEERTABLEMODEL_H
+#define POINTS_QT_PEERTABLEMODEL_H
 
 #include "net_processing.h" // For CNodeStateStats
 #include "net.h"
@@ -84,4 +84,4 @@ private:
     QTimer *timer;
 };
 
-#endif // MEOWCOIN_QT_PEERTABLEMODEL_H
+#endif // POINTS_QT_PEERTABLEMODEL_H

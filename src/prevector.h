@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_PREVECTOR_H
-#define MEOWCOIN_PREVECTOR_H
+#ifndef POINTS_PREVECTOR_H
+#define POINTS_PREVECTOR_H
 
 #include <assert.h>
 #include <stdlib.h>
@@ -516,4 +516,4 @@ public:
 };
 #pragma pack(pop)
 
-#endif // MEOWCOIN_PREVECTOR_H
+#endif // POINTS_PREVECTOR_H

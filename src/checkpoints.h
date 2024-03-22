@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CHECKPOINTS_H
-#define MEOWCOIN_CHECKPOINTS_H
+#ifndef POINTS_CHECKPOINTS_H
+#define POINTS_CHECKPOINTS_H
 
 #include "uint256.h"
 
@@ -26,4 +26,4 @@ CBlockIndex* GetLastCheckpoint(const CCheckpointData& data);
 
 } //namespace Checkpoints
 
-#endif // MEOWCOIN_CHECKPOINTS_H
+#endif // POINTS_CHECKPOINTS_H

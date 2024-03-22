@@ -48,23 +48,23 @@ BOOST_FIXTURE_TEST_SUITE(asset_tests, BasicTestingSetup)
         BOOST_CHECK(!IsAssetNameValid("A._BC", type));
         BOOST_CHECK(!IsAssetNameValid("AB_.C", type));
 
-        //- Versions of MEOWCOIN NOT allowed
+        //- Versions of POINTS NOT allowed
         BOOST_CHECK(!IsAssetNameValid("RVN", type));
         BOOST_CHECK(!IsAssetNameValid("RAVEN", type));
         BOOST_CHECK(!IsAssetNameValid("RAVENCOIN", type));
         BOOST_CHECK(!IsAssetNameValid("PNT", type));
-        BOOST_CHECK(!IsAssetNameValid("MEOWCOIN", type));
+        BOOST_CHECK(!IsAssetNameValid("POINTS", type));
 
-        //- Versions of MEOWCOIN ALLOWED
+        //- Versions of POINTS ALLOWED
         BOOST_CHECK(IsAssetNameValid("RAVEN.COIN", type));
-        BOOST_CHECK(IsAssetNameValid("MEOWCOIN.COIN", type));
+        BOOST_CHECK(IsAssetNameValid("POINTS.COIN", type));
         BOOST_CHECK(IsAssetNameValid("RAVEN_COIN", type));
-        BOOST_CHECK(IsAssetNameValid("MEOWCOIN_COIN", type));
+        BOOST_CHECK(IsAssetNameValid("POINTS_COIN", type));
         BOOST_CHECK(IsAssetNameValid("RVNSPYDER", type));
         BOOST_CHECK(IsAssetNameValid("SPYDERRVN", type));
         BOOST_CHECK(IsAssetNameValid("RAVENSPYDER", type));
         BOOST_CHECK(IsAssetNameValid("SPYDERAVEN", type));
-        BOOST_CHECK(IsAssetNameValid("BLACK_MEOWCOIN", type));
+        BOOST_CHECK(IsAssetNameValid("BLACK_POINTS", type));
         BOOST_CHECK(IsAssetNameValid("SERVNOT", type));
 
         // subs

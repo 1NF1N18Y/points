@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_NETWORKSTYLE_H
-#define MEOWCOIN_QT_NETWORKSTYLE_H
+#ifndef POINTS_QT_NETWORKSTYLE_H
+#define POINTS_QT_NETWORKSTYLE_H
 
 #include <QIcon>
 #include <QPixmap>
@@ -34,4 +34,4 @@ private:
     QString titleAddText;
 };
 
-#endif // MEOWCOIN_QT_NETWORKSTYLE_H
+#endif // POINTS_QT_NETWORKSTYLE_H

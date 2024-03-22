@@ -3,8 +3,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-#ifndef MEOWCOINCOIN_RESTRICTEDDB_H
-#define MEOWCOINCOIN_RESTRICTEDDB_H
+#ifndef POINTSCOIN_RESTRICTEDDB_H
+#define POINTSCOIN_RESTRICTEDDB_H
 
 #include <dbwrapper.h>
 
@@ -56,4 +56,4 @@ public:
 };
 
 
-#endif //MEOWCOINCOIN_RESTRICTEDDB_H
+#endif //POINTSCOIN_RESTRICTEDDB_H

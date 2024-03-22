@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_TRANSACTIONFILTERPROXY_H
-#define MEOWCOIN_QT_TRANSACTIONFILTERPROXY_H
+#ifndef POINTS_QT_TRANSACTIONFILTERPROXY_H
+#define POINTS_QT_TRANSACTIONFILTERPROXY_H
 
 #include "amount.h"
 
@@ -68,4 +68,4 @@ private:
     int limitRows;
     bool showInactive;
 };
-#endif // MEOWCOIN_QT_TRANSACTIONFILTERPROXY_H
+#endif // POINTS_QT_TRANSACTIONFILTERPROXY_H

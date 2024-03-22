@@ -99,7 +99,7 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction &tx, int nHeight, uint2
     bool fCoinbase = tx.IsCoinBase();
     const uint256& txid = tx.GetHash();
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     if (AreAssetsDeployed()) {
         if (assetsCache) {
             if (tx.IsNewAsset()) { // This works are all new root assets, sub asset, and restricted assets
@@ -252,7 +252,7 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction &tx, int nHeight, uint2
             }
         }
     }
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     for (size_t i = 0; i < tx.vout.size(); ++i) {
         bool overwrite = check ? cache.HaveCoin(COutPoint(txid, i)) : fCoinbase;
@@ -260,7 +260,7 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction &tx, int nHeight, uint2
         // deal with the pre-BIP30 occurrences of duplicate coinbase transactions.
         cache.AddCoin(COutPoint(txid, i), Coin(tx.vout[i], nHeight, fCoinbase), overwrite);
 
-        /** MEOWCOIN START */
+        /** POINTS START */
         if (AreAssetsDeployed()) {
             if (assetsCache) {
                 CAssetOutputEntry assetData;
@@ -353,7 +353,7 @@ void AddCoins(CCoinsViewCache& cache, const CTransaction &tx, int nHeight, uint2
                 }
             }
         }
-        /** MEOWCOIN END */
+        /** POINTS END */
     }
 }
 
@@ -364,9 +364,9 @@ bool CCoinsViewCache::SpendCoin(const COutPoint &outpoint, Coin* moveout, CAsset
         return false;
     cachedCoinsUsage -= it->second.coin.DynamicMemoryUsage();
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     Coin tempCoin = it->second.coin;
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     if (moveout) {
         *moveout = std::move(it->second.coin);
@@ -378,7 +378,7 @@ bool CCoinsViewCache::SpendCoin(const COutPoint &outpoint, Coin* moveout, CAsset
         it->second.coin.Clear();
     }
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     if (AreAssetsDeployed()) {
         if (assetsCache) {
             if (!assetsCache->TrySpendCoin(outpoint, tempCoin.out)) {
@@ -386,7 +386,7 @@ bool CCoinsViewCache::SpendCoin(const COutPoint &outpoint, Coin* moveout, CAsset
             }
         }
     }
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     return true;
 }

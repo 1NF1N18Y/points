@@ -89,8 +89,8 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char *const MEOWCOIN_CONF_FILENAME = "points.conf";
-const char *const MEOWCOIN_PID_FILENAME = "pointsd.pid";
+const char *const POINTS_CONF_FILENAME = "points.conf";
+const char *const POINTS_PID_FILENAME = "pointsd.pid";
 
 ArgsManager gArgs;
 bool fPrintToConsole = false;
@@ -662,7 +662,7 @@ void ArgsManager::ReadConfigFile(const std::string &confPath)
 
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(gArgs.GetArg("-pid", MEOWCOIN_PID_FILENAME));
+    fs::path pathPidFile(gArgs.GetArg("-pid", POINTS_PID_FILENAME));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

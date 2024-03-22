@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_TEST_test_points_H
-#define MEOWCOIN_TEST_test_points_H
+#ifndef POINTS_TEST_test_points_H
+#define POINTS_TEST_test_points_H
 
 #include "chainparamsbase.h"
 #include "fs.h"

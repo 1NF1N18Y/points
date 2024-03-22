@@ -4,9 +4,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_NOUI_H
-#define MEOWCOIN_NOUI_H
+#ifndef POINTS_NOUI_H
+#define POINTS_NOUI_H
 
 extern void noui_connect();
 
-#endif // MEOWCOIN_NOUI_H
+#endif // POINTS_NOUI_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_CHECKQUEUE_H
-#define MEOWCOIN_CHECKQUEUE_H
+#ifndef POINTS_CHECKQUEUE_H
+#define POINTS_CHECKQUEUE_H
 
 #include "sync.h"
 
@@ -216,4 +216,4 @@ public:
     }
 };
 
-#endif // MEOWCOIN_CHECKQUEUE_H
+#endif // POINTS_CHECKQUEUE_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SUPPORT_LOCKEDPOOL_H
-#define MEOWCOIN_SUPPORT_LOCKEDPOOL_H
+#ifndef POINTS_SUPPORT_LOCKEDPOOL_H
+#define POINTS_SUPPORT_LOCKEDPOOL_H
 
 #include <stdint.h>
 #include <list>
@@ -230,4 +230,4 @@ private:
     static std::once_flag init_flag;
 };
 
-#endif // MEOWCOIN_SUPPORT_LOCKEDPOOL_H
+#endif // POINTS_SUPPORT_LOCKEDPOOL_H

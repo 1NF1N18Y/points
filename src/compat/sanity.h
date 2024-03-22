@@ -4,10 +4,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_COMPAT_SANITY_H
-#define MEOWCOIN_COMPAT_SANITY_H
+#ifndef POINTS_COMPAT_SANITY_H
+#define POINTS_COMPAT_SANITY_H
 
 bool glibc_sanity_test();
 bool glibcxx_sanity_test();
 
-#endif // MEOWCOIN_COMPAT_SANITY_H
+#endif // POINTS_COMPAT_SANITY_H

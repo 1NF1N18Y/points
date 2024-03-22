@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_OPTIONSMODEL_H
-#define MEOWCOIN_QT_OPTIONSMODEL_H
+#ifndef POINTS_QT_OPTIONSMODEL_H
+#define POINTS_QT_OPTIONSMODEL_H
 
 #include "amount.h"
 
@@ -87,10 +87,10 @@ private:
     int nDisplayUnit;
     QString strThirdPartyTxUrls;
     bool fCoinControlFeatures;
-    /** MEOWCOIN START*/
+    /** POINTS START*/
     bool fCustomFeeFeatures;
     bool fDarkModeEnabled;
-    /** MEOWCOIN END*/
+    /** POINTS END*/
     /* settings that were overridden by command-line */
     QString strOverriddenByCommandLine;
 
@@ -106,4 +106,4 @@ Q_SIGNALS:
     void hideTrayIconChanged(bool);
 };
 
-#endif // MEOWCOIN_QT_OPTIONSMODEL_H
+#endif // POINTS_QT_OPTIONSMODEL_H

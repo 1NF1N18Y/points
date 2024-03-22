@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_WALLET_COINCONTROL_H
-#define MEOWCOIN_WALLET_COINCONTROL_H
+#ifndef POINTS_WALLET_COINCONTROL_H
+#define POINTS_WALLET_COINCONTROL_H
 
 #include "policy/feerate.h"
 #include "policy/fees.h"
@@ -38,10 +38,10 @@ public:
     //! Fee estimation mode to control arguments to estimateSmartFee
     FeeEstimateMode m_fee_mode;
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     //! Name of the asset that is selected, used when sending assets with coincontrol
     std::string strAssetSelected;
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     CCoinControl()
     {
@@ -131,4 +131,4 @@ private:
     std::set<COutPoint> setAssetsSelected;
 };
 
-#endif // MEOWCOIN_WALLET_COINCONTROL_H
+#endif // POINTS_WALLET_COINCONTROL_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_LIMITEDMAP_H
-#define MEOWCOIN_LIMITEDMAP_H
+#ifndef POINTS_LIMITEDMAP_H
+#define POINTS_LIMITEDMAP_H
 
 #include <assert.h>
 #include <map>
@@ -99,4 +99,4 @@ public:
     }
 };
 
-#endif // MEOWCOIN_LIMITEDMAP_H
+#endif // POINTS_LIMITEDMAP_H

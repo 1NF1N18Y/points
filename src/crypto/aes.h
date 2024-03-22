@@ -6,8 +6,8 @@
 //
 // C++ wrapper around ctaes, a constant-time AES implementation
 
-#ifndef MEOWCOIN_CRYPTO_AES_H
-#define MEOWCOIN_CRYPTO_AES_H
+#ifndef POINTS_CRYPTO_AES_H
+#define POINTS_CRYPTO_AES_H
 
 extern "C" {
 #include "crypto/ctaes/ctaes.h"
@@ -117,4 +117,4 @@ private:
     unsigned char iv[AES_BLOCKSIZE];
 };
 
-#endif // MEOWCOIN_CRYPTO_AES_H
+#endif // POINTS_CRYPTO_AES_H

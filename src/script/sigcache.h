@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SCRIPT_SIGCACHE_H
-#define MEOWCOIN_SCRIPT_SIGCACHE_H
+#ifndef POINTS_SCRIPT_SIGCACHE_H
+#define POINTS_SCRIPT_SIGCACHE_H
 
 #include "script/interpreter.h"
 
@@ -55,4 +55,4 @@ public:
 
 void InitSignatureCache();
 
-#endif // MEOWCOIN_SCRIPT_SIGCACHE_H
+#endif // POINTS_SCRIPT_SIGCACHE_H

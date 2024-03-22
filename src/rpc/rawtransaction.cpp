@@ -1611,7 +1611,7 @@ UniValue decodescript(const JSONRPCRequest& request)
         r.push_back(Pair("p2sh", EncodeDestination(CScriptID(script))));
     }
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     if (type.isStr() && type.get_str() == ASSET_TRANSFER_STRING) {
         if (!AreAssetsDeployed())
             throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Assets are not active");
@@ -1683,7 +1683,7 @@ UniValue decodescript(const JSONRPCRequest& request)
     } else {
 
     }
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     return r;
 }

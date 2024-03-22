@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_SENDCOINSENTRY_H
-#define MEOWCOIN_QT_SENDCOINSENTRY_H
+#ifndef POINTS_QT_SENDCOINSENTRY_H
+#define POINTS_QT_SENDCOINSENTRY_H
 
 #include "walletmodel.h"
 
@@ -72,4 +72,4 @@ private:
     bool updateLabel(const QString &address);
 };
 
-#endif // MEOWCOIN_QT_SENDCOINSENTRY_H
+#endif // POINTS_QT_SENDCOINSENTRY_H

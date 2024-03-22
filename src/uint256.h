@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_UINT256_H
-#define MEOWCOIN_UINT256_H
+#ifndef POINTS_UINT256_H
+#define POINTS_UINT256_H
 
 #include <assert.h>
 #include <cstring>
@@ -177,4 +177,4 @@ public:
         return result;
     }
 };
-#endif // MEOWCOIN_UINT256_H
+#endif // POINTS_UINT256_H

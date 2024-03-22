@@ -4,11 +4,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_RPC_SAFEMODE_H
-#define MEOWCOIN_RPC_SAFEMODE_H
+#ifndef POINTS_RPC_SAFEMODE_H
+#define POINTS_RPC_SAFEMODE_H
 
 static const bool DEFAULT_DISABLE_SAFEMODE = true;
 
 void ObserveSafeMode();
 
-#endif // MEOWCOIN_RPC_SAFEMODE_H
+#endif // POINTS_RPC_SAFEMODE_H

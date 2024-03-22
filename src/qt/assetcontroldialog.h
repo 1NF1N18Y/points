@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_ASSETCONTROLDIALOG_H
-#define MEOWCOIN_QT_ASSETCONTROLDIALOG_H
+#ifndef POINTS_QT_ASSETCONTROLDIALOG_H
+#define POINTS_QT_ASSETCONTROLDIALOG_H
 
 #include "amount.h"
 
@@ -126,4 +126,4 @@ private Q_SLOTS:
     void onAssetSelected(QString name);
 };
 
-#endif // MEOWCOIN_QT_ASSETCONTROLDIALOG_H
+#endif // POINTS_QT_ASSETCONTROLDIALOG_H

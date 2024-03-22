@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_MEMUSAGE_H
-#define MEOWCOIN_MEMUSAGE_H
+#ifndef POINTS_MEMUSAGE_H
+#define POINTS_MEMUSAGE_H
 
 #include "indirectmap.h"
 
@@ -168,4 +168,4 @@ static inline size_t DynamicUsage(const std::unordered_map<X, Y, Z>& m)
 
 }
 
-#endif // MEOWCOIN_MEMUSAGE_H
+#endif // POINTS_MEMUSAGE_H

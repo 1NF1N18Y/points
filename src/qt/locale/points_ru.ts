@@ -170,7 +170,7 @@
 			<translation>Подтвердите шифрование бумажника</translation>
 		</message>
 		<message>
-			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR MEOWCOIN&lt;/b&gt;!</source>
+			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR POINTS&lt;/b&gt;!</source>
 			<translation>Предупреждение: если вы зашифровали бумажник и потеряли пароль, вы потеряете все улейки!</translation>
 		</message>
 		<message>

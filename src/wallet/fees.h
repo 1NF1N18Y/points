@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_WALLET_FEES_H
-#define MEOWCOIN_WALLET_FEES_H
+#ifndef POINTS_WALLET_FEES_H
+#define POINTS_WALLET_FEES_H
 
 #include "amount.h"
 
@@ -33,4 +33,4 @@ CAmount GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_control, c
  */
 CFeeRate GetDiscardRate(const CBlockPolicyEstimator& estimator);
 
-#endif // MEOWCOIN_WALLET_FEES_H
+#endif // POINTS_WALLET_FEES_H

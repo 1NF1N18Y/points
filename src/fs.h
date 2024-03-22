@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_FS_H
-#define MEOWCOIN_FS_H
+#ifndef POINTS_FS_H
+#define POINTS_FS_H
 
 #include <stdio.h>
 #include <string>
@@ -26,4 +26,4 @@ namespace fsbridge {
     FILE *freopen(const fs::path& p, const char *mode, FILE *stream);
 };
 
-#endif // MEOWCOIN_FS_H
+#endif // POINTS_FS_H

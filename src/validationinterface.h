@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_VALIDATIONINTERFACE_H
-#define MEOWCOIN_VALIDATIONINTERFACE_H
+#ifndef POINTS_VALIDATIONINTERFACE_H
+#define POINTS_VALIDATIONINTERFACE_H
 
 #include <memory>
 
@@ -115,4 +115,4 @@ public:
 
 CMainSignals& GetMainSignals();
 
-#endif // MEOWCOIN_VALIDATIONINTERFACE_H
+#endif // POINTS_VALIDATIONINTERFACE_H

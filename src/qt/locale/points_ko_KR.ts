@@ -170,7 +170,7 @@
 			<translation>지갑 암호화 승인</translation>
 		</message>
 		<message>
-			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR MEOWCOIN&lt;/b&gt;!</source>
+			<source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR POINTS&lt;/b&gt;!</source>
 			<translation>경고: 지갑 을 암호 화하 고 비밀 번 호 를 잃 어 버 리 면 모든 벌통 을 잃 어 버 립 니 다!</translation>
 		</message>
 		<message>

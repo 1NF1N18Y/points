@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_SCRIPT_STANDARD_H
-#define MEOWCOIN_SCRIPT_STANDARD_H
+#ifndef POINTS_SCRIPT_STANDARD_H
+#define POINTS_SCRIPT_STANDARD_H
 
 #include "script/interpreter.h"
 #include "uint256.h"
@@ -66,12 +66,12 @@ enum txnouttype
     TX_NULL_DATA = 5, //!< unspendable OP_RETURN script that carries data
     TX_WITNESS_V0_SCRIPTHASH = 6,
     TX_WITNESS_V0_KEYHASH = 7,
-    /** MEOWCOIN START */
+    /** POINTS START */
     TX_NEW_ASSET = 8,
     TX_REISSUE_ASSET = 9,
     TX_TRANSFER_ASSET = 10,
-    TX_RESTRICTED_ASSET_DATA = 11, //!< unspendable OP_MEOWCOIN_ASSET script that carries data
-    /** MEOWCOIN END */
+    TX_RESTRICTED_ASSET_DATA = 11, //!< unspendable OP_POINTS_ASSET script that carries data
+    /** POINTS END */
 };
 
 class CNoDestination {
@@ -149,4 +149,4 @@ CScript GetScriptForNullAssetDataDestination(const CTxDestination &dest);
  */
 CScript GetScriptForWitness(const CScript& redeemscript);
 
-#endif // MEOWCOIN_SCRIPT_STANDARD_H
+#endif // POINTS_SCRIPT_STANDARD_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ZMQ_ZMQCONFIG_H
-#define MEOWCOIN_ZMQ_ZMQCONFIG_H
+#ifndef POINTS_ZMQ_ZMQCONFIG_H
+#define POINTS_ZMQ_ZMQCONFIG_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -23,4 +23,4 @@
 
 void zmqError(const char *str);
 
-#endif // MEOWCOIN_ZMQ_ZMQCONFIG_H
+#endif // POINTS_ZMQ_ZMQCONFIG_H

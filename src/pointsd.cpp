@@ -105,7 +105,7 @@ bool AppInit(int argc, char* argv[])
         }
         try
         {
-            gArgs.ReadConfigFile(gArgs.GetArg("-conf", MEOWCOIN_CONF_FILENAME));
+            gArgs.ReadConfigFile(gArgs.GetArg("-conf", POINTS_CONF_FILENAME));
         } catch (const std::exception& e) {
             fprintf(stderr,"Error reading configuration file: %s\n", e.what());
             return false;

@@ -503,7 +503,7 @@ void openDebugLogfile()
 
 bool openPointsConf()
 {
-    fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", MEOWCOIN_CONF_FILENAME));
+    fs::path pathConfig = GetConfigFile(gArgs.GetArg("-conf", POINTS_CONF_FILENAME));
 
     /* Open points.conf with the associated application */
     if (fs::exists(pathConfig))

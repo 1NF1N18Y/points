@@ -144,9 +144,9 @@ const char* GetOpName(opcodetype opcode)
     case OP_NOP9                   : return "OP_NOP9";
     case OP_NOP10                  : return "OP_NOP10";
 
-    /** MEOWCOIN START */
+    /** POINTS START */
     case OP_PNT_ASSET              : return "OP_PNT_ASSET";
-    /** MEOWCOIN END */
+    /** POINTS END */
 
     case OP_INVALIDOPCODE          : return "OP_INVALIDOPCODE";
 
@@ -228,7 +228,7 @@ bool CScript::IsPayToScriptHash() const
             (*this)[22] == OP_EQUAL);
 }
 
-/** MEOWCOIN START */
+/** POINTS START */
 bool CScript::IsAssetScript() const
 {
     int nType = 0;
@@ -354,7 +354,7 @@ bool CScript::IsNullAssetVerifierTxDataScript() const
             (*this)[1] == OP_RESERVED &&
             (*this)[2] != OP_RESERVED);
 }
-/** MEOWCOIN END */
+/** POINTS END */
 
 bool CScript::IsPayToWitnessScriptHash() const
 {

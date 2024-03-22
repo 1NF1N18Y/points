@@ -1,10 +1,10 @@
 ## Build for linux version, see /doc/build-unix.md
 
 
-MEOWCOIN_ROOT=$(pwd)
+POINTS_ROOT=$(pwd)
 
 # Pick some path to install BDB to, here we create a directory within the Points directory
-BDB_PREFIX="${MEOWCOIN_ROOT}/db4"
+BDB_PREFIX="${POINTS_ROOT}/db4"
 mkdir -p $BDB_PREFIX
 
 # Fetch the source and verify that it is not tampered with
@@ -25,7 +25,7 @@ make
 make install
 
 # Configure Points Core to use our own-built instance of BDB
-cd $MEOWCOIN_ROOT
+cd $POINTS_ROOT
 cd depends
 make HOST=x86_64-pc-linux-gnu
 

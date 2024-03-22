@@ -19,5 +19,5 @@ depending on the speed of your computer and network connection, the synchronizat
 process can take anywhere from a few hours to a day or more.
 
 See the points wiki at:
-  https://points.wiki/wiki/MEOWCOINCOIN_Wiki
+  https://points.wiki/wiki/POINTSCOIN_Wiki
 for more help and information.

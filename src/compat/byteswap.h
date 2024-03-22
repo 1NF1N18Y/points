@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_COMPAT_BYTESWAP_H
-#define MEOWCOIN_COMPAT_BYTESWAP_H
+#ifndef POINTS_COMPAT_BYTESWAP_H
+#define POINTS_COMPAT_BYTESWAP_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
@@ -65,4 +65,4 @@ inline uint64_t bswap_64(uint64_t x)
 
 #endif // defined(__APPLE__)
 
-#endif // MEOWCOIN_COMPAT_BYTESWAP_H
+#endif // POINTS_COMPAT_BYTESWAP_H

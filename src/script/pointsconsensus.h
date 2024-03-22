@@ -5,12 +5,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_MEOWCOINCONSENSUS_H
-#define MEOWCOIN_MEOWCOINCONSENSUS_H
+#ifndef POINTS_POINTSCONSENSUS_H
+#define POINTS_POINTSCONSENSUS_H
 
 #include <stdint.h>
 
-#if defined(BUILD_MEOWCOIN_INTERNAL) && defined(HAVE_CONFIG_H)
+#if defined(BUILD_POINTS_INTERNAL) && defined(HAVE_CONFIG_H)
 #include "config/points-config.h"
   #if defined(_WIN32)
     #if defined(DLL_EXPORT)
@@ -23,7 +23,7 @@
   #elif defined(HAVE_FUNC_ATTRIBUTE_VISIBILITY)
     #define EXPORT_SYMBOL __attribute__ ((visibility ("default")))
   #endif
-#elif defined(MSC_VER) && !defined(STATIC_LIBMEOWCOINCONSENSUS)
+#elif defined(MSC_VER) && !defined(STATIC_LIBPOINTSCONSENSUS)
   #define EXPORT_SYMBOL __declspec(dllimport)
 #endif
 
@@ -35,7 +35,7 @@
 extern "C" {
 #endif
 
-#define MEOWCOINCONSENSUS_API_VER 1
+#define POINTSCONSENSUS_API_VER 1
 
 typedef enum pointsconsensus_error_t
 {
@@ -82,4 +82,4 @@ EXPORT_SYMBOL unsigned int pointsconsensus_version();
 
 #undef EXPORT_SYMBOL
 
-#endif // MEOWCOIN_MEOWCOINCONSENSUS_H
+#endif // POINTS_POINTSCONSENSUS_H

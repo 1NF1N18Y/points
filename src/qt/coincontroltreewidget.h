@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_COINCONTROLTREEWIDGET_H
-#define MEOWCOIN_QT_COINCONTROLTREEWIDGET_H
+#ifndef POINTS_QT_COINCONTROLTREEWIDGET_H
+#define POINTS_QT_COINCONTROLTREEWIDGET_H
 
 #include <QKeyEvent>
 #include <QTreeWidget>
@@ -21,4 +21,4 @@ protected:
     virtual void keyPressEvent(QKeyEvent *event);
 };
 
-#endif // MEOWCOIN_QT_COINCONTROLTREEWIDGET_H
+#endif // POINTS_QT_COINCONTROLTREEWIDGET_H

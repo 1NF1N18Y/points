@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_RECEIVEREQUESTDIALOG_H
-#define MEOWCOIN_QT_RECEIVEREQUESTDIALOG_H
+#ifndef POINTS_QT_RECEIVEREQUESTDIALOG_H
+#define POINTS_QT_RECEIVEREQUESTDIALOG_H
 
 #include "walletmodel.h"
 
@@ -70,4 +70,4 @@ private:
     SendCoinsRecipient info;
 };
 
-#endif // MEOWCOIN_QT_RECEIVEREQUESTDIALOG_H
+#endif // POINTS_QT_RECEIVEREQUESTDIALOG_H

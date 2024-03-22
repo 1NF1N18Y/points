@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_ASSETFILTERPROXY_H
-#define MEOWCOIN_ASSETFILTERPROXY_H
+#ifndef POINTS_ASSETFILTERPROXY_H
+#define POINTS_ASSETFILTERPROXY_H
 
 #include <QSortFilterProxyModel>
 
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //MEOWCOIN_ASSETFILTERPROXY_H
+#endif //POINTS_ASSETFILTERPROXY_H

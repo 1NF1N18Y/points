@@ -54,7 +54,7 @@ class TestNode:
         self.extra_args = extra_args
         self.args = [self.binary, "-datadir=" + self.datadir, "-server", "-keypool=2", "-discover=0", "-rest", "-logtimemicros", "-debug", "-debugexclude=libevent", "-debugexclude=leveldb", "-bip44=1", "-mocktime=" + str(mocktime), "-uacomment=testnode%d" % i]
 
-        self.cli = TestNodeCLI(os.getenv("MEOWCOINCLI", "points-cli"), self.datadir)
+        self.cli = TestNodeCLI(os.getenv("POINTSCLI", "points-cli"), self.datadir)
 
         self.running = False
         AuthServiceProxy.running = False

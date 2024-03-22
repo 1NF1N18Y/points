@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MEOWCOIN_QT_CSVMODELWRITER_H
-#define MEOWCOIN_QT_CSVMODELWRITER_H
+#ifndef POINTS_QT_CSVMODELWRITER_H
+#define POINTS_QT_CSVMODELWRITER_H
 
 #include <QList>
 #include <QObject>
@@ -45,4 +45,4 @@ private:
     QList<Column> columns;
 };
 
-#endif // MEOWCOIN_QT_CSVMODELWRITER_H
+#endif // POINTS_QT_CSVMODELWRITER_H
