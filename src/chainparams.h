@@ -207,7 +207,7 @@ protected:
 
     int nAssetActivationHeight;
 
-    uint32_t nKAAAWWWPOWActivationTime;
+    uint32_t nAWESOMEPOWWWActivationTime;
     /** POINTS End **/
 };
 

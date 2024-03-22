@@ -16,7 +16,7 @@ static const uint32_t MAINNET_X16RV2ACTIVATIONTIME = 1569945600;
 static const uint32_t TESTNET_X16RV2ACTIVATIONTIME = 1567533600;
 static const uint32_t REGTEST_X16RV2ACTIVATIONTIME = 1569931200;
 
-uint32_t nKAWPOWActivationTime;
+uint32_t nAWESOMEPOWActivationTime;
 
 BlockNetwork bNetwork = BlockNetwork();
 
@@ -37,7 +37,7 @@ void BlockNetwork::SetNetwork(const std::string& net)
 
 uint256 CBlockHeader::GetHash() const
 {
-    if (nTime < nKAWPOWActivationTime) {
+    if (nTime < nAWESOMEPOWActivationTime) {
         uint32_t nTimeToUse = MAINNET_X16RV2ACTIVATIONTIME;
         if (bNetwork.fOnTestnet) {
             nTimeToUse = TESTNET_X16RV2ACTIVATIONTIME;
@@ -50,13 +50,13 @@ uint256 CBlockHeader::GetHash() const
 
         return HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
     } else {
-        return KAWPOWHash_OnlyMix(*this);
+        return AWESOMEPOWHash_OnlyMix(*this);
     }
 }
 
 uint256 CBlockHeader::GetHashFull(uint256& mix_hash) const
 {
-    if (nTime < nKAWPOWActivationTime) {
+    if (nTime < nAWESOMEPOWActivationTime) {
         uint32_t nTimeToUse = MAINNET_X16RV2ACTIVATIONTIME;
         if (bNetwork.fOnTestnet) {
             nTimeToUse = TESTNET_X16RV2ACTIVATIONTIME;
@@ -69,7 +69,7 @@ uint256 CBlockHeader::GetHashFull(uint256& mix_hash) const
 
         return HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
     } else {
-        return KAWPOWHash(*this, mix_hash);
+        return AWESOMEPOWHash(*this, mix_hash);
     }
 }
 
@@ -91,9 +91,9 @@ uint256 CBlockHeader::GetX16RV2Hash() const
  * This will be used as the input to the KAAAWWWPOW hashing function
  * @note Only to be called and used on KAAAWWWPOW block headers
  */
-uint256 CBlockHeader::GetKAWPOWHeaderHash() const
+uint256 CBlockHeader::GetAWESOMEPOWHeaderHash() const
 {
-    CKAWPOWInput input{*this};
+    CAWESOMEPOWInput input{*this};
 
     return SerializeHash(input);
 }

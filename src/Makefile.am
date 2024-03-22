@@ -353,6 +353,7 @@ crypto_libpoints_crypto_a_SOURCES = \
   crypto/ethash/include/ethash/keccak.h \
   crypto/ethash/include/ethash/keccak.hpp \
   crypto/ethash/include/ethash/progpow.hpp \
+  crypto/ethash/include/ethash/awesomepow.hpp \
   crypto/ethash/include/ethash/version.h \
   crypto/ethash/lib/ethash/bit_manipulation.h \
   crypto/ethash/lib/ethash/builtins.h \
@@ -364,6 +365,7 @@ crypto_libpoints_crypto_a_SOURCES = \
   crypto/ethash/lib/ethash/primes.c \
   crypto/ethash/lib/ethash/primes.h \
   crypto/ethash/lib/ethash/progpow.cpp \
+  crypto/ethash/lib/ethash/awesomepow.cpp \
   crypto/ethash/lib/keccak/keccak.c \
   crypto/ethash/lib/keccak/keccakf1600.c \
   crypto/ethash/lib/keccak/keccakf800.c \

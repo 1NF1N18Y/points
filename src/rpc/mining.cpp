@@ -34,10 +34,11 @@
 #include <crypto/ethash/include/ethash/ethash.hpp>
 #include <consensus/merkle.h>
 #include <crypto/ethash/include/ethash/progpow.hpp>
+#include <crypto/ethash/include/ethash/awesomepow.hpp>
 
 extern uint64_t nHashesPerSec;
 
-std::map<std::string, CBlock> mapHVNKAWBlockTemplates;
+std::map<std::string, CBlock> mapPNTAWESOMEBlockTemplates;
 
 unsigned int ParseConfirmTarget(const UniValue& value)
 {
@@ -139,7 +140,7 @@ UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGen
         uint256 mix_hash;
         while (nMaxTries > 0 && pblock->nNonce < nInnerLoopCount && !CheckProofOfWork(pblock->GetHashFull(mix_hash), pblock->nBits,
                                                                                       GetParams().GetConsensus())) {
-            if (pblock->nTime < nKAWPOWActivationTime) {
+            if (pblock->nTime < nAWESOMEPOWActivationTime) {
                 ++pblock->nNonce;
             } else  {
                 ++pblock->nNonce64;
@@ -153,7 +154,7 @@ UniValue generateBlocks(std::shared_ptr<CReserveScript> coinbaseScript, int nGen
             continue;
         }
 
-        // KAWPOW Assign the mix_hash to the block that was found
+        // AWESOMEPOW Assign the mix_hash to the block that was found
         pblock->mix_hash = mix_hash;
 
         std::shared_ptr<const CBlock> shared_pblock = std::make_shared<const CBlock>(*pblock);
@@ -537,7 +538,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     {
         // Clear pindexPrev so future calls make a new block, despite any failures from here on
         pindexPrev = nullptr;
-        mapHVNKAWBlockTemplates.clear();
+        mapPNTAWESOMEBlockTemplates.clear();
 
         // Store the pindexBest used before CreateNewBlock, to avoid races
         nTransactionsUpdatedLast = mempool.GetTransactionsUpdated();
@@ -718,7 +719,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
         result.push_back(Pair("default_witness_commitment", HexStr(pblocktemplate->vchCoinbaseCommitment.begin(), pblocktemplate->vchCoinbaseCommitment.end())));
     }
 
-    if (pblock->nTime >= nKAWPOWActivationTime) {
+    if (pblock->nTime >= nAWESOMEPOWActivationTime) {
         std::string address = gArgs.GetArg("-miningaddress", "");
         if (IsValidDestinationString(address)) {
             static std::string lastheader = "";
@@ -731,10 +732,10 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             }
 
             pblock->hashMerkleRoot = BlockMerkleRoot(*pblock);
-            result.pushKV("pprpcheader", pblock->GetKAWPOWHeaderHash().GetHex());
+            result.pushKV("pprpcheader", pblock->GetAWESOMEPOWHeaderHash().GetHex());
             result.pushKV("pprpcepoch", ethash::get_epoch_number(pblock->nHeight));
-            mapHVNKAWBlockTemplates[pblock->GetKAWPOWHeaderHash().GetHex()] = *pblock;
-            lastheader = pblock->GetKAWPOWHeaderHash().GetHex();
+            mapHVNKAWBlockTemplates[pblock->GetAWESOMEPOWHeaderHash().GetHex()] = *pblock;
+            lastheader = pblock->GetAWESOMEPOWHeaderHash().GetHex();
         }
     }
 
@@ -759,10 +760,10 @@ protected:
     }
 };
 
-static UniValue getkawpowhash(const JSONRPCRequest& request) {
+static UniValue getawesomepowhash(const JSONRPCRequest& request) {
     if (request.fHelp || request.params.size() < 4) {
         throw std::runtime_error(
-                "getkawpowhash \"header_hash\" \"mix_hash\" nonce, height, \"target\"\n"
+                "getawesomepowhash \"header_hash\" \"mix_hash\" nonce, height, \"target\"\n"
                 "\nGet the kawpow hash for a block given its block data\n"
 
                 "\nArguments\n"
@@ -773,8 +774,8 @@ static UniValue getkawpowhash(const JSONRPCRequest& request) {
                 "5. \"target\"             (string, optional) the target of the block that is hash is trying to meet\n"
                 "\nResult:\n"
                 "\nExamples:\n"
-                + HelpExampleCli("getkawpowhash", "\"header_hash\" \"mix_hash\" \"0x100000\" 2456")
-                + HelpExampleRpc("getkawpowhash", "\"header_hash\" \"mix_hash\" \"0x100000\" 2456")
+                + HelpExampleCli("getawesomepowhash", "\"header_hash\" \"mix_hash\" \"0x100000\" 2456")
+                + HelpExampleRpc("getawesomepowhash", "\"header_hash\" \"mix_hash\" \"0x100000\" 2456")
         );
     }
 
@@ -1288,7 +1289,7 @@ static const CRPCCommand commands[] =
     { "mining",             "getblocktemplate",       &getblocktemplate,       {"template_request"} },
     { "mining",             "submitblock",            &submitblock,            {"hexdata","dummy"} },
     { "mining",             "pprpcsb",                &pprpcsb,                {"header_hash","mix_hash", "nonce"} },
-    { "mining",             "getkawpowhash",          &getkawpowhash,          {"header_hash", "mix_hash", "nonce", "height"} },
+    { "mining",             "getawesomepowhash",      &getawesomepowhash,          {"header_hash", "mix_hash", "nonce", "height"} },
 
     /* Coin generation */
     { "generating",         "getgenerate",            &getgenerate,            {}  },

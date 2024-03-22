@@ -126,7 +126,7 @@ public:
         consensus.nSegwitEnabled = true;
         consensus.nCSVEnabled 	= true;
         consensus.powLimit 		= uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.kawpowLimit 	= uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 kawpow blocks
+        consensus.awesomepowLimit 	= uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 awesomepow blocks
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
 	    consensus.fPowAllowMinDifficultyBlocks = false;
@@ -171,7 +171,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000100010"); // block 1
 
         // By default assume that the signatures in ancestors of this block are valid
-        consensus.defaultAssumeValid = uint256S("0x004be34bb6e7c20aad94b1638a1e50c5fb6bc5523a5f962bb80b0c84124f1333"); // Block 113
+        consensus.defaultAssumeValid = uint256S("0x000000d21317d68f5253f7ef4cecb163e09d004b598a98be62e857708719fc33"); // Block 113
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -337,8 +337,10 @@ public:
         nMessagingActivationBlock = 1; // Messaging activated block height
         nRestrictedActivationBlock = 1; // Restricted activated block height
 
-        nKAAAWWWPOWActivationTime = 1701434110;
-        nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
+        // nKAAAWWWPOWActivationTime = 1701434110;
+        // nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
+        nAWESOMEPOWWWActivationTime = 1711115975; // Jan 30 2026 -- To be changed, this is not the final target
+        nAWESOMEPOWActivationTime = nAWESOMEPOWWWActivationTime;
     }
 };
 
@@ -356,7 +358,7 @@ public:
         consensus.nSegwitEnabled = true;
         consensus.nCSVEnabled 	= true;
         consensus.powLimit 	= uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.kawpowLimit 	= uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 kawpow blocks
+        consensus.awesomepowLimit 	= uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 awesomepow blocks
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
 	    consensus.fPowAllowMinDifficultyBlocks = false;
@@ -558,8 +560,8 @@ public:
         nMessagingActivationBlock = 1; // Messaging activated block height
         nRestrictedActivationBlock = 1; // Restricted activated block height
 
-        nKAAAWWWPOWActivationTime = 1661833868;
-        nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
+        nAWESOMEPOWWWActivationTime = 1711115975; // Jan 30 2026 -- To be changed, this is not the final target
+        nAWESOMEPOWActivationTime = nAWESOMEPOWWWActivationTime;
         /** POINTS End **/
     }
 };
@@ -578,7 +580,7 @@ public:
         consensus.nCSVEnabled = true;
         consensus.nSubsidyHalvingInterval = 150;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.kawpowLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.awesomepowLimit = uint256S("7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 awesomepow blocks
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -707,8 +709,8 @@ public:
         // TODO, we need to figure out what to do with this for regtest. This effects the unit tests
         // For now we can use a timestamp very far away
         // If you are looking to test the kawpow hashing function in regtest. You will need to change this number
-        nKAAAWWWPOWActivationTime = 3582830167;
-        nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
+        nAWESOMEPOWWWActivationTime = 1711115975; // Jan 30 2026 -- To be changed, this is not the final target
+        nAWESOMEPOWActivationTime = nAWESOMEPOWWWActivationTime;
         /** POINTS End **/
     }
 };

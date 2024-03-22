@@ -215,7 +215,7 @@ public:
     uint32_t nBits;
     uint32_t nNonce;
 
-    // KAWPOW
+    // AWESOMEPOW
     uint64_t nNonce64;
     uint256 mix_hash;
 
@@ -247,7 +247,7 @@ public:
         nBits          = 0;
         nNonce         = 0;
 
-        //KAWPOW
+        //AWESOMEPOW
         nNonce64       = 0;
         mix_hash       = uint256();
     }
@@ -267,7 +267,7 @@ public:
         nBits          = block.nBits;
         nNonce         = block.nNonce;
 
-        //KAWPOW
+        //AWESOMEPOW
         nHeight        = block.nHeight;
         nNonce64       = block.nNonce64;
         mix_hash       = block.mix_hash;
@@ -423,10 +423,10 @@ public:
         READWRITE(hashMerkleRoot);
         READWRITE(nTime);
         READWRITE(nBits);
-        if (nTime < nKAWPOWActivationTime) {
+        if (nTime < nAWESOMEPOWActivationTime) {
             READWRITE(nNonce);
         } else {
-            //KAWPOW
+            //AWESOMEPOW
             READWRITE(nNonce64);
             READWRITE(mix_hash);
         }

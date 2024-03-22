@@ -19,7 +19,7 @@
  * of the block.
  */
 
-extern uint32_t nKAWPOWActivationTime;
+extern uint32_t nAWESOMEPOWActivationTime;
 
 class BlockNetwork
 {
@@ -45,7 +45,7 @@ public:
     uint32_t nBits;
     uint32_t nNonce;
 
-    //KAAAWWWPOW data
+    //AWESOMEPOW data
     uint32_t nHeight;
     uint64_t nNonce64;
     uint256 mix_hash;
@@ -64,7 +64,7 @@ public:
         READWRITE(hashMerkleRoot);
         READWRITE(nTime);
         READWRITE(nBits);
-        if (nTime < nKAWPOWActivationTime) {
+        if (nTime < nAWESOMEPOWActivationTime) {
             READWRITE(nNonce);
         } else {
             READWRITE(nHeight);
@@ -97,7 +97,7 @@ public:
     uint256 GetX16RV2Hash() const;
 
     uint256 GetHashFull(uint256& mix_hash) const;
-    uint256 GetKAWPOWHeaderHash() const;
+    uint256 GetAWESOMEPOWHeaderHash() const;
     std::string ToString() const;
 
     /// Use for testing algo switch
@@ -158,7 +158,7 @@ public:
         block.nBits          = nBits;
         block.nNonce         = nNonce;
 
-        // KAWPOW
+        // AWESOMEPOW
         block.nHeight        = nHeight;
         block.nNonce64       = nNonce64;
         block.mix_hash       = mix_hash;
@@ -210,10 +210,10 @@ struct CBlockLocator
  * Custom serializer for CBlockHeader that omits the nNonce and mixHash, for use
  * as input to ProgPow.
  */
-class CKAWPOWInput : private CBlockHeader
+class CAWESOMEPOWInput : private CBlockHeader
 {
 public:
-    CKAWPOWInput(const CBlockHeader &header)
+    CAWESOMEPOWInput(const CBlockHeader &header)
     {
         CBlockHeader::SetNull();
         *((CBlockHeader*)this) = header;
