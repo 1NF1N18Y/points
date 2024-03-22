@@ -723,8 +723,8 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
         std::string address = gArgs.GetArg("-miningaddress", "");
         if (IsValidDestinationString(address)) {
             static std::string lastheader = "";
-            if (mapHVNKAWBlockTemplates.count(lastheader)) {
-                if (pblock->nTime - 30 < mapHVNKAWBlockTemplates.at(lastheader).nTime) {
+            if (mapPNTAWESOMEBlockTemplates.count(lastheader)) {
+                if (pblock->nTime - 30 < mapPNTAWESOMEBlockTemplates.at(lastheader).nTime) {
                     result.pushKV("pprpcheader", lastheader);
                     result.pushKV("pprpcepoch", ethash::get_epoch_number(pblock->nHeight));
                     return result;
@@ -734,7 +734,7 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
             pblock->hashMerkleRoot = BlockMerkleRoot(*pblock);
             result.pushKV("pprpcheader", pblock->GetAWESOMEPOWHeaderHash().GetHex());
             result.pushKV("pprpcepoch", ethash::get_epoch_number(pblock->nHeight));
-            mapHVNKAWBlockTemplates[pblock->GetAWESOMEPOWHeaderHash().GetHex()] = *pblock;
+            mapPNTAWESOMEBlockTemplates[pblock->GetAWESOMEPOWHeaderHash().GetHex()] = *pblock;
             lastheader = pblock->GetAWESOMEPOWHeaderHash().GetHex();
         }
     }
@@ -863,11 +863,11 @@ static UniValue pprpcsb(const JSONRPCRequest& request) {
     if (!ParseUInt64(str_nonce, &nonce, 16))
         throw JSONRPCError(RPC_INVALID_PARAMS, "Invalid hex nonce");
 
-    if (!mapHVNKAWBlockTemplates.count(header_hash))
+    if (!mapPNTAWESOMEBlockTemplates.count(header_hash))
         throw JSONRPCError(RPC_INVALID_PARAMS, "Block header hash not found in block data");
 
     std::shared_ptr<CBlock> blockptr = std::make_shared<CBlock>();
-    *blockptr = mapHVNKAWBlockTemplates.at(header_hash);
+    *blockptr = mapPNTAWESOMEBlockTemplates.at(header_hash);
 
     blockptr->nNonce64 = nonce;
     blockptr->mix_hash = uint256S(mix_hash);
