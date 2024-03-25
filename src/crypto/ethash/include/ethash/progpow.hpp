@@ -10,7 +10,7 @@
 
 #include <crypto/ethash/include/ethash/ethash.hpp>
 
-namespace awesomepow
+namespace progpow
 {
 using namespace ethash;  // Include ethash namespace.
 
