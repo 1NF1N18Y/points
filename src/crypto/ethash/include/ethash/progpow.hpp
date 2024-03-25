@@ -19,11 +19,11 @@ using namespace ethash;  // Include ethash namespace.
 constexpr auto revision = "0.9.4";
 
 constexpr int period_length = 3;
-constexpr uint32_t num_regs = 32;
-constexpr size_t num_lanes = 16;
-constexpr int num_cache_accesses = 11;
-constexpr int num_math_operations = 18;
-constexpr size_t l1_cache_size = 16 * 1024;
+constexpr uint32_t num_regs = 6;
+constexpr size_t num_lanes = 8;
+constexpr int num_cache_accesses = 4;
+constexpr int num_math_operations = 6;
+constexpr size_t l1_cache_size = 8 * 1024;
 constexpr size_t l1_cache_num_items = l1_cache_size / sizeof(uint32_t);
 
 result hash(const epoch_context& context, int block_number, const hash256& header_hash,
