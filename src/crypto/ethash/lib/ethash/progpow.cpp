@@ -2,7 +2,7 @@
 // Copyright 2018-2019 Pawel Bylica.
 // Licensed under the Apache License, Version 2.0.
 
-#include <crypto/ethash/include/ethash/awesomepow.hpp>
+#include <crypto/ethash/include/ethash/progpow.hpp>
 
 #include "crypto/ethash/lib/ethash/bit_manipulation.h"
 #include "crypto/ethash/lib/ethash/endianness.hpp"
@@ -12,7 +12,7 @@
 
 #include <array>
 
-namespace awesomepow
+namespace progpow
 {
 namespace
 {
@@ -25,16 +25,16 @@ namespace
 /// @param nonce        The 64-bit nonce.
 /// @param mix_hash     Additional 256-bits of data.
 /// @return             The 256-bit output of the hash function.
-void keccak_awesomepow_256(uint32_t* st) noexcept
+void keccak_progpow_256(uint32_t* st) noexcept
 {
     ethash_keccakf800(st);
 }
 
-/// The same as keccak_awesomepow_256() but uses null mix
+/// The same as keccak_progpow_256() but uses null mix
 /// and returns top 64 bits of the output being a big-endian prefix of the 256-bit hash.
 inline void keccak_progpow_64(uint32_t* st) noexcept
 {
-    keccak_awesomepow_256(st);
+    keccak_progpow_256(st);
 }
 
 
@@ -154,22 +154,22 @@ static const uint32_t round_constants[22] = {
         0x00008080,
 };
 
-static const uint32_t points_kawpow[15] = {
-        0x00000061, //a
-        0x00000077, //w
-        0x00000065, //e
-        0x00000073, //s
-        0x0000006F, //o
-        0x0000006D, //m
-        0x00000065, //e
-        0x00000070, //p
-        0x0000006F, //o
-        0x00000077, //w
-        0x00000070, //p
-        0x0000006F, //o
-        0x00000077, //w
-        0x00000070, //p
-        0x0000006F, //o
+static const uint32_t pointscoin_kawpow[15] = {
+        0x00000072, //R
+        0x00000041, //A
+        0x00000056, //V
+        0x00000045, //E
+        0x0000004E, //N
+        0x00000043, //C
+        0x0000004F, //O
+        0x00000049, //I
+        0x0000004E, //N
+        0x0000004B, //K
+        0x00000041, //A
+        0x00000057, //W
+        0x00000050, //P
+        0x0000004F, //O
+        0x00000057, //W
 };
 
 using lookup_fn = hash2048 (*)(const epoch_context&, uint32_t);
@@ -314,9 +314,9 @@ result hash(const epoch_context& context, int block_number, const hash256& heade
         state[8] = nonce;
         state[9] = nonce >> 32;
 
-        // 3rd apply points input constraints
+        // 3rd apply pointscoin input constraints
         for (int i = 10; i < 25; i++)
-            state[i] = points_kawpow[i-10];
+            state[i] = pointscoin_kawpow[i-10];
 
         keccak_progpow_64(state);
 
@@ -340,12 +340,12 @@ result hash(const epoch_context& context, int block_number, const hash256& heade
     for (int i = 8; i < 16; i++)
         state[i] = mix_hash.word32s[i-8];
 
-    // 3rd apply points input constraints
+    // 3rd apply pointscoin input constraints
     for (int i = 16; i < 25; i++)
-        state[i] = points_kawpow[i - 16];
+        state[i] = pointscoin_kawpow[i - 16];
 
     // Run keccak loop
-    keccak_awesomepow_256(state);
+    keccak_progpow_256(state);
 
     hash256 output;
     for (int i = 0; i < 8; ++i)
@@ -388,9 +388,9 @@ result hash(const epoch_context_full& context, int block_number, const hash256& 
         state[8] = nonce;
         state[9] = nonce >> 32;
 
-        // 3rd apply points input constraints
+        // 3rd apply pointscoin input constraints
         for (int i = 10; i < 25; i++)
-            state[i] = points_kawpow[i-10];
+            state[i] = pointscoin_kawpow[i-10];
 
         keccak_progpow_64(state);
 
@@ -415,12 +415,12 @@ result hash(const epoch_context_full& context, int block_number, const hash256& 
     for (int i = 8; i < 16; i++)
         state[i] = mix_hash.word32s[i-8];
 
-    // 3rd apply points input constraints
+    // 3rd apply pointscoin input constraints
     for (int i = 16; i < 25; i++)
-        state[i] = points_kawpow[i - 16];
+        state[i] = pointscoin_kawpow[i - 16];
 
     // Run keccak loop
-    keccak_awesomepow_256(state);
+    keccak_progpow_256(state);
 
     hash256 output;
     for (int i = 0; i < 8; ++i)
@@ -448,9 +448,9 @@ bool verify(const epoch_context& context, int block_number, const hash256& heade
         state[8] = nonce;
         state[9] = nonce >> 32;
 
-        // 3rd apply points input constraints
+        // 3rd apply pointscoin input constraints
         for (int i = 10; i < 25; i++)
-            state[i] = points_kawpow[i-10];
+            state[i] = pointscoin_kawpow[i-10];
 
         keccak_progpow_64(state);
 
@@ -473,12 +473,12 @@ bool verify(const epoch_context& context, int block_number, const hash256& heade
     for (int i = 8; i < 16; i++)
         state[i] = mix_hash.word32s[i-8];
 
-    // 3rd apply points input constraints
+    // 3rd apply pointscoin input constraints
     for (int i = 16; i < 25; i++)
-        state[i] = points_kawpow[i - 16];
+        state[i] = pointscoin_kawpow[i - 16];
 
     // Run keccak loop
-    keccak_awesomepow_256(state);
+    keccak_progpow_256(state);
 
     hash256 output;
     for (int i = 0; i < 8; ++i)
@@ -513,9 +513,9 @@ hash256 hash_no_verify(const int& block_number, const hash256& header_hash,
         state[8] = nonce;
         state[9] = nonce >> 32;
 
-        // 3rd apply points input constraints
+        // 3rd apply pointscoin input constraints
         for (int i = 10; i < 25; i++)
-            state[i] = points_kawpow[i-10];
+            state[i] = pointscoin_kawpow[i-10];
 
         keccak_progpow_64(state);
 
@@ -535,12 +535,12 @@ hash256 hash_no_verify(const int& block_number, const hash256& header_hash,
     for (int i = 8; i < 16; i++)
         state[i] = mix_hash.word32s[i-8];
 
-    // 3rd apply points input constraints
+    // 3rd apply pointscoin input constraints
     for (int i = 16; i < 25; i++)
-        state[i] = points_kawpow[i - 16];
+        state[i] = pointscoin_kawpow[i - 16];
 
     // Run keccak loop
-    keccak_awesomepow_256(state);
+    keccak_progpow_256(state);
 
     hash256 output;
     for (int i = 0; i < 8; ++i)
