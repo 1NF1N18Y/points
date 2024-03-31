@@ -339,7 +339,7 @@ public:
 
         // nKAAAWWWPOWActivationTime = 1701434110;
         // nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        nAWESOMEPOWWWActivationTime = 1711115975; // Jan 30 2026 -- To be changed, this is not the final target
+        nAWESOMEPOWWWActivationTime = 1711115975; 
         nAWESOMEPOWActivationTime = nAWESOMEPOWWWActivationTime;
     }
 };
